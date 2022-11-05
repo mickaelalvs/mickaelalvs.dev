@@ -2,31 +2,25 @@ import Image from "next/image";
 import Link from "next/link";
 import Me from '../public/images/me.png';
 import Computer from '../public/images/computer.png';
-import styled from '../styles/pages/home.module.scss';
+import styled from '../styles/home/home.module.scss';
 
-import {FaDev, FaEnvelope, FaGithub, FaLinkedin, FaTwitter} from "react-icons/fa";
+import {socials} from '../config/socials';
 
 export default function Page() {
   return (
     <div className={styled.home}>
-      <div className={styled.containerBackground}/>
-      <div className={styled.container}>
-        <div className={styled.pictureContainer}/>
-      </div>
-      <div className={styled.background}>
-        <div className={styled.background_1}/>
-        <div className={styled.background_2}/>
-        <div className={styled.background_3}/>
-        <div className={styled.background_4}/>
-        <div className={styled.background_5}/>
-        <div className={styled.background_6}/>
-      </div>
-      <div className={styled.container}>
+      <div className={styled.containerLayer}>
+        <div className={styled.pictureLayer}/>
         <Image src={Me} alt="Me" className={styled.picture}/>
       </div>
-      <div className={styled.content}>
+      <div className={styled.backgroundCircleLayer}>
+        {
+          [...Array(6)].map((e, i) => <span key={`circle_${i}`}/>)
+        }
+      </div>
+      <div className={styled.informationsLayer}>
         <div className={styled.details}>
-          <h2>Hey, I'm</h2>
+          <h2>Hey, I&apos;m</h2>
           <h1>MICKAËL</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque condimentum, tortor in mattis luctus, nunc
             velit iaculis dui, aliquam mattis nibh nisi vitae dui. Tortor in mattis luctus, nunc
@@ -40,33 +34,17 @@ export default function Page() {
             </div>
           </div>
           <div className={styled.socials}>
-            <h2>Follow me ...</h2>
+            <h2 className='underlined'>Follow me ...</h2>
             <ul>
-              <li>
-                <Link href="mailto:alves.mckl@gmail.com">
-                  <FaEnvelope/>
-                </Link>
-              </li>
-              <li>
-                <Link href="https://www.linkedin.com/in/mickaelalves">
-                  <FaLinkedin/>
-                </Link>
-              </li>
-              <li>
-                <Link href="https://github.com/CruuzAzul">
-                  <FaGithub/>
-                </Link>
-              </li>
-              <li>
-                <Link href="https://twitter.com/CruuzAzul">
-                  <FaTwitter/>
-                </Link>
-              </li>
-              <li>
-                <Link href="https://dev.to/cruzazul">
-                  <FaDev/>
-                </Link>
-              </li>
+              {
+                socials.map((social) => (
+                  <li key={social.name}>
+                    <Link href={social.url}>
+                      {social.icon}
+                    </Link>
+                  </li>
+                ))
+              }
             </ul>
           </div>
         </div>
