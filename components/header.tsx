@@ -2,10 +2,12 @@ import Image from "next/image";
 import Logo from "../public/images/logo.png";
 import Link from "next/link";
 import React from "react";
+import styled from '../styles/home/header.module.scss';
+
 
 export default function Header() {
   return (
-    <header>
+    <header className={styled.header}>
       <nav>
         <Image src={Logo} alt="logo" height={30}/>
         <ul>
