@@ -6,7 +6,7 @@ import styled from '../styles/home/home.module.scss';
 
 import {socials} from '../config/socials';
 
-export default function Page() {
+export default function Home() {
   return (
     <div className={styled.home}>
       <div className={styled.containerLayer}>
