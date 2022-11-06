@@ -17,7 +17,7 @@ export const socials = [
     icon: <FaGithub/>
   },
   {
-    name: 'GitHub',
+    name: 'Twitter',
     url: 'https://twitter.com/CruuzAzul',
     icon: <FaTwitter />
   },

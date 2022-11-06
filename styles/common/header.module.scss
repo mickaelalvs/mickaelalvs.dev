@@ -22,6 +22,17 @@
       backdrop-filter: blur(8px);
 
       li {
+        &.selected {
+          width: 100%;
+          margin-bottom: -1px;
+          border-bottom: 1px solid transparent;
+          border-image: linear-gradient(0.25turn, transparent, var(--primary-color), transparent) 1;
+
+          a {
+            color: var(--primary-color);
+          }
+        }
+
         a {
           display: block;
           color: var(--dark-moon);
