@@ -6,6 +6,25 @@
   --lighten-cloud : #FFFFFF19;
   --dark-moon : #E4E4E7;
   --light-moon : #F4F4F5;
+  --shadow-color: 240deg 10% 2%;
+  --shadow-elevation-low:
+          0.4px 0.4px 0.6px hsl(var(--shadow-color) / 0.34),
+          0.7px 0.7px 1.1px -1.2px hsl(var(--shadow-color) / 0.34),
+          1.6px 1.6px 2.5px -2.5px hsl(var(--shadow-color) / 0.34);
+  --shadow-elevation-medium:
+          0.4px 0.4px 0.6px hsl(var(--shadow-color) / 0.36),
+          1.3px 1.3px 2.1px -0.8px hsl(var(--shadow-color) / 0.36),
+          3.3px 3.3px 5.3px -1.7px hsl(var(--shadow-color) / 0.36),
+          8px 8px 12.7px -2.5px hsl(var(--shadow-color) / 0.36);
+  --shadow-elevation-high:
+          0.4px 0.4px 0.6px hsl(var(--shadow-color) / 0.34),
+          2.3px 2.3px 3.7px -0.4px hsl(var(--shadow-color) / 0.34),
+          4.3px 4.3px 6.8px -0.7px hsl(var(--shadow-color) / 0.34),
+          7.1px 7.1px 11.3px -1.1px hsl(var(--shadow-color) / 0.34),
+          11.4px 11.4px 18.1px -1.4px hsl(var(--shadow-color) / 0.34),
+          17.8px 17.8px 28.3px -1.8px hsl(var(--shadow-color) / 0.34),
+          27.1px 27.1px 43.1px -2.1px hsl(var(--shadow-color) / 0.34),
+          39.9px 39.9px 63.5px -2.5px hsl(var(--shadow-color) / 0.34);
 }
 
 [data-theme='light'] {
@@ -16,4 +35,5 @@
   --lighten-cloud : #fbfbfb;
   --dark-moon : #27272AE5;
   --light-moon : #FFFFFF19;
+  --shadow-color: 240deg 2% 56%;
 }

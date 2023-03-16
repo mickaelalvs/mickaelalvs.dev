@@ -1,0 +1,127 @@
+.talks {
+  padding: 5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 150px;
+
+  .talk {
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+
+    h2 {
+      width: fit-content;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-align: center;
+
+      &:after {
+        content: '';
+        display: inline-block;
+        width: 60%;
+        height: 4px;
+        position: relative;
+        bottom: -6px;
+        border-radius: 4px;
+        background-color: var(--primary-color);
+      }
+    }
+
+    .details {
+      display: flex;
+      justify-content: space-between;
+      gap: 3rem;
+
+      img {
+        border-radius: 8px;
+        border: 2px solid var(--lighten-cloud);
+        box-shadow: var(--shadow-elevation-medium);
+      }
+
+      p {
+        font-size: 1.1rem;
+        font-weight: 400;
+        line-height: 1.5;
+      }
+    }
+
+    .conferences {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+
+      h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+
+        &:after {
+          content: '';
+          display: inline-block;
+          width: 60%;
+          height: 3px;
+          position: relative;
+          bottom: -2px;
+          border-radius: 4px;
+          background-color: var(--primary-color);
+        }
+      }
+
+      .conferencesList {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        max-height: 1200px;
+        gap: min(3vw, 24px);
+
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: min(40vw,200px);
+            min-height: 120px;
+            border-radius: 8px;
+            aspect-ratio: 250/150;
+            border: 2px solid var(--lighten-cloud);
+            box-shadow: var(--shadow-elevation-medium);
+            transition: all 0.3s ease-in-out;
+            background-color: var(--dark-cloud);
+
+            &:hover {
+                transform: scale(1.05);
+            }
+
+            img {
+              height: auto;
+              width: auto;
+              max-height: min(14vw,80px);
+              max-width: 75%;
+            }
+
+            span {
+              position: absolute;
+              top: -10px;
+              font-size: 0.8rem;
+              font-weight: 700;
+              color: var(--dark-cloud);
+              background-color: var(--primary-color);
+              padding: 0 0.5rem;
+              border-radius: 8px;
+            }
+        }
+      }
+    }
+  }
+}

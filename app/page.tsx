@@ -1,54 +1,33 @@
+'use client';
+
 import Image from "next/image";
-import Link from "next/link";
-import Me from '../public/images/me.png';
-import Computer from '../public/images/computer.png';
 import styled from '../styles/home/home.module.scss';
 
-import {socials} from '../config/socials';
+import {useTheme} from "next-themes";
+import {useEffect, useState} from "react";
+import Talks from "../components/talks";
 
 export default function Home() {
+  const [scrollLogo, setScrollLogo] = useState('/images/scrollLight.svg');
+
+  const {theme} = useTheme();
+
+  useEffect(() => {
+    setScrollLogo(theme === "dark" ? '/images/scrollDark.svg' : '/images/scrollLight.svg');
+  }, [theme]);
+
   return (
-    <div className={styled.home}>
-      <div className={styled.containerLayer}>
-        <div className={styled.pictureLayer}/>
-        <Image src={Me} alt="Me" className={styled.picture}/>
-      </div>
-      <div className={styled.backgroundCircleLayer}>
-        {
-          [...Array(6)].map((e, i) => <span key={`circle_${i}`}/>)
-        }
-      </div>
-      <div className={styled.informationsLayer}>
-        <div className={styled.details}>
-          <h2>Hey, I&apos;m</h2>
-          <h1>MICKAËL</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque condimentum, tortor in mattis luctus, nunc
-            velit iaculis dui, aliquam mattis nibh nisi vitae dui. Tortor in mattis luctus, nunc
-            velit iaculis dui, aliquam mattis nibh nisi vitae dui.</p>
-        </div>
-        <div className={styled.links}>
-          <div className={styled.card}>
-            <Image src={Computer} alt="pc" width={150} />
-            <div className={styled.label}>
-              <span>Web Developer</span>
-            </div>
+    <>
+      <div className={styled.home}>
+        <div className={styled.informationsLayer}>
+          <div className={styled.details}>
+            <h2>Mickaël Alves</h2>
+            <h1>Conférences</h1>
           </div>
-          <div className={styled.socials}>
-            <h2 className='underlined'>Follow me ...</h2>
-            <ul>
-              {
-                socials.map((social) => (
-                  <li key={social.name}>
-                    <Link href={social.url}>
-                      {social.icon}
-                    </Link>
-                  </li>
-                ))
-              }
-            </ul>
-          </div>
+          <Image className={styled.scroll} src={scrollLogo} alt="scroll" width={30} height={70}/>
         </div>
       </div>
-    </div>
+      <Talks />
+    </>
   );
 }

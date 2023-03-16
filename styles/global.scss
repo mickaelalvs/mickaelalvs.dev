@@ -1,11 +1,20 @@
 @import './theme.scss';
 
+// Dimensions
+$dot-size: 3px;
+$dot-space: 40px;
+
 body {
-  background-color: var(--dark-cloud);
+  background: linear-gradient(90deg, var(--dark-cloud) ($dot-space - $dot-size), transparent 1%) center, linear-gradient(var(--dark-cloud) ($dot-space - $dot-size), transparent 1%) center, var(--light-cloud);
+  background-size: $dot-space $dot-space;
+  padding: 0 5rem;
+
+    @media (max-width: 768px) {
+        padding: 0 2rem;
+    }
 }
 
 h1 {
-  color: var(--);
   font-size: 7rem;
   font-weight: 800;
 }
