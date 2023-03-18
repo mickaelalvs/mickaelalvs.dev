@@ -50,25 +50,25 @@
         }
       }
     }
-      button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        color: var(--dark-moon);
-        width: fit-content;
-        height: 45px;
-        list-style: none;
-        padding: 0 0.9rem;
-        background-color: var(--light-cloud);
-        border: 1px solid var(--lighten-cloud);
-        border-radius: 50px;
-        backdrop-filter: blur(8px);
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--dark-moon);
+      width: fit-content;
+      height: 45px;
+      list-style: none;
+      padding: 0 0.9rem;
+      background-color: var(--light-cloud);
+      border: 1px solid var(--lighten-cloud);
+      border-radius: 50px;
+      backdrop-filter: blur(8px);
 
-        &:hover {
+      &:hover {
         cursor: pointer;
-          color: var(--primary-color);
-        }
+        color: var(--primary-color);
       }
+    }
   }
 }

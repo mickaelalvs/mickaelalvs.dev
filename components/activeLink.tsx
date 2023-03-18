@@ -18,9 +18,7 @@ export const ActiveLink: FC<ActiveLinkProps> = ({children, href, name}) => {
 
   return (
     <li key={`route_${name}`} className={className}>
-      <Link href={href}>
-        {children}
-      </Link>
+      <Link href={href}>{children}</Link>
     </li>
   );
 };
