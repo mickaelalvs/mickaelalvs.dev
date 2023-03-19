@@ -17,25 +17,28 @@
     }
 
     .menu {
+      display: flex;
+      gap: 0.5rem;
       width: fit-content;
       height: 45px;
-      display: flex;
       list-style: none;
       padding: 0 1.2rem;
-      background-color: var(--light-cloud);
-      border: 1px solid var(--lighten-cloud);
-      border-radius: 50px;
-      backdrop-filter: blur(8px);
 
       li {
+        border-radius: 5px;
+
+        &:hover {
+          background-color: var(--background-button-hover);
+        }
+
         &.selected {
           width: 100%;
-          margin-bottom: -1px;
-          border-bottom: 1px solid transparent;
-          border-image: linear-gradient(0.25turn, transparent, var(--primary-color), transparent) 1;
+          background-color: var(--light-cloud);
 
           a {
             color: var(--primary-color);
+            border-bottom: 1px solid transparent;
+            border-image: linear-gradient(0.25turn, transparent, var(--primary-color), transparent) 1;
           }
         }
 
@@ -44,7 +47,7 @@
           color: var(--dark-moon);
           text-decoration: none;
           font-weight: 600;
-          font-size: 0.9rem;
+          font-size: 1rem;
           padding: 0.7rem 1rem;
 
           &:hover {
@@ -57,7 +60,7 @@
     .socials {
       display: flex;
       align-items: center;
-      gap: 3rem;
+      gap: 2rem;
 
       h2 {
         width: fit-content;
@@ -66,7 +69,7 @@
 
       ul {
         display: flex;
-        gap: 2rem;
+        gap: 0.5rem;
         list-style: none;
         padding-inline-start: 0;
 
@@ -76,36 +79,44 @@
           a {
             color: var(--dark-moon);
             font-size: 1.5rem;
-            transition: all 0.2s ease-out;
-            margin: 0;
+            border-radius: 50%;
+            padding: 0.75rem;
+            transition: background-color 0.2s, color 0.2s;
 
             &:hover {
               color: var(--primary-color);
-              transform: scale(1.2);
-              transition: all 0.2s ease-out;
+              background-color: var(--light-cloud);
+            }
+
+            svg {
+              width: 20px;
+              height: 20px;
             }
           }
         }
       }
     }
+
     button {
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       color: var(--dark-moon);
-      width: fit-content;
       height: 45px;
       list-style: none;
-      padding: 0 0.9rem;
+      padding: 0 0.7rem;
       background-color: var(--light-cloud);
       border: 1px solid var(--lighten-cloud);
       border-radius: 50px;
-      backdrop-filter: blur(8px);
 
       &:hover {
         cursor: pointer;
         color: var(--primary-color);
+      }
+
+      svg {
+        width: 20px;
       }
     }
   }
