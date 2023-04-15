@@ -3,7 +3,7 @@
 import {FC, ReactNode} from 'react';
 import Link, {LinkProps} from 'next/link';
 import {usePathname} from 'next/navigation';
-import styled from '../styles/common/header.module.scss';
+import styles from '../Navbar.module.scss';
 
 type ActiveLinkProps = LinkProps & {
   children: ReactNode;
@@ -11,10 +11,10 @@ type ActiveLinkProps = LinkProps & {
   href: string;
 };
 
-export const ActiveLink: FC<ActiveLinkProps> = ({children, href, name}) => {
+export const NavLink: FC<ActiveLinkProps> = ({children, href, name}) => {
   const pathname = usePathname();
 
-  const className = pathname === href ? styled.selected : undefined;
+  const className = pathname === href ? styles.selected : undefined;
 
   return (
     <li key={`route_${name}`} className={className}>

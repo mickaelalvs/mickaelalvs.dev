@@ -16,3 +16,11 @@ h1 {
   font-size: 7rem;
   font-weight: 800;
 }
+
+menu,
+ol,
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
