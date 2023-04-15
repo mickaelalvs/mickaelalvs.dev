@@ -4,9 +4,9 @@ import '../styles/global.scss';
 import '../styles/reset.scss';
 
 import React from 'react';
-import Header from '../components/header';
 import {Rubik} from '@next/font/google';
 import {ThemeProvider} from 'next-themes';
+import {Header} from '../modules/header/Header';
 
 interface RootLayoutProps {
   children: React.ReactNode;

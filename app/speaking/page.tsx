@@ -1,16 +1,16 @@
 import React from 'react';
-import styled from '../../styles/home/home.module.scss';
-import Talks from '../../components/talks';
+import styles from '../../modules/home/Home.module.scss';
+import TalksList from '../../modules/speaking/TalksList';
 
 export default function Speaking() {
   return (
     <>
-      <div className={styled.home}>
-        <div className={styled.hero}>
+      <div className={styles.home}>
+        <div className={styles.hero}>
           <h2>Conferences</h2>
           <h1>Mickaël Alves</h1>
         </div>
-        <Talks />
+        <TalksList />
       </div>
     </>
   );
