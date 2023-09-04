@@ -6,6 +6,9 @@ $dot-space: 40px;
 
 body {
   padding: 0 5rem;
+  background-image: url("/images/noise.png");
+  background-size: 15%;
+
 
   @media (max-width: 768px) {
     padding: 0 2rem;

@@ -8,7 +8,6 @@ import LogoLight from '../../public/images/logo.png';
 import LogoDark from '../../public/images/logoDark.png';
 import Image from 'next/image';
 import React from 'react';
-import ThemeSwitcher from './ThemeSwitcher';
 
 export const Header = () => {
   const {theme} = useTheme();
@@ -24,7 +23,6 @@ export const Header = () => {
       <Navbar className={styles.navbar} />
       <div className={styles.rightSideContainer}>
         <IconLink className={styles.socialLinks} />
-        <ThemeSwitcher />
       </div>
     </header>
   );

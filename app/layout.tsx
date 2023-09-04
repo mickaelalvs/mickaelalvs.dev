@@ -18,7 +18,7 @@ export default function RootLayout({children}: RootLayoutProps) {
   return (
     <html lang="fr" className={rubik.className}>
       <body>
-        <ThemeProvider>
+        <ThemeProvider forcedTheme="dark">
           <Header />
           {children}
         </ThemeProvider>
