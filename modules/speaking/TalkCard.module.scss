@@ -8,9 +8,9 @@
   border-radius: 8px;
   aspect-ratio: 250/150;
   border: 2px solid var(--lighten-cloud);
-  box-shadow: var(--shadow-elevation-medium);
+  box-shadow: 0 0 2px 2px var(--primary-color);
   transition: all 0.3s ease-in-out;
-  background-color: var(--dark-cloud);
+  background-color: var(--lighten-cloud);
 
   &:hover {
     transform: scale(1.05);
