@@ -5,8 +5,9 @@ import {Metadata} from 'next';
 export const metadata: Metadata = {
   title: 'Mickaël Alves',
   description:
-    "I'm truly passionate about web development ! As a full-stack developer and a French speaker, I have a deep\n" +
-    "appreciation for contributing to open-source projects, and I'm constantly seeking new challenges to tackle.",
+    "👋🏼 Web Maker, application builder, and passionate speaker on web development, design, computing, and new technologies! 👨🏻‍💻\n" +
+    "Currently a web consultant at @Zenika 🔴, I also enjoy sharing my knowledge through teaching and speaking at conferences.\n" +
+    "I’m a co-organizer of @LyonJS 🦁, an @Appwrite Hero 🦸🏼‍♂️, and a @Remotion Expert 🎬\n",
   icons: {
     icon: 'images/logo.png',
     apple: 'images/logo.png',

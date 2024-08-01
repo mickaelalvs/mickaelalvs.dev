@@ -23,7 +23,7 @@ export const routes: Route[] = [
   {
     name: 'Articles',
     path: '/articles',
-    enabled: true,
+    enabled: false,
   },
   {
     name: 'Projects',

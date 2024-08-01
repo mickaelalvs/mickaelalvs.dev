@@ -16,12 +16,12 @@
 
       &:hover {
         color: var(--primary-color);
-        background-color: var(--light-cloud);
+        box-shadow: 0 0 1px 1px var(--primary-color);
       }
 
       svg {
-        width: 20px;
-        height: 20px;
+        width: 30px;
+        height: 30px;
       }
     }
   }

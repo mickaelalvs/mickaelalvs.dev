@@ -1,7 +1,7 @@
 .navbar {
   ul {
     display: flex;
-    gap: 0.5rem;
+    gap: 1rem;
 
     @media (max-width: 900px) {
       flex-direction: column;
@@ -13,24 +13,40 @@
     display: inline-flex;
     border-radius: 5px;
 
-    &:hover {
-      background-color: var(--background-button-hover);
-    }
-
-    &.selected {
-      background-color: var(--light-cloud);
-
+    &:not(.selected):hover {
       a {
         position: relative;
-        color: var(--primary-color);
 
         &::after {
           content: '';
           position: absolute;
-          bottom: -3px;
+          bottom: -8px;
           left: 0;
           width: 100%;
-          border-bottom: 1px solid transparent;
+          border-bottom: 2px solid transparent;
+          border-image: linear-gradient(0.25turn, transparent, var(--primary-color), transparent) 1;
+        }
+      }
+    }
+
+    &.selected {
+      background-color: var(--primary-color);
+
+      a {
+        position: relative;
+        color: var(--lighten-cloud);
+
+        &:hover {
+          color: var(--lighten-cloud);
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -8px;
+          left: 0;
+          width: 100%;
+          border-bottom: 2px solid transparent;
           border-image: linear-gradient(0.25turn, transparent, var(--primary-color), transparent) 1;
         }
       }
@@ -41,7 +57,7 @@
       color: var(--dark-moon);
       text-decoration: none;
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 1.2rem;
       padding: 0.7rem 1rem;
 
       &:hover {

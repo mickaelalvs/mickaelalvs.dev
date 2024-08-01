@@ -1,5 +1,5 @@
 import styles from './HeroHome.module.scss';
-import profilePicture from '../../public/images/mickael-alves.jpg';
+import profilePicture from '../../public/images/mickael-alves.png';
 import Image from 'next/image';
 
 export const Hero = () => (
@@ -10,8 +10,12 @@ export const Hero = () => (
         <span>Mickaël Alves.</span>
       </h1>
       <p>
-        I&apos;m truly passionate about web development ! As a full-stack developer and a French speaker, I have a deep
-        appreciation for contributing to open-source projects, and I&apos;m constantly seeking new challenges to tackle.
+        👋🏼 Web Maker, application builder, and passionate speaker on web development, design, computing, and new
+        technologies! 👨🏻‍💻
+        <br /><br />
+        Currently a web consultant at <strong>@Zenika</strong> 🔴, I also enjoy sharing my knowledge through teaching
+        and speaking at conferences. I’m a co-organizer of <strong>@LyonJS</strong> 🦁, an <strong>@Appwrite</strong>
+        Hero 🦸🏼‍♂️, and a <strong>@Remotion</strong> Expert 🎬
       </p>
     </div>
     <div className={styles.profilePicture}>
