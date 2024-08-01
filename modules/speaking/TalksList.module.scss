@@ -46,9 +46,9 @@
       gap: 3rem;
 
       img {
+        margin: 5px;
         border-radius: 8px;
-        border: 2px solid var(--lighten-cloud);
-        box-shadow: var(--shadow-elevation-medium);
+        filter: drop-shadow(0 0 3px var(--dark-moon));
 
         @media (max-width: 768px) {
           display: none;
