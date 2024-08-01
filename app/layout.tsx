@@ -4,7 +4,7 @@ import '../styles/global.scss';
 import '../styles/reset.scss';
 
 import React from 'react';
-import {Rubik} from '@next/font/google';
+import {Rubik} from "next/font/google";
 import {ThemeProvider} from 'next-themes';
 import {Header} from '../modules/header/Header';
 
