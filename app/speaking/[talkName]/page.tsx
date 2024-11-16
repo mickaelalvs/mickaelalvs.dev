@@ -1,5 +1,5 @@
 import {parserTalkIdFromSlug} from '../../../modules/speaking/talk/talkSlug';
-import {speaking} from '../../../config/speaking';
+import {speaking} from '../../../config/speaking/speaking';
 import React from 'react';
 import {Talk} from '../../../modules/speaking/talk/Talk';
 
