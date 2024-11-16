@@ -14,7 +14,8 @@ type ActiveLinkProps = LinkProps & {
 export const NavLink: FC<ActiveLinkProps> = ({children, href, name}) => {
   const pathname = usePathname();
 
-  const className = pathname === href ? styles.selected : undefined;
+  const isActive = href === '/' ? pathname === '/' : pathname.startsWith(href);
+  const className = isActive ? styles.selected : undefined;
 
   return (
     <li key={`route_${name}`} className={className}>
