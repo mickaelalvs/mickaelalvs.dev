@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import {speaking} from '../../config/speaking';
+import {speaking} from '../../config/speaking/speaking';
 import styles from './TalksList.module.scss';
 import Link from 'next/link';
 import {slugTalkTitle} from './talk/talkSlug';

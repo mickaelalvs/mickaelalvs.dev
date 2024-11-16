@@ -2,7 +2,7 @@ import styles from './Talk.module.scss';
 import Image from 'next/image';
 import {TalkCard} from './TalkCard';
 import React from 'react';
-import {Speaking} from '../../../config/speaking';
+import {Speaking} from '../../../config/speaking/speaking';
 
 interface TalkProps {
   talkData: Speaking;
