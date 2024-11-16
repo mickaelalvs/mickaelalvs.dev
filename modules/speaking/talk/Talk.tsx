@@ -15,9 +15,7 @@ export const Talk = ({talkData}: TalkProps) => {
         <h2>{talkData.title}</h2>
         <div className={styles.details}>
           <div className={styles.infos}>
-            <div className={styles.description}>
-              {talkData.description}
-            </div>
+            <div className={styles.description}>{talkData.description}</div>
           </div>
           <Image src={talkData.image} alt={talkData.title} width={320} height={180} />
         </div>
@@ -29,7 +27,21 @@ export const Talk = ({talkData}: TalkProps) => {
             ))}
           </div>
         </div>
+        {
+          talkData.videoId ? (
+            <div className={styles.video}>
+              <h3>Rediffusion</h3>
+              <iframe
+                className={styles.videoIframe}
+                src={`https://www.youtube.com/embed/${talkData.videoId}`}
+                title={talkData.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          ) : null
+        }
       </div>
     </section>
-  )
+  );
 }
