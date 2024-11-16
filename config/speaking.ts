@@ -43,7 +43,7 @@ export interface Speaking {
   description: string;
   image: StaticImageData;
   format: string;
-  videoLink: string;
+  videoId?: string;
   speaker: Speaker[];
   conferences: Conference[];
 }
@@ -60,7 +60,7 @@ export const speaking: Speaking[] = [
       'Le React Compiler, véritable chef-d\'œuvre de cette mise à jour, s\'annonce comme un remix parfait pour vos applications passées et futures ! Venez vibrer avec nous et laissez-vous emporter par le rythme du React Compiler ! 🚀\n',
     image: ReactCompiler,
     format: 'Talk (50 minutes)',
-    videoLink: 'https://mixitconf.org/2022/appwrite-est-il-pret-a-eteindre-firebase-',
+    videoId: '_edOnkr8Yy4',
     speaker: [
       {
         name: 'Lucas Audart',
@@ -93,7 +93,7 @@ export const speaking: Speaking[] = [
       'Peu importe votre réponse, venez découvrir avec nous le duel entre Appwrite la jeune solution open-source et Firebase la flamme de Google 🥊',
     image: Appwrite,
     format: 'Talk (50 minutes)',
-    videoLink: 'https://mixitconf.org/2022/appwrite-est-il-pret-a-eteindre-firebase-',
+    videoId: '_QYXiq2fmS0',
     speaker: [
       {
         name: 'Lucas Audart',
@@ -160,7 +160,7 @@ export const speaking: Speaking[] = [
       'Installez-vous et préparez vos pop-corn la séance va commencer ! 🍿',
     image: Remotion,
     format: 'Talk (50 minutes)',
-    videoLink: 'https://mixitconf.org/2022/appwrite-est-il-pret-a-eteindre-firebase-',
+    videoId: 'mr_-LTkLl8A',
     speaker: [
       {
         name: 'Lucas Audart',
@@ -211,7 +211,7 @@ export const speaking: Speaking[] = [
       'Et si vous êtes chanceux, nous vous dévoilerons peut-être quelques secrets de ninja pour échapper aux espions ! Venez nous rejoindre et apprenez comment devenir le maître du camouflage numérique ! 😶‍🌫️',
     image: Espionnage,
     format: 'Talk (50 minutes)',
-    videoLink: 'https://youtu.be/Tj1yPUsA720',
+    videoId: 'pHP3MC1r6Ro',
     speaker: [
       {
         name: 'Etienne Idoux',
@@ -268,7 +268,6 @@ export const speaking: Speaking[] = [
       'Prenez votre courage à deux mains et embarquez avec nous pour une expérience inoubliable au cœur de l\'écosystème Appwrite ! 👨🏼‍✈️',
     image: AppwriteWorkshop,
     format: 'Atelier',
-    videoLink: 'https://youtu.be/Tj1yPUsA720',
     speaker: [
       {
         name: 'Lucas Audart',
@@ -310,7 +309,7 @@ export const speaking: Speaking[] = [
   },
   {
     id: '6',
-    title: "V0 : travailler avec un consultant frontend dans sa forme finale 🤖",
+    title: "v0 : travailler avec un consultant frontend dans sa forme finale 🤖",
     description:
       'Hello à toutes et tous ! 🙂 Après la perte de notre précieux consultant frontend, Double M, nous sommes à la recherche de notre prochain héros, et nous pensons l\'avoir trouvé avec V0... 🤖\n' +
       '\n' +
@@ -321,7 +320,7 @@ export const speaking: Speaking[] = [
       'Saura-t-il créer et déployer une interface parfaite en un temps record, tout comme l\'avait fait Double M il y a quelques années ? Cet entretien, c\'est peut-être le moment crucial de l\'année, alors ne manquez pas ce rendez-vous ! 📆',
     image: v0,
     format: 'Quicky (20 minutes)',
-    videoLink: 'https://youtu.be/mA6dmVYBfdA',
+    videoId: 'VmCwqJ4F3wo',
     speaker: [
       {
         name: 'Etienne Idoux',
@@ -358,7 +357,7 @@ export const speaking: Speaking[] = [
       'Venez mener l’enquête avec nous 🕵🏼‍♂️',
     image: NoCode,
     format: 'Quicky (20 minutes)',
-    videoLink: 'https://youtu.be/mA6dmVYBfdA',
+    videoId: 'mA6dmVYBfdA',
     speaker: [
       {
         name: 'Audart Lucas',
@@ -385,7 +384,7 @@ export const speaking: Speaking[] = [
       'Mais saviez-vous que vous pouvez aussi avoir votre application web à partir de la même base de code ? Peut-on vraiment toucher plus d’utilisateurs avec une expérience similaire à celle sur mobile ? Est-ce une alternative assez solide pour révolutionner le développement web ? 🌏',
     image: Flutter,
     format: 'Quicky (20 minutes)',
-    videoLink: 'https://youtu.be/mdGMBIYmi6c',
+    videoId: 'mdGMBIYmi6c',
     speaker: [
       {
         name: 'Audart Lucas',
