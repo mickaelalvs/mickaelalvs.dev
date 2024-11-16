@@ -13,9 +13,11 @@ export const Hero = () => (
         <p>
           👋🏼 Web Maker, application builder, and passionate speaker on web development, design, computing, and new
           technologies! 👨🏻‍💻
-          <br /><br />
-          Currently a web consultant at <strong>@Zenika</strong> 🔴, I also enjoy sharing my knowledge through teaching
-          and speaking at conferences. I’m a co-organizer of <strong>@LyonJS</strong> 🦁, an <strong>@Appwrite </strong>
+          <br />
+          <br />
+          Currently a web consultant at <strong>@Zenika</strong> 🔴, DX Engineer at <strong>@BedrockStreaming</strong>{' '}
+          📺 , I also enjoy sharing my knowledge through teaching and speaking at conferences. I’m a co-organizer of{' '}
+          <strong>@LyonJS</strong> 🦁, an <strong>@Appwrite </strong>
           Hero 🦸🏼‍♂️, and a <strong>@Remotion</strong> Expert 🎬
         </p>
       </div>
