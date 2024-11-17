@@ -1,9 +1,14 @@
 .talks {
+  width: 100%;
   max-width: 1300px;
   padding: 3rem 0;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 10rem;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  column-gap: clamp(1rem, 8vw, 10rem);
+
+  @media screen and (max-width: 1044px) {
+    row-gap: 4rem;
+  }
 
   .talkElem {
     height: fit-content;
@@ -12,8 +17,10 @@
     color: var(--dark-moon);
     transition: transform 0.3s;
 
-    &:nth-child(2n+2) {
-      margin-top: 8rem;
+    @media screen and (min-width: 1044px) {
+      &:nth-child(2n+2) {
+        margin-top: 8rem;
+      }
     }
 
     img {
@@ -26,10 +33,6 @@
       left: 50%;
       transform: translateX(-50%);
       aspect-ratio: auto;
-
-      @media (max-width: 768px) {
-        display: none;
-      }
     }
 
     .card {
@@ -39,7 +42,7 @@
       background-color: var(--lighten-cloud);
       box-shadow: 0 20px 60px 0 rgba(90, 116, 148, 0.4);
       border-radius: 10px;
-      padding: 170px 35px 90px;
+      padding: 170px 25px 90px;
       gap: 3rem;
 
       h2 {

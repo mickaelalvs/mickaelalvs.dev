@@ -15,7 +15,7 @@ export const Talk = ({talkData}: TalkProps) => {
         <h2>{talkData.title}</h2>
         <div className={styles.details}>
           <div className={styles.infos}>
-            <div className={styles.description}>{talkData.description}</div>
+            <p className={styles.description}>{talkData.description}</p>
           </div>
           <Image src={talkData.image} alt={talkData.title} width={320} height={180} />
         </div>
