@@ -4,7 +4,7 @@ import SnowCamp from '../../public/images/conferenceLogos/snowcamp.webp';
 import TouraineTech from '../../public/images/conferenceLogos/touraineTech.svg';
 import LyonJS from '../../public/images/conferenceLogos/lyonJs.svg';
 import Bedrock from '../../public/images/conferenceLogos/bedrock.svg';
-import {Talk} from './speaking';
+import {Talk} from '../../modules/speaking/types/speaking';
 
 export const RemotionLe7emeArtAPorteeDeComposantsWebEtDApi: Talk = {
   id: '3',

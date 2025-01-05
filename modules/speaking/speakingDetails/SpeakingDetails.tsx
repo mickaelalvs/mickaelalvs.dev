@@ -2,7 +2,7 @@ import styles from './SpeakingDetails.module.scss';
 import Image from 'next/image';
 import {ConferenceCard} from './ConferenceCard';
 import React from 'react';
-import {Talk} from '../../../config/speaking/speaking';
+import {Talk} from '../types/speaking';
 import Link from 'next/link';
 import {FaAnglesLeft} from 'react-icons/fa6';
 

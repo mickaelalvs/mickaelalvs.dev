@@ -1,5 +1,5 @@
 import { slugify } from '../../seo/slugify';
-import {Speaking} from '../../../config/speaking/speaking';
+import {Speaking} from './speaking';
 
 const SPEAKING_DELIMITER = '-s_';
 export const slugElementTitle = (element: Speaking) => `${slugify(element.title)}${SPEAKING_DELIMITER}${element.id}`;

@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import {workshops} from '../../config/speaking/speaking';
+import {workshops} from './types/speaking';
 import styles from './SpeakingList.module.scss';
 import Link from 'next/link';
 import {slugElementTitle} from './types/speakingSlug';
@@ -12,7 +12,7 @@ export default function WorkshopList() {
       <MainTitle title="Workshops" />
       <div className={styles.speakings}>
         {workshops.map((workshop) => (
-          <div className={styles.speakingElem}>
+          <div className={styles.speakingElem} key={workshop.title}>
             <h2>{workshop.title}</h2>
             <p>{workshop.description}</p>
             <Image src={workshop.image} alt={workshop.title} width={320} height={180} />

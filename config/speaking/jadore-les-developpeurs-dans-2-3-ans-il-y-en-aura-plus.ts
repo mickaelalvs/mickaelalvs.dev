@@ -1,6 +1,6 @@
 import NoCode from '../../public/images/talks/no-code.png';
 import Zenika from '../../public/images/conferenceLogos/zenika.svg';
-import {Talk} from './speaking';
+import {Talk} from '../../modules/speaking/types/speaking';
 
 export const JadoreLesDeveloppeursDans23AnsIlYEnAuraPlus: Talk = {
   id: '7',

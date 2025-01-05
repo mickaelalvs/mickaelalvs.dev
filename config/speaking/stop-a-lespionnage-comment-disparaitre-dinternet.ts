@@ -5,7 +5,7 @@ import SnowCamp from '../../public/images/conferenceLogos/snowcamp.webp';
 import TouraineTech from '../../public/images/conferenceLogos/touraineTech.svg';
 import Breizhcamp from '../../public/images/conferenceLogos/breizhcamp.svg';
 import Zenika from '../../public/images/conferenceLogos/zenika.svg';
-import {Talk} from './speaking';
+import {Talk} from '../../modules/speaking/types/speaking';
 
 export const StopALespionnageCommentDisparaitreDinternet: Talk = {
   id: '4',

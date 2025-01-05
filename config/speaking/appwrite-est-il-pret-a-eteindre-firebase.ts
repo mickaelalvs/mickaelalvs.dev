@@ -7,7 +7,7 @@ import Mixit from '../../public/images/conferenceLogos/mixit.svg';
 import Breizhcamp from '../../public/images/conferenceLogos/breizhcamp.svg';
 import DevFestDijon from '../../public/images/conferenceLogos/devfestDijon.png';
 import Zenika from '../../public/images/conferenceLogos/zenika.svg';
-import {Talk} from './speaking';
+import {Talk} from '../../modules/speaking/types/speaking';
 
 export const AppwriteEstIlPretAEteindreFirebase: Talk = {
   id: '2',
