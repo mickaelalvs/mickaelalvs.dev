@@ -1,6 +1,6 @@
-import styles from './Talk.module.scss';
+import styles from './SpeakingDetails.module.scss';
 import Image from 'next/image';
-import {TalkCard} from './TalkCard';
+import {ConferenceCard} from './ConferenceCard';
 import React from 'react';
 import {Talk} from '../../../config/speaking/speaking';
 import Link from 'next/link';
@@ -10,10 +10,10 @@ interface TalkProps {
   talkData: Talk;
 }
 
-export const TalkData = ({talkData}: TalkProps) => {
+export const SpeakingDetails = ({talkData}: TalkProps) => {
   return (
-    <section className={styles.talkRoot}>
-      <div className={styles.talk}>
+    <section className={styles.speakingRoot}>
+      <div className={styles.speaking}>
         <Link href="/speaking" className={styles.goBack}>
           <FaAnglesLeft />
           Revenir à la liste
@@ -27,7 +27,7 @@ export const TalkData = ({talkData}: TalkProps) => {
           <h3>Conférences</h3>
           <div className={styles.conferencesList}>
             {talkData.conferences.map((conference) => (
-              <TalkCard conference={conference} key={conference.name} />
+              <ConferenceCard conference={conference} key={conference.name} />
             ))}
           </div>
         </div>

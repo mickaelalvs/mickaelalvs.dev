@@ -13,7 +13,7 @@ export const RemotionLe7emeArtAPorteeDeComposantsWebEtDApi = {
     '\n' +
     'Installez-vous et préparez vos pop-corn la séance va commencer ! 🍿',
   image: Remotion,
-  format: 'TalkData (50 minutes)',
+  format: 'Talk (50 minutes)',
   videoId: 'mr_-LTkLl8A',
   speaker: [
     {

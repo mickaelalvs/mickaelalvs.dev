@@ -12,7 +12,7 @@ export const ReactCompilerEasierBetterFasterStronger = {
     '\n' +
     "Le React Compiler, véritable chef-d'œuvre de cette mise à jour, s'annonce comme un remix parfait pour vos applications passées et futures ! Venez vibrer avec nous et laissez-vous emporter par le rythme du React Compiler ! 🚀\n",
   image: ReactCompiler,
-  format: 'TalkData (50 minutes)',
+  format: 'Talk (50 minutes)',
   videoId: '_edOnkr8Yy4',
   speaker: [
     {

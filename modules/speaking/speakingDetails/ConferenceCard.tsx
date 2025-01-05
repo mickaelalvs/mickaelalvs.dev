@@ -3,8 +3,8 @@ import React from 'react';
 import {Conference} from '../../../config/speaking/speaking';
 import styles from './ConferenceCard.module.scss';
 
-export const TalkCard = ({conference}: {conference: Conference}) => (
-  <a className={styles.talkCard} key={conference.name} href={conference.link} target="_blank" rel="noopener noreferrer">
+export const ConferenceCard = ({conference}: {conference: Conference}) => (
+  <a className={styles.conferenceCard} key={conference.name} href={conference.link} target="_blank" rel="noopener noreferrer">
     <Image src={conference.image} alt={conference.name} />
     <span>{conference.date}</span>
   </a>
