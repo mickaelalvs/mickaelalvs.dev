@@ -6,6 +6,7 @@
     @media (max-width: 900px) {
       flex-direction: column;
       align-items: center;
+      gap: 3rem;
     }
   }
 
@@ -57,7 +58,7 @@
       color: var(--dark-moon);
       text-decoration: none;
       font-weight: 600;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       padding: 0.7rem 1rem;
 
       &:hover {

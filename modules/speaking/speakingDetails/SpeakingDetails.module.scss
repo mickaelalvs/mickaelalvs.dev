@@ -1,4 +1,4 @@
-.talkRoot {
+.speakingRoot {
   display: flex;
   justify-content: center;
   padding: 10rem 0;
@@ -14,7 +14,7 @@
     gap: 1rem;
   }
 
-  .talk {
+  .speaking {
     max-width: 1000px;
     display: flex;
     flex-direction: column;
