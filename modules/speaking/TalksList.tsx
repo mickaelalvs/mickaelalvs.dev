@@ -1,5 +1,5 @@
 import React from 'react';
-import {talks} from '../../config/speaking/speaking';
+import {talks} from './types/speaking';
 import styles from './SpeakingList.module.scss';
 import Link from 'next/link';
 import {slugElementTitle} from './types/speakingSlug';
@@ -11,7 +11,7 @@ export default function TalksList() {
       <MainTitle title="Conférences" />
       <div className={styles.speakings}>
         {talks.map((talk) => (
-          <div className={styles.speakingElem}>
+          <div className={styles.speakingElem} key={talk.title}>
             <h2>{talk.title}</h2>
             <p>{talk.description}</p>
             <div className={styles.video}>

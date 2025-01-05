@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import {Conference} from '../../../config/speaking/speaking';
+import {Conference} from '../types/speaking';
 import styles from './ConferenceCard.module.scss';
 
 export const ConferenceCard = ({conference}: {conference: Conference}) => (

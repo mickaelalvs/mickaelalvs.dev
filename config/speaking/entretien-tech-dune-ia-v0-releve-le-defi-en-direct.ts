@@ -1,7 +1,7 @@
 import v0 from '../../public/images/talks/v0.png';
 import DevfestStrasbourg2024 from '../../public/images/conferenceLogos/devfest-strasbourg-2024.png';
 import Zenika from '../../public/images/conferenceLogos/zenika.svg';
-import {Talk} from './speaking';
+import {Talk} from '../../modules/speaking/types/speaking';
 
 export const EntretienTechDuneIaV0ReleveLeDefiEnDirect: Talk = {
   id: '6',

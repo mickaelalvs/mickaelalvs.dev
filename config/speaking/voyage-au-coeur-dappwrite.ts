@@ -4,7 +4,7 @@ import DevfestLille from '../../public/images/conferenceLogos/devfest-lille.png'
 import DevfestStrasbourg2023 from '../../public/images/conferenceLogos/devfest-strasbourg-2023.png';
 import SnowCamp from '../../public/images/conferenceLogos/snowcamp.webp';
 import Breizhcamp from '../../public/images/conferenceLogos/breizhcamp.svg';
-import {Workshop} from './speaking';
+import {Workshop} from '../../modules/speaking/types/speaking';
 
 export const VoyageAuCoeurDappwrite: Workshop = {
   id: '5',

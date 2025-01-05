@@ -1,7 +1,7 @@
 import ReactCompiler from '../../public/images/talks/react-compiler.png';
 import TouraineTech from '../../public/images/conferenceLogos/touraineTech.svg';
 import DevfestNantes2024 from '../../public/images/conferenceLogos/devfest-nantes-2024.svg';
-import {Talk} from './speaking';
+import {Talk} from '../../modules/speaking/types/speaking';
 
 export const ReactCompilerEasierBetterFasterStronger: Talk = {
   id: '1',

@@ -1,4 +1,4 @@
-import {Podcast} from './speaking';
+import {Podcast} from '../../modules/speaking/types/speaking';
 import ZenikastHypeDrivenDevelopment from '../../public/images/talks/zenikast-hype-driven-development.png';
 import Zenika from '../../public/images/conferenceLogos/zenika.svg';
 

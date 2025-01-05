@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import {podcasts, workshops} from '../../config/speaking/speaking';
+import {podcasts} from './types/speaking';
 import styles from './SpeakingList.module.scss';
 import Link from 'next/link';
 import {slugElementTitle} from './types/speakingSlug';

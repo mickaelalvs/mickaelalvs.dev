@@ -1,6 +1,6 @@
 import Flutter from '../../public/images/talks/flutter.png';
 import Zenika from '../../public/images/conferenceLogos/zenika.svg';
-import {Talk} from './speaking';
+import {Talk} from '../../modules/speaking/types/speaking';
 
 export const FlutterLeFuturDuWeb: Talk = {
   id: '8',
@@ -12,7 +12,7 @@ export const FlutterLeFuturDuWeb: Talk = {
     '\n' +
     'Mais saviez-vous que vous pouvez aussi avoir votre application web à partir de la même base de code ? Peut-on vraiment toucher plus d’utilisateurs avec une expérience similaire à celle sur mobile ? Est-ce une alternative assez solide pour révolutionner le développement web ? 🌏',
   image: Flutter,
-  format: 'Quicky (20 minutes)',
+  format: 'Quicky',
   videoId: 'mdGMBIYmi6c',
   speaker: [
     {
