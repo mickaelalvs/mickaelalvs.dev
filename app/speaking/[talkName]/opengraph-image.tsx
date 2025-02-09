@@ -16,12 +16,7 @@ export default async function Image({params}: {params: {talkName: string}}) {
   const talk = speaking.find((speaking) => speaking.id === talkId);
   const talkTitle = talk ? `${talk.title} | Mickaël Alves` : 'Speaking | Mickaël Alves';
 
-  return new ImageResponse(
-    (
-      <Opengraph talkTitle={talkTitle} />
-    ),
-    {
-      ...size,
-    },
-  );
+  return new ImageResponse(<Opengraph text={talkTitle} />, {
+    ...size,
+  });
 }
