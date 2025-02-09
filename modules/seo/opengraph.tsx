@@ -71,7 +71,6 @@ export const Opengraph = ({talkTitle}: {talkTitle: string}) => (
         lineHeight: 1.8,
         whiteSpace: 'pre-wrap',
         fontWeight: 'bold',
-        textWrap: 'balance',
         padding: '0 20px',
       }}
     >
