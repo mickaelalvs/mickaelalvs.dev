@@ -11,7 +11,7 @@ export const AppwriteHero: Community = {
   endDate: undefined,
   location: undefined,
   description:
-    "Membre ambassadeur du programme Appwrite Hero, regroupant des développeurs experts d'Appwrite pour réaliser des projets, des conférences, et aider la communauté.",
+    'Ambassador member of the Appwrite Hero programme, bringing together Appwrite expert developers to carry out projects, give talks and help the community.',
   tasks: [],
   link: 'https://appwrite.io/heroes',
 };

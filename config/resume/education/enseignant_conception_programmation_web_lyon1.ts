@@ -11,10 +11,11 @@ export const EnseignantConceptionProgrammationWebLyon1: Education = {
   startDate: new Date(2024, 1),
   endDate: new Date(2024, 6),
   location: 'Lyon, Auvergne-Rhône-Alpes, France',
-  description: "Dispense de cours et travaux pratiques sur la conception et la programmation d'applications Web.",
+  description: "Courses and practical work on the design and programming of Web applications.",
   tasks: [
-    "Setup et Tooling d'application Web.",
-    "Programmation Web Javascript.",
+    "Web application setup and tooling",
+    "Introduction to frontend development",
+    "Programmation Web - Javascript, HTML, CSS",
   ],
   link: 'http://lifweb.pages.univ-lyon1.fr/',
 };

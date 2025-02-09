@@ -15,10 +15,15 @@
     font-size: 1.1rem;
     font-weight: 400;
 
+    .summary {
+      font-weight: 400;
+      font-size: clamp(1rem, 3vw, 1.2rem);
+    }
+
     .resumeSection {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 3rem;
 
       @media (max-width: 480px) {
         gap: 1rem;
@@ -89,12 +94,15 @@
       .dateAndLocation {
         font-weight: 600;
         color: var(--dark-moon);
-        margin-bottom: 1.5rem;
 
         .location {
           font-style: italic;
           padding-left: 0.3rem;
         }
+      }
+
+      .description {
+        margin-top: 1.5rem;
       }
 
       .tasks {

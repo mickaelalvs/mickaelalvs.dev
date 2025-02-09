@@ -17,7 +17,7 @@ export default function WorkshopList() {
             <p>{workshop.description}</p>
             <Image src={workshop.image} alt={workshop.title} width={320} height={180} />
             <Link href={`/speaking/${slugElementTitle(workshop)}`} key={workshop.id} className={styles.pageLink}>
-              En savoir plus
+              Read more
             </Link>
           </div>
         ))}

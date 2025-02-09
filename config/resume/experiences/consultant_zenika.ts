@@ -12,10 +12,11 @@ export const ConsultantZenika: Experience = {
   location: 'Lyon (France)',
   description: undefined,
   tasks: [
-    "Accompagnement des clients dans le développement d'applications web résilientes et interactives.",
-    "Management de 3 autres consultants au sein de Zenika (Depuis de 2024)",
-    "Animation de la communauté des développeurs frontend (événements, conférences, ateliers)",
-    "Réalisation d'entretiens techniques.",
+    "Guiding clients in developing resilient and interactive web applications.",
+    "Managing three other consultants at Zenika (since 2024).",
+    "Leading the frontend developer community through events, conferences, and workshops.",
+    "Conducting technical interviews.",
+    "Speaker at multiple conferences across France."
   ],
   link: undefined,
 };

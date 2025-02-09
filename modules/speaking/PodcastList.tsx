@@ -25,7 +25,7 @@ export default function PodcastList() {
               />
             </div>
             <Link href={`/speaking/${slugElementTitle(podcast)}`} key={podcast.id} className={styles.pageLink}>
-              En savoir plus
+              Read more
             </Link>
           </div>
         ))}
