@@ -1,8 +1,6 @@
 import {ImageResponse} from 'next/og';
 import {parserElementIdFromSlug} from '../../../modules/speaking/types/speakingSlug';
 import {speaking} from '../../../modules/speaking/types/speaking';
-import { join } from 'node:path'
-import { readFile } from 'node:fs/promises'
 
 export const size = {
   width: 1200,
@@ -16,9 +14,6 @@ export default async function Image({params}: {params: {talkName: string}}) {
   const talkId = parserElementIdFromSlug({slug: talkName});
   const talk = speaking.find((speaking) => speaking.id === talkId);
   const talkTitle = talk ? `${talk.title} | Mickaël Alves` : 'Speaking | Mickaël Alves';
-
-  const logoData = await readFile(join(process.cwd(), talk?.image.src!))
-  const logoSrc = Uint8Array.from(logoData).buffer
 
   return new ImageResponse(
     (
@@ -86,7 +81,6 @@ export default async function Image({params}: {params: {talkName: string}}) {
             fontWeight: 'bold',
           }}
         >
-          <img src={logoSrc} height={50} width={50} alt="Mickaël Alves" />
           <b>{talkTitle}</b>
         </div>
       </div>
