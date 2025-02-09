@@ -8,7 +8,7 @@ export const size = {
 export const contentType = 'image/png';
 
 export default async function Image() {
-  return new ImageResponse(<Opengraph talkTitle="Hey there, I’m Mickaël Alves 👋🏼" />, {
+  return new ImageResponse(<Opengraph text="Hey there, I’m Mickaël Alves 👋🏼" />, {
     ...size,
   });
 }

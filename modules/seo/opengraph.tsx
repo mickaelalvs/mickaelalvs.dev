@@ -1,4 +1,4 @@
-export const Opengraph = ({talkTitle}: {talkTitle: string}) => (
+export const Opengraph = ({text}: {text: string}) => (
   <div
     style={{
       height: '100%',
@@ -53,11 +53,11 @@ export const Opengraph = ({talkTitle}: {talkTitle: string}) => (
         style={{
           borderRadius: 20,
           border: '3px solid #4eb9a5',
-          paddingBottom: '20px',
+          marginBottom: '20px',
         }}
         src="https://github.com/cruuzazul.png"
-        height={100}
-        width={100}
+        height={150}
+        width={150}
         alt="Mickaël Alves"
       />
     </div>
@@ -74,7 +74,7 @@ export const Opengraph = ({talkTitle}: {talkTitle: string}) => (
         padding: '0 20px',
       }}
     >
-      {talkTitle}
+      {text}
     </div>
   </div>
 );
