@@ -21,13 +21,6 @@ export const metadata: Metadata = {
     icon: 'images/favicon.ico',
     shortcut: 'images/mickael-alves.png',
     apple: 'images/mickael-alves.png',
-    other: [
-      {
-        rel: 'icon',
-        sizes: '36x36',
-        url: 'favicon-36x36.png',
-      },
-    ],
   },
 };
 
