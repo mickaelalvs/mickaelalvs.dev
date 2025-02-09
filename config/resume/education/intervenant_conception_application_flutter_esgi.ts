@@ -12,7 +12,7 @@ export const IntervenantConceptionApplicationFlutterESGI: Education = {
   endDate: new Date(2024, 7),
   location: 'Lyon (France)',
   description:
-    "Accompagnement des étudiants dans la conception et la réalisation d'une application cross platform en Flutter avec un backend Rust.",
+    "Helping students design and build a cross-platform application in Flutter with a Rust backend.",
   tasks: [],
   link: undefined,
 };

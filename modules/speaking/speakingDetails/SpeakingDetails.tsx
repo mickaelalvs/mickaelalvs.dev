@@ -18,7 +18,7 @@ export const SpeakingDetails = ({talkData}: TalkProps) => {
       <div className={styles.speaking}>
         <Link href="/speaking" className={styles.goBack}>
           <FaAnglesLeft />
-          Revenir à la liste
+          Go back to the list
         </Link>
         <h2>{talkData.title}</h2>
         <div className={styles.details}>
@@ -46,7 +46,7 @@ export const SpeakingDetails = ({talkData}: TalkProps) => {
         </div>
 
         <div className={styles.conferences}>
-          <h3>Conférences</h3>
+          <h3>Conferences</h3>
           <div className={styles.conferencesList}>
             {talkData.conferences.map((conference) => (
               <ConferenceCard conference={conference} key={conference.name} />
@@ -55,7 +55,7 @@ export const SpeakingDetails = ({talkData}: TalkProps) => {
         </div>
         {talkData.videoId ? (
           <div className={styles.video}>
-            <h3>Rediffusion</h3>
+            <h3>Replay</h3>
             <iframe
               className={styles.videoIframe}
               src={`https://www.youtube.com/embed/${talkData.videoId}`}
@@ -68,7 +68,7 @@ export const SpeakingDetails = ({talkData}: TalkProps) => {
         ) : null}
         <Link href="/speaking" className={styles.goBack}>
           <FaAnglesLeft />
-          Revenir à la liste
+          Go back to the list
         </Link>
       </div>
     </section>

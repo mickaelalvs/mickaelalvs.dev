@@ -11,7 +11,7 @@ export const RemotionExpert: Community = {
   endDate: undefined,
   location: undefined,
   description:
-    "Participation au programme Remotion Expert, regroupant des développeurs experts en Remotion pour fournir de l'aide sur des projets Remotion.",
+    'Participation in the Remotion Expert programme, bringing together developers who are experts in Remotion to provide assistance and content with Remotion projects.',
   tasks: [],
   link: undefined,
 };

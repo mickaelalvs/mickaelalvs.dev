@@ -3,7 +3,7 @@ import {Education} from '../../../modules/resume/types/resume';
 
 export const IntervenantReactNodejsEpitechDigital: Education = {
   title: 'Intervenant',
-  subject: 'React.Js / Node.Js',
+  subject: 'React.Js / Node.js',
   school: {
     name: 'Epitech Digital',
     logo: Epitech,
@@ -11,10 +11,10 @@ export const IntervenantReactNodejsEpitechDigital: Education = {
   startDate: new Date(2022, 10),
   endDate: new Date(2022, 12),
   location: 'Lyon, Auvergne-Rhône-Alpes, France',
-  description: "Dispense des cours et travaux pratiques sur React.Js et Node.Js.",
+  description: "Provides courses and practical work on React.js and Node.js.",
   tasks: [
-    "Développement React.Js et Node.Js.",
-    "Projet React.Js.",
+    "Creation of a complete course on React.js and Node.js",
+    "React & Node.js project setup and tooling",
   ],
   link: undefined,
 };

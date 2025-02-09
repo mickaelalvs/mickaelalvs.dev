@@ -11,14 +11,14 @@ export const DxEngineerBedrockStreaming: Experience = {
   endDate: undefined,
   location: 'Lyon (France)',
   description:
-    "Rôle transverse au sein des équipes du service Web, avec pour mission d’améliorer l’expérience développeur en supprimant les frictions techniques et en garantissant un environnement de travail fluide, performant et évolutif.",
+    'A cross-functional role within the Web service teams, focused on improving the developer experience by eliminating technical friction and ensuring a smooth, high-performance, and scalable work environment.',
   tasks: [
-    "Analyse des pain points du quotidien des développeurs (outils, environnements, process) et priorisation des sujets pour garantir un environnement de travail fluide, performant et augmenter la productivité des équipes.",
-    "Modularisation de l’application : analyse et refonte de l’architecture pour réduire les dépendances entre les modules et rendre le code plus maintenable et évolutif. L’objectif est de pouvoir mettre à jour des parties spécifiques de la stack technique sans impacter l’ensemble de l’application.",
-    "Accompagnement des équipes sur des problématiques techniques, notamment le maintien et évolution de la stack technique : réduction de la dette technique sur les packages clés, modernisation des outils et mise à jour des standards de développement pour intégrer les meilleures pratiques actuelles.",
-    "Optimisation et simplification de la configuration Webpack : analyse et nettoyage de la configuration actuelle, rédaction de RFC & ADR pour valider les choix techniques, tout en explorant des alternatives plus performantes 🚀.",
-    "Amélioration et maintien du Design System : collaboration avec les équipes de Bedrock pour synchroniser les mises à jour des composants et simplifier leur intégration 🖌️.",
-    "Optimisation des tests automatisés : restructuration des tests end-to-end pour obtenir des résultats plus rapides, faciliter le debugging et améliorer les performances de la CI/CD 🧪.",
+    'Analyzing daily pain points for developers (tools, environments, processes) and prioritizing issues to ensure a smooth and high-performing work environment, boosting team productivity.',
+    'Modularizing the application: analyzing and redesigning the architecture to reduce dependencies between modules, making the code more maintainable and scalable. The goal is to allow updates to specific parts of the tech stack without impacting the entire application.',
+    'Supporting teams with technical challenges, particularly maintaining and evolving the tech stack: reducing technical debt in key packages, modernizing tools, and updating development standards to integrate current best practices.',
+    'Optimizing and simplifying the Webpack configuration: analyzing and cleaning up the current setup, drafting RFCs & ADRs to validate technical choices, while exploring more performant alternatives 🚀.',
+    'Improving and maintaining the Design System: collaborating with the Bedrock teams to synchronize component updates and simplify their integration 🖌️.',
+    'Optimizing automated tests: restructuring end-to-end tests for faster results, easier debugging, and improved CI/CD performance 🧪.',
   ],
 
   link: undefined,

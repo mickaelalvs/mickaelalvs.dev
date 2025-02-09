@@ -4,7 +4,7 @@ import Zenika from '../../public/images/conferenceLogos/zenika.svg';
 
 export const HypeDrivenDevelopment: Podcast = {
   id: '9',
-  title: 'Le Hype Driven Development',
+  title: 'Le Hype Driven Development\u00A0(🇫🇷)',
   description:
     'Dans un monde où les langages, les outils et les méthodes évoluent à un rythme effréné, la veille technologique est devenue un pilier essentiel pour les équipes de développement. Mais face à cette avalanche de nouveautés, une question cruciale se pose : les équipes doivent-elles céder à chaque tendance ?\n' +
     '\n' +

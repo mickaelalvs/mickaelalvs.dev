@@ -8,7 +8,7 @@ import {MainTitle} from '../common/mainTitle/MainTitle';
 export default function TalksList() {
   return (
     <section className={styles.speakingsRoot}>
-      <MainTitle title="Conférences" />
+      <MainTitle title="Conferences" />
       <div className={styles.speakings}>
         {talks.map((talk) => (
           <div className={styles.speakingElem} key={talk.title}>
@@ -25,7 +25,7 @@ export default function TalksList() {
               />
             </div>
             <Link href={`/speaking/${slugElementTitle(talk)}`} key={talk.id} className={styles.pageLink}>
-              En savoir plus
+              Read more
             </Link>
           </div>
         ))}

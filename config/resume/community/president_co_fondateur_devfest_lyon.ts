@@ -2,7 +2,7 @@ import DevFestLyon from '../../../public/images/companies/devfest.png';
 import {Community} from '../../../modules/resume/types/resume';
 
 export const PresidentCoFondateurDevFestLyon: Community = {
-  title: 'Président & Co-fondateur',
+  title: 'President & Co-founder',
   company: {
     name: 'DevFest Lyon',
     logo: DevFestLyon,
@@ -10,7 +10,7 @@ export const PresidentCoFondateurDevFestLyon: Community = {
   startDate: new Date(2024, 6),
   endDate: undefined,
   location: 'Lyon, Auvergne-Rhône-Alpes, France',
-  description: "Organisation de la première édition du DevFest Lyon, un événement technologique réunissant professionnels et passionnés.",
+  description: "Organisation of the first DevFest Lyon, a technology event bringing together professionals and enthusiasts.",
   tasks: [],
   link: 'https://devfest.gdglyon.com/',
 };
