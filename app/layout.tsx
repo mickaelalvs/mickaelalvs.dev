@@ -4,18 +4,30 @@ import '../styles/reset.scss';
 import React from 'react';
 import {Rubik} from 'next/font/google';
 import {Header} from '../modules/header/Header';
-import {Metadata} from 'next';
+import {Metadata, Viewport} from 'next';
 
 interface RootLayoutProps {
   children: React.ReactNode;
 }
 
+export const viewport: Viewport = {
+  themeColor: '#f4f4f5',
+};
+
 export const metadata: Metadata = {
   description:
     '👋🏼 Welcome to Mickaël Alves site! Web maker, app builder, and passionate speaker on web dev, design, and new tech. Web consultant at @Zenika 🔴, DX Engineer at @BedrockStreaming 📺. Speaker, educator, co-organizer of @LyonJS 🦁, @Appwrite Hero 🦸🏼‍♂️ & @Remotion Expert 🎬.',
   icons: {
-    icon: 'images/mickael-alves.png',
+    icon: 'images/favicon.ico',
+    shortcut: 'images/mickael-alves.png',
     apple: 'images/mickael-alves.png',
+    other: [
+      {
+        rel: 'icon',
+        sizes: '36x36',
+        url: 'favicon-36x36.png',
+      },
+    ],
   },
 };
 
