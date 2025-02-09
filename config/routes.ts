@@ -11,8 +11,8 @@ export const routes: Route[] = [
     enabled: true,
   },
   {
-    name: 'Experiences',
-    path: '/experiences',
+    name: 'Resume',
+    path: '/resume',
     enabled: true,
   },
   {

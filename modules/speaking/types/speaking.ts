@@ -36,7 +36,7 @@ export const formatData: Record<Format, IconType> = {
   Podcast: FaPodcast,
 };
 
-export interface Talk {
+export type Talk = {
   id: string;
   title: string;
   description: string;
