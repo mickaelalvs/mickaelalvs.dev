@@ -11,14 +11,14 @@ export const Hero = () => (
           <span>Mickaël Alves.</span>
         </h1>
         <p>
-          👋🏼 Web Maker, application builder, and passionate speaker on web development, design, computing, and new
+          👋🏼 Web Maker, application builder, and passionate speaker on web development, frontend, design and new
           technologies! 👨🏻‍💻
           <br />
           <br />
           Currently a web consultant at <strong>@Zenika</strong> 🔴, DX Engineer at <strong>@BedrockStreaming</strong>{' '}
-          📺 , I also enjoy sharing my knowledge through teaching and speaking at conferences. I’m a co-organizer of{' '}
-          <strong>@LyonJS</strong> 🦁, an <strong>@Appwrite </strong>
-          Hero 🦸🏼‍♂️, and a <strong>@Remotion</strong> Expert 🎬
+          📺 , I also enjoy sharing my knowledge through teaching and speaking at conferences. I’m a co-founder of{' '}
+          <strong>@DevFestLyon</strong> and a co-organizer of <strong>@LyonJS</strong> 🦁, an{' '}
+          <strong>@Appwrite </strong>Hero 🦸🏼‍♂️, and a <strong>@Remotion</strong> Expert 🎬
         </p>
       </div>
       <div className={styles.profilePicture}>

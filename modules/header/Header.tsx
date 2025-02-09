@@ -32,7 +32,7 @@ export const Header = () => {
 
   return (
     <header className={classNames(styles.header, { [styles.scrolled]: isScrolled })}>
-      <Link href="/">
+      <Link href="/" className={styles.homeLink}>
         {
           shouldDisplayHeaderPicture ? (
             <Image className={styles.picture} src={Picture} alt="picture" height={50} />

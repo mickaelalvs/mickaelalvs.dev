@@ -13,7 +13,10 @@
   pointer-events: none;
 
   nav ul li a {
-    font-size: 120%;
+    font-weight: bolder;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
   }
 
   &.expanded {
