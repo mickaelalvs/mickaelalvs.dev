@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
-import Lottie, { type LottieRef } from 'lottie-react'
+import Lottie from 'lottie-react'
 import remotionIcon from '../../public/static/icons/remotion.json'
 import slidesIcon from '../../public/static/icons/slides.json'
 import styles from './TalkDetailPage.module.css'
@@ -13,7 +13,7 @@ interface ResourceButtonProps {
 }
 
 export default function ResourceButton({ href, type, children }: ResourceButtonProps) {
-  const iconRef = useRef<LottieRef>(null)
+  const iconRef = useRef<any>(null)
   const iconData = type === 'video' ? remotionIcon : slidesIcon
 
   return (

@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Lottie from 'lottie-react'
 import podcastsIcon from '../../public/static/icons/podcasts.json'
 import BlogDate from './BlogDate'
-import type { LottieRef } from 'lottie-react'
 import styles from './ListItem.module.css'
 
 interface ListItemProps {
@@ -17,7 +16,7 @@ interface ListItemProps {
 }
 
 export default function ListItem(props: ListItemProps) {
-  const lottieRef = useRef<LottieRef>(null)
+  const lottieRef = useRef<any>(null)
   // Articles
   if (props.href.charAt(0) === '/' && !props.href.includes('/podcasts/')) {
     return (

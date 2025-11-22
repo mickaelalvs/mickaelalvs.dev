@@ -1,4 +1,11 @@
-const items = [
+import type { Project } from '../modules/projects/types/Project'
+
+interface ProjectYear {
+  year: string
+  projects: Project[]
+}
+
+const items: ProjectYear[] = [
   {
     year: '2024',
     projects: [
@@ -50,10 +57,10 @@ const items = [
         url: 'https://shortvid.io',
         active: true,
         icon: 'remotion',
-        stats: '10+ conferences',
       },
     ],
   },
 ]
 
 export default items
+

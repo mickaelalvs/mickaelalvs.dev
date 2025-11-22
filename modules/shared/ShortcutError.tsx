@@ -1,9 +1,9 @@
 'use client'
 
-import { useState, useEffect, JSX } from 'react'
+import { useState, useEffect } from 'react'
 import { ButtonPrimary } from './ButtonPrimary'
 
-export default function ShortcutError(): JSX.Element {
+export default function ShortcutError() {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {

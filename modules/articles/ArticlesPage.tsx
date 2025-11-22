@@ -1,4 +1,4 @@
-import { getAllPosts, getPostBySlug } from '../../lib/blog'
+import { getAllPosts, getPostBySlug, type BlogPost } from '../../lib/blog'
 import BaseLayout from '../layout/BaseLayout'
 import ArticlesContent from './ArticlesContent'
 
@@ -14,7 +14,7 @@ export default function ArticlesPage() {
     'description',
   ]
 
-  const featuredPosts = []
+  const featuredPosts: BlogPost[] = []
 
   return (
     <BaseLayout

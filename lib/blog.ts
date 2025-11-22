@@ -4,16 +4,29 @@ import matter from 'gray-matter'
 import { remark } from 'remark'
 import html from 'remark-html'
 
+export interface BlogPost {
+  slug: string;
+  title: string;
+  description?: string;
+  image?: string;
+  canonical_url?: string;
+  date?: string;
+  content?: string;
+  skip?: boolean;
+  stats?: string;
+  [key: string]: any;
+}
+
 const postsDirectory = join(process.cwd(), 'articles')
 
-export function getPostSlugs() {
+export function getPostSlugs(): string[] {
   return fs.readdirSync(postsDirectory).filter(file => file.endsWith('.md'))
 }
 
-export function getPostBySlug(slug, fields = []) {
+export function getPostBySlug(slug: string, fields: string[] = []): BlogPost {
   const realSlug = slug.replace(/\.md$/, '')
   
-  let parsed
+  let parsed: matter.GrayMatterFile<string>
   
   try {
     const fullPath = join(postsDirectory, `${realSlug}.md`)
@@ -39,9 +52,9 @@ export function getPostBySlug(slug, fields = []) {
     }
   }
   
-  const { data, content } = parsed
+  const { data, content } = parsed!
 
-  const items = {}
+  const items: BlogPost = {} as BlogPost
 
   fields.forEach(field => {
     if (field === 'slug') {
@@ -60,18 +73,19 @@ export function getPostBySlug(slug, fields = []) {
   return items
 }
 
-export function getAllPosts(fields = []) {
+export function getAllPosts(fields: string[] = []): BlogPost[] {
   const slugs = getPostSlugs()
   const posts = slugs
     .map(slug => getPostBySlug(slug, fields))
-    .sort((post1, post2) => (post1.date > post2.date ? '-1' : '1'))
+    .sort((post1, post2) => (post1.date! > post2.date! ? -1 : 1))
 
   return posts
 }
 
-export async function convertMarkdownToHtml(markdown) {
+export async function convertMarkdownToHtml(markdown: string): Promise<string> {
   const result = await remark()
     .use(html, { sanitize: false })
     .process(markdown)
   return result.toString()
 }
+

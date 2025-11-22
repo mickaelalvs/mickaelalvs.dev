@@ -1,10 +1,10 @@
 'use client'
 
-import { useState, useEffect, JSX } from 'react'
+import { useState, useEffect } from 'react'
 import { useKBar } from 'kbar'
 import { ButtonPrimary } from './ButtonPrimary'
 
-export default function ShortcutHome(): JSX.Element {
+export default function ShortcutHome() {
   const { query } = useKBar()
   const [mounted, setMounted] = useState(false)
 

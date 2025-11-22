@@ -2,7 +2,6 @@
 
 import { useRef } from 'react'
 import Lottie from 'lottie-react'
-import type { LottieRef } from 'lottie-react'
 import ListItem from '../shared/ListItem'
 import FeaturedArticle from './FeaturedArticle'
 import { ListGroup } from '../shared/ListGroup'
@@ -19,7 +18,7 @@ interface ArticlesContentProps {
 }
 
 export default function ArticlesContent({ allPosts, featuredPosts }: ArticlesContentProps) {
-    const lottieRef = useRef<LottieRef>(null)
+    const lottieRef = useRef<any>(null)
     const filteredPosts = allPosts.filter((post: BlogPost) => post && post.slug && !post.skip)
 
     const renderFeatured = () => {
@@ -34,7 +33,6 @@ export default function ArticlesContent({ allPosts, featuredPosts }: ArticlesCon
                         title={post.title}
                         description={post.description}
                         image={post.image}
-                        stats={post.stats}
                         content={post.content}
                     />
                 )

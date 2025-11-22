@@ -14,7 +14,7 @@ export default function TalkDetailPage({ slug }: { slug: string }) {
     notFound()
   }
 
-  const videoUrl = talk.videoId ? `https://www.youtube.com/watch?v=${talk.videoId}` : null
+  const videoUrl = 'videoId' in talk && talk.videoId ? `https://www.youtube.com/watch?v=${talk.videoId}` : null
 
   return (
     <BaseLayout

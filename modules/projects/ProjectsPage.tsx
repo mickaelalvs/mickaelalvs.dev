@@ -23,7 +23,7 @@ export default function ProjectsPage() {
       })
       .flat()
       .map((item, index) => {
-        return <FeaturedProject key={index} project={item} />
+        return <FeaturedProject key={index} index={index} project={item} />
       })
   }
 

@@ -6,7 +6,6 @@ import { parseISO, format, intervalToDuration } from 'date-fns'
 import BaseLayout from '../layout/BaseLayout'
 import { ButtonPrimary } from '../shared/ButtonPrimary'
 import Toast from '../shared/Toast'
-import type { LottieRef } from 'lottie-react'
 import type { AboutItem } from './types/AboutItem'
 import items from '../../data/about'
 import communityItems from '../../data/community'
@@ -22,8 +21,8 @@ export default function AboutPage() {
   const [toastTitle, setToastTitle] = React.useState('')
   const [toastDescription, setToastDescription] = React.useState('')
   const [showToast, setShowToast] = React.useState(false)
-  const copyBioRef = React.useRef<LottieRef>(null)
-  const downloadRef = React.useRef<LottieRef>(null)
+  const copyBioRef = React.useRef<any>(null)
+  const downloadRef = React.useRef<any>(null)
 
   const renderIntro = () => {
     return (

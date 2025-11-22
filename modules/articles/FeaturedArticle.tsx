@@ -7,24 +7,25 @@ import styles from './FeaturedArticle.module.css'
 
 interface FeaturedArticleProps {
   href: string
-  image: string
+  image?: string
   title: string
-  description: string
+  description?: string
   content?: string
+  stats?: string
   index: string | number
 }
 
-export default function FeaturedArticle(props: FeaturedArticleProps): JSX.Element {
+export default function FeaturedArticle(props: FeaturedArticleProps) {
   const stats = props.content ? readingTime(props.content) : { text: '1 min read' }
 
   return (
     <a href={props.href} className={styles.article}>
       <Animation index={props.index}>
         <div className={styles.container}>
-          <div className={styles.imageContainer} style={{ backgroundImage: `url(${props.image})` }} />
+          {props.image && <div className={styles.imageContainer} style={{ backgroundImage: `url(${props.image})` }} />}
           <div className={styles.content}>
             <h3 className={styles.title}>{props.title}</h3>
-            <p className={styles.description}>{props.description}</p>
+            {props.description && <p className={styles.description}>{props.description}</p>}
             <p className={styles.stats}>{stats.text}</p>
           </div>
         </div>

@@ -4,7 +4,6 @@ import { useState, useRef } from 'react'
 import React from 'react'
 import { motion } from 'framer-motion'
 import Lottie from 'lottie-react'
-import type { LottieRef } from 'lottie-react'
 import type { Project } from './types/Project'
 import styles from './FeaturedProject.module.css'
 import remotionIcon from '../../public/static/icons/remotion.json'
@@ -27,7 +26,7 @@ export default function FeaturedProject(props: FeaturedProjectProps) {
   const { project } = props
 
   const icon = iconMap[project.icon] || sourceIcon
-  const iconRef = useRef<LottieRef>(null)
+  const iconRef = useRef<any>(null)
 
   return (
     <a

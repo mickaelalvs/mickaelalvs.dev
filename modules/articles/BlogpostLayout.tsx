@@ -63,7 +63,7 @@ export default function BlogpostLayout({ children, title, image, date }: Blogpos
 
   return (
     <Wrapper>
-      <Navbar image={image} />
+      <Navbar />
       <Main image={image}>
         {image && (
           <div className={styles.postHeader}>

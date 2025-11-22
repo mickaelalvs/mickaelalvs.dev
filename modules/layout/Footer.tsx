@@ -7,7 +7,7 @@ interface LinkItem {
   icon: string
 }
 
-export default function Footer(): JSX.Element {
+export default function Footer() {
   const links: LinkItem[] = [
     {
       title: 'Bluesky',

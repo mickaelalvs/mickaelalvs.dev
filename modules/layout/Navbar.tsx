@@ -7,7 +7,7 @@ import { motion, LayoutGroup, AnimatePresence } from 'framer-motion'
 import { useKBar } from 'kbar'
 import styles from './Navbar.module.css'
 
-export default function Navbar(): JSX.Element {
+export default function Navbar() {
   const pathname = usePathname()
   const pages: string[] = [
     'Home',

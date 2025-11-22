@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import { ArticleJsonLd } from 'next-seo'
-import BlogpostLayout from '../../modules/articles/BlogpostLayout'
-import ErrorMessage from '../../modules/shared/ErrorMessage'
-import { getPostBySlug, getAllPosts, convertMarkdownToHtml } from '../../lib/blog'
+import BlogpostLayout from '../../../modules/articles/BlogpostLayout'
+import ErrorMessage from '../../../modules/shared/ErrorMessage'
+import { getPostBySlug, getAllPosts, convertMarkdownToHtml } from '../../../lib/blog'
 import { notFound } from 'next/navigation'
 
 export async function generateStaticParams() {
@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function Post({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const BlogPostPage = (await import('../../modules/articles/BlogPostPage')).default
+  const BlogPostPage = (await import('../../../modules/articles/BlogPostPage')).default
   return <BlogPostPage slug={slug} />
 }
 

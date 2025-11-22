@@ -5,7 +5,6 @@ import Toast from '../shared/Toast'
 import { useRef, useState, forwardRef } from 'react'
 import React from 'react'
 import { useRouter } from 'next/navigation'
-import type { LottieRef, LottieRefCurrentProps } from 'lottie-react'
 import styles from './CommandBar.module.css'
 import {
   KBarAnimator,
@@ -26,27 +25,21 @@ import articlesIcon from '../../public/static/icons/articles.json'
 import projectsIcon from '../../public/static/icons/projects.json'
 import talksIcon from '../../public/static/icons/talks.json'
 import podcastsIcon from '../../public/static/icons/podcasts.json'
-import investingIcon from '../../public/static/icons/investing.json'
-import usesIcon from '../../public/static/icons/uses.json'
-import reminderIcon from '../../public/static/icons/reminder.json'
 
 interface CommandBarProps {
   children?: React.ReactNode
 }
 
 export default function CommandBar(props: CommandBarProps) {
-  const copyLinkRef = useRef<LottieRefCurrentProps | null>(null) as LottieRef
-  const emailRef = useRef<LottieRefCurrentProps | null>(null) as LottieRef
-  const sourceRef = useRef<LottieRefCurrentProps | null>(null) as LottieRef
-  const homeRef = useRef<LottieRefCurrentProps | null>(null) as LottieRef
-  const aboutRef = useRef<LottieRefCurrentProps | null>(null) as LottieRef
-  const articlesRef = useRef<LottieRefCurrentProps | null>(null) as LottieRef
-  const projectsRef = useRef<LottieRefCurrentProps | null>(null) as LottieRef
-  const talksRef = useRef<LottieRefCurrentProps | null>(null) as LottieRef
-  const podcastsRef = useRef<LottieRefCurrentProps | null>(null) as LottieRef
-  const investingRef = useRef<LottieRefCurrentProps | null>(null) as LottieRef
-  const usesRef = useRef<LottieRefCurrentProps | null>(null) as LottieRef
-  const reminderRef = useRef<LottieRefCurrentProps | null>(null) as LottieRef
+  const copyLinkRef = useRef<any>(null)
+  const emailRef = useRef<any>(null)
+  const sourceRef = useRef<any>(null)
+  const homeRef = useRef<any>(null)
+  const aboutRef = useRef<any>(null)
+  const articlesRef = useRef<any>(null)
+  const projectsRef = useRef<any>(null)
+  const talksRef = useRef<any>(null)
+  const podcastsRef = useRef<any>(null)
   const router = useRouter()
   const [showToast, setShowToast] = useState<boolean>(false)
 
