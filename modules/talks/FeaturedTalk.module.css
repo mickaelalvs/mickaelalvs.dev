@@ -1,0 +1,77 @@
+.talkLink {
+  text-decoration: none;
+  color: inherit;
+  border: none;
+}
+
+.talk {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  cursor: pointer;
+}
+
+.talk:first-child {
+  margin-left: 0;
+}
+
+.contentWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  position: relative;
+}
+
+.imageContainer {
+  width: 100%;
+  height: 150px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+}
+
+.imageContainer .image {
+  filter: grayscale(1);
+  object-fit: cover;
+  object-position: center;
+}
+
+.title {
+  color: var(--color-primary);
+  font-size: 18px;
+  margin: 0;
+}
+
+.animContainer {
+  padding: 16px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  isolation: isolate;
+}
+
+.backgroundWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.animHovered {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-hover);
+  border-radius: var(--radius-border-radius);
+  will-change: transform;
+}
