@@ -63,24 +63,20 @@
     padding: 10px;
 }
 
-.nav {
+/* Desktop Navigation */
+.desktopNav {
     text-align: center;
     flex: 1;
     order: 2;
     flex-basis: 100%;
+    display: none;
 }
 
-@media (min-width: 760px) {
-    .nav {
+@media (min-width: 781px) {
+    .desktopNav {
+        display: block;
         order: 0;
         flex-basis: initial;
-    }
-}
-
-@media (max-width: 780px) {
-    .nav {
-        overflow-x: scroll;
-        overflow-y: hidden;
     }
 }
 
@@ -153,4 +149,134 @@
 
 .buttonHeaderPadding {
     padding: 0 8px;
+}
+
+/* Hamburger button */
+.hamburgerButton {
+    display: block;
+    margin-left: 8px;
+}
+
+@media (min-width: 781px) {
+    .hamburgerButton {
+        display: none;
+    }
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+}
+
+.hamburgerLine {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: white;
+    border-radius: 1px;
+    transition: all 0.3s ease;
+}
+
+/* Menu mobile full screen */
+.mobileMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.98);
+    z-index: 999;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.mobileList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    padding: 0 24px;
+}
+
+.mobileListItem {
+    width: auto;
+}
+
+.mobileNavLink {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    color: var(--color-secondary);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: var(--radius-border-radius);
+    transition: all 0.3s ease;
+    background: transparent;
+    box-sizing: border-box;
+    border: none;
+}
+
+.mobileNavLink:hover {
+    color: var(--color-primary);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.mobileNavLink.mobileActive {
+    color: var(--color-primary);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.mobileNavIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Bouton de fermeture */
+.closeButton {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    appearance: none;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-border-radius);
+    transition: background var(--transition-duration) ease-in-out;
+    z-index: 1000;
+}
+
+.closeButton:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.closeIcon {
+    font-size: 28px;
+    line-height: 1;
+    display: block;
 }
