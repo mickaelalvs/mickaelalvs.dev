@@ -9,7 +9,7 @@ import type { Talk } from '../../modules/talks/types/Talk';
 
 export const LesCoulissesDeJavaScriptCeQuonUtiliseSansComprendre: Talk = {
     id: '10',
-    title: "Les coulisses de JavaScript\u00A0: ce qu'on utilise sans comprendre 🎭",
+    title: 'Les coulisses de JavaScript\u00A0: ce qu\'on utilise sans comprendre 🎭',
     language: '(🇫🇷)',
     description:
         'Bienvenue dans les coulisses d\'un des plus grand spectacle du développement web : JavaScript 🪄 Sur scène, tout semble magique : les animations captivent, les promesses sont tenues, et tout s\'exécute sans accroc. Mais derrière le rideau, une véritable troupe travaille sans relâche pour donner vie à ce spectacle.\n' +
