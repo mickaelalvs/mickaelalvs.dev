@@ -9,6 +9,13 @@ import { generateSlug } from '../../utils/slug'
 import type { PodcastItem } from './types/PodcastItem'
 
 export default function PodcastsPage() {
+    const sortedZenikast = [...zenikast].sort((a, b) => {
+        if (!a.date && !b.date) return 0
+        if (!a.date) return 1
+        if (!b.date) return -1
+        return b.date.localeCompare(a.date)
+    })
+
     const renderZenikast = (items: PodcastItem[]) => {
         return items.map((item, index) => {
             const slug = generateSlug(item.title)
@@ -42,7 +49,7 @@ export default function PodcastsPage() {
                     French podcasts about development and tech communities,
                     created in collaboration with Zenika.
                 </p>
-                <ListGroup>{renderZenikast(zenikast)}</ListGroup>
+                <ListGroup>{renderZenikast(sortedZenikast)}</ListGroup>
             </LayoutGroup>
         </BaseLayout>
     )

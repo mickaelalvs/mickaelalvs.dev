@@ -6,64 +6,9 @@ import BaseLayout from '../layout/BaseLayout'
 import { speaking as talks } from '../../data/speaking'
 import Image from 'next/image'
 import { generateSlug } from '../../utils/slug'
-import ResourceButton from './ResourceButton'
 import styles from './TalkDetailPage.module.css'
-import type { Conference } from './types/Conference'
-
-const LOGO_PLACEHOLDER =
-  "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><rect width='10' height='10' fill='%23090c12'/></svg>"
-
-function ConferenceCard({ conf }: { conf: Conference }) {
-  const year = conf.date ? new Date(conf.date).getFullYear().toString() : (conf.year || '')
-
-  const CardContent = (
-    <>
-      <div className={styles.conferenceImageWrapper}>
-        <Image
-          src={conf.image}
-          alt={conf.name}
-          width={conf.image.width}
-          height={conf.image.height}
-          style={{
-            filter: 'brightness(0) invert(1)',
-            maxWidth: '100%',
-            maxHeight: '100%',
-            width: 'auto',
-            height: 'auto',
-            objectFit: 'contain',
-          }}
-          placeholder="blur"
-          blurDataURL={LOGO_PLACEHOLDER}
-          loading="lazy"
-        />
-      </div>
-      {year && (
-        <span className={styles.conferenceDateBadge}>
-          {year}
-        </span>
-      )}
-    </>
-  )
-
-  if (conf.link) {
-    return (
-      <a
-        href={conf.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.conferenceCard}
-      >
-        {CardContent}
-      </a>
-    )
-  }
-
-  return (
-    <div className={styles.conferenceCardDiv}>
-      {CardContent}
-    </div>
-  )
-}
+import ResourceIcon from './ResourceIcon'
+import ConferenceCard from './ConferenceCard'
 
 export default function TalkDetailPage({ slug }: { slug: string }) {
   const talk = talks.find(t => generateSlug(t.title) === slug)
@@ -96,6 +41,16 @@ export default function TalkDetailPage({ slug }: { slug: string }) {
               sizes="(max-width: 900px) 100vw, 900px"
             />
           </div>
+          {(videoUrl || talk.slidesUrl) && (
+            <div className={styles.resourcesIcons}>
+              {videoUrl && (
+                <ResourceIcon href={videoUrl} type="video" />
+              )}
+              {talk.slidesUrl && (
+                <ResourceIcon href={talk.slidesUrl} type="slides" />
+              )}
+            </div>
+          )}
         </div>
 
         <div className={styles.content}>
@@ -113,23 +68,6 @@ export default function TalkDetailPage({ slug }: { slug: string }) {
             </div>
           </div>
 
-          {(videoUrl || talk.slidesUrl) && (
-            <div className={styles.section}>
-              <h2 className={styles.sectionTitle}>Resources</h2>
-              <div className={styles.resourcesContainer}>
-                {videoUrl && (
-                  <ResourceButton href={videoUrl} type="video">
-                    Watch video
-                  </ResourceButton>
-                )}
-                {talk.slidesUrl && (
-                  <ResourceButton href={talk.slidesUrl} type="slides">
-                    View slides
-                  </ResourceButton>
-                )}
-              </div>
-            </div>
-          )}
         </div>
 
         <Link href="/talks" className={styles.backLink}>← Back to talks</Link>

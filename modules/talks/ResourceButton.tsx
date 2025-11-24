@@ -2,8 +2,8 @@
 
 import { useRef } from 'react'
 import Lottie from 'lottie-react'
-import remotionIcon from '../../public/static/icons/remotion.json'
-import slidesIcon from '../../public/static/icons/slides.json'
+import captaIcon from '../../public/static/icons/capta.json'
+import presentationIcon from '../../public/static/icons/presentation.json'
 import styles from './TalkDetailPage.module.css'
 
 interface ResourceButtonProps {
@@ -14,7 +14,7 @@ interface ResourceButtonProps {
 
 export default function ResourceButton({ href, type, children }: ResourceButtonProps) {
   const iconRef = useRef<any>(null)
-  const iconData = type === 'video' ? remotionIcon : slidesIcon
+  const iconData = type === 'video' ? captaIcon : presentationIcon
 
   return (
     <a
