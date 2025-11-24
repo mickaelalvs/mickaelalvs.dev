@@ -1,12 +1,14 @@
+'use client'
+
 import Link from 'next/link'
 import BaseLayout from '../layout/BaseLayout'
 import { speaking as podcasts } from '../../data/speaking'
 import type { Podcast } from './types/Podcast'
-import type { PlatformLink } from './types/PlatformLink'
 import Image from 'next/image'
 import { generateSlug } from '../../utils/slug'
 import { notFound } from 'next/navigation'
 import styles from './PodcastDetailPage.module.css'
+import PlatformIcon from './PlatformIcon'
 
 export default function PodcastDetailPage({ slug }: { slug: string }) {
   const podcast = podcasts.find(p => generateSlug(p.title) === slug && p.format === 'Podcast') as Podcast | undefined
@@ -49,40 +51,19 @@ export default function PodcastDetailPage({ slug }: { slug: string }) {
               unoptimized
             />
           </div>
+          {podcast.platformLinks && podcast.platformLinks.length > 0 && (
+            <div className={styles.platformIcons}>
+              {podcast.platformLinks.map((platform, idx) => (
+                <PlatformIcon key={idx} platform={platform} getPlatformIcon={getPlatformIcon} />
+              ))}
+            </div>
+          )}
         </div>
 
         <div className={styles.content}>
           <div className={styles.section}>
             <h2 className={styles.sectionTitle}>Description</h2>
             <p className={styles.description}>{podcast.description}</p>
-          </div>
-
-          <div className={styles.section}>
-            <h2 className={styles.sectionTitle}>Listen to the podcast</h2>
-            <div className={styles.platformsContainer}>
-              {podcast.platformLinks.map((platform: PlatformLink, idx: number) => (
-                <a
-                  key={idx}
-                  href={platform.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.platformButton}
-                >
-                  <span className={styles.platformIcon}>
-                    <Image
-                      src={getPlatformIcon(platform.platform)}
-                      alt={`${platform.platform} icon`}
-                      width={24}
-                      height={24}
-                      style={{
-                        filter: 'brightness(0) saturate(100%) invert(100%)',
-                      }}
-                    />
-                  </span>
-                  <span className={styles.platformName}>{platform.platform}</span>
-                </a>
-              ))}
-            </div>
           </div>
 
         </div>
@@ -92,6 +73,3 @@ export default function PodcastDetailPage({ slug }: { slug: string }) {
     </BaseLayout>
   )
 }
-
-
-

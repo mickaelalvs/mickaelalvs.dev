@@ -5,7 +5,7 @@ import { LayoutGroup } from 'framer-motion'
 import BaseLayout from '../layout/BaseLayout'
 import FeaturedProject from './FeaturedProject'
 import { FeaturedProjects } from './FeaturedProjects'
-import type { Project } from './types/Project'
+import ProjectItem from './ProjectItem'
 import items from '../../data/projects'
 
 export default function ProjectsPage() {
@@ -71,22 +71,6 @@ export default function ProjectsPage() {
         {renderAll()}
       </LayoutGroup>
     </BaseLayout>
-  )
-}
-
-interface ProjectItemProps {
-  project: Project
-}
-
-function ProjectItem(props: ProjectItemProps) {
-  const { project } = props
-
-  return (
-    <li>
-      <a href={project.url} target="_blank" rel="noopener noreferrer">
-        {project.title}
-      </a>
-    </li>
   )
 }
 
