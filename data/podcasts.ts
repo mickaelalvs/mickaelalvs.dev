@@ -1,6 +1,8 @@
-const zenikast = [
+import type { PodcastItem } from '../modules/podcasts/types/PodcastItem'
+
+const zenikast: PodcastItem[] = [
   {
-    date: '2024',
+    date: '2024-08-22',
     title: 'Le Hype Driven Development',
     description: 'Dans un monde où les langages, les outils et les méthodes évoluent à un rythme effréné, la veille technologique est devenue un pilier essentiel pour les équipes de développement. Mais face à cette avalanche de nouveautés, une question cruciale se pose : les équipes doivent-elles céder à chaque tendance ?',
     platforms: [
@@ -12,7 +14,7 @@ const zenikast = [
     lang: '🇫🇷'
   },
   {
-    date: '2024',
+    date: '2024-09-17',
     title: 'Les communautés IT',
     description: 'Dans le monde de la tech, les communautés jouent un rôle central en permettant de faire vivre des projets, de fédérer des talents et de créer de l\'émulation autour d\'initiatives inspirantes. Que ce soit en entreprise, dans l\'open source ou à travers des programmes comme GDG, Devfest, Women Techmakers, ou encore le programme Heroes, ces communautés sont un moteur d\'innovation et de collaboration.',
     platforms: [
@@ -24,7 +26,7 @@ const zenikast = [
     lang: '🇫🇷'
   },
   {
-    date: '2024',
+    date: '2025-05-27',
     title: 'Être junior dans la tech',
     description: 'Débuter dans le monde de la tech en tant que junior peut être à la fois excitant et intimidant. Entre les attentes, les défis techniques, et la nécessité de trouver sa place dans une équipe, le parcours d\'un développeur junior est semé d\'embûches mais aussi de belles opportunités.',
     platforms: [
@@ -38,3 +40,4 @@ const zenikast = [
 ]
 
 export { zenikast }
+
