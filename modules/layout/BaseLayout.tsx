@@ -22,6 +22,13 @@ export default function BaseLayout({
   primaryColor = 'pink',
   secondaryColor = 'purple'
 }: BaseLayoutProps) {
+  const displayText = tagline || title || ''
+
+  const segmenter = new Intl.Segmenter('en', { granularity: 'grapheme' })
+  const segments = Array.from(segmenter.segment(displayText))
+  const textWithoutLastGrapheme = segments.slice(0, -1).map(s => s.segment).join('')
+  const emoji = segments.slice(-1)[0]?.segment || ''
+
   return (
     <Wrapper>
       <Navbar />
@@ -32,17 +39,22 @@ export default function BaseLayout({
       >
         <PostContent>
           <PostContainer>
-            <h1
-              className={styles.gradientTitle}
-              style={{
-                backgroundImage: `linear-gradient(
-                135deg,
-                var(--color-${primaryColor}) 0%,
-                var(--color-${secondaryColor}) 100%
-              )`,
-              }}
-            >
-              {tagline || title}
+            <h1 className={styles.title}>
+              {textWithoutLastGrapheme && (
+                <span
+                  className={styles.gradientTitle}
+                  style={{
+                    backgroundImage: `linear-gradient(
+                    135deg,
+                    var(--color-${primaryColor}) 0%,
+                    var(--color-${secondaryColor}) 100%
+                  )`,
+                  }}
+                >
+                  {textWithoutLastGrapheme}
+                </span>
+              )}
+              {emoji && <span className={styles.lastChar}>{emoji}</span>}
             </h1>
             {children}
           </PostContainer>

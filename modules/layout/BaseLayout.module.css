@@ -1,3 +1,7 @@
+.title {
+  padding-bottom: 20px;
+}
+
 .gradientTitle {
   background-size: 100%;
   background-clip: text;
@@ -6,6 +10,8 @@
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
   -webkit-box-decoration-break: clone;
-  padding-bottom: 20px;
 }
 
+.lastChar {
+  color: var(--color-primary);
+}
