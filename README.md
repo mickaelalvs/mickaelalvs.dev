@@ -1,39 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 👨🏻‍💻 cruuzazul.dev
 
-## Getting Started
+Personal portfolio and blog of **Mickaël Alves** - Tech Lead Frontend, Speaker, and Developer Experience enthusiast.
 
-First, run the development server:
+## 🚀 Tech Stack
+
+This portfolio is built with modern web technologies:
+
+- ⚡ **[Next.js 16](https://nextjs.org)** - React framework with App Router
+- ⚛️ **[React 19](https://react.dev)** - Latest React with compiler
+- 🎨 **[Framer Motion](https://www.framer.com/motion/)** - Smooth animations
+- 🔍 **[nuqs](https://nuqs.47ng.com/)** - Type-safe URL search params
+- 📝 **[Remark](https://remark.js.org/)** - Markdown processing for blog posts
+- 🎭 **[Lottie](https://airbnb.io/lottie/)** - Interactive animations
+- 🎯 **[Radix UI](https://www.radix-ui.com/)** - Accessible UI components
+- 🧹 **[Biome](https://biomejs.dev/)** - Fast linting & formatting
+- 📦 **[pnpm](https://pnpm.io/)** - Efficient package manager
+
+## ✨ Features
+
+- 📚 **Blog** - Technical articles and tutorials
+- 🎤 **Talks** - Conference presentations and meetup sessions
+- 🎙️ **Podcasts** - Tech podcast appearances
+- 💼 **Projects** - Showcase of open-source and personal projects
+- ℹ️ **About** - Career, community involvement, and education
+- 🔎 **Command Bar** - Quick navigation with `Cmd+K`
+- 🌐 **SEO Optimized** - OpenGraph, JSON-LD, and sitemap
+- ⚡ **Performance** - Optimized images, fonts, and code splitting
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+- Node.js >= 22.x
+- pnpm >= 8.x
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Install dependencies
+pnpm install
+
+# Run development server
 pnpm dev
-# or
-bun dev
+
+# Build for production
+pnpm build
+
+# Start production server
+pnpm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+cruuzazul.dev/
+├── app/              # Next.js App Router pages
+├── modules/          # React components organized by feature
+├── data/             # Content data (talks, projects, etc.)
+├── articles/         # Markdown blog posts
+├── lib/              # Utility functions
+├── public/           # Static assets
+└── utils/            # Helper utilities
+```
 
-## Learn More
+## 🧑‍💻 Development
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Lint code
+pnpm lint
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Format code
+pnpm format
+```
 
 ## Credits
 
