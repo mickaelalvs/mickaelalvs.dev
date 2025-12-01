@@ -18,6 +18,7 @@ export const VoyageAuCoeurDappwrite: Workshop = {
     'Prenez votre courage à deux mains et embarquez avec nous pour une expérience inoubliable au cœur de l\'écosystème Appwrite ! 👨🏼‍✈️',
   image: AppwriteWorkshop,
   format: 'Workshop',
+  workshopUrl: 'https://appwrite-workshop.vercel.app/en/',
   speaker: [
     {
       name: 'Lucas Audart',

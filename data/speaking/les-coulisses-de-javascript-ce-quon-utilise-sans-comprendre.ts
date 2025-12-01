@@ -20,6 +20,7 @@ export const LesCoulissesDeJavaScriptCeQuonUtiliseSansComprendre: Talk = {
     image: JavaScriptCoulisses,
     featuredImage: JavaScriptCoulissesFeatured,
     format: 'Talk',
+    videoId: 'OKrTqt3sgCE',
     slidesUrl: 'https://talk-js-backstage.vercel.app',
     speaker: [
         {
@@ -31,19 +32,19 @@ export const LesCoulissesDeJavaScriptCeQuonUtiliseSansComprendre: Talk = {
     conferences: [
         {
             name: 'DevQuest',
-            link: '',
+            link: 'https://youtu.be/noMdK4o6jVk',
             date: '2025-06-05',
             image: DevQuest,
         },
         {
             name: 'Sunny Tech',
-            link: '',
+            link: 'https://youtu.be/EjAu5ArJYBw',
             date: '2025-06-27',
             image: SunnyTech,
         },
         {
             name: 'BDX I/O',
-            link: '',
+            link: 'https://youtu.be/OKrTqt3sgCE',
             date: '2025-11-07',
             image: BDXIO,
         },

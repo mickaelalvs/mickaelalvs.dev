@@ -5,13 +5,14 @@ import Lottie from 'lottie-react'
 import { useFloating, autoUpdate, offset, flip, shift, useHover, useFocus, useDismiss, useRole, useInteractions, FloatingPortal } from '@floating-ui/react'
 import captaIcon from '../../public/static/icons/capta.json'
 import presentationIcon from '../../public/static/icons/presentation.json'
+import sourceIcon from '../../public/static/icons/source.json'
 import styles from './TalkDetailPage.module.css'
 
-export default function ResourceIcon({ href, type }: { href: string; type: 'video' | 'slides' }) {
+export default function ResourceIcon({ href, type }: { href: string; type: 'video' | 'slides' | 'workshop' }) {
     const iconRef = useRef<any>(null)
-    const iconData = type === 'video' ? captaIcon : presentationIcon
+    const iconData = type === 'video' ? captaIcon : type === 'slides' ? presentationIcon : sourceIcon
     const [isOpen, setIsOpen] = useState(false)
-    const label = type === 'video' ? 'Record' : 'Slides'
+    const label = type === 'video' ? 'Record' : type === 'slides' ? 'Slides' : 'Workshop'
 
     const { refs, floatingStyles, context } = useFloating({
         open: isOpen,
