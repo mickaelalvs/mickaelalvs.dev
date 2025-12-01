@@ -1,6 +1,7 @@
 import React from 'react'
 import CommandBar from '../modules/command-bar/CommandBar'
 import { Metadata, Viewport } from 'next'
+import { NuqsAdapter } from 'nuqs/adapters/next/app'
 
 import '../public/static/css/globals.css'
 import '../public/static/css/prism.css'
@@ -84,9 +85,11 @@ export default function RootLayout({
         />
       </head>
       <body suppressHydrationWarning>
-        <CommandBar>
-          {children}
-        </CommandBar>
+        <NuqsAdapter>
+          <CommandBar>
+            {children}
+          </CommandBar>
+        </NuqsAdapter>
       </body>
     </html>
   )
