@@ -15,7 +15,7 @@ import copyBioIcon from '../../public/static/icons/copy-bio.json'
 import downloadIcon from '../../public/static/icons/download.json'
 import styles from './AboutPage.module.css'
 
-const description = `👋🏼 Hey, I'm Mickaël Alves, a Web Maker, application builder, and speaker! I'm passionate about web technologies, tooling and especially Developer Experience, always looking for ways to improve workflows and make developers' lives easier. 👨🏻‍💻`
+const description = `👋🏼 Hey, I'm Mickaël Alves, a Web Maker, application builder, and speaker! I'm passionate about web technologies, tooling and especially Developer Experience, always looking for ways to improve workflows and make developers' lives easier. 👨🏻‍💻 I'm currently Tech Lead Frontend at Zenika 🔴 & BedrockStreaming 📺. I also enjoy sharing my knowledge through teaching and speaking at conferences. I'm very involved in the tech communities. I'm a co-founder of DevFestLyon and a co-organizer of LyonJS 🦁, an Appwrite Hero 🦸🏼‍♂️, and a Remotion Expert 🎬.`
 
 export default function AboutPage() {
   const [toastTitle, setToastTitle] = React.useState('')
@@ -44,7 +44,7 @@ export default function AboutPage() {
         </div>
         <div className={styles.section}>
           <p className={styles.paragraphWithTopMargin}>
-            <span dangerouslySetInnerHTML={{ __html: description }} />
+            👋🏼 Hey, I'm Mickaël Alves, a Web Maker, application builder, and speaker! I'm passionate about web technologies, tooling and especially Developer Experience, always looking for ways to improve workflows and make developers' lives easier. 👨🏻‍💻
           </p>
           <p className={styles.paragraph}>
             I'm currently <strong>Tech Lead Frontend</strong> at <strong>Zenika</strong> 🔴 & <strong>BedrockStreaming</strong> 📺. I also enjoy sharing my knowledge through teaching and speaking at conferences.
