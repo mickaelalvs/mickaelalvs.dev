@@ -36,7 +36,7 @@ export const ReactCompilerEasierBetterFasterStronger: Talk = {
     },
     {
       name: 'Touraine Tech',
-      link: '',
+      link: 'https://youtu.be/EnKa06RKGts',
       date: '2025-02-07',
       image: TouraineTech,
     },

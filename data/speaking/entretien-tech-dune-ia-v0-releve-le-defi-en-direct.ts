@@ -18,6 +18,7 @@ export const EntretienTechDuneIaV0ReleveLeDefiEnDirect: Talk = {
   image: v0,
   format: 'Talk',
   videoId: 'VmCwqJ4F3wo',
+  slidesUrl: 'reveal-v0-interview.vercel.app',
   speaker: [
     {
       name: 'Etienne Idoux',

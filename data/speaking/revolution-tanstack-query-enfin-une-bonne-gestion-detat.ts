@@ -17,6 +17,7 @@ export const RevolutionTanStackQueryEnfinUneBonneGestionDetat: Talk = {
         'Prêt·e à rejoindre la révolution ? 🚀',
     image: TanStackQuery,
     format: 'Talk',
+    videoId: 'NwSmWe2IRFM',
     slidesUrl: 'https://talk-tanstack-query-slides.vercel.app',
     speaker: [
         {
@@ -33,7 +34,7 @@ export const RevolutionTanStackQueryEnfinUneBonneGestionDetat: Talk = {
     conferences: [
         {
             name: 'DevFest Nantes',
-            link: '',
+            link: 'https://youtu.be/NwSmWe2IRFM',
             date: '2025-10-16',
             image: DevfestNantes2025,
         },

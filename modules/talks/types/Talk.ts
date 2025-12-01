@@ -15,5 +15,6 @@ export type Talk = {
   speaker: Speaker[]
   conferences: Conference[]
   slidesUrl?: string
+  workshopUrl?: string
 }
 

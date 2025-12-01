@@ -41,13 +41,16 @@ export default function TalkDetailPage({ slug }: { slug: string }) {
               sizes="(max-width: 900px) 100vw, 900px"
             />
           </div>
-          {(videoUrl || talk.slidesUrl) && (
+          {(videoUrl || talk.slidesUrl || talk.workshopUrl) && (
             <div className={styles.resourcesIcons}>
               {videoUrl && (
                 <ResourceIcon href={videoUrl} type="video" />
               )}
               {talk.slidesUrl && (
                 <ResourceIcon href={talk.slidesUrl} type="slides" />
+              )}
+              {talk.workshopUrl && (
+                <ResourceIcon href={talk.workshopUrl} type="workshop" />
               )}
             </div>
           )}

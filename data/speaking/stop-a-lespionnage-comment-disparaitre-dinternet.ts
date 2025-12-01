@@ -20,6 +20,7 @@ export const StopALespionnageCommentDisparaitreDinternet: Talk = {
   image: Espionnage,
   format: 'Talk',
   videoId: 'pHP3MC1r6Ro',
+  slidesUrl: 'https://reveal-personal-data.vercel.app',
   speaker: [
     {
       name: 'Etienne Idoux',
@@ -30,13 +31,13 @@ export const StopALespionnageCommentDisparaitreDinternet: Talk = {
   conferences: [
     {
       name: 'Devfest Lille',
-      link: '',
+      link: 'https://youtu.be/pHP3MC1r6Ro',
       date: '2024-06-06',
       image: DevfestLille,
     },
     {
       name: 'Devfest Strasbourg',
-      link: '',
+      link: 'https://youtu.be/oF_Mq2ZxDdA',
       date: '2024-11-21',
       image: DevfestStrasbourg2024,
     },
