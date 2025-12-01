@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useQueryState, parseAsStringLiteral } from 'nuqs'
 import { LayoutGroup, motion } from 'framer-motion'
 import Link from 'next/link'
 import BaseLayout from '../layout/BaseLayout'
@@ -14,7 +15,10 @@ import type { ConferenceItem } from './types/ConferenceItem'
 import styles from './TalksPage.module.css'
 
 export default function TalksPage() {
-  const [viewMode, setViewMode] = useState<'talks' | 'conferences'>('conferences')
+  const [viewMode, setViewMode] = useQueryState(
+    'view',
+    parseAsStringLiteral(['talks', 'conferences'] as const).withDefault('conferences')
+  )
   const [hoveredTalk, setHoveredTalk] = useState<string | number>('')
 
   // Filtrer pour exclure les podcasts
