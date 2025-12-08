@@ -1,32 +1,52 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Image from 'next/image'
-import { useFloating, autoUpdate, offset, flip, shift, useHover, useFocus, useDismiss, useRole, useInteractions, FloatingPortal } from '@floating-ui/react'
-import type { PlatformLink } from './types/PlatformLink'
-import styles from './PodcastDetailPage.module.css'
+import { useState } from "react";
+import Image from "next/image";
+import {
+  useFloating,
+  autoUpdate,
+  offset,
+  flip,
+  shift,
+  useHover,
+  useFocus,
+  useDismiss,
+  useRole,
+  useInteractions,
+  FloatingPortal,
+} from "@floating-ui/react";
+import type { PlatformLink } from "./types/PlatformLink";
+import styles from "./PodcastDetailPage.module.css";
 
 interface PlatformIconProps {
-  platform: PlatformLink
-  getPlatformIcon: (platform: string) => string
+  platform: PlatformLink;
+  getPlatformIcon: (platform: string) => string;
 }
 
-export default function PlatformIcon({ platform, getPlatformIcon }: PlatformIconProps) {
-  const [isOpen, setIsOpen] = useState(false)
+export default function PlatformIcon({
+  platform,
+  getPlatformIcon,
+}: PlatformIconProps) {
+  const [isOpen, setIsOpen] = useState(false);
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
     middleware: [offset(8), flip(), shift()],
     whileElementsMounted: autoUpdate,
-  })
+  });
 
-  const hover = useHover(context, { move: false })
-  const focus = useFocus(context)
-  const dismiss = useDismiss(context)
-  const role = useRole(context, { role: 'tooltip' })
+  const hover = useHover(context, { move: false });
+  const focus = useFocus(context);
+  const dismiss = useDismiss(context);
+  const role = useRole(context, { role: "tooltip" });
 
-  const { getReferenceProps, getFloatingProps } = useInteractions([hover, focus, dismiss, role])
+  const { getReferenceProps, getFloatingProps } = useInteractions([
+    hover,
+    focus,
+    dismiss,
+    role,
+  ]);
 
   return (
     <>
@@ -44,7 +64,7 @@ export default function PlatformIcon({ platform, getPlatformIcon }: PlatformIcon
           width={24}
           height={24}
           style={{
-            filter: 'brightness(0) saturate(100%) invert(100%)',
+            filter: "brightness(0) saturate(100%) invert(100%)",
           }}
         />
       </a>
@@ -61,6 +81,5 @@ export default function PlatformIcon({ platform, getPlatformIcon }: PlatformIcon
         </FloatingPortal>
       )}
     </>
-  )
+  );
 }
-

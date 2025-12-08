@@ -1,11 +1,11 @@
-import type { Project } from './types/Project'
+import type { Project } from "./types/Project";
 
 interface ProjectItemProps {
-  project: Project
+  project: Project;
 }
 
 export default function ProjectItem(props: ProjectItemProps) {
-  const { project } = props
+  const { project } = props;
 
   return (
     <li>
@@ -13,6 +13,5 @@ export default function ProjectItem(props: ProjectItemProps) {
         {project.title}
       </a>
     </li>
-  )
+  );
 }
-

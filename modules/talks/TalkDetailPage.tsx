@@ -1,23 +1,26 @@
-'use client'
+"use client";
 
-import { notFound } from 'next/navigation'
-import Link from 'next/link'
-import BaseLayout from '../layout/BaseLayout'
-import { speaking as talks } from '../../data/speaking'
-import Image from 'next/image'
-import { generateSlug } from '../../utils/slug'
-import styles from './TalkDetailPage.module.css'
-import ResourceIcon from './ResourceIcon'
-import ConferenceCard from './ConferenceCard'
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import BaseLayout from "../layout/BaseLayout";
+import { speaking as talks } from "@/data/speaking";
+import Image from "next/image";
+import { generateSlug } from "@/utils/slug";
+import styles from "./TalkDetailPage.module.css";
+import ResourceIcon from "./ResourceIcon";
+import ConferenceCard from "./ConferenceCard";
 
 export default function TalkDetailPage({ slug }: { slug: string }) {
-  const talk = talks.find(t => generateSlug(t.title) === slug)
+  const talk = talks.find((t) => generateSlug(t.title) === slug);
 
   if (!talk) {
-    notFound()
+    notFound();
   }
 
-  const videoUrl = 'videoId' in talk && talk.videoId ? `https://www.youtube.com/watch?v=${talk.videoId}` : null
+  const videoUrl =
+    "videoId" in talk && talk.videoId
+      ? `https://www.youtube.com/watch?v=${talk.videoId}`
+      : null;
 
   return (
     <BaseLayout
@@ -43,9 +46,7 @@ export default function TalkDetailPage({ slug }: { slug: string }) {
           </div>
           {(videoUrl || talk.slidesUrl || talk.workshopUrl) && (
             <div className={styles.resourcesIcons}>
-              {videoUrl && (
-                <ResourceIcon href={videoUrl} type="video" />
-              )}
+              {videoUrl && <ResourceIcon href={videoUrl} type="video" />}
               {talk.slidesUrl && (
                 <ResourceIcon href={talk.slidesUrl} type="slides" />
               )}
@@ -70,14 +71,12 @@ export default function TalkDetailPage({ slug }: { slug: string }) {
               ))}
             </div>
           </div>
-
         </div>
 
-        <Link href="/talks" className={styles.backLink}>← Back to talks</Link>
+        <Link href="/talks" className={styles.backLink}>
+          ← Back to talks
+        </Link>
       </div>
     </BaseLayout>
-  )
+  );
 }
-
-
-

@@ -1,26 +1,28 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { motion, AnimatePresence } from 'framer-motion'
-import styles from './Navbar.module.css'
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import styles from "./Navbar.module.css";
 
 interface DesktopNavProps {
-  pages: string[]
+  pages: string[];
 }
 
 export default function DesktopNav({ pages }: DesktopNavProps) {
-  const pathname = usePathname()
-  const [hovered, setHovered] = useState<string>('')
+  const pathname = usePathname();
+  const [hovered, setHovered] = useState<string>("");
 
   return (
     <nav className={styles.desktopNav}>
       <ul className={styles.list}>
-        {pages.map(page => {
-          const path = page === 'Home' ? '/' : `/${page.toLowerCase()}`
-          const isHovered = hovered === page
-          const isActive = pathname === path || (page !== 'Home' && pathname.startsWith(path + '/'))
+        {pages.map((page) => {
+          const path = page === "Home" ? "/" : `/${page.toLowerCase()}`;
+          const isHovered = hovered === page;
+          const isActive =
+            pathname === path ||
+            (page !== "Home" && pathname.startsWith(path + "/"));
 
           return (
             <li key={page}>
@@ -28,10 +30,10 @@ export default function DesktopNav({ pages }: DesktopNavProps) {
                 <motion.div
                   className={styles.navWrapper}
                   onHoverStart={() => {
-                    setHovered(page)
+                    setHovered(page);
                   }}
                   onHoverEnd={() => {
-                    setHovered('')
+                    setHovered("");
                   }}
                 >
                   <AnimatePresence mode="wait">
@@ -45,24 +47,25 @@ export default function DesktopNav({ pages }: DesktopNavProps) {
                         transition={{
                           layout: {
                             duration: 0.4,
-                            ease: [0.25, 0.1, 0.25, 1]
+                            ease: [0.25, 0.1, 0.25, 1],
                           },
                           opacity: {
                             duration: 0.4,
-                            ease: [0.25, 0.1, 0.25, 1]
-                          }
+                            ease: [0.25, 0.1, 0.25, 1],
+                          },
                         }}
                       />
                     )}
                   </AnimatePresence>
                   <motion.span
-                    className={`${styles.navContainer} ${isActive ? styles.active : ''}`}
+                    className={`${styles.navContainer} ${isActive ? styles.active : ""}`}
                     animate={{
-                      color: pathname === path || isHovered ? '#FFFFFF' : '#ADADAD'
+                      color:
+                        pathname === path || isHovered ? "#FFFFFF" : "#ADADAD",
                     }}
                     transition={{
                       duration: 0.4,
-                      ease: 'easeInOut'
+                      ease: "easeInOut",
                     }}
                   >
                     {page}
@@ -70,10 +73,9 @@ export default function DesktopNav({ pages }: DesktopNavProps) {
                 </motion.div>
               </Link>
             </li>
-          )
+          );
         })}
       </ul>
     </nav>
-  )
+  );
 }
-

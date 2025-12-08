@@ -1,11 +1,10 @@
-import { Metadata } from 'next'
-import AboutPage from '../../modules/about/AboutPage'
+import { Metadata } from "next";
+import AboutPage from "@/modules/about/AboutPage";
 
 export const metadata: Metadata = {
-  title: 'About',
-}
+  title: "About",
+};
 
 export default function About() {
-  return <AboutPage />
+  return <AboutPage />;
 }
-

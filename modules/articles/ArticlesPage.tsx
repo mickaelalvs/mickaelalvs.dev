@@ -1,20 +1,11 @@
-import { getAllPosts, getPostBySlug, type BlogPost } from '../../lib/blog'
-import BaseLayout from '../layout/BaseLayout'
-import ArticlesContent from './ArticlesContent'
+import { getAllPosts, type BlogPost } from "@/lib/blog";
+import BaseLayout from "../layout/BaseLayout";
+import ArticlesContent from "./ArticlesContent";
 
 export default function ArticlesPage() {
-  const allPosts = getAllPosts(['date', 'skip', 'slug', 'title'])
+  const allPosts = getAllPosts(["date", "skip", "slug", "title"]);
 
-  const featuredParams = [
-    'date',
-    'slug',
-    'title',
-    'image',
-    'content',
-    'description',
-  ]
-
-  const featuredPosts: BlogPost[] = []
+  const featuredPosts: BlogPost[] = [];
 
   return (
     <BaseLayout
@@ -23,12 +14,7 @@ export default function ArticlesPage() {
       primaryColor="yellow"
       secondaryColor="pink"
     >
-      <ArticlesContent
-        allPosts={allPosts}
-        featuredPosts={featuredPosts}
-      />
+      <ArticlesContent allPosts={allPosts} featuredPosts={featuredPosts} />
     </BaseLayout>
-  )
+  );
 }
-
-

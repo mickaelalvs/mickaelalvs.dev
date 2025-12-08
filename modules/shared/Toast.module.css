@@ -24,11 +24,11 @@
   background: var(--color-hover);
   border-radius: 4px;
   border: 1px solid rgb(48, 50, 54);
-  box-shadow: rgb(0 0 0 / 8%) 0px 4px 13px;
+  box-shadow: rgb(0 0 0 / 8%) 0 4px 13px;
   color: rgb(138, 143, 152);
   font-size: 14px;
   overflow: hidden;
-  margin: 0px;
+  margin: 0;
   padding: 12px;
   display: flex;
   z-index: 2;
@@ -81,4 +81,3 @@
   right: 20px;
   z-index: 2;
 }
-

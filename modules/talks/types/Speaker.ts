@@ -1,6 +1,5 @@
 export interface Speaker {
-  name: string
-  picture: string
-  social: string
+  name: string;
+  picture: string;
+  social: string;
 }
-

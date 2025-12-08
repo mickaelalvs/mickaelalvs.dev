@@ -1,31 +1,31 @@
-'use client'
+"use client";
 
-import { useState, useRef } from 'react'
-import React from 'react'
-import { motion } from 'framer-motion'
-import Lottie from 'lottie-react'
-import type { Project } from './types/Project'
-import styles from './FeaturedProject.module.css'
-import remotionIcon from '../../public/static/icons/remotion.json'
-import codeInTheDarkIcon from '../../public/static/icons/code-in-the-dark.json'
-import sourceIcon from '../../public/static/icons/source.json'
+import { useState, useRef } from "react";
+import React from "react";
+import { motion } from "framer-motion";
+import Lottie from "lottie-react";
+import type { Project } from "./types/Project";
+import styles from "./FeaturedProject.module.css";
+import remotionIcon from "../../public/static/icons/remotion.json";
+import codeInTheDarkIcon from "../../public/static/icons/code-in-the-dark.json";
+import sourceIcon from "../../public/static/icons/source.json";
 
 const iconMap = {
-  'remotion': remotionIcon,
-  'code-in-the-dark': codeInTheDarkIcon,
-  'source': sourceIcon,
-}
+  remotion: remotionIcon,
+  "code-in-the-dark": codeInTheDarkIcon,
+  source: sourceIcon,
+};
 
 interface FeaturedProjectProps {
-  project: Project
-  index: string | number
+  project: Project;
+  index: string | number;
 }
 
 export default function FeaturedProject(props: FeaturedProjectProps) {
-  const { project } = props
+  const { project } = props;
 
-  const icon = iconMap[project.icon] || sourceIcon
-  const iconRef = useRef<any>(null)
+  const icon = iconMap[project.icon] || sourceIcon;
+  const iconRef = useRef<any>(null);
 
   return (
     <a
@@ -51,37 +51,35 @@ export default function FeaturedProject(props: FeaturedProjectProps) {
         </div>
       </Animation>
     </a>
-  )
+  );
 }
 
 interface AnimationProps {
-  index: string | number
-  children: React.ReactNode
+  index: string | number;
+  children: React.ReactNode;
 }
 
 function Animation(props: AnimationProps) {
-  const [hovered, setHovered] = useState<string | number>('')
-  const isHovered = hovered === props.index
+  const [hovered, setHovered] = useState<string | number>("");
+  const isHovered = hovered === props.index;
 
   return (
     <motion.span
       className={styles.animContainer}
       onHoverStart={() => setHovered(props.index)}
-      onHoverEnd={() => setHovered('')}
+      onHoverEnd={() => setHovered("")}
     >
       {isHovered && (
         <motion.span
           className={styles.animHovered}
           layoutId="featuredProjects"
           transition={{
-            layout: { duration: 0.3, ease: 'easeInOut' }
+            layout: { duration: 0.3, ease: "easeInOut" },
           }}
         />
       )}
 
-      <div className={styles.contentWrapper}>
-        {props.children}
-      </div>
+      <div className={styles.contentWrapper}>{props.children}</div>
     </motion.span>
-  )
+  );
 }

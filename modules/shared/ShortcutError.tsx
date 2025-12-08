@@ -1,15 +1,15 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import { ButtonPrimary } from './ButtonPrimary'
-import styles from './ShortcutError.module.css'
+import { useState, useEffect } from "react";
+import { ButtonPrimary } from "./ButtonPrimary";
+import styles from "./ShortcutError.module.css";
 
 export default function ShortcutError() {
-  const [mounted, setMounted] = useState(false)
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   if (!mounted) {
     return (
@@ -18,10 +18,10 @@ export default function ShortcutError() {
           Press <kbd>G</kbd> <kbd>H</kbd> to go home →
         </ButtonPrimary>
       </div>
-    )
+    );
   }
 
-  const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent)
+  const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
 
   if (isMobile) {
     return (
@@ -30,7 +30,7 @@ export default function ShortcutError() {
           Tap to go home →
         </ButtonPrimary>
       </div>
-    )
+    );
   }
 
   return (
@@ -39,5 +39,5 @@ export default function ShortcutError() {
         Press <kbd>G</kbd> <kbd>H</kbd> to go home →
       </ButtonPrimary>
     </div>
-  )
+  );
 }

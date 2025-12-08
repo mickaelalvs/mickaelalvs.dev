@@ -1,11 +1,10 @@
-import { Metadata } from 'next'
-import PodcastsPage from '../../modules/podcasts/PodcastsPage'
+import { Metadata } from "next";
+import PodcastsPage from "@/modules/podcasts/PodcastsPage";
 
 export const metadata: Metadata = {
-  title: 'Podcasts',
-}
+  title: "Podcasts",
+};
 
 export default function Podcasts() {
-  return <PodcastsPage />
+  return <PodcastsPage />;
 }
-
