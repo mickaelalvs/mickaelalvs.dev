@@ -99,7 +99,7 @@ function TalksContent() {
       );
 
       return (
-        <div key={year} className={styles.yearSection}>
+        <div key={year} id={`year-${year}`} className={styles.yearSection}>
           <h3 className={styles.yearTitle}>{year}</h3>
           {sortedConfs.map(([confName, items]) => {
             const sortedItems = [...items].sort((a, b) => {
