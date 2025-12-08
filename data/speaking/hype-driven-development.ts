@@ -26,7 +26,7 @@ export const HypeDrivenDevelopment: Podcast = {
     {
       name: "Etienne Idoux",
       picture: "https://github.com/PopsIDX.png",
-      social: "https://twitter.com/PopsIDX",
+      social: "https://twitter.com/eidoux",
     },
   ],
   videoId: "3tBFOo8Yjoo",
