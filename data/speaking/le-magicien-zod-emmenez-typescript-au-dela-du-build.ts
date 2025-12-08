@@ -1,4 +1,4 @@
-import ZodTalk from "../../public/static/images/talks/soon.png";
+import ZodTalk from "../../public/static/images/talks/soon.webp";
 import TouraineTech from "../../public/static/images/conferenceLogos/touraineTech.svg";
 import type { Talk } from "@/modules/talks/types/Talk";
 
@@ -21,6 +21,11 @@ export const LeMagicienZodEmmenezTypeScriptAuDelaDuBuild: Talk = {
       name: "Mickaël Alves",
       picture: "https://github.com/malves-dev.png",
       social: "https://x.com/malves_dev",
+    },
+    {
+      name: "Lucas Audart",
+      picture: "https://github.com/Slocaly.png",
+      social: "https://bsky.app/profile/slocaly.bsky.social",
     },
   ],
   conferences: [

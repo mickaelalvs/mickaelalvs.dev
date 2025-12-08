@@ -25,7 +25,7 @@ export const StopALespionnageCommentDisparaitreDinternet: Talk = {
     {
       name: "Etienne Idoux",
       picture: "https://github.com/PopsIDX.png",
-      social: "https://twitter.com/PopsIDX",
+      social: "https://twitter.com/eidoux",
     },
   ],
   conferences: [

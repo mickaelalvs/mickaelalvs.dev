@@ -9,6 +9,7 @@ import { generateSlug } from "@/utils/slug";
 import styles from "./TalkDetailPage.module.css";
 import ResourceIcon from "./ResourceIcon";
 import ConferenceCard from "./ConferenceCard";
+import CoSpeakerAvatar from "./CoSpeakerAvatar";
 
 export default function TalkDetailPage({ slug }: { slug: string }) {
   const talk = talks.find((t) => generateSlug(t.title) === slug);
@@ -64,6 +65,19 @@ export default function TalkDetailPage({ slug }: { slug: string }) {
           </div>
 
           <div className={styles.section}>
+            {talk.speaker.filter((s) => s.name !== "Mickaël Alves").length >
+              0 && (
+              <div className={styles.coSpeakersContainer}>
+                <span className={styles.coSpeakersLabel}>Co-speaker:</span>
+                <div className={styles.coSpeakersList}>
+                  {talk.speaker
+                    .filter((s) => s.name !== "Mickaël Alves")
+                    .map((speaker, idx) => (
+                      <CoSpeakerAvatar key={idx} speaker={speaker} />
+                    ))}
+                </div>
+              </div>
+            )}
             <h2 className={styles.sectionTitle}>Conferences</h2>
             <div className={styles.conferencesList}>
               {talk.conferences.map((conf, idx) => (
