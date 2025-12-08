@@ -1,10 +1,9 @@
-import type { StaticImageData } from 'next/image'
+import type { StaticImageData } from "next/image";
 
 export interface Conference {
-  name: string
-  link?: string
-  date: string | null
-  year?: string
-  image: StaticImageData
+  name: string;
+  link?: string;
+  date: string | null;
+  year?: string;
+  image: StaticImageData;
 }
-

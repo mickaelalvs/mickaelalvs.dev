@@ -1,4 +1,3 @@
-import type { Talk } from './Talk'
+import type { Talk } from "./Talk";
 
-export interface Workshop extends Omit<Talk, 'videoId'> { }
-
+export interface Workshop extends Omit<Talk, "videoId"> {}

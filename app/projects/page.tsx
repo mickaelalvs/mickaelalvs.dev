@@ -1,11 +1,10 @@
-import { Metadata } from 'next'
-import ProjectsPage from '../../modules/projects/ProjectsPage'
+import { Metadata } from "next";
+import ProjectsPage from "@/modules/projects/ProjectsPage";
 
 export const metadata: Metadata = {
-  title: 'Projects',
-}
+  title: "Projects",
+};
 
 export default function Projects() {
-  return <ProjectsPage />
+  return <ProjectsPage />;
 }
-

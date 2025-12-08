@@ -1,7 +1,6 @@
-import type { Platform } from './Platform'
+import type { Platform } from "./Platform";
 
 export type PlatformLink = {
-    platform: Platform
-    link: string
-}
-
+  platform: Platform;
+  link: string;
+};

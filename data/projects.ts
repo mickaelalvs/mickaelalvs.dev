@@ -1,66 +1,65 @@
-import type { Project } from '../modules/projects/types/Project'
+import type { Project } from "@/modules/projects/types/Project";
 
 interface ProjectYear {
-  year: string
-  projects: Project[]
+  year: string;
+  projects: Project[];
 }
 
 const items: ProjectYear[] = [
   {
-    year: '2024',
+    year: "2024",
     projects: [
       {
-        title: 'Code In The Dark',
-        description: 'You thought you knew front-end',
-        url: 'https://code-in-the-dark-editor.lyonjs.org/',
+        title: "Code In The Dark",
+        description: "You thought you knew front-end",
+        url: "https://code-in-the-dark-editor.lyonjs.org/",
         active: true,
-        icon: 'code-in-the-dark',
-        stats: '4+ events',
+        icon: "code-in-the-dark",
+        stats: "4+ events",
       },
     ],
   },
   {
-    year: '2023',
+    year: "2023",
     projects: [
       {
-        title: 'Remotion (OSS contributions)',
-        description: 'OSS contributions to Remotion',
-        url: 'https://www.remotion.dev',
+        title: "Remotion (OSS contributions)",
+        description: "OSS contributions to Remotion",
+        url: "https://www.remotion.dev",
         active: true,
-        icon: 'remotion',
-        stats: 'Contributions & Expert',
+        icon: "remotion",
+        stats: "Contributions & Expert",
       },
       {
-        title: 'Appwrite workshop',
-        description: 'Learn how to use Appwrite',
-        url: 'https://appwrite-workshop.vercel.app/en/',
+        title: "Appwrite workshop",
+        description: "Learn how to use Appwrite",
+        url: "https://appwrite-workshop.vercel.app/en/",
         active: true,
-        icon: 'source',
-        stats: '5 modules',
+        icon: "source",
+        stats: "5 modules",
       },
     ],
   },
   {
-    year: '2022',
+    year: "2022",
     projects: [
       {
-        title: 'Remotion (OSS contributions)',
-        description: 'OSS contributions to Remotion',
-        url: 'https://www.remotion.dev',
+        title: "Remotion (OSS contributions)",
+        description: "OSS contributions to Remotion",
+        url: "https://www.remotion.dev",
         active: true,
-        icon: 'remotion',
-        stats: 'Contributions',
+        icon: "remotion",
+        stats: "Contributions",
       },
       {
-        title: 'Shortvid.io',
-        description: 'Generate short videos for your social media',
-        url: 'https://shortvid.io',
+        title: "Shortvid.io",
+        description: "Generate short videos for your social media",
+        url: "https://shortvid.io",
         active: true,
-        icon: 'remotion',
+        icon: "remotion",
       },
     ],
   },
-]
+];
 
-export default items
-
+export default items;

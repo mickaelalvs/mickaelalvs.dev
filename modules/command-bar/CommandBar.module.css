@@ -4,7 +4,7 @@
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  inset: 0px;
+  inset: 0;
   padding: 14vh 16px 16px;
   background: rgba(0, 0, 0, 0.8);
   box-sizing: border-box;
@@ -95,4 +95,3 @@
   background: rgba(255, 255, 255, 0.1);
   color: var(--color-primary);
 }
-

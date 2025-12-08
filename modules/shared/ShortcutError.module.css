@@ -1,11 +1,12 @@
 .container {
   display: inline-block;
   visibility: hidden;
-  transition: visibility 0s, opacity 0.15s ease-in;
+  transition:
+    visibility 0s,
+    opacity 0.15s ease-in;
 }
 
 .container.mounted {
   visibility: visible;
   opacity: 1;
 }
-

@@ -5,18 +5,18 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'github.com',
+        protocol: "https",
+        hostname: "github.com",
       },
       {
-        protocol: 'https',
-        hostname: 'avatars.githubusercontent.com',
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
       },
     ],
-    formats: ['image/avif', 'image/webp'],
+    formats: ["image/avif", "image/webp"],
   },
   experimental: {
-    optimizePackageImports: ['lottie-react', 'framer-motion', 'date-fns'],
+    optimizePackageImports: ["lottie-react", "framer-motion", "date-fns"],
   },
   compress: true,
   poweredByHeader: false,
