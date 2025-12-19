@@ -82,17 +82,17 @@ export default function Footer() {
   const links: LinkItem[] = [
     {
       title: "Bluesky",
-      url: "https://bsky.app/profile/cruuzazul.dev",
+      url: "https://bsky.app/profile/mickaelalvs.dev",
       icon: "ri-bluesky-line",
     },
     {
       title: "GitHub",
-      url: "https://github.com/CruuzAzul",
+      url: "https://github.com/mickaelalvs",
       icon: "ri-github-line",
     },
     {
       title: "Twitter",
-      url: "https://twitter.com/CruuzAzul",
+      url: "https://twitter.com/mickaelalvs",
       icon: "ri-twitter-line",
     },
     {

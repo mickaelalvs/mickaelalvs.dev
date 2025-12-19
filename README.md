@@ -1,4 +1,4 @@
-# 👨🏻‍💻 cruuzazul.dev
+# 👨🏻‍💻 mickaelalvs.dev
 
 Personal portfolio and blog of **Mickaël Alves** - Tech Lead Frontend, Speaker, and Developer Experience enthusiast.
 
@@ -55,7 +55,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
 ## 📁 Project Structure
 
 ```
-cruuzazul.dev/
+mickaelalvs.dev/
 ├── app/              # Next.js App Router pages
 ├── modules/          # React components organized by feature
 ├── data/             # Content data (talks, projects, etc.)

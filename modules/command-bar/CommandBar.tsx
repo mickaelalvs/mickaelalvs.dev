@@ -91,7 +91,7 @@ export default function CommandBar(props: CommandBarProps) {
       shortcut: ["s"],
       keywords: "github",
       section: "General",
-      perform: () => window.open("https://github.com/CruuzAzul", "_blank"),
+      perform: () => window.open("https://github.com/mickaelalvs", "_blank"),
       icon: (
         <Lottie
           lottieRef={sourceRef}

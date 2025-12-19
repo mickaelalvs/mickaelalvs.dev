@@ -18,13 +18,13 @@ export default async function BlogPostPage({ slug }: { slug: string }) {
 
   const title = `${post.title} // Mickaël Alves`;
   const description = post.description || "";
-  const url = `https://cruuzazul.dev/${post.slug}`;
+  const url = `https://mickaelalvs.dev/${post.slug}`;
   const date = post.date
     ? new Date(post.date).toISOString()
     : new Date().toISOString();
   const image = post.image
-    ? `https://cruuzazul.dev${post.image}`
-    : "https://cruuzazul.dev/og-image.png";
+    ? `https://mickaelalvs.dev${post.image}`
+    : "https://mickaelalvs.dev/og-image.png";
 
   return (
     <BlogpostLayout title={post.title} image={post.image} date={post.date}>

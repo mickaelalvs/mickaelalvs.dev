@@ -12,7 +12,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://cruuzazul.dev"),
+  metadataBase: new URL("https://mickaelalvs.dev"),
   title: {
     default: "Mickaël Alves",
     template: "%s | Mickaël Alves",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://cruuzazul.dev",
+    url: "https://mickaelalvs.dev",
     siteName: "Mickaël Alves",
     title: "Mickaël Alves",
     description:

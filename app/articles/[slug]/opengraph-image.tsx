@@ -113,7 +113,7 @@ export default async function Image({
             fontWeight: "normal",
           }}
         >
-          cruuzazul.dev
+          mickaelalvs.dev
         </div>
         <div
           style={{
@@ -136,7 +136,7 @@ export default async function Image({
               paddingTop: "6px",
             }}
           >
-            CruuzAzul
+            @mickaelalvs
           </span>
           <div
             style={{ display: "flex", alignItems: "center", height: "24px" }}

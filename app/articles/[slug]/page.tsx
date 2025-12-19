@@ -26,10 +26,10 @@ export async function generateMetadata({
 
     const title = `${post.title} // Mickaël Alves`;
     const description = post.description || "";
-    const url = `https://cruuzazul.dev/${post.slug}`;
+    const url = `https://mickaelalvs.dev/${post.slug}`;
     const image = post.image
-      ? `https://cruuzazul.dev${post.image}`
-      : "https://cruuzazul.dev/og-image.png";
+      ? `https://mickaelalvs.dev${post.image}`
+      : "https://mickaelalvs.dev/og-image.png";
 
     return {
       title,

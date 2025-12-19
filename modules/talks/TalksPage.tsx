@@ -111,10 +111,10 @@ function TalksContent() {
 
             const confDate = sortedItems[0]?.date
               ? new Date(sortedItems[0].date).toLocaleDateString("fr-FR", {
-                  day: "numeric",
-                  month: "long",
-                  year: "numeric",
-                })
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })
               : null;
 
             return (
