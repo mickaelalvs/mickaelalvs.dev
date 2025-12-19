@@ -39,7 +39,7 @@ export const Opengraph = ({ text }: { text: string }) => (
           color: "#4eb9a5",
         }}
       >
-        cruuzazul.dev
+        mickaelalvs.dev
       </span>
     </div>
     <div
@@ -55,7 +55,7 @@ export const Opengraph = ({ text }: { text: string }) => (
           border: "3px solid #4eb9a5",
           marginBottom: "20px",
         }}
-        src="https://github.com/cruuzazul.png"
+        src="https://github.com/mickaelalvs.png"
         height={150}
         width={150}
         alt="Mickaël Alves"

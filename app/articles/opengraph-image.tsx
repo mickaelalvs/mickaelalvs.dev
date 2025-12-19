@@ -97,7 +97,7 @@ export default async function Image() {
           fontWeight: "normal",
         }}
       >
-        cruuzazul.dev
+        mickaelalvs.dev
       </div>
       <div
         style={{
@@ -120,7 +120,7 @@ export default async function Image() {
             paddingTop: "6px",
           }}
         >
-          CruuzAzul
+          @mickaelalvs
         </span>
         <div style={{ display: "flex", alignItems: "center", height: "24px" }}>
           <svg width="24" height="22" viewBox="0 0 256 226" fill="#8f9ba8">

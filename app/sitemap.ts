@@ -4,7 +4,7 @@ import { speaking as talks } from "../data/speaking";
 import { generateSlug } from "@/utils/slug";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://cruuzazul.dev";
+  const baseUrl = "https://mickaelalvs.dev";
 
   const staticPages = [
     {
