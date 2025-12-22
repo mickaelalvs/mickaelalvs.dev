@@ -1,6 +1,7 @@
 import NoCode from "../../public/static/images/talks/no-code.webp";
 import Zenika from "../../public/static/images/conferenceLogos/zenika.svg";
 import type { Talk } from "@/modules/talks/types/Talk";
+import { l_audart } from "@/data/people";
 
 export const JadoreLesDeveloppeursDans23AnsIlYEnAuraPlus: Talk = {
   id: "7",
@@ -19,13 +20,7 @@ export const JadoreLesDeveloppeursDans23AnsIlYEnAuraPlus: Talk = {
   image: NoCode,
   format: "Quicky",
   videoId: "mA6dmVYBfdA",
-  speaker: [
-    {
-      name: "Audart Lucas",
-      picture: "https://github.com/Slocaly.png",
-      social: "https://bsky.app/profile/slocaly.bsky.social",
-    },
-  ],
+  speaker: [l_audart],
   conferences: [
     {
       name: "Conférence interne Zenika",

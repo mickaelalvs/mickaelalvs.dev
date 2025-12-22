@@ -4,6 +4,7 @@ import TouraineTech from "../../public/static/images/conferenceLogos/touraineTec
 import Devoxx from "../../public/static/images/conferenceLogos/devoxx.webp";
 import DevfestNantes2024 from "../../public/static/images/conferenceLogos/devfest-nantes-2024.svg";
 import type { Talk } from "@/modules/talks/types/Talk";
+import { l_audart } from "@/data/people";
 
 export const ReactCompilerEasierBetterFasterStronger: Talk = {
   id: "1",
@@ -20,13 +21,7 @@ export const ReactCompilerEasierBetterFasterStronger: Talk = {
   format: "Talk",
   videoId: "_edOnkr8Yy4",
   slidesUrl: "https://slides-talk-react-compiler.vercel.app/",
-  speaker: [
-    {
-      name: "Lucas Audart",
-      picture: "https://github.com/Slocaly.png",
-      social: "https://bsky.app/profile/slocaly.bsky.social",
-    },
-  ],
+  speaker: [l_audart],
   conferences: [
     {
       name: "Devoxx France",

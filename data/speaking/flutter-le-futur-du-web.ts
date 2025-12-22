@@ -1,6 +1,7 @@
 import Flutter from "../../public/static/images/talks/flutter.webp";
 import Zenika from "../../public/static/images/conferenceLogos/zenika.svg";
 import type { Talk } from "@/modules/talks/types/Talk";
+import { l_audart } from "@/data/people";
 
 export const FlutterLeFuturDuWeb: Talk = {
   id: "8",
@@ -15,13 +16,7 @@ export const FlutterLeFuturDuWeb: Talk = {
   image: Flutter,
   format: "Quicky",
   videoId: "mdGMBIYmi6c",
-  speaker: [
-    {
-      name: "Audart Lucas",
-      picture: "https://github.com/Slocaly.png",
-      social: "https://bsky.app/profile/slocaly.bsky.social",
-    },
-  ],
+  speaker: [l_audart],
   conferences: [
     {
       name: "Conférence interne Zenika",

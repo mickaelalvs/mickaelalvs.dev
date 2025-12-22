@@ -1,6 +1,7 @@
 import type { Podcast } from "@/modules/podcasts/types/Podcast";
 import ZenikastJuniorDansLaTech from "../../public/static/images/talks/zenikast-junior-dans-la-tech.webp";
 import Zenika from "../../public/static/images/conferenceLogos/zenika.svg";
+import { j_lavigne, a_caron, theo_gianella } from "@/data/people";
 
 export const EtreJuniorDansLaTech: Podcast = {
   id: "12",
@@ -12,28 +13,7 @@ export const EtreJuniorDansLaTech: Podcast = {
     "Dans ce podcast, nous explorons les réalités du quotidien d'un junior dans la tech : comment gérer la pression, apprendre efficacement, s'intégrer dans une équipe, et surtout, comment grandir professionnellement. Nos invités partagent leurs expériences, leurs conseils et leurs astuces pour naviguer dans cet univers en constante évolution.\n",
   image: ZenikastJuniorDansLaTech,
   format: "Podcast",
-  speaker: [
-    {
-      name: "Johana Lavigne",
-      picture: "https://github.com/johanalavigne.png",
-      social: "https://github.com/johanalavigne",
-    },
-    {
-      name: "Antoine Caron",
-      picture: "https://github.com/slashgear.png",
-      social: "https://x.com/Slashgear_",
-    },
-    {
-      name: "Théo Gianella",
-      picture: "https://github.com/theogianella.png",
-      social: "https://github.com/theogianella",
-    },
-    {
-      name: "Mickaël Alves",
-      picture: "https://github.com/malves-dev.png",
-      social: "https://x.com/malves_dev",
-    },
-  ],
+  speaker: [j_lavigne, a_caron, theo_gianella],
   videoId: "4yBqGEsjy2E",
   conferences: [
     {

@@ -19,7 +19,7 @@ import type { Podcast } from "@/modules/podcasts/types/Podcast";
 export type { Talk } from "@/modules/talks/types/Talk";
 export type { Workshop } from "@/modules/talks/types/Workshop";
 export type { Conference } from "@/modules/talks/types/Conference";
-export type { Speaker } from "@/modules/talks/types/Speaker";
+export type { Person } from "@/data/people";
 export type { Podcast } from "@/modules/podcasts/types/Podcast";
 export type { Platform } from "@/modules/podcasts/types/Platform";
 export type { PlatformLink } from "@/modules/podcasts/types/PlatformLink";

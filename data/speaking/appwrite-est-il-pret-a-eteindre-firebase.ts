@@ -8,6 +8,7 @@ import Breizhcamp from "../../public/static/images/conferenceLogos/breizhcamp.sv
 import DevFestDijon from "../../public/static/images/conferenceLogos/devfestDijon.webp";
 import Zenika from "../../public/static/images/conferenceLogos/zenika.svg";
 import type { Talk } from "@/modules/talks/types/Talk";
+import { l_audart } from "@/data/people";
 
 export const AppwriteEstIlPretAEteindreFirebase: Talk = {
   id: "2",
@@ -22,13 +23,7 @@ export const AppwriteEstIlPretAEteindreFirebase: Talk = {
   image: Appwrite,
   format: "Talk",
   videoId: "_QYXiq2fmS0",
-  speaker: [
-    {
-      name: "Lucas Audart",
-      picture: "https://github.com/Slocaly.png",
-      social: "https://bsky.app/profile/slocaly.bsky.social",
-    },
-  ],
+  speaker: [l_audart],
   conferences: [
     {
       name: "LyonJS",

@@ -14,11 +14,11 @@ import {
     useInteractions,
     FloatingPortal,
 } from "@floating-ui/react";
-import type { Speaker } from "./types/Speaker";
+import type { Person } from "@/data/people";
 import styles from "./TalkDetailPage.module.css";
 
 interface CoSpeakerAvatarProps {
-    speaker: Speaker;
+    speaker: Person;
 }
 
 export default function CoSpeakerAvatar({ speaker }: CoSpeakerAvatarProps) {

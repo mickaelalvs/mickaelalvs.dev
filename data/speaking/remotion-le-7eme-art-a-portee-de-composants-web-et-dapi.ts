@@ -6,6 +6,7 @@ import TouraineTech from "../../public/static/images/conferenceLogos/touraineTec
 import LyonJS from "../../public/static/images/conferenceLogos/lyonJs.webp";
 import Bedrock from "../../public/static/images/conferenceLogos/bedrock.svg";
 import type { Talk } from "@/modules/talks/types/Talk";
+import { a_caron } from "@/data/people";
 
 export const RemotionLe7emeArtAPorteeDeComposantsWebEtDApi: Talk = {
   id: "3",
@@ -19,13 +20,7 @@ export const RemotionLe7emeArtAPorteeDeComposantsWebEtDApi: Talk = {
   featuredImage: RemotionFeatured,
   format: "Talk",
   videoId: "mr_-LTkLl8A",
-  speaker: [
-    {
-      name: "Antoine Caron",
-      picture: "https://github.com/slashgear.png",
-      social: "https://x.com/Slashgear_",
-    },
-  ],
+  speaker: [a_caron],
   conferences: [
     {
       name: "MiXiT",
