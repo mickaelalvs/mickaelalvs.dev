@@ -23,8 +23,13 @@ export default async function Image({
   const avatarData = await readFile(join(process.cwd(), "public/avatar.png"));
   const avatarBase64 = `data:image/png;base64,${avatarData.toString("base64")}`;
 
-  const post = getPostBySlug(slug, ["title"]);
-  const articleTitle = post.title || "Article";
+  let articleTitle = "Article";
+  try {
+    const post = getPostBySlug(slug, ["title", "og_title"]);
+    articleTitle = post.og_title || post.title || "Article";
+  } catch (e) {
+    console.error("OG Image error:", e);
+  }
 
   return new ImageResponse(
     <div

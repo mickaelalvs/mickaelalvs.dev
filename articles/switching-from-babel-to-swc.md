@@ -1,6 +1,8 @@
 ---
-title: "Switching from Babel to SWC: Balancing Performance with Modern Tools and Legacy Code"
+title: "Switching from Babel to SWC: Balancing performance with modern tools and legacy code"
 description: "From Babel to SWC: our journey of migrating from a 10-year-old transpiler to a next-gen compiler, overcoming challenges and achieving build performance improvements."
+og_title: "Babel to SWC: Balancing performance with modern tools and legacy code"
+og_description: "Our journey of migrating from a 10-year-old transpiler to a next-gen compiler, overcoming challenges and achieving build performance improvements."
 slug: switching-from-babel-to-swc
 image: /static/images/articles/switching-from-babel-to-swc/thumbnail.jpg
 date: "2025-12-22"
