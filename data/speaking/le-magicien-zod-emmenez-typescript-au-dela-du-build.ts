@@ -1,6 +1,7 @@
 import ZodTalk from "../../public/static/images/talks/soon.webp";
 import TouraineTech from "../../public/static/images/conferenceLogos/touraineTech.svg";
 import type { Talk } from "@/modules/talks/types/Talk";
+import { l_audart } from "@/data/people";
 
 export const LeMagicienZodEmmenezTypeScriptAuDelaDuBuild: Talk = {
     id: "13",
@@ -16,18 +17,7 @@ export const LeMagicienZodEmmenezTypeScriptAuDelaDuBuild: Talk = {
         "Dans ce talk, nous partirons à la découverte de ce formidable outil, avec des cas d'usage concrets et des astuces pour pousser TypeScript encore plus loin qu'à votre habitude ! 🧙",
     image: ZodTalk,
     format: "Talk",
-    speaker: [
-        {
-            name: "Mickaël Alves",
-            picture: "https://github.com/malves-dev.png",
-            social: "https://x.com/malves_dev",
-        },
-        {
-            name: "Lucas Audart",
-            picture: "https://github.com/Slocaly.png",
-            social: "https://bsky.app/profile/slocaly.bsky.social",
-        },
-    ],
+    speaker: [l_audart],
     conferences: [
         {
             name: "Touraine Tech",

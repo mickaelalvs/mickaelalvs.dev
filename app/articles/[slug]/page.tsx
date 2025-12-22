@@ -19,17 +19,13 @@ export async function generateMetadata({
     const post = getPostBySlug(slug, [
       "title",
       "description",
-      "image",
       "canonical_url",
       "slug",
     ]);
 
-    const title = `${post.title} // Mickaël Alves`;
+    const title = `${post.title} | Mickaël Alves`;
     const description = post.description || "";
-    const url = `https://mickaelalvs.dev/${post.slug}`;
-    const image = post.image
-      ? `https://mickaelalvs.dev${post.image}`
-      : "https://mickaelalvs.dev/og-image.png";
+    const url = `https://mickaelalvs.dev/articles/${post.slug}`;
 
     return {
       title,
@@ -41,7 +37,6 @@ export async function generateMetadata({
         title,
         description,
         url,
-        images: [image],
       },
     };
   } catch (e) {

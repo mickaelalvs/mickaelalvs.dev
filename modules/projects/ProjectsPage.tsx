@@ -46,7 +46,7 @@ export default function ProjectsPage() {
 
   return (
     <BaseLayout
-      title="Projects // Mickaël Alves"
+      title="Projects | Mickaël Alves"
       tagline="Community. Build. Open Source."
       primaryColor="cyan"
       secondaryColor="green"

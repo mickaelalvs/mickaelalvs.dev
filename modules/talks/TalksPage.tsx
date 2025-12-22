@@ -128,10 +128,7 @@ function TalksContent() {
                 <ul className={styles.talksList}>
                   {sortedItems.map((item, idx) => (
                     <li key={idx} className={styles.talksListItem}>
-                      <Link
-                        href={`/talks/${item.talkSlug}`}
-                        style={{ textDecoration: "none", color: "inherit" }}
-                      >
+                      <Link href={`/talks/${item.talkSlug}`}>
                         {item.talkTitle}
                       </Link>
                     </li>
@@ -147,7 +144,7 @@ function TalksContent() {
 
   return (
     <BaseLayout
-      title="Talks // Mickaël Alves"
+      title="Talks | Mickaël Alves"
       tagline="Confs. Meetups. Events."
       primaryColor="purple"
       secondaryColor="cyan"
@@ -235,7 +232,7 @@ export default function TalksPage() {
     <Suspense
       fallback={
         <BaseLayout
-          title="Talks // Mickaël Alves"
+          title="Talks | Mickaël Alves"
           tagline="Confs. Meetups. Events."
           primaryColor="purple"
           secondaryColor="cyan"

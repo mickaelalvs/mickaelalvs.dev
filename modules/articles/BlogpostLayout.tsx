@@ -6,13 +6,19 @@ import Footer from "../layout/Footer";
 import BlogDate from "../shared/BlogDate";
 import { Post, PostMain, PostContent, PostContainer } from "../shared/Post";
 import { Wrapper } from "../layout/Wrapper";
+import ArticleHeader from "./ArticleHeader";
+import ArticleTags from "./ArticleTags";
 import styles from "./BlogpostLayout.module.css";
+import type { Person } from "@/data/people";
 
 interface BlogpostLayoutProps {
   children: ReactNode;
   title?: string;
   image?: string;
   date?: string;
+  tags?: string[];
+  authors?: Person[];
+  language?: string;
 }
 
 export default function BlogpostLayout({
@@ -20,6 +26,9 @@ export default function BlogpostLayout({
   title,
   image,
   date,
+  tags,
+  authors,
+  language,
 }: BlogpostLayoutProps) {
   const imageRef = useRef<HTMLDivElement>(null);
   const [transform, setTransform] = useState("translateY(0)");
@@ -105,7 +114,13 @@ export default function BlogpostLayout({
               </div>
             )}
 
+            <ArticleHeader authors={authors} language={language} />
+
+            <div className={styles.contentDivider} />
+
             {children}
+
+            <ArticleTags tags={tags} />
           </PostContainer>
         </PostContent>
       </Main>

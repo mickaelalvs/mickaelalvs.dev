@@ -32,16 +32,16 @@
   font-size: 18px;
   line-height: 24px;
   text-align: left;
-  margin-bottom: 4px;
+  margin-top: 4px;
 }
 
 .description {
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 18px;
   color: #adadad;
   font-weight: 400;
@@ -110,5 +110,4 @@
   will-change: transform;
 }
 
-.articleItem {
-}
+.articleItem {}

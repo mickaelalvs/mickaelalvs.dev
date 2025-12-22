@@ -83,6 +83,7 @@
   color: var(--color-secondary);
   line-height: 1.6;
   white-space: pre-line;
+  font-size: 16px;
 }
 
 .talkButton {
@@ -188,7 +189,7 @@
 .talksList :global(a) {
   color: var(--color-primary);
   text-decoration: none;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .talksList :global(a:hover) {

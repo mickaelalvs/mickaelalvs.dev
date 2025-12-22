@@ -189,7 +189,7 @@ export default function AboutPage() {
 
   return (
     <BaseLayout
-      title="About // Mickaël Alves"
+      title="About | Mickaël Alves"
       tagline="Create. Share. Improve."
       primaryColor="pink"
       secondaryColor="purple"

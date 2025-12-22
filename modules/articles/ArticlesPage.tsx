@@ -1,15 +1,24 @@
-import { getAllPosts, type BlogPost } from "@/lib/blog";
+import { getAllPosts } from "@/lib/blog";
 import BaseLayout from "../layout/BaseLayout";
 import ArticlesContent from "./ArticlesContent";
 
 export default function ArticlesPage() {
-  const allPosts = getAllPosts(["date", "skip", "slug", "title"]);
+  const allPosts = getAllPosts([
+    "content",
+    "date",
+    "description",
+    "featured",
+    "image",
+    "skip",
+    "slug",
+    "title",
+  ]);
 
-  const featuredPosts: BlogPost[] = [];
+  const featuredPosts = allPosts.filter((post) => post.featured);
 
   return (
     <BaseLayout
-      title="Articles // Mickaël Alves"
+      title="Articles | Mickaël Alves"
       tagline="Stories. Experimentation. Guides."
       primaryColor="yellow"
       secondaryColor="pink"

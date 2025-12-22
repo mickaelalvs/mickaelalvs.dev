@@ -5,6 +5,7 @@ import DevfestStrasbourg2023 from "../../public/static/images/conferenceLogos/de
 import SnowCamp from "../../public/static/images/conferenceLogos/snowcamp.webp";
 import Breizhcamp from "../../public/static/images/conferenceLogos/breizhcamp.svg";
 import type { Workshop } from "@/modules/talks/types/Workshop";
+import { l_audart } from "@/data/people";
 
 export const VoyageAuCoeurDappwrite: Workshop = {
   id: "5",
@@ -20,13 +21,7 @@ export const VoyageAuCoeurDappwrite: Workshop = {
   image: AppwriteWorkshop,
   format: "Workshop",
   workshopUrl: "https://appwrite-workshop.vercel.app/en/",
-  speaker: [
-    {
-      name: "Lucas Audart",
-      picture: "https://github.com/Slocaly.png",
-      social: "https://bsky.app/profile/slocaly.bsky.social",
-    },
-  ],
+  speaker: [l_audart],
   conferences: [
     {
       name: "Devfest Nantes",

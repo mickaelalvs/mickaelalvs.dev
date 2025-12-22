@@ -2,6 +2,7 @@ import v0 from "../../public/static/images/talks/v0.webp";
 import DevfestStrasbourg2024 from "../../public/static/images/conferenceLogos/devfest-strasbourg-2024.webp";
 import Zenika from "../../public/static/images/conferenceLogos/zenika.svg";
 import type { Talk } from "@/modules/talks/types/Talk";
+import { e_idoux } from "@/data/people";
 
 export const EntretienTechDuneIaV0ReleveLeDefiEnDirect: Talk = {
   id: "6",
@@ -19,13 +20,7 @@ export const EntretienTechDuneIaV0ReleveLeDefiEnDirect: Talk = {
   format: "Talk",
   videoId: "VmCwqJ4F3wo",
   slidesUrl: "reveal-v0-interview.vercel.app",
-  speaker: [
-    {
-      name: "Etienne Idoux",
-      picture: "https://github.com/PopsIDX.png",
-      social: "https://twitter.com/eidoux",
-    },
-  ],
+  speaker: [e_idoux],
   conferences: [
     {
       name: "Devfest Strasbourg",

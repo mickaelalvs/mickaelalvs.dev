@@ -25,7 +25,7 @@ export default function TalkDetailPage({ slug }: { slug: string }) {
 
   return (
     <BaseLayout
-      title={`${talk.title} // Mickaël Alves`}
+      title={`${talk.title} | Mickaël Alves`}
       tagline={talk.title}
       primaryColor="purple"
       secondaryColor="cyan"
@@ -67,17 +67,17 @@ export default function TalkDetailPage({ slug }: { slug: string }) {
           <div className={styles.section}>
             {talk.speaker.filter((s) => s.name !== "Mickaël Alves").length >
               0 && (
-              <div className={styles.coSpeakersContainer}>
-                <span className={styles.coSpeakersLabel}>Co-speaker:</span>
-                <div className={styles.coSpeakersList}>
-                  {talk.speaker
-                    .filter((s) => s.name !== "Mickaël Alves")
-                    .map((speaker, idx) => (
-                      <CoSpeakerAvatar key={idx} speaker={speaker} />
-                    ))}
+                <div className={styles.coSpeakersContainer}>
+                  <span className={styles.coSpeakersLabel}>Co-speaker:</span>
+                  <div className={styles.coSpeakersList}>
+                    {talk.speaker
+                      .filter((s) => s.name !== "Mickaël Alves")
+                      .map((speaker, idx) => (
+                        <CoSpeakerAvatar key={idx} speaker={speaker} />
+                      ))}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
             <h2 className={styles.sectionTitle}>Conferences</h2>
             <div className={styles.conferencesList}>
               {talk.conferences.map((conf, idx) => (

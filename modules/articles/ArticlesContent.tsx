@@ -34,7 +34,7 @@ export default function ArticlesContent({
           <FeaturedArticle
             key={index}
             index={index}
-            href={`/${post.slug}`}
+            href={`/articles/${post.slug}`}
             title={post.title}
             description={post.description}
             image={post.image}
@@ -50,7 +50,7 @@ export default function ArticlesContent({
         <ListItem
           key={index}
           index={index}
-          href={`/${post.slug}`}
+          href={`/articles/${post.slug}`}
           title={post.title}
           date={post.date}
         />

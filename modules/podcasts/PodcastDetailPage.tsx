@@ -36,7 +36,7 @@ export default function PodcastDetailPage({ slug }: { slug: string }) {
 
   return (
     <BaseLayout
-      title={`${podcast.title} // Mickaël Alves`}
+      title={`${podcast.title} | Mickaël Alves`}
       tagline={podcast.title}
       primaryColor="pink"
       secondaryColor="purple"
