@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 
 export async function generateStaticParams() {
@@ -21,7 +22,12 @@ export async function generateMetadata({
       "description",
       "canonical_url",
       "slug",
+      "private",
     ]);
+
+    if (post.private) {
+      return { title: "Not Found" };
+    }
 
     const title = `${post.title} | Mickaël Alves`;
     const description = post.description || "";
@@ -52,6 +58,12 @@ export default async function Post({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const post = getPostBySlug(slug, ["private"]);
+
+  if (post.private) {
+    notFound();
+  }
+
   const BlogPostPage = (await import("../../../modules/articles/BlogPostPage"))
     .default;
   return <BlogPostPage slug={slug} />;

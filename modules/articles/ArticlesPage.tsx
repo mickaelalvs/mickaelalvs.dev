@@ -9,6 +9,7 @@ export default function ArticlesPage() {
     "description",
     "featured",
     "image",
+    "thumbnail",
     "skip",
     "slug",
     "title",

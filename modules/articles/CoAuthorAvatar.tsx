@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import {
   useFloating,
   autoUpdate,
@@ -53,17 +54,13 @@ export default function CoAuthorAvatar({ author }: CoAuthorAvatarProps) {
         className={styles.coAuthorAvatar}
         {...getReferenceProps()}
       >
-        <img
+        <Image
           src={author.picture}
           alt={author.name}
-          width={32}
-          height={32}
-          style={{
-            width: 32,
-            height: 32,
-            borderRadius: "50%",
-            objectFit: "cover",
-          }}
+          width={40}
+          height={40}
+          className={styles.coAuthorImage}
+          unoptimized={!author.picture.includes("github.com")}
         />
       </a>
       {isOpen && (

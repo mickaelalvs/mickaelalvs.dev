@@ -37,7 +37,7 @@ export default function ArticlesContent({
             href={`/articles/${post.slug}`}
             title={post.title}
             description={post.description}
-            image={post.image}
+            image={post.thumbnail}
             content={post.content}
           />
         );

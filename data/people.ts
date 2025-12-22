@@ -5,7 +5,6 @@ export interface Person {
     social?: string;
 }
 
-// Co-authors articles
 export const jf_farge: Person = {
     id: "jf_farge",
     name: "Jean-François Farge",
@@ -83,7 +82,6 @@ export const h_sablonniere: Person = {
     social: "https://x.com/hsablonniere",
 };
 
-// Utility functions
 const people: Record<string, Person> = {
     jf_farge,
     t_gianella,
