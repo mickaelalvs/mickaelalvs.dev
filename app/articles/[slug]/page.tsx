@@ -19,22 +19,13 @@ export async function generateMetadata({
     const post = getPostBySlug(slug, [
       "title",
       "description",
-      "image",
       "canonical_url",
       "slug",
-      "og_title",
-      "og_description",
     ]);
 
     const title = `${post.title} | Mickaël Alves`;
     const description = post.description || "";
     const url = `https://mickaelalvs.dev/articles/${post.slug}`;
-
-    const ogTitle = post.og_title || post.title;
-    const ogDescription = post.og_description || description;
-    const image = post.image
-      ? `https://mickaelalvs.dev${post.image}`
-      : "https://mickaelalvs.dev/og-image.png";
 
     return {
       title,
@@ -43,10 +34,9 @@ export async function generateMetadata({
         canonical: post.canonical_url || url,
       },
       openGraph: {
-        title: ogTitle,
-        description: ogDescription,
+        title,
+        description,
         url,
-        images: [image],
       },
     };
   } catch (e) {
