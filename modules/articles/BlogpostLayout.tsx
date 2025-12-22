@@ -116,7 +116,7 @@ export default function BlogpostLayout({
 
             <ArticleHeader authors={authors} language={language} />
 
-            <div className={styles.contentDivider} />
+            {title && <div className={styles.contentDivider} />}
 
             {children}
 

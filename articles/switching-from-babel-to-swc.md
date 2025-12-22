@@ -2,14 +2,22 @@
 title: "Switching from Babel to SWC: Balancing performance with modern tools and legacy code"
 description: "From Babel to SWC: our journey of migrating from a 10-year-old transpiler to a next-gen compiler, overcoming challenges and achieving build performance improvements."
 slug: switching-from-babel-to-swc
-image: /static/images/articles/switching-from-babel-to-swc/thumbnail.jpg
+image: /static/images/articles/switching-from-babel-to-swc/hero.jpg
+thumbnail: /static/images/articles/switching-from-babel-to-swc/thumbnail.jpg
 date: "2025-12-22"
 featured: true
 private: true
 tags: [swc, babel, JavaScript, react, web, frontend, performance, bundler]
 authors: [jf_farge, t_gianella]
 language: en
+canonical_url: https://tech.bedrockstreaming.com/2025/12/22/switching-from-babel-to-swc
 ---
+
+<br />
+
+> 📝 This article was originally published on [BedrockStreaming Tech Blog](https://tech.bedrockstreaming.com/switching-from-babel-to-swc).
+
+<br />
 
 Ever since websites started being made essentially from JavaScript, transpiling this code to run in the largest number of different browsers has been an essential step in the build process. From the very beginning, more than ten years ago, the BedrockStreaming web application has relied on [Babel](https://babeljs.io/) for this task. This year we migrated from Babel to its next-gen replacement, [SWC](https://swc.rs/). It was not a smooth ride all the way, so let’s see what challenges we’ve had to overcome and if the payoff was worth the effort!
 
@@ -217,3 +225,9 @@ On a longer-term horizon, we also plan to remove the remaining parts of the lega
 It’s also worth mentioning that SWC’s documentation can be limited when it comes to more specific or advanced use cases. A big part of this migration involved experimentation, reading source code, and validating assumptions through benchmarks. We hope this article can help others facing similar constraints and reduce some of the friction we encountered along the way.
 
 Throughout this process, our goal was clear: push developer experience as far as possible without compromising the quality of the final production bundle. And while this migration alone already delivers strong gains, it really starts to shine when combined with other optimizations, such as smarter caching strategies. **More on that in a follow-up article.**
+
+<br />
+
+---
+
+<small>Photo by <a href="https://unsplash.com/@caraventurera?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Cara Fuller</a></small>

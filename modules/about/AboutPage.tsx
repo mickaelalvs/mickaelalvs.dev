@@ -29,7 +29,7 @@ export default function AboutPage() {
       <div className={styles.container}>
         <div className={styles.section}>
           <Image
-            alt="Zeno"
+            alt="Mickaël Alves"
             src="/static/images/micka.webp"
             width="672"
             height="1008"
