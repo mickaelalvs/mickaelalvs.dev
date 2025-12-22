@@ -1,6 +1,7 @@
 import type { Podcast } from "@/modules/podcasts/types/Podcast";
 import ZenikastHypeDrivenDevelopment from "../../public/static/images/talks/zenikast-hype-driven-development.webp";
 import Zenika from "../../public/static/images/conferenceLogos/zenika.svg";
+import { l_audart, h_sablonniere, e_idoux } from "@/data/people";
 
 export const HypeDrivenDevelopment: Podcast = {
   id: "9",
@@ -12,23 +13,7 @@ export const HypeDrivenDevelopment: Podcast = {
     "Discutons bonnes pratiques pour intégrer ou non ces innovations, tout en évitant les pièges des effets de mode. Nous partageons notre vision sur la manière dont les équipes peuvent gérer leur veille quotidienne pour maintenir leurs expertises, en équilibrant innovation et pragmatisme.\n",
   image: ZenikastHypeDrivenDevelopment,
   format: "Podcast",
-  speaker: [
-    {
-      name: "Audart Lucas",
-      picture: "https://github.com/Slocaly.png",
-      social: "https://bsky.app/profile/slocaly.bsky.social",
-    },
-    {
-      name: "Hubert Sablonnière",
-      picture: "https://github.com/hsablonniere.png",
-      social: "https://x.com/hsablonniere",
-    },
-    {
-      name: "Etienne Idoux",
-      picture: "https://github.com/PopsIDX.png",
-      social: "https://twitter.com/eidoux",
-    },
-  ],
+  speaker: [l_audart, h_sablonniere, e_idoux],
   videoId: "3tBFOo8Yjoo",
   conferences: [
     {

@@ -3,6 +3,7 @@ import DevfestNantes2025 from "../../public/static/images/conferenceLogos/devfes
 import SnowCamp from "../../public/static/images/conferenceLogos/snowcamp.webp";
 import TouraineTech from "../../public/static/images/conferenceLogos/touraineTech.svg";
 import type { Talk } from "@/modules/talks/types/Talk";
+import { l_audart } from "@/data/people";
 
 export const RevolutionTanStackQueryEnfinUneBonneGestionDetat: Talk = {
   id: "11",
@@ -20,18 +21,7 @@ export const RevolutionTanStackQueryEnfinUneBonneGestionDetat: Talk = {
   format: "Talk",
   videoId: "NwSmWe2IRFM",
   slidesUrl: "https://talk-tanstack-query-slides.vercel.app",
-  speaker: [
-    {
-      name: "Mickaël Alves",
-      picture: "https://github.com/malves-dev.png",
-      social: "https://x.com/malves_dev",
-    },
-    {
-      name: "Lucas Audart",
-      picture: "https://github.com/Slocaly.png",
-      social: "https://bsky.app/profile/slocaly.bsky.social",
-    },
-  ],
+  speaker: [l_audart],
   conferences: [
     {
       name: "DevFest Nantes",

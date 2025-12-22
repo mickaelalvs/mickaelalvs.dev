@@ -6,6 +6,7 @@ import BDXIO from "../../public/static/images/conferenceLogos/bdxio.webp";
 import DevfestToulouse from "../../public/static/images/conferenceLogos/defestToulouse.webp";
 import DevfestDijon from "../../public/static/images/conferenceLogos/devfestDijon.webp";
 import type { Talk } from "@/modules/talks/types/Talk";
+import { e_idoux } from "@/data/people";
 
 export const LesCoulissesDeJavaScriptCeQuonUtiliseSansComprendre: Talk = {
   id: "10",
@@ -23,13 +24,7 @@ export const LesCoulissesDeJavaScriptCeQuonUtiliseSansComprendre: Talk = {
   format: "Talk",
   videoId: "OKrTqt3sgCE",
   slidesUrl: "https://talk-js-backstage.vercel.app",
-  speaker: [
-    {
-      name: "Etienne Idoux",
-      picture: "https://github.com/PopsIDX.png",
-      social: "https://twitter.com/eidoux",
-    },
-  ],
+  speaker: [e_idoux],
   conferences: [
     {
       name: "DevQuest",

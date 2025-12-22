@@ -6,6 +6,7 @@ import TouraineTech from "../../public/static/images/conferenceLogos/touraineTec
 import Breizhcamp from "../../public/static/images/conferenceLogos/breizhcamp.svg";
 import Zenika from "../../public/static/images/conferenceLogos/zenika.svg";
 import type { Talk } from "@/modules/talks/types/Talk";
+import { e_idoux } from "@/data/people";
 
 export const StopALespionnageCommentDisparaitreDinternet: Talk = {
   id: "4",
@@ -21,13 +22,7 @@ export const StopALespionnageCommentDisparaitreDinternet: Talk = {
   format: "Talk",
   videoId: "pHP3MC1r6Ro",
   slidesUrl: "https://reveal-personal-data.vercel.app",
-  speaker: [
-    {
-      name: "Etienne Idoux",
-      picture: "https://github.com/PopsIDX.png",
-      social: "https://twitter.com/eidoux",
-    },
-  ],
+  speaker: [e_idoux],
   conferences: [
     {
       name: "Devfest Lille",

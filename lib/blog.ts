@@ -76,7 +76,8 @@ export function getPostBySlug(slug: string, fields: string[] = []): BlogPost {
 export function getAllPosts(fields: string[] = []): BlogPost[] {
   const slugs = getPostSlugs();
   return slugs
-    .map((slug) => getPostBySlug(slug, fields))
+    .map((slug) => getPostBySlug(slug, [...fields, "private"]))
+    .filter((post) => !post.private)
     .sort((post1, post2) => (post1.date! > post2.date! ? -1 : 1));
 }
 

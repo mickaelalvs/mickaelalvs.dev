@@ -93,13 +93,11 @@
 
 .postImage::after {
   content: "";
-  background-image: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.8) 0,
-    transparent 50%,
-    transparent 90%,
-    rgba(0, 0, 0, 0.8)
-  );
+  background-image: linear-gradient(180deg,
+      rgba(0, 0, 0, 0.8) 0,
+      transparent 50%,
+      transparent 90%,
+      rgba(0, 0, 0, 0.8));
   position: absolute;
   width: 100%;
   height: 100%;
@@ -113,4 +111,102 @@
   .postImage {
     position: absolute;
   }
+}
+
+.articleHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 0;
+}
+
+.headerItem {
+  font-size: 16px;
+  color: var(--color-secondary);
+}
+
+.coAuthorsSection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.coAuthorsLabel {
+  font-size: 15px;
+  color: var(--color-secondary);
+}
+
+.coAuthorsList {
+  display: flex;
+  align-items: center;
+  gap: -8px;
+}
+
+.coAuthorAvatar {
+  display: block;
+  margin-left: -8px;
+  text-decoration: none;
+  border: none;
+  transition: transform 0.2s ease;
+}
+
+.coAuthorAvatar:first-child {
+  margin-left: 0;
+}
+
+.coAuthorAvatar:hover {
+  transform: scale(1.1);
+  z-index: 1;
+  text-decoration: none;
+}
+
+.coAuthorTooltip {
+  background: var(--color-background, #1a1a1a);
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.1));
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--color-primary);
+  z-index: 1000;
+}
+
+.contentDivider {
+  width: 100%;
+  height: 1px;
+  background: var(--color-border, rgba(255, 255, 255, 0.1));
+  margin: 24px 0;
+}
+
+.articleTags {
+  margin-top: 48px;
+}
+
+.tagsDivider {
+  width: 100%;
+  height: 1px;
+  background: var(--color-border, rgba(255, 255, 255, 0.1));
+  margin-bottom: 24px;
+}
+
+.tagsContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 2rem;
+}
+
+.tag {
+  font-size: 14px;
+  color: var(--color-secondary);
+  background: var(--color-background-tertiary, rgba(255, 255, 255, 0.08));
+  padding: 2px 20px;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.tag:hover {
+  background: var(--color-background-tertiary, rgba(255, 255, 255, 0.12));
 }

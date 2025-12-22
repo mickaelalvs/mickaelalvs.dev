@@ -24,7 +24,7 @@ export async function generateMetadata({
       "slug",
     ]);
 
-    const title = `${post.title} // Mickaël Alves`;
+    const title = `${post.title} | Mickaël Alves`;
     const description = post.description || "";
     const url = `https://mickaelalvs.dev/${post.slug}`;
     const image = post.image

@@ -1,5 +1,5 @@
 import type { StaticImageData } from "next/image";
-import type { Speaker } from "./Speaker";
+import type { Person } from "@/data/people";
 import type { Conference } from "./Conference";
 import type { Format } from "./Format";
 
@@ -12,7 +12,7 @@ export type Talk = {
   featuredImage?: StaticImageData;
   format: Format;
   videoId?: string;
-  speaker: Speaker[];
+  speaker: Person[];
   conferences: Conference[];
   slidesUrl?: string;
   workshopUrl?: string;

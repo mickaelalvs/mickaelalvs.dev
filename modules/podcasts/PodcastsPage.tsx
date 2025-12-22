@@ -34,7 +34,7 @@ export default function PodcastsPage() {
 
   return (
     <BaseLayout
-      title="Podcasts // Mickaël Alves"
+      title="Podcasts | Mickaël Alves"
       tagline="Ideas. Conversations. Sharing."
       primaryColor="pink"
       secondaryColor="purple"

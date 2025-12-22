@@ -181,7 +181,7 @@ code {
   font-size: 15px;
 }
 
-:not(pre) > code {
+:not(pre)>code {
   padding: 4px;
 }
 
@@ -218,6 +218,8 @@ img {
 p {
   margin: 20px 0;
   color: var(--color-secondary);
+  font-size: 18px;
+  line-height: 1.8;
 }
 
 strong {

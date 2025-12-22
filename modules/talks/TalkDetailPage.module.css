@@ -22,8 +22,7 @@
   filter: grayscale(0.3);
 }
 
-.content {
-}
+.content {}
 
 .section {
   margin-bottom: 48px;
@@ -37,7 +36,7 @@
 }
 
 .description {
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.8;
   color: var(--color-secondary);
   white-space: pre-line;

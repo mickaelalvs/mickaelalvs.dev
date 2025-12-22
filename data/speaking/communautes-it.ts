@@ -1,6 +1,7 @@
 import type { Podcast } from "@/modules/podcasts/types/Podcast";
 import ZenikastCommunautesIt from "../../public/static/images/talks/zenikast-communautes-it.webp";
 import Zenika from "../../public/static/images/conferenceLogos/zenika.svg";
+import { a_nava, l_audart, jp_baconnais, j_landure } from "@/data/people";
 
 export const CommunautesIt: Podcast = {
   id: "10",
@@ -12,28 +13,7 @@ export const CommunautesIt: Podcast = {
     "Dans ce podcast, nous plongeons au cœur de ces communautés, en explorant les raisons pour lesquelles des passionnés de tech choisissent de s’y investir. À travers des échanges riches et variés, nos invités partagent leurs expériences : comment ces communautés naissent, comment elles grandissent, et surtout, quels sont les bénéfices qu’elles apportent, que ce soit sur le plan personnel, professionnel ou collectif.\n",
   image: ZenikastCommunautesIt,
   format: "Podcast",
-  speaker: [
-    {
-      name: "Adriana Nava Aguilar",
-      picture: "https://github.com/quilaztlia.png",
-      social: "https://x.com/quilaztlia",
-    },
-    {
-      name: "Audart Lucas",
-      picture: "https://github.com/Slocaly.png",
-      social: "https://bsky.app/profile/slocaly.bsky.social",
-    },
-    {
-      name: "Jean-Phi Baconnais",
-      picture: "https://github.com/jeanphi-baconnais.png",
-      social: "https://x.com/JPhi_Baconnais",
-    },
-    {
-      name: "Julien Landuré",
-      picture: "https://github.com/jlandure.png",
-      social: "https://x.com/jlandure",
-    },
-  ],
+  speaker: [a_nava, l_audart, jp_baconnais, j_landure],
   videoId: "wtLd2ABm0Xs",
   conferences: [
     {
