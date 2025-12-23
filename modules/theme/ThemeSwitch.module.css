@@ -1,0 +1,29 @@
+.button {
+  appearance: none;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-border-radius);
+  color: var(--color-nav-text);
+  cursor: pointer;
+  height: 34px;
+  padding: 0 8px;
+  transition: background var(--transition-duration) ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button:hover {
+  background: var(--color-hover);
+}
+
+.icon {
+  font-size: 22px;
+  line-height: 32px;
+  transition: transform 0.3s ease;
+}
+
+.button:hover .icon {
+  transform: rotate(15deg);
+}
+

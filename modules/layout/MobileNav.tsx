@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Lottie from "lottie-react";
+import clsx from "clsx";
 import styles from "./Navbar.module.css";
 import homeIcon from "../../public/static/icons/home.json";
 import aboutIcon from "../../public/static/icons/about.json";
@@ -141,7 +142,7 @@ export default function MobileNav({ pages }: MobileNavProps) {
                   >
                     <Link
                       href={path}
-                      className={`${styles.mobileNavLink} ${isActive ? styles.mobileActive : ""}`}
+                      className={clsx(styles.mobileNavLink, isActive && styles.mobileActive)}
                       onClick={toggleMenu}
                       onMouseEnter={() =>
                         iconRefs.current[page]?.current?.play()

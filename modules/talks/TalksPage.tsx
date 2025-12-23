@@ -4,6 +4,7 @@ import { useState, Suspense } from "react";
 import { useQueryState, parseAsStringLiteral } from "nuqs";
 import { LayoutGroup, motion } from "framer-motion";
 import Link from "next/link";
+import clsx from "clsx";
 import BaseLayout from "../layout/BaseLayout";
 import { Box } from "../shared/Box";
 import FeaturedTalk from "./FeaturedTalk";
@@ -170,7 +171,7 @@ function TalksContent() {
           <LayoutGroup id="toggle">
             <div className={styles.toggleContainer}>
               <button
-                className={`${styles.toggleButton} ${viewMode === "conferences" ? styles.toggleButtonActive : ""}`}
+                className={clsx(styles.toggleButton, viewMode === "conferences" && styles.toggleButtonActive)}
                 onClick={() => setViewMode("conferences")}
               >
                 {viewMode === "conferences" && (
@@ -183,7 +184,7 @@ function TalksContent() {
                 <span className={styles.toggleText}>By Year</span>
               </button>
               <button
-                className={`${styles.toggleButton} ${viewMode === "talks" ? styles.toggleButtonActive : ""}`}
+                className={clsx(styles.toggleButton, viewMode === "talks" && styles.toggleButtonActive)}
                 onClick={() => setViewMode("talks")}
               >
                 {viewMode === "talks" && (

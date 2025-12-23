@@ -4,18 +4,22 @@ import { Box } from "../shared/Box";
 import Toast from "../shared/Toast";
 import { useRef, useState, forwardRef } from "react";
 import React from "react";
+import clsx from "clsx";
 import { useRouter } from "next/navigation";
+import { useTheme } from "@/modules/theme/ThemeProvider";
 import styles from "./CommandBar.module.css";
 import {
   KBarAnimator,
   KBarProvider,
   KBarPortal,
   useDeepMatches,
+  useRegisterActions,
   KBarPositioner,
   KBarSearch,
   KBarResults,
 } from "kbar";
 import Lottie from "lottie-react";
+import moonIcon from "../../public/static/icons/moon.json";
 import copyLinkIcon from "../../public/static/icons/copy-link.json";
 import emailIcon from "../../public/static/icons/email.json";
 import sourceIcon from "../../public/static/icons/source.json";
@@ -210,6 +214,7 @@ export default function CommandBar(props: CommandBarProps) {
     <>
       {/* @ts-expect-error - KBar types are not compatible with React 19 */}
       <KBarProvider actions={actions}>
+        <ThemeAction />
         <KBarPortal>
           <KBarPositioner className={styles.positioner}>
             {/* @ts-expect-error - KBar types are not compatible with React 19 */}
@@ -235,6 +240,36 @@ export default function CommandBar(props: CommandBarProps) {
       />
     </>
   );
+}
+
+function ThemeAction() {
+  const { theme, toggleTheme } = useTheme();
+  const moonRef = useRef<any>(null);
+
+  useRegisterActions(
+    [
+      {
+        id: "theme",
+        name: theme === "dark" ? "Switch to light mode" : "Switch to dark mode",
+        shortcut: ["t"],
+        keywords: "theme dark light mode",
+        section: "General",
+        perform: toggleTheme,
+        icon: (
+          <Lottie
+            lottieRef={moonRef}
+            style={{ width: 24, height: 24 }}
+            animationData={moonIcon}
+            loop={false}
+            autoplay={false}
+          />
+        ),
+      },
+    ],
+    [theme, toggleTheme],
+  );
+
+  return null;
 }
 
 function RenderResults() {
@@ -282,7 +317,7 @@ const ResultItem = forwardRef<HTMLDivElement, ResultItemProps>(
     return (
       <Box
         ref={ref}
-        className={`${styles.resultItem} ${active ? styles.resultItemActive : ""}`}
+        className={clsx(styles.resultItem, active && styles.resultItemActive)}
         onMouseEnter={() => lottieRef?.current?.play()}
         onMouseLeave={() => lottieRef?.current?.stop()}
       >

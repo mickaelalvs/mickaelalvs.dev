@@ -75,7 +75,7 @@ export default function BlogpostLayout({
 
   return (
     <Wrapper>
-      <Navbar />
+      <Navbar forceDark={!!image} />
       <Main image={image}>
         {image && (
           <div className={styles.postHeader}>

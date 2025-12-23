@@ -29,6 +29,7 @@ export default function TalkDetailPage({ slug }: { slug: string }) {
       tagline={talk.title}
       primaryColor="purple"
       secondaryColor="cyan"
+      highlightLastChar
     >
       <div className={styles.container}>
         <div className={styles.header}>

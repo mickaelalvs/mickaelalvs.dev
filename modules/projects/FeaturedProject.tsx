@@ -7,12 +7,12 @@ import Lottie from "lottie-react";
 import type { Project } from "./types/Project";
 import styles from "./FeaturedProject.module.css";
 import remotionIcon from "../../public/static/icons/remotion.json";
-import codeInTheDarkIcon from "../../public/static/icons/code-in-the-dark.json";
+import moonIcon from "../../public/static/icons/moon.json";
 import sourceIcon from "../../public/static/icons/source.json";
 
 const iconMap = {
   remotion: remotionIcon,
-  "code-in-the-dark": codeInTheDarkIcon,
+  moon: moonIcon,
   source: sourceIcon,
 };
 

@@ -4,15 +4,23 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import clsx from "clsx";
+import { useTheme } from "@/modules/theme/ThemeProvider";
 import styles from "./Navbar.module.css";
 
 interface DesktopNavProps {
   pages: string[];
+  forceDark?: boolean;
 }
 
-export default function DesktopNav({ pages }: DesktopNavProps) {
+export default function DesktopNav({ pages, forceDark = false }: DesktopNavProps) {
   const pathname = usePathname();
   const [hovered, setHovered] = useState<string>("");
+  const { theme } = useTheme();
+
+  const isDark = forceDark || theme === "dark";
+  const activeColor = isDark ? "#FFFFFF" : "#1a1a1a";
+  const inactiveColor = isDark ? "#ADADAD" : "#525866";
 
   return (
     <nav className={styles.desktopNav}>
@@ -58,10 +66,10 @@ export default function DesktopNav({ pages }: DesktopNavProps) {
                     )}
                   </AnimatePresence>
                   <motion.span
-                    className={`${styles.navContainer} ${isActive ? styles.active : ""}`}
+                    className={clsx(styles.navContainer, isActive && styles.active)}
                     animate={{
                       color:
-                        pathname === path || isHovered ? "#FFFFFF" : "#ADADAD",
+                        pathname === path || isHovered ? activeColor : inactiveColor,
                     }}
                     transition={{
                       duration: 0.4,

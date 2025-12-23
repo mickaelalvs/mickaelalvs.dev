@@ -14,7 +14,7 @@ const items: ProjectYear[] = [
         description: "You thought you knew front-end",
         url: "https://code-in-the-dark-editor.lyonjs.org/",
         active: true,
-        icon: "code-in-the-dark",
+        icon: "moon",
         stats: "4+ events",
       },
     ],

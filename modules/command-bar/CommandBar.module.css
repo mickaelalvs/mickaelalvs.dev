@@ -6,7 +6,7 @@
   width: 100%;
   inset: 0;
   padding: 14vh 16px 16px;
-  background: rgba(0, 0, 0, 0.8);
+  background: var(--color-overlay, rgba(0, 0, 0, 0.8));
   box-sizing: border-box;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .kbd {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-hover);
   color: var(--color-secondary);
   padding: 4px 8px;
   text-transform: uppercase;
@@ -55,17 +55,17 @@
 }
 
 .animator {
-  background-color: #1a1c1e;
+  background-color: var(--color-modal-bg);
   max-width: 600px;
   width: 100%;
   color: var(--color-primary);
   border-radius: 8px;
   overflow: hidden;
+  box-shadow: 0 16px 70px rgba(0, 0, 0, 0.2);
 }
 
 @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
   .animator {
-    background-color: var(--color-command);
     -webkit-backdrop-filter: saturate(300%) blur(25px);
     backdrop-filter: saturate(300%) blur(25px);
   }
@@ -92,6 +92,6 @@
 }
 
 .resultItemActive {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-hover);
   color: var(--color-primary);
 }

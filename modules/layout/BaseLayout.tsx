@@ -13,6 +13,7 @@ interface BaseLayoutProps {
   tagline?: string;
   primaryColor?: string;
   secondaryColor?: string;
+  highlightLastChar?: boolean;
 }
 
 export default function BaseLayout({
@@ -21,6 +22,7 @@ export default function BaseLayout({
   tagline,
   primaryColor = "pink",
   secondaryColor = "purple",
+  highlightLastChar = false,
 }: BaseLayoutProps) {
   const displayText = tagline || title || "";
 
@@ -30,7 +32,7 @@ export default function BaseLayout({
     .slice(0, -1)
     .map((s) => s.segment)
     .join("");
-  const emoji = segments.slice(-1)[0]?.segment || "";
+  const lastChar = segments.slice(-1)[0]?.segment || "";
 
   return (
     <Wrapper>
@@ -43,21 +45,21 @@ export default function BaseLayout({
         <PostContent>
           <PostContainer>
             <h1 className={styles.title}>
-              {textWithoutLastGrapheme && (
-                <span
-                  className={styles.gradientTitle}
-                  style={{
-                    backgroundImage: `linear-gradient(
+              <span
+                className={styles.gradientTitle}
+                style={{
+                  backgroundImage: `linear-gradient(
                     135deg,
                     var(--color-${primaryColor}) 0%,
                     var(--color-${secondaryColor}) 100%
                   )`,
-                  }}
-                >
-                  {textWithoutLastGrapheme}
-                </span>
+                }}
+              >
+                {highlightLastChar ? textWithoutLastGrapheme : displayText}
+              </span>
+              {highlightLastChar && lastChar && (
+                <span className={styles.lastChar}>{lastChar}</span>
               )}
-              {emoji && <span className={styles.lastChar}>{emoji}</span>}
             </h1>
             {children}
           </PostContainer>

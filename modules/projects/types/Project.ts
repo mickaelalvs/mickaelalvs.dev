@@ -3,6 +3,6 @@ export interface Project {
   description: string;
   url: string;
   active?: boolean;
-  icon: "remotion" | "code-in-the-dark" | "source";
+  icon: "remotion" | "moon" | "source";
   stats?: string;
 }
