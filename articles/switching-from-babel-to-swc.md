@@ -228,6 +228,5 @@ Throughout this process, our goal was clear: push developer experience as far as
 
 <br />
 
----
 
 <small>Photo by <a href="https://unsplash.com/@caraventurera?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Cara Fuller</a></small>

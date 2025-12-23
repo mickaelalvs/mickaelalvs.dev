@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "@/modules/theme/ThemeProvider";
 import { generateSlug } from "@/utils/slug";
 import type { Talk } from "./types/Talk";
 import styles from "./FeaturedTalk.module.css";
@@ -63,6 +64,10 @@ interface AnimationProps {
 function Animation(props: AnimationProps) {
   const { hovered, setHovered } = props;
   const isHovered = hovered === props.index;
+  const { theme } = useTheme();
+
+  const activeColor = theme === "dark" ? "#FFFFFF" : "#1a1a1a";
+  const inactiveColor = theme === "dark" ? "#ADADAD" : "#525866";
 
   return (
     <motion.div
@@ -70,7 +75,7 @@ function Animation(props: AnimationProps) {
       onHoverStart={() => setHovered(props.index)}
       onHoverEnd={() => setHovered("")}
       animate={{
-        color: isHovered ? "#FFFFFF" : "#ADADAD",
+        color: isHovered ? activeColor : inactiveColor,
       }}
       transition={{
         duration: 0.3,

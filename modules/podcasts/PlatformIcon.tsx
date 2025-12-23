@@ -63,9 +63,7 @@ export default function PlatformIcon({
           alt={`${platform.platform} icon`}
           width={24}
           height={24}
-          style={{
-            filter: "brightness(0) saturate(100%) invert(100%)",
-          }}
+          className={styles.platformIcon}
         />
       </a>
       {isOpen && (

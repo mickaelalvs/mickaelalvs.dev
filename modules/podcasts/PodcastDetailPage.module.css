@@ -62,6 +62,14 @@
   transform: translateY(-2px);
 }
 
+.platformIcon {
+  filter: brightness(0) saturate(100%) invert(100%);
+}
+
+:global([data-theme="light"]) .platformIcon {
+  filter: brightness(0) saturate(100%);
+}
+
 .backLink {
   display: inline-block;
   margin-top: 40px;

@@ -193,7 +193,7 @@
 .contentDivider {
   width: 100%;
   height: 1px;
-  background: var(--color-border, rgba(255, 255, 255, 0.1));
+  background: var(--color-hover);
   margin: 24px 0;
 }
 
@@ -204,7 +204,7 @@
 .tagsDivider {
   width: 100%;
   height: 1px;
-  background: var(--color-border, rgba(255, 255, 255, 0.1));
+  background: var(--color-hover);
   margin-bottom: 24px;
 }
 
@@ -219,12 +219,12 @@
 .tag {
   font-size: 14px;
   color: var(--color-secondary);
-  background: var(--color-background-tertiary, rgba(255, 255, 255, 0.08));
+  background: var(--color-command);
   padding: 2px 20px;
   border-radius: 4px;
   transition: background 0.2s ease;
 }
 
 .tag:hover {
-  background: var(--color-background-tertiary, rgba(255, 255, 255, 0.12));
+  background: var(--color-hover);
 }

@@ -43,7 +43,7 @@
   text-overflow: ellipsis;
   font-size: 15px;
   line-height: 18px;
-  color: #adadad;
+  color: var(--color-secondary);
   font-weight: 400;
 }
 

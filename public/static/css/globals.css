@@ -2,7 +2,7 @@
    CSS Variables (Theme)
    ============================================ */
 :root {
-  /* Colors */
+  /* Colors - Dark theme (default) */
   --color-yellow: #ffff80;
   --color-pink: #ff80bf;
   --color-purple: #9580ff;
@@ -15,6 +15,10 @@
   --color-background: #08070b;
   --color-hover: #212024;
   --color-command: rgba(255, 255, 255, 0.05);
+  --color-nav-text: white;
+  --color-nav-hover: rgba(255, 255, 255, 0.1);
+  --color-overlay: rgba(0, 0, 0, 0.8);
+  --color-modal-bg: rgba(26, 28, 30, 0.95);
 
   /* Code/Syntax highlighting colors */
   --color-code-background: #151417;
@@ -68,6 +72,63 @@
   --breakpoint-bp2: 760px;
   --breakpoint-bp3: 780px;
   --breakpoint-bp4: 1024px;
+}
+
+/* Light theme */
+[data-theme="light"] {
+  --color-yellow: #b59f00;
+  --color-pink: #d6336c;
+  --color-purple: #7c3aed;
+  --color-red: #dc2626;
+  --color-orange: #ea580c;
+  --color-green: #16a34a;
+  --color-cyan: #0891b2;
+  --color-primary: #1a1a1a;
+  --color-secondary: #525866;
+  --color-background: #fafafa;
+  --color-hover: #e5e5e5;
+  --color-command: rgba(0, 0, 0, 0.05);
+  --color-nav-text: #1a1a1a;
+  --color-nav-hover: rgba(0, 0, 0, 0.08);
+  --color-overlay: rgba(0, 0, 0, 0.5);
+  --color-modal-bg: rgba(255, 255, 255, 0.95);
+
+  /* Code/Syntax highlighting colors */
+  --color-code-background: #f1f1f1;
+  --color-comment: #6b7280;
+  --color-foreground: #1a1a1a;
+  --color-selection: #d1d5db;
+
+  /* Transparency variants (30%) */
+  --color-background-30: #e5e5e533;
+  --color-comment-30: #6b728033;
+  --color-foreground-30: #1a1a1a33;
+  --color-selection-30: #d1d5db33;
+  --color-cyan-30: #0891b233;
+  --color-green-30: #16a34a33;
+  --color-orange-30: #ea580c33;
+  --color-pink-30: #d6336c33;
+  --color-purple-30: #7c3aed33;
+  --color-red-30: #dc262633;
+  --color-yellow-30: #b59f0033;
+
+  /* Transparency variants (40%) */
+  --color-background-40: #e5e5e566;
+  --color-comment-40: #6b728066;
+  --color-foreground-40: #1a1a1a66;
+  --color-selection-40: #d1d5db66;
+  --color-cyan-40: #0891b266;
+  --color-green-40: #16a34a66;
+  --color-orange-40: #ea580c66;
+  --color-pink-40: #d6336c66;
+  --color-purple-40: #7c3aed66;
+  --color-red-40: #dc262666;
+  --color-yellow-40: #b59f0066;
+}
+
+/* Invert Lottie colors in light theme */
+[data-theme="light"] svg {
+  filter: invert(1);
 }
 
 /* ============================================
@@ -162,7 +223,7 @@ kbd {
 svg {
   width: 32px;
   height: 32px;
-  fill: white;
+  fill: var(--color-nav-text);
 }
 
 figure {

@@ -1,7 +1,7 @@
 .header {
   display: flex;
   align-items: center;
-  color: white;
+  color: var(--color-nav-text);
   font-size: 12px;
   min-height: 59px;
   width: 100%;
@@ -10,6 +10,11 @@
   top: 0;
   z-index: 3;
   margin-top: 13px;
+}
+
+.forceDark {
+  --color-nav-text: white;
+  --color-nav-hover: rgba(255, 255, 255, 0.1);
 }
 
 @media (min-width: 760px) {
@@ -38,7 +43,7 @@
   background: transparent;
   border: none;
   border-radius: var(--radius-border-radius);
-  color: white;
+  color: var(--color-nav-text);
   cursor: pointer;
   height: 34px;
   padding: 0 10px;
@@ -126,7 +131,7 @@
   transform: translateX(-50%);
   width: 20px;
   height: 2px;
-  background: white;
+  background: var(--color-nav-text);
   border-radius: 1px;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
@@ -142,7 +147,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-nav-hover);
   border-radius: var(--radius-border-radius);
   z-index: -1;
 }
@@ -175,7 +180,7 @@
   display: block;
   height: 2px;
   width: 100%;
-  background: white;
+  background: var(--color-nav-text);
   border-radius: 1px;
   transition: all 0.3s ease;
 }
@@ -189,7 +194,7 @@
   bottom: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.98);
+  background: var(--color-background);
   z-index: 999;
   padding: 0;
   margin: 0;
@@ -235,12 +240,12 @@
 
 .mobileNavLink:hover {
   color: var(--color-primary);
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-nav-hover);
 }
 
 .mobileNavLink.mobileActive {
   color: var(--color-primary);
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-nav-hover);
 }
 
 .mobileNavIcon {
@@ -258,7 +263,7 @@
   appearance: none;
   background: transparent;
   border: none;
-  color: white;
+  color: var(--color-nav-text);
   cursor: pointer;
   width: 48px;
   height: 48px;
@@ -271,7 +276,7 @@
 }
 
 .closeButton:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-nav-hover);
 }
 
 .closeIcon {
