@@ -15,6 +15,8 @@ import {
   useInteractions,
   FloatingPortal,
 } from "@floating-ui/react";
+import clsx from "clsx";
+import { useTheme } from "@/modules/theme/ThemeProvider";
 import type { PlatformLink } from "./types/PlatformLink";
 import styles from "./PodcastDetailPage.module.css";
 
@@ -28,6 +30,7 @@ export default function PlatformIcon({
   getPlatformIcon,
 }: PlatformIconProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const { theme } = useTheme();
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
@@ -63,9 +66,7 @@ export default function PlatformIcon({
           alt={`${platform.platform} icon`}
           width={24}
           height={24}
-          style={{
-            filter: "brightness(0) saturate(100%) invert(100%)",
-          }}
+          className={clsx(styles.platformIcon, theme === "dark" && styles.platformIconDark)}
         />
       </a>
       {isOpen && (

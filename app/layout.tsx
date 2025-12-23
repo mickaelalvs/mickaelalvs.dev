@@ -1,5 +1,6 @@
 import React from "react";
 import CommandBar from "@/modules/command-bar/CommandBar";
+import { ThemeProvider } from "@/modules/theme/ThemeProvider";
 import { Metadata, Viewport } from "next";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 
@@ -79,8 +80,8 @@ export default function RootLayout({
               html, body {
                 margin: 0;
                 padding: 0;
-                background: #08070b;
-                color: #f2f2f2;
+                background: var(--color-background, #08070b);
+                color: var(--color-primary, #f2f2f2);
                 -webkit-font-smoothing: antialiased;
               }
             `,
@@ -92,9 +93,11 @@ export default function RootLayout({
         </title>
       </head>
       <body suppressHydrationWarning>
-        <NuqsAdapter>
-          <CommandBar>{children}</CommandBar>
-        </NuqsAdapter>
+        <ThemeProvider>
+          <NuqsAdapter>
+            <CommandBar>{children}</CommandBar>
+          </NuqsAdapter>
+        </ThemeProvider>
       </body>
     </html>
   );

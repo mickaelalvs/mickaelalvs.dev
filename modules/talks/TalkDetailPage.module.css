@@ -178,7 +178,7 @@
 .coSpeakersLabel {
   font-size: 16px;
   font-weight: 700;
-  color: white;
+  color: var(--color-primary);
   margin-right: 4px;
 }
 

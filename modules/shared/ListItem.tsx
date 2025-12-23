@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Lottie from "lottie-react";
+import { useTheme } from "@/modules/theme/ThemeProvider";
 import podcastsIcon from "../../public/static/icons/podcasts.json";
 import BlogDate from "./BlogDate";
 import styles from "./ListItem.module.css";
@@ -118,6 +119,10 @@ interface AnimationProps {
 function Animation(props: AnimationProps) {
   const [hovered, setHovered] = useState<string | number>("");
   const isHovered = hovered === props.index;
+  const { theme } = useTheme();
+
+  const activeColor = theme === "dark" ? "#FFFFFF" : "#1a1a1a";
+  const inactiveColor = theme === "dark" ? "#ADADAD" : "#525866";
 
   return (
     <motion.span
@@ -125,7 +130,7 @@ function Animation(props: AnimationProps) {
       onHoverStart={() => setHovered(props.index)}
       onHoverEnd={() => setHovered("")}
       animate={{
-        color: isHovered ? "#FFFFFF" : "#ADADAD",
+        color: isHovered ? activeColor : inactiveColor,
       }}
       transition={{
         duration: 0.4,
