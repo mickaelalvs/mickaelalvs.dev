@@ -1,30 +1,29 @@
 "use client";
 
 import BaseLayout from "../layout/BaseLayout";
-import { zenikast } from "@/data/podcasts";
+import { podcasts } from "@/data/podcasts";
 import ListItem from "../shared/ListItem";
 import { ListGroup } from "../shared/ListGroup";
 import { LayoutGroup } from "framer-motion";
 import { generateSlug } from "@/utils/slug";
-import type { PodcastItem } from "./types/PodcastItem";
+import type { Podcast } from "./types/Podcast";
 
 export default function PodcastsPage() {
-  const sortedZenikast = [...zenikast].sort((a, b) => {
-    if (!a.date && !b.date) return 0;
-    if (!a.date) return 1;
-    if (!b.date) return -1;
-    return b.date.localeCompare(a.date);
-  });
+  const sortedPodcasts = [...podcasts].sort((a, b) =>
+    b.date.localeCompare(a.date)
+  );
 
-  const renderZenikast = (items: PodcastItem[]) => {
+  const renderPodcasts = (items: Podcast[]) => {
     return items.map((item, index) => {
       const slug = generateSlug(item.title);
+      const lang = item.language === "fr" ? "🇫🇷" : "🇬🇧";
+
       return (
         <ListItem
           key={index}
           index={index}
           href={`/podcasts/${slug}`}
-          title={`${item.title} ${item.lang}`}
+          title={`${item.title} ${lang}`}
           date={item.date}
           description={item.description}
         />
@@ -53,7 +52,7 @@ export default function PodcastsPage() {
           French podcasts about development and tech communities, created in
           collaboration with Zenika.
         </p>
-        <ListGroup>{renderZenikast(sortedZenikast)}</ListGroup>
+        <ListGroup>{renderPodcasts(sortedPodcasts)}</ListGroup>
       </LayoutGroup>
     </BaseLayout>
   );

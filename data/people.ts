@@ -36,8 +36,8 @@ export const e_idoux: Person = {
 export const j_lavigne: Person = {
     id: "j_lavigne",
     name: "Johana Lavigne",
-    picture: "https://github.com/johanalavigne.png",
-    social: "https://github.com/johanalavigne",
+    picture: "https://github.com/JohLav.png",
+    social: "https://github.com/JohLav",
 };
 
 export const a_nava: Person = {
@@ -56,7 +56,7 @@ export const a_caron: Person = {
 
 export const jp_baconnais: Person = {
     id: "jp_baconnais",
-    name: "Jean-Phi Baconnais",
+    name: "Jean-Philippe Baconnais",
     picture: "https://github.com/jeanphi-baconnais.png",
     social: "https://x.com/JPhi_Baconnais",
 };
@@ -66,13 +66,6 @@ export const j_landure: Person = {
     name: "Julien Landuré",
     picture: "https://github.com/jlandure.png",
     social: "https://x.com/jlandure",
-};
-
-export const theo_gianella: Person = {
-    id: "theo_gianella",
-    name: "Théo Gianella",
-    picture: "https://github.com/theogianella.png",
-    social: "https://github.com/theogianella",
 };
 
 export const h_sablonniere: Person = {
@@ -92,7 +85,6 @@ const people: Record<string, Person> = {
     a_caron,
     jp_baconnais,
     j_landure,
-    theo_gianella,
     h_sablonniere,
 };
 
