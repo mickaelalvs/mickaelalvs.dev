@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { readFile } from "fs/promises";
 import { join } from "path";
-import { speaking as podcasts } from "@/data/speaking";
+import { podcasts } from "@/data/podcasts";
 import { generateSlug } from "@/utils/slug";
 
 export const runtime = "nodejs";
@@ -23,9 +23,7 @@ export default async function Image({
   );
   const avatarData = await readFile(join(process.cwd(), "public/avatar.png"));
   const avatarBase64 = `data:image/png;base64,${avatarData.toString("base64")}`;
-  const podcast = podcasts.find(
-    (p) => generateSlug(p.title) === slug && p.format === "Podcast",
-  );
+  const podcast = podcasts.find((p) => generateSlug(p.title) === slug);
   const podcastTitle = podcast ? podcast.title : "Podcast";
 
   return new ImageResponse(

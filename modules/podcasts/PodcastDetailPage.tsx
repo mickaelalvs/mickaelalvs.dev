@@ -2,20 +2,19 @@
 
 import Link from "next/link";
 import BaseLayout from "../layout/BaseLayout";
-import { speaking as podcasts } from "@/data/speaking";
-import type { Podcast } from "./types/Podcast";
+import { podcasts } from "@/data/podcasts";
 import Image from "next/image";
 import { generateSlug } from "@/utils/slug";
 import { notFound } from "next/navigation";
 import styles from "./PodcastDetailPage.module.css";
 import PlatformIcon from "./PlatformIcon";
+import CoSpeakerAvatar from "./CoSpeakerAvatar";
+import BlogDate from "../shared/BlogDate";
 
 export default function PodcastDetailPage({ slug }: { slug: string }) {
-  const podcast = podcasts.find(
-    (p) => generateSlug(p.title) === slug && p.format === "Podcast",
-  ) as Podcast | undefined;
+  const podcast = podcasts.find((p) => generateSlug(p.title) === slug);
 
-  if (!podcast || !("platformLinks" in podcast)) {
+  if (!podcast) {
     notFound();
   }
 
@@ -53,17 +52,34 @@ export default function PodcastDetailPage({ slug }: { slug: string }) {
               unoptimized
             />
           </div>
-          {podcast.platformLinks && podcast.platformLinks.length > 0 && (
-            <div className={styles.platformIcons}>
-              {podcast.platformLinks.map((platform, idx) => (
-                <PlatformIcon
-                  key={idx}
-                  platform={platform}
-                  getPlatformIcon={getPlatformIcon}
-                />
-              ))}
+          <div className={styles.headerActions}>
+            {podcast.speaker.length > 0 && (
+              <div className={styles.coSpeakersContainer}>
+                <span className={styles.coSpeakersLabel}>With</span>
+                <div className={styles.coSpeakersList}>
+                  {podcast.speaker.map((speaker, idx) => (
+                    <CoSpeakerAvatar key={idx} speaker={speaker} />
+                  ))}
+                </div>
+              </div>
+            )}
+            <div className={styles.platformSection}>
+              {podcast.platformLinks && podcast.platformLinks.length > 0 && (
+                <div className={styles.platformIcons}>
+                  {podcast.platformLinks.map((platform, idx) => (
+                    <PlatformIcon
+                      key={idx}
+                      platform={platform}
+                      getPlatformIcon={getPlatformIcon}
+                    />
+                  ))}
+                </div>
+              )}
+              <span className={styles.date}>
+                <BlogDate dateString={podcast.date} />
+              </span>
             </div>
-          )}
+          </div>
         </div>
 
         <div className={styles.content}>
