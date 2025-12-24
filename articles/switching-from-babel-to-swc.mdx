@@ -19,7 +19,7 @@ canonical_url: https://tech.bedrockstreaming.com/2025/12/22/switching-from-babel
 
 <br />
 
-Ever since websites started being made essentially from JavaScript, transpiling this code to run in the largest number of different browsers has been an essential step in the build process. From the very beginning, more than ten years ago, the BedrockStreaming web application has relied on [Babel](https://babeljs.io/) for this task. This year we migrated from Babel to its next-gen replacement, [SWC](https://swc.rs/). It was not a smooth ride all the way, so let’s see what challenges we’ve had to overcome and if the payoff was worth the effort!
+Ever since websites started being made essentially from JavaScript, transpiling this code to run in the largest number of different browsers has been an essential step in the build process. From the very beginning, more than ten years ago, the BedrockStreaming web application has relied on [Babel](https://babeljs.io/) for this task. This year we migrated from Babel to its next-gen replacement, [SWC](https://swc.rs/). It was not a smooth ride all the way, so let's see what challenges we've had to overcome and if the payoff was worth the effort!
 
 ## ⚙️ Transpilation !? What's that about ?
 
@@ -29,13 +29,13 @@ Generally, transpilation is the process by which you take some source code, tran
 
 In the JavaScript/web context, this means taking your code and transforming it into another version of the same language. But what is the point of transforming code into code?
 
-The modern JavaScript code we write often uses features that aren’t supported in all environments. For example, older browsers that we want to support don’t implement every new syntax we are using. Another use case is server-side code, on the Node.js side we sometimes end up using modules or JSX in files that the runtime still expects in CommonJS. All-in-all, the transpilation transforms our newest syntax into older/more standard syntax that is supported in more environments.
+The modern JavaScript code we write often uses features that aren't supported in all environments. For example, older browsers that we want to support don't implement every new syntax we are using. Another use case is server-side code, on the Node.js side we sometimes end up using modules or JSX in files that the runtime still expects in CommonJS. All-in-all, the transpilation transforms our newest syntax into older/more standard syntax that is supported in more environments.
 
 Most transpilers use a **plugin-based architecture**: the core library is responsible only for parsing source code into an AST (Abstract Syntax Tree), performing the most common transformations (down-leveling the code to be compatible with older browsers for instance) and generating output code. All additional (more specific) transformations are handled by individual plugins, which are installed manually and added to the configuration. This separation of concerns allows easy customization and lets the community contribute new plugins without touching the core code. In other words, in modern transpilers, **most custom code transformations are done via plugins.**
 
 Over the years, as the web technologies evolved, countless transformations have been added to the transpilation step. At BedrockStreaming, the transpiler handles all modern syntax, converting ESM to CJS modules, transforming TypeScript into JavaScript, transforming JSX into JS, etc., making it a cornerstone of our build process.
 
-**So the question isn’t whether we transpile or not, but how.**
+**So the question isn't whether we transpile or not, but how.**
 
 ## 📦 The starting point: Babel
 
@@ -61,9 +61,12 @@ The architecture of Babel allows us to enable different sets of plugins dependin
 
 <br />
 
-<figure>
-  <img src="/static/images/articles/switching-from-babel-to-swc/babel-process.png" class="post-image-full" alt="Scripts execute during render phase too" style="border-radius: 16px;">
-</figure>
+<ImageExpandable
+  src="/static/images/articles/switching-from-babel-to-swc/babel-process.png"
+  alt="Babel transpilation process"
+  full
+  style={{ borderRadius: "16px" }}
+/>
 
 <br />
 
@@ -75,9 +78,9 @@ In our case, babel-loader sits on the hot path of the build: every JavaScript fi
 
 The long build time has a lot of implications: it is more costly in CI time, but above all, it translates to longer start times for our local development servers, which was starting to become a huge pain point as the application grew more and more with start times upwards of a minute. Since builds happen constantly—every time a developer starts their local environment, on every CI pipeline run, and during deployments—even small improvements compound into significant time savings across the entire team and infrastructure.
 
-We were faced with a trade-off: continue benefiting from Babel’s massive ecosystem, or look for something significantly faster to improve compilation speed. Since our goal was clear: a better DX and higher performance, the question naturally arose.
+We were faced with a trade-off: continue benefiting from Babel's massive ecosystem, or look for something significantly faster to improve compilation speed. Since our goal was clear: a better DX and higher performance, the question naturally arose.
 
-This is where **SWC (Speedy Web Compiler)** comes in. SWC is an extensible, Rust-based platform for the next generation of fast developer tools, already widely adopted by modern frameworks and companies. It is positioned as a much faster alternative to Babel, with a simple promise: “SWC is 20x faster than Babel on a single thread and 70x faster on four cores.” More than enough to seriously question our existing stack and justify exploring a migration to a compiler designed from the ground up for performance.
+This is where **SWC (Speedy Web Compiler)** comes in. SWC is an extensible, Rust-based platform for the next generation of fast developer tools, already widely adopted by modern frameworks and companies. It is positioned as a much faster alternative to Babel, with a simple promise: "SWC is 20x faster than Babel on a single thread and 70x faster on four cores." More than enough to seriously question our existing stack and justify exploring a migration to a compiler designed from the ground up for performance.
 
 ## ⚠️ The PropTypes issue: missing remove-prop-types support
 
@@ -89,15 +92,15 @@ One limitation we quickly ran into was the lack of support for removing PropType
 > The library allows you to declare the propTypes for a component in this way:
 ```jsx
 MyComponent.propTypes = {
-  propA: PropTypes.string,
-  propB: PropTypes.number.isRequired,
+    propA: PropTypes.string,
+    propB: PropTypes.number.isRequired,
 }
 ```
-It is this kind of code (only useful during development) that we want to remove from our production code.
+> It is this kind of code (only useful during development) that we want to remove from our production code.
 
-SWC’s core is written in Rust and compiled into a native binary executed by Node.js. Plugins are also written in Rust, but they are compiled to WebAssembly (WASM), producing a single portable file that can run anywhere in a sandboxed environment. This architecture makes SWC extremely fast and portable, but it also means that features available in older transpilers (like Babel) may not exist yet.
+SWC's core is written in Rust and compiled into a native binary executed by Node.js. Plugins are also written in Rust, but they are compiled to WebAssembly (WASM), producing a single portable file that can run anywhere in a sandboxed environment. This architecture makes SWC extremely fast and portable, but it also means that features available in older transpilers (like Babel) may not exist yet.
 
-Our specific issue is that **there is no WASM plugin in SWC to strip PropTypes**. PropTypes were effectively deprecated in 2017, so SWC being a modern transpiler doesn’t include this functionality out of the box. We found ourselves in a very specific case: trying to transpile a legacy app with cutting-edge tooling. It looks like we were not the only ones with this issue, the author of the Babel plugin to strip PropTypes opened an issue in 2021 exactly for this: [SWC support](https://github.com/oliviertassinari/babel-plugin-transform-react-remove-prop-types/issues/201#top).
+Our specific issue is that **there is no WASM plugin in SWC to strip PropTypes**. PropTypes were effectively deprecated in 2017, so SWC being a modern transpiler doesn't include this functionality out of the box. We found ourselves in a very specific case: trying to transpile a legacy app with cutting-edge tooling. It looks like we were not the only ones with this issue, the author of the Babel plugin to strip PropTypes opened an issue in 2021 exactly for this: [SWC support](https://github.com/oliviertassinari/babel-plugin-transform-react-remove-prop-types/issues/201#top).
 
 At this point, we were faced with a frustrating dilemma: either renouncing and waiting for our codebase to be ready for the SWC migration, or trying to circumvent the issue to deliver the DX improvement as soon as possible. Here are the solutions we tried out.
 
@@ -166,9 +169,12 @@ What's more, **this hybrid setup is a temporary solution** while we finish migra
 
 <br />
 
-<figure>
-  <img src="/static/images/articles/switching-from-babel-to-swc/final-process.png" class="post-image-full" alt="Scripts execute during render phase too" style="border-radius: 16px;">
-</figure>
+<ImageExpandable
+  src="/static/images/articles/switching-from-babel-to-swc/final-process.png"
+  alt="Hybrid Babel + SWC process"
+  full
+  style={{ borderRadius: "16px" }}
+/>
 
 ## 📊 Benchmark results
 
@@ -180,14 +186,18 @@ What's more, **this hybrid setup is a temporary solution** while we finish migra
 
 ### 🏗️ Build times (without cache)
 
-<div class="side-by-side" style="justify-content: center; gap: 20px;">
-  <figure>
-    <img src="/static/images/articles/switching-from-babel-to-swc/build-performance.png" class="side-by-side-img" alt="Build performance benchmark" style="border-radius: 16px;">
-  </figure>
-  <figure>
-    <img src="/static/images/articles/switching-from-babel-to-swc/dev-build-performance.png" class="side-by-side-img" alt="Dev build performance benchmark" style="border-radius: 16px;">
-  </figure>
-</div>
+<SideBySide>
+  <ImageExpandable
+    src="/static/images/articles/switching-from-babel-to-swc/build-performance.png"
+    alt="Build performance benchmark"
+    style={{ borderRadius: "16px" }}
+  />
+  <ImageExpandable
+    src="/static/images/articles/switching-from-babel-to-swc/dev-build-performance.png"
+    alt="Dev build performance benchmark"
+    style={{ borderRadius: "16px" }}
+  />
+</SideBySide>
 
 <br />
 
@@ -197,14 +207,18 @@ Production builds improved significantly: **77.4s (Babel) → 55s (hybrid SWC + 
 
 ### 📦 Bundle sizes
 
-<div class="side-by-side" style="justify-content: center; gap: 20px;">
-  <figure>
-    <img src="/static/images/articles/switching-from-babel-to-swc/bundle-size.png" class="side-by-side-img" alt="Bundle size comparison" style="border-radius: 16px;">
-  </figure>
-  <figure>
-    <img src="/static/images/articles/switching-from-babel-to-swc/bundle-analysis.png" class="side-by-side-img" alt="Bundle analysis" style="border-radius: 16px;">
-  </figure>
-</div>
+<SideBySide>
+  <ImageExpandable
+    src="/static/images/articles/switching-from-babel-to-swc/bundle-size.png"
+    alt="Bundle size comparison"
+    style={{ borderRadius: "16px" }}
+  />
+  <ImageExpandable
+    src="/static/images/articles/switching-from-babel-to-swc/bundle-analysis.png"
+    alt="Bundle analysis"
+    style={{ borderRadius: "16px" }}
+  />
+</SideBySide>
 
 When looking at the bundle size graph, the difference is actually quite small (**1 MiB**): using SWC without stripping PropTypes results in a bundle that is only slightly larger than our hybrid setup combining SWC and Babel. On paper, this might suggest that the additional complexity is not strictly necessary.
 
@@ -218,11 +232,11 @@ From our perspective, this is less about chasing a few kilobytes and more about 
 
 Looking ahead, there are a few clear steps to further improve our setup.
 
-One of the first improvements we plan to adopt is [`@swc/jest`](https://swc.rs/docs/usage/jest). By replacing the default JavaScript-based Jest runner (like `ts-jest`) with this drop-in Rust replacement, our tests can run significantly faster. SWC’s Rust/WASM architecture makes it possible to apply the same transformations much more efficiently, which should reduce overall CI times and improve the feedback loop for developers.
+One of the first improvements we plan to adopt is [`@swc/jest`](https://swc.rs/docs/usage/jest). By replacing the default JavaScript-based Jest runner (like `ts-jest`) with this drop-in Rust replacement, our tests can run significantly faster. SWC's Rust/WASM architecture makes it possible to apply the same transformations much more efficiently, which should reduce overall CI times and improve the feedback loop for developers.
 
 On a longer-term horizon, we also plan to remove the remaining parts of the legacy PropTypes code. The migration has been designed in a way that makes it easy to phase out the remaining Babel setup once these PropTypes are gone. Even with this hybrid setup for now, the performance gains are already significant, and the codebase is noticeably more efficient.
 
-It’s also worth mentioning that SWC’s documentation can be limited when it comes to more specific or advanced use cases. A big part of this migration involved experimentation, reading source code, and validating assumptions through benchmarks. We hope this article can help others facing similar constraints and reduce some of the friction we encountered along the way.
+It's also worth mentioning that SWC's documentation can be limited when it comes to more specific or advanced use cases. A big part of this migration involved experimentation, reading source code, and validating assumptions through benchmarks. We hope this article can help others facing similar constraints and reduce some of the friction we encountered along the way.
 
 Throughout this process, our goal was clear: push developer experience as far as possible without compromising the quality of the final production bundle. And while this migration alone already delivers strong gains, it really starts to shine when combined with other optimizations, such as smarter caching strategies. **More on that in a follow-up article.**
 
@@ -230,3 +244,4 @@ Throughout this process, our goal was clear: push developer experience as far as
 
 
 <small>Photo by <a href="https://unsplash.com/@caraventurera?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Cara Fuller</a></small>
+

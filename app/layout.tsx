@@ -5,7 +5,6 @@ import { Metadata, Viewport } from "next";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 import "../public/static/css/globals.css";
-import "../public/static/css/prism.css";
 import "remixicon/fonts/remixicon.css";
 
 export const viewport: Viewport = {

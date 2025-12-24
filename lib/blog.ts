@@ -1,8 +1,6 @@
 import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
-import { remark } from "remark";
-import html from "remark-html";
 
 export interface BlogPost {
   slug: string;
@@ -20,19 +18,19 @@ export interface BlogPost {
 const postsDirectory = join(process.cwd(), "articles");
 
 export function getPostSlugs(): string[] {
-  return fs.readdirSync(postsDirectory).filter((file) => file.endsWith(".md"));
+  return fs.readdirSync(postsDirectory).filter((file) => file.endsWith(".mdx"));
 }
 
 export function getPostBySlug(slug: string, fields: string[] = []): BlogPost {
-  const realSlug = slug.replace(/\.md$/, "");
+  const realSlug = slug.replace(/\.mdx$/, "");
+  const fullPath = join(postsDirectory, `${realSlug}.mdx`);
 
   let parsed: matter.GrayMatterFile<string>;
 
-  try {
-    const fullPath = join(postsDirectory, `${realSlug}.md`);
+  if (fs.existsSync(fullPath)) {
     const fileContents = fs.readFileSync(fullPath, "utf8");
     parsed = matter(fileContents);
-  } catch (error) {
+  } else {
     const slugs = getPostSlugs();
     let found = false;
 
@@ -79,11 +77,4 @@ export function getAllPosts(fields: string[] = []): BlogPost[] {
     .map((slug) => getPostBySlug(slug, [...fields, "private"]))
     .filter((post) => !post.private)
     .sort((post1, post2) => (post1.date! > post2.date! ? -1 : 1));
-}
-
-export async function convertMarkdownToHtml(markdown: string): Promise<string> {
-  const result = await remark()
-    .use(html, { sanitize: false })
-    .process(markdown);
-  return result.toString();
 }
