@@ -246,6 +246,37 @@ code {
   padding: 4px;
 }
 
+pre {
+  border-radius: 8px;
+  padding: 20px 30px;
+  overflow-x: auto;
+  margin: 20px 0;
+  border: 1px solid var(--color-hover);
+}
+
+pre code {
+  background: transparent;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.8;
+  tab-size: 4;
+  -moz-tab-size: 4;
+}
+
+/* Shiki dual theme support */
+.shiki,
+.shiki span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
+}
+
+[data-theme="light"] .shiki,
+[data-theme="light"] .shiki span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
 h1 {
   font-family: var(--font-heading);
   font-size: 48px;

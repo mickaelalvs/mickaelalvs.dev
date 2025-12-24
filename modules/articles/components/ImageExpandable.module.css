@@ -1,0 +1,79 @@
+.figure {
+  display: block;
+  margin: 0;
+}
+
+.wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.wrapperFull {
+  display: block;
+  width: max(100%, 70vw);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.imageFull {
+  width: 100%;
+}
+
+.expandBtn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transform: scale(1);
+}
+
+@media (min-width: 1024px) {
+  .expandBtn {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  .wrapper:hover .expandBtn {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.expandBtn:hover {
+  background: rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  transform: scale(1.05);
+}
+
+.expandBtn:active {
+  transform: scale(0.95);
+}
+
+.expandBtn i {
+  font-size: 18px;
+  color: white;
+  line-height: 1;
+}
+

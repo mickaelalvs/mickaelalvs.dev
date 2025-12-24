@@ -5,11 +5,9 @@ import { podcasts } from "@/data/podcasts";
 import { generateSlug } from "@/utils/slug";
 
 export async function generateStaticParams() {
-  return podcasts
-    .filter((p) => p.format === "Podcast")
-    .map((podcast) => ({
-      slug: generateSlug(podcast.title),
-    }));
+  return podcasts.map((podcast) => ({
+    slug: generateSlug(podcast.title),
+  }));
 }
 
 export async function generateMetadata({
@@ -18,9 +16,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const podcast = podcasts.find(
-    (p) => generateSlug(p.title) === slug && p.format === "Podcast",
-  );
+  const podcast = podcasts.find((p) => generateSlug(p.title) === slug);
 
   if (!podcast) {
     return {

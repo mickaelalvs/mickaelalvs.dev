@@ -1,7 +1,33 @@
 import BlogpostLayout from "./BlogpostLayout";
-import { getPostBySlug, convertMarkdownToHtml } from "@/lib/blog";
+import { getPostBySlug } from "@/lib/blog";
 import { createArticleJsonLd } from "@/lib/json-ld";
 import { getPeople } from "@/data/people";
+import { MDXRemote, type MDXRemoteProps } from "next-mdx-remote/rsc";
+import { ImageExpandable } from "./components/ImageExpandable";
+import { SideBySide } from "./components/SideBySide";
+import rehypeShiki from "@shikijs/rehype";
+
+const mdxComponents = {
+  ImageExpandable,
+  SideBySide,
+};
+
+const mdxOptions: MDXRemoteProps["options"] = {
+  mdxOptions: {
+    rehypePlugins: [
+      [
+        rehypeShiki as any,
+        {
+          themes: {
+            light: "github-light",
+            dark: "github-dark",
+          },
+          defaultColor: false,
+        },
+      ],
+    ],
+  },
+};
 
 export default async function BlogPostPage({ slug }: { slug: string }) {
   const post = getPostBySlug(slug, [
@@ -16,8 +42,6 @@ export default async function BlogPostPage({ slug }: { slug: string }) {
     "tags",
     "title",
   ]);
-
-  const content = await convertMarkdownToHtml(post.content || "");
 
   const title = `${post.title} | Mickaël Alves`;
   const description = post.description || "";
@@ -56,9 +80,10 @@ export default async function BlogPostPage({ slug }: { slug: string }) {
         }}
       />
 
-      <div
-        dangerouslySetInnerHTML={{ __html: content }}
-        suppressHydrationWarning
+      <MDXRemote
+        source={post.content || ""}
+        components={mdxComponents}
+        options={mdxOptions}
       />
     </BlogpostLayout>
   );
