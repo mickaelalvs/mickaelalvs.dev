@@ -29,18 +29,18 @@ export async function generateMetadata({
       return { title: "Not Found" };
     }
 
-    const title = `${post.title} | Mickaël Alves`;
     const description = post.description || "";
     const url = `https://mickaelalvs.dev/articles/${post.slug}`;
+    const ogTitle = `${post.title} | Mickaël Alves`;
 
     return {
-      title,
+      title: post.title,
       description,
       alternates: {
         canonical: post.canonical_url || url,
       },
       openGraph: {
-        title,
+        title: ogTitle,
         description,
         url,
       },
