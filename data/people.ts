@@ -14,7 +14,7 @@ export const jf_farge: Person = {
 
 export const t_gianella: Person = {
     id: "t_gianella",
-    name: "Thomas Gianella",
+    name: "Théo Gianella",
     picture: "https://github.com/TGianella.png",
     social: "https://github.com/TGianella",
 };
