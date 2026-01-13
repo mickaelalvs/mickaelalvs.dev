@@ -63,7 +63,7 @@ The architecture of Babel allows us to enable different sets of plugins dependin
 
 <ImageExpandable
   src="/static/images/articles/switching-from-babel-to-swc/babel-process.png"
-  alt="Babel transpilation process"
+  alt="Diagram of the Babel transpilation process: Source files flow through core presets (typescript, react, env), then split into DEV and PROD specific plugins before producing the final bundle"
   full
   style={{ borderRadius: "16px" }}
 />
@@ -171,7 +171,7 @@ What's more, **this hybrid setup is a temporary solution** while we finish migra
 
 <ImageExpandable
   src="/static/images/articles/switching-from-babel-to-swc/final-process.png"
-  alt="Hybrid Babel + SWC process"
+  alt="Diagram showing the new transpilation process with two modes: In DEVELOPMENT, source files go directly to swc-loader (skipping babel-loader) for fast builds. In PRODUCTION, source files pass through babel-loader (Phase 1: Strip PropTypes only) then swc-loader (Phase 2: TypeScript, JSX, ES6+, Remove data-testid, Code splitting) for optimized bundles"
   full
   style={{ borderRadius: "16px" }}
 />
@@ -189,12 +189,12 @@ What's more, **this hybrid setup is a temporary solution** while we finish migra
 <SideBySide>
   <ImageExpandable
     src="/static/images/articles/switching-from-babel-to-swc/build-performance.png"
-    alt="Build performance benchmark"
+    alt="Bar chart titled 'Build Performance Comparison' showing pnpm build mean time in seconds: SWC at 40.4s (fastest), SWC + Babel at 55.0s (36% slower), and Babel at 77.4s (91% slower)"
     style={{ borderRadius: "16px" }}
   />
   <ImageExpandable
     src="/static/images/articles/switching-from-babel-to-swc/dev-build-performance.png"
-    alt="Dev build performance benchmark"
+    alt="Bar chart titled 'Dev Build Performance' comparing dev:client (blue) and dev:server (orange) times: SWC at 11.2s/9.6s (fastest), SWC + Babel at 15.0s/14.1s, and Babel at 27.4s/54.5s (slowest)"
     style={{ borderRadius: "16px" }}
   />
 </SideBySide>
@@ -210,12 +210,12 @@ Production builds improved significantly: **77.4s (Babel) → 55s (hybrid SWC + 
 <SideBySide>
   <ImageExpandable
     src="/static/images/articles/switching-from-babel-to-swc/bundle-size.png"
-    alt="Bundle size comparison"
+    alt="Bar chart titled 'Bundle Size Comparison' showing output size in MiB: SWC at 11.05 MiB (+0.5% larger), SWC + Babel at 10.99 MiB (smallest), and Babel at 11.90 MiB (+8.3% larger). Y-axis starts at 10 MiB to highlight differences"
     style={{ borderRadius: "16px" }}
   />
   <ImageExpandable
     src="/static/images/articles/switching-from-babel-to-swc/bundle-analysis.png"
-    alt="Bundle analysis"
+    alt="Bar chart titled 'Bundle Analysis Comparison' showing Stat/Parsed/Gzipped sizes in MB: SWC at 21.01/9.65/2.97, SWC + Babel at 20.90/9.60/2.96 (smallest in all categories), and Babel at 21.60/10.48/3.04"
     style={{ borderRadius: "16px" }}
   />
 </SideBySide>
