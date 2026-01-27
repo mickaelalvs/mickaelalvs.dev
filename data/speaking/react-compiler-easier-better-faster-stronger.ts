@@ -37,7 +37,7 @@ export const ReactCompilerEasierBetterFasterStronger: Talk = {
     },
     {
       name: "Devfest Nantes",
-      link: "https://devfest.gdgnantes.com/sessions/react_compiler___easier__better__faster__stronger___/",
+      link: "https://youtu.be/_edOnkr8Yy4?si=lR-Rv0cSQrnw6pNY",
       date: "2024-10-17",
       image: DevfestNantes2024,
     },

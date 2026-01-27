@@ -4,6 +4,21 @@ import createMDX from "@next/mdx";
 const nextConfig: NextConfig = {
   reactCompiler: true,
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+  async redirects() {
+    return [
+      // Redirect old /speaking URLs to /talks
+      {
+        source: "/speaking",
+        destination: "/talks",
+        permanent: true,
+      },
+      {
+        source: "/speaking/:slug",
+        destination: "/talks/:slug",
+        permanent: true,
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
