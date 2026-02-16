@@ -7,6 +7,7 @@ import FeaturedProject from "./FeaturedProject";
 import { FeaturedProjects } from "./FeaturedProjects";
 import ProjectItem from "./ProjectItem";
 import items from "@/data/projects";
+import styles from "./ProjectsPage.module.css";
 
 export default function ProjectsPage() {
   const renderFeatured = () => {
@@ -32,11 +33,17 @@ export default function ProjectsPage() {
   const renderAll = () => {
     return items.map((item, index) => {
       return (
-        <div key={index}>
-          <h3>{item.year}</h3>
-          <ul>
+        <div key={index} className={styles.yearSection}>
+          <h3 className={styles.yearTitle}>{item.year}</h3>
+          <ul className={styles.projectsList}>
             {item.projects.map((project, pIndex) => {
-              return <ProjectItem key={pIndex} project={project} />;
+              return (
+                <ProjectItem
+                  key={pIndex}
+                  project={project}
+                  listItemClassName={styles.projectsListItem}
+                />
+              );
             })}
           </ul>
         </div>

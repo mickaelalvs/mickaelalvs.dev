@@ -16,15 +16,17 @@
   display: flex;
   gap: 8px;
   border: 1px solid var(--color-hover);
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 4px;
   background-color: var(--color-command);
 }
 
 .toggleButton {
+  display: inline-flex;
+  align-items: center;
   padding: 8px 16px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
@@ -52,10 +54,25 @@
   z-index: -1;
 }
 
-.toggleText {
+.toggleLabel {
   position: relative;
   z-index: 1;
-  line-height: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.toggleIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.toggleText {
+  line-height: 1.4;
 }
 
 .talkContainer {
@@ -91,8 +108,8 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 8px 16px;
-  border-radius: 6px;
+  padding: 6px 16px;
+  border-radius: 12px;
   background-color: var(--color-hover);
   color: var(--color-primary);
   text-decoration: none;
@@ -124,10 +141,26 @@
   transform-origin: center center;
 }
 
+.featuredTalksBox {
+  width: calc(100% + 40px);
+  max-width: 920px;
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-top: 20px;
+}
+
+@media (max-width: 840px) {
+  .featuredTalksBox {
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 .featuredTalksContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
   align-items: stretch;
   padding-bottom: 2rem;
 }
@@ -170,7 +203,7 @@
 
 .talksList :global(li) {
   position: relative;
-  padding-left: 20px;
+  padding-left: 32px;
 }
 
 .talksList :global(li)::before {
@@ -189,15 +222,29 @@
 .talksList :global(a) {
   color: var(--color-primary);
   text-decoration: none;
-  font-size: 15px;
+  font-size: 16px;
+  border-bottom: none;
+  position: relative;
+  font-weight: 500;
 }
 
-.talksList :global(a:hover) {
-  text-decoration: underline;
+.talksList :global(a)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 1px;
+  background-color: var(--color-secondary);
+  transition: transform 0.2s ease;
+}
+
+.talksList :global(li:hover) :global(a)::after {
+  transform: translateY(4px);
 }
 
 .talksListItem {
-  padding: 4px 0;
+  padding: 12px 0;
   color: var(--color-secondary);
   line-height: 1.6;
 }
