@@ -1,30 +1,30 @@
 .talkLink {
+  display: block;
+  height: 100%;
+  border: 0;
   text-decoration: none;
   color: inherit;
-  border: none;
 }
 
-.talk {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  cursor: pointer;
-}
-
-.talk:first-child {
+.talkLink:first-child {
   margin-left: 0;
 }
 
-.contentWrapper {
-  position: relative;
-  width: 100%;
+.talkLink:hover {
+  opacity: 1;
+}
+
+.hoverWrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  height: auto;
-  position: relative;
+  flex: 1;
+  min-height: 0;
 }
 
 .imageContainer {
@@ -32,46 +32,32 @@
   height: 150px;
   margin-bottom: 12px;
   overflow: hidden;
-  position: relative;
   border-radius: 8px;
+  position: relative;
 }
 
-.imageContainer .image {
+
+.image {
   filter: grayscale(1);
   object-fit: cover;
   object-position: center;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .title {
   color: var(--color-primary);
   font-size: 18px;
   margin: 0;
+  line-height: 32px;
 }
 
-.animContainer {
-  padding: 16px;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  isolation: isolate;
-}
-
-.backgroundWrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-}
-
-.animHovered {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--color-hover);
-  border-radius: var(--radius-border-radius);
-  will-change: transform;
+.subtitle {
+  color: var(--color-secondary);
+  font-size: 14px;
+  margin: 0;
 }

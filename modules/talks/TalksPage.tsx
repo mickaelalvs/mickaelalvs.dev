@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, Suspense } from "react";
+import { useRef, useState, Suspense } from "react";
 import { useQueryState, parseAsStringLiteral } from "nuqs";
 import { LayoutGroup, motion } from "framer-motion";
+import Lottie from "lottie-react";
 import Link from "next/link";
 import clsx from "clsx";
 import BaseLayout from "../layout/BaseLayout";
@@ -14,6 +15,8 @@ import type { Conference } from "./types/Conference";
 import { generateSlug } from "@/utils/slug";
 import type { ConferenceItem } from "./types/ConferenceItem";
 import styles from "./TalksPage.module.css";
+import calendarIcon from "../../public/static/icons/talks.json";
+import presentationIcon from "../../public/static/icons/presentation.json";
 
 function TalksContent() {
   const [viewMode, setViewMode] = useQueryState(
@@ -23,6 +26,8 @@ function TalksContent() {
     ),
   );
   const [hoveredTalk, setHoveredTalk] = useState<string | number>("");
+  const calendarLottieRef = useRef<any>(null);
+  const talkLottieRef = useRef<any>(null);
 
   // Filtrer pour exclure les podcasts
   const talks = speaking.filter(
@@ -158,9 +163,12 @@ function TalksContent() {
         </p>
 
         <h2>Featured Talks</h2>
-        <Box style={{ margin: "20px 0 0 -20px" }}>
+        <Box className={styles.featuredTalksBox}>
           <LayoutGroup id="featured-talks">
-            <div className={styles.featuredTalksContainer}>
+            <div
+              className={styles.featuredTalksContainer}
+              onMouseLeave={() => setHoveredTalk("")}
+            >
               {renderFeatured()}
             </div>
           </LayoutGroup>
@@ -173,6 +181,8 @@ function TalksContent() {
               <button
                 className={clsx(styles.toggleButton, viewMode === "conferences" && styles.toggleButtonActive)}
                 onClick={() => setViewMode("conferences")}
+                onMouseEnter={() => calendarLottieRef.current?.play()}
+                onMouseLeave={() => calendarLottieRef.current?.stop()}
               >
                 {viewMode === "conferences" && (
                   <motion.div
@@ -181,11 +191,24 @@ function TalksContent() {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   />
                 )}
-                <span className={styles.toggleText}>By Year</span>
+                <span className={styles.toggleLabel}>
+                  <span className={styles.toggleIcon}>
+                    <Lottie
+                      lottieRef={calendarLottieRef}
+                      animationData={calendarIcon}
+                      loop={false}
+                      autoplay={false}
+                      style={{ width: 18, height: 18 }}
+                    />
+                  </span>
+                  <span className={styles.toggleText}>By Year</span>
+                </span>
               </button>
               <button
                 className={clsx(styles.toggleButton, viewMode === "talks" && styles.toggleButtonActive)}
                 onClick={() => setViewMode("talks")}
+                onMouseEnter={() => talkLottieRef.current?.play()}
+                onMouseLeave={() => talkLottieRef.current?.stop()}
               >
                 {viewMode === "talks" && (
                   <motion.div
@@ -194,7 +217,18 @@ function TalksContent() {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   />
                 )}
-                <span className={styles.toggleText}>By Talk</span>
+                <span className={styles.toggleLabel}>
+                  <span className={styles.toggleIcon}>
+                    <Lottie
+                      lottieRef={talkLottieRef}
+                      animationData={presentationIcon}
+                      loop={false}
+                      autoplay={false}
+                      style={{ width: 18, height: 18 }}
+                    />
+                  </span>
+                  <span className={styles.toggleText}>By Talk</span>
+                </span>
               </button>
             </div>
           </LayoutGroup>
