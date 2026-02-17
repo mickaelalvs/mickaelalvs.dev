@@ -1,5 +1,33 @@
-import { ReactNode, HTMLAttributes } from "react";
+"use client";
+
+import React, { ReactNode, HTMLAttributes } from "react";
+import { motion } from "framer-motion";
 import styles from "./Post.module.css";
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.05,
+      delayChildren: 0,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: {
+    opacity: 0,
+    y: 12,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.25, 0.1, 0.25, 1] as const,
+    },
+  },
+};
 
 interface PostComponentProps extends HTMLAttributes<HTMLElement> {
   children: ReactNode;
@@ -23,12 +51,21 @@ export const Post = ({ children, ...props }: PostComponentProps) => {
 
 export const PostContainer = ({
   children,
-  ...props
+  className,
 }: HTMLAttributes<HTMLDivElement>) => {
   return (
-    <div className={styles.postContainer} {...props}>
-      {children}
-    </div>
+    <motion.div
+      className={className ?? styles.postContainer}
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      {React.Children.map(children, (child, index) => (
+        <motion.div key={index} variants={itemVariants}>
+          {child}
+        </motion.div>
+      ))}
+    </motion.div>
   );
 };
 
