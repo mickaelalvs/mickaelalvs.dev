@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import styles from "./ImageExpandable.module.css";
 
 interface ImageExpandableProps {
@@ -34,7 +35,15 @@ export function ImageExpandable({
   return (
     <figure className={styles.figure}>
       <div className={wrapperClass}>
-        <img src={src} alt={alt} className={imageClass} style={style} />
+        <Image
+          src={src}
+          alt={alt}
+          className={imageClass}
+          style={style}
+          width={1200}
+          height={675}
+          sizes={full ? "(min-width: 1024px) 70vw, 100vw" : "100vw"}
+        />
         {expandable && (
           <button
             className={styles.expandBtn}
