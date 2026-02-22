@@ -53,6 +53,7 @@ function FooterLink({ link }: { link: LinkItem }) {
         target="_blank"
         rel="noopener noreferrer"
         className={styles.navLink}
+        aria-label={link.title}
       >
         <span
           ref={refs.setReference}
