@@ -32,6 +32,7 @@ export default function PlatformIcon({
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
+    placement: "bottom",
     middleware: [offset(8), flip(), shift()],
     whileElementsMounted: autoUpdate,
   });

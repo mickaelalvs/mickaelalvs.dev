@@ -222,7 +222,7 @@
 }
 
 .coSpeakerTooltip {
-  background-color: var(--color-command);
+  background-color: var(--color-background);
   color: var(--color-primary);
   padding: 8px 12px;
   border-radius: 6px;
