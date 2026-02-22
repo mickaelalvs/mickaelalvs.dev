@@ -20,7 +20,7 @@ export default function ArticlesPage() {
   return (
     <BaseLayout
       title="Articles | Mickaël Alves"
-      tagline="Stories. Experimentation. Guides."
+      tagline="Stories. Experiments. Guides."
       primaryColor="yellow"
       secondaryColor="pink"
     >

@@ -13,14 +13,17 @@
 }
 
 .companyLink {
-  text-decoration: none;
   color: inherit;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration-color: var(--color-secondary);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 0.5px;
 }
 
 .companyLogo {
   display: inline-flex;
   align-items: center;
+  vertical-align: middle;
+  margin-left: 4px;
 }

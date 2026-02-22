@@ -192,8 +192,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  width: 100vw;
-  height: 100vh;
+  height: 100dvh;
+  overflow-x: hidden;
   background: var(--color-background);
   z-index: 999;
   padding: 0;
@@ -263,7 +263,7 @@
   appearance: none;
   background: transparent;
   border: none;
-  color: var(--color-nav-text);
+  color: var(--color-primary);
   cursor: pointer;
   width: 48px;
   height: 48px;

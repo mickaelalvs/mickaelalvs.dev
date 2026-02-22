@@ -30,7 +30,7 @@ export default function HomePage() {
           <PostContainer>
             <div>
               <h1>{title}</h1>
-              <p>
+              <p style={{ textWrap: "balance" }}>
                 <strong>
                   Tech Lead Frontend at{" "}
                   <a
@@ -39,7 +39,7 @@ export default function HomePage() {
                     rel="noopener noreferrer"
                     className={styles.companyLink}
                   >
-                    Zenika
+                    <span style={{ whiteSpace: "nowrap" }}>Zenika
                     <span className={styles.companyLogo}>
                       <Image
                         src={zenikaLogo}
@@ -48,7 +48,7 @@ export default function HomePage() {
                         height={16}
                         unoptimized
                       />
-                    </span>
+                    </span></span>
                   </a>{" "}
                   &{" "}
                   <a
@@ -57,7 +57,8 @@ export default function HomePage() {
                     rel="noopener noreferrer"
                     className={styles.companyLink}
                   >
-                    Bedrock Streaming
+                    Bedrock{" "}
+                    <span style={{ whiteSpace: "nowrap" }}>Streaming
                     <span className={styles.companyLogo}>
                       <Image
                         src={bedrockLogo}
@@ -66,7 +67,7 @@ export default function HomePage() {
                         height={16}
                         unoptimized
                       />
-                    </span>
+                    </span></span>
                   </a>
                 </strong>
                 <br />
