@@ -91,9 +91,9 @@ export default function Footer() {
       icon: "ri-github-line",
     },
     {
-      title: "Twitter",
+      title: "X",
       url: "https://twitter.com/mickaelalvs",
-      icon: "ri-twitter-line",
+      icon: "ri-twitter-x-line",
     },
     {
       title: "LinkedIn",
