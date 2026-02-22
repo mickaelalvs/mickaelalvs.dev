@@ -10,10 +10,16 @@
 
 .wrapperFull {
   display: block;
-  width: max(100%, 70vw);
+  width: 100%;
   position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+}
+
+@media (min-width: 760px) {
+  .wrapperFull {
+    width: max(100%, 70vw);
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 .image {

@@ -4,16 +4,6 @@ import React, { ReactNode, HTMLAttributes } from "react";
 import { motion } from "framer-motion";
 import styles from "./Post.module.css";
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.05,
-      delayChildren: 0,
-    },
-  },
-};
-
 const itemVariants = {
   hidden: {
     opacity: 0,
@@ -54,18 +44,19 @@ export const PostContainer = ({
   className,
 }: HTMLAttributes<HTMLDivElement>) => {
   return (
-    <motion.div
-      className={className ?? styles.postContainer}
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-    >
+    <div className={className ?? styles.postContainer}>
       {React.Children.map(children, (child, index) => (
-        <motion.div key={index} variants={itemVariants}>
+        <motion.div
+          key={index}
+          variants={itemVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           {child}
         </motion.div>
       ))}
-    </motion.div>
+    </div>
   );
 };
 

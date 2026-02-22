@@ -163,21 +163,26 @@
 }
 
 .backLink {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   margin-top: 40px;
-  padding: 12px 24px;
-  background-color: var(--color-command);
+  padding: 6px 16px;
+  border-radius: 12px;
+  background-color: var(--color-hover);
   color: var(--color-primary);
-  border-radius: 8px;
   text-decoration: none;
-  font-size: 16px;
-  font-weight: 600;
-  border: 1px solid var(--color-hover);
-  transition: all 0.2s ease;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  transition: all 0.3s ease;
 }
 
 .backLink:hover {
-  background-color: var(--color-hover);
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .tooltip {
