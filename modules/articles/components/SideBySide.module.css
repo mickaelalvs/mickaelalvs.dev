@@ -1,23 +1,20 @@
 .sideBySide {
     display: flex;
-    width: min(90vw, 1200px);
+    width: 100%;
     margin: 40px 0;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 20px;
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 760px) {
     .sideBySide {
-        width: 100%;
-        max-width: 500px;
+        width: min(90vw, 1200px);
+        flex-direction: row;
         left: 50%;
         transform: translateX(-50%);
-        flex-direction: column;
     }
 }
 
@@ -31,6 +28,5 @@
 }
 
 .sideBySide :global(img) {
-    width: 100%;
     height: auto;
 }

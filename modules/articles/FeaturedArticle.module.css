@@ -92,6 +92,12 @@
   width: 100%;
 }
 
+@media (min-width: 760px) {
+  .animContainer {
+    padding: 20px;
+  }
+}
+
 .animHovered {
   position: absolute;
   top: 0;
