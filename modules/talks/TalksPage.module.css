@@ -81,13 +81,26 @@
   border-bottom: 1px solid var(--color-hover);
   position: relative;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@media (min-width: 760px) {
+  .talkContainer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
 }
 
 .talkContent {
   flex: 1;
-  margin-right: 20px;
+}
+
+@media (min-width: 760px) {
+  .talkContent {
+    margin-right: 20px;
+  }
 }
 
 .talkMeta {
@@ -101,6 +114,10 @@
   line-height: 1.6;
   white-space: pre-line;
   font-size: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .talkButton {
@@ -185,7 +202,12 @@
 
 .conferenceGroup {
   margin-bottom: 24px;
-  padding-left: 20px;
+}
+
+@media (min-width: 760px) {
+  .conferenceGroup {
+    padding-left: 20px;
+  }
 }
 
 .conferenceName {
@@ -221,26 +243,18 @@
 
 .talksList :global(a) {
   color: var(--color-primary);
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: var(--color-secondary);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
   font-size: 16px;
   border-bottom: none;
-  position: relative;
   font-weight: 500;
+  transition: text-underline-offset 0.2s ease;
 }
 
-.talksList :global(a)::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -4px;
-  height: 1px;
-  background-color: var(--color-secondary);
-  transition: transform 0.2s ease;
-}
-
-.talksList :global(li:hover) :global(a)::after {
-  transform: translateY(4px);
+.talksList :global(li:hover) :global(a) {
+  text-underline-offset: 8px;
 }
 
 .talksListItem {

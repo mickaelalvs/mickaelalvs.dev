@@ -10,6 +10,7 @@
   border-radius: var(--radius-border-radius);
   text-decoration: none;
   width: auto;
+  padding: 0px;
 }
 
 .project:hover {
@@ -19,6 +20,7 @@
 @media (min-width: 760px) {
   .project {
     width: 240px;
+    padding: 0;
   }
 }
 

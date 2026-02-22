@@ -1,11 +1,13 @@
 .featuredArticlesContainer {
-  margin: 10px 0 0 -20px;
+  padding-top: 0;
 }
 
 @media (min-width: 760px) {
   .featuredArticlesContainer {
     display: flex;
     justify-content: space-between;
+    margin-left: -20px;
+    padding-top: 10px;
   }
 }
 
