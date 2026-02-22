@@ -64,6 +64,9 @@ export default function PodcastDetailPage({ slug }: { slug: string }) {
               </div>
             )}
             <div className={styles.platformSection}>
+              <span className={styles.date}>
+                <BlogDate dateString={podcast.date} />
+              </span>
               {podcast.platformLinks && podcast.platformLinks.length > 0 && (
                 <div className={styles.platformIcons}>
                   {podcast.platformLinks.map((platform, idx) => (
@@ -75,9 +78,6 @@ export default function PodcastDetailPage({ slug }: { slug: string }) {
                   ))}
                 </div>
               )}
-              <span className={styles.date}>
-                <BlogDate dateString={podcast.date} />
-              </span>
             </div>
           </div>
         </div>
