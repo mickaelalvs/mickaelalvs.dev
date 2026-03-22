@@ -8,8 +8,10 @@ import { Post, PostMain, PostContent, PostContainer } from "../shared/Post";
 import { Wrapper } from "../layout/Wrapper";
 import ArticleHeader from "./ArticleHeader";
 import ArticleTags from "./ArticleTags";
+import TableOfContents from "./TableOfContents";
 import styles from "./BlogpostLayout.module.css";
 import type { Person } from "@/data/people";
+import type { HeadingItem } from "@/lib/extract-headings";
 
 interface BlogpostLayoutProps {
   children: ReactNode;
@@ -19,6 +21,7 @@ interface BlogpostLayoutProps {
   tags?: string[];
   authors?: Person[];
   language?: string;
+  headings?: HeadingItem[];
 }
 
 export default function BlogpostLayout({
@@ -29,6 +32,7 @@ export default function BlogpostLayout({
   tags,
   authors,
   language,
+  headings = [],
 }: BlogpostLayoutProps) {
   const imageRef = useRef<HTMLDivElement>(null);
   const [transform, setTransform] = useState("translateY(0)");
@@ -98,30 +102,37 @@ export default function BlogpostLayout({
           </div>
         )}
         <PostContent>
-          <PostContainer>
-            {!image && (
-              <div>
+          <div className={headings.length > 0 ? `${styles.postContentInner} ${styles.postContentWithToc}` : styles.postContentInner}>
+            {headings.length > 0 && (
+              <aside className={styles.tocSidebar}>
+                <TableOfContents headings={headings} />
+              </aside>
+            )}
+            <PostContainer>
+              {!image && (
+                <div>
                 <h1
                   className={`${styles.postTitle} ${styles.postContentTitle}`}
                 >
                   {title}
                 </h1>
-                <h2
-                  className={`${styles.postSubtitle} ${styles.postContentSubtitle}`}
-                >
-                  {date && <BlogDate dateString={date} />}
-                </h2>
-              </div>
-            )}
+                  <h2
+                    className={`${styles.postSubtitle} ${styles.postContentSubtitle}`}
+                  >
+                    {date && <BlogDate dateString={date} />}
+                  </h2>
+                </div>
+              )}
 
-            <ArticleHeader authors={authors} language={language} />
+              <ArticleHeader authors={authors} language={language} />
 
-            {title && <div className={styles.contentDivider} />}
+              {title && <div className={styles.contentDivider} />}
 
-            {children}
+              {children}
 
-            <ArticleTags tags={tags} />
-          </PostContainer>
+              <ArticleTags tags={tags} />
+            </PostContainer>
+          </div>
         </PostContent>
       </Main>
       <Footer />

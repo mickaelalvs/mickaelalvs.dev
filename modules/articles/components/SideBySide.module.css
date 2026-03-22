@@ -11,10 +11,8 @@
 
 @media (min-width: 760px) {
     .sideBySide {
-        width: min(90vw, 1200px);
+        width: 100%;
         flex-direction: row;
-        left: 50%;
-        transform: translateX(-50%);
     }
 }
 
@@ -29,4 +27,5 @@
 
 .sideBySide :global(img) {
     height: auto;
+    border-radius: 10px;
 }

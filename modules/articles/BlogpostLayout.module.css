@@ -190,6 +190,29 @@
   white-space: nowrap;
 }
 
+.postContentInner {
+  display: block;
+}
+
+.tocSidebar {
+  display: none;
+}
+
+@media (min-width: 1500px) {
+  .tocSidebar {
+    display: block;
+    float: left;
+    position: sticky;
+    top: calc(var(--space-nav-height-mobile, 110px) - 2rem);
+    width: 18rem;
+    height: fit-content;
+    z-index: 10;
+    margin-left: 2rem;
+    margin-top: 3rem;
+    padding: 0 0 1rem 0;
+  }
+}
+
 .contentDivider {
   width: 100%;
   height: 1px;

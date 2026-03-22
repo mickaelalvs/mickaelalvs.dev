@@ -16,9 +16,7 @@
 
 @media (min-width: 760px) {
   .wrapperFull {
-    width: max(100%, 70vw);
-    left: 50%;
-    transform: translateX(-50%);
+    width: 100%;
   }
 }
 

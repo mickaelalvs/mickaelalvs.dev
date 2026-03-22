@@ -1,11 +1,13 @@
 import BlogpostLayout from "./BlogpostLayout";
 import { getPostBySlug } from "@/lib/blog";
 import { createArticleJsonLd } from "@/lib/json-ld";
+import { extractHeadingsFromMarkdown } from "@/lib/extract-headings";
 import { getPeople } from "@/data/people";
 import { MDXRemote, type MDXRemoteProps } from "next-mdx-remote/rsc";
 import { ImageExpandable } from "./components/ImageExpandable";
 import { SideBySide } from "./components/SideBySide";
 import rehypeShiki from "@shikijs/rehype";
+import rehypeSlug from "rehype-slug";
 
 const mdxComponents = {
   ImageExpandable,
@@ -15,6 +17,7 @@ const mdxComponents = {
 const mdxOptions: MDXRemoteProps["options"] = {
   mdxOptions: {
     rehypePlugins: [
+      rehypeSlug,
       [
         rehypeShiki as any,
         {
@@ -63,6 +66,7 @@ export default async function BlogPostPage({ slug }: { slug: string }) {
   });
 
   const authors = post.authors ? getPeople(post.authors) : [];
+  const headings = extractHeadingsFromMarkdown(post.content || "");
 
   return (
     <BlogpostLayout
@@ -72,6 +76,7 @@ export default async function BlogPostPage({ slug }: { slug: string }) {
       tags={post.tags}
       authors={authors}
       language={post.language}
+      headings={headings}
     >
       <script
         type="application/ld+json"

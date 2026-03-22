@@ -1,11 +1,9 @@
 .postMain {
   padding: var(--space-nav-height-mobile) 0;
-  overflow: hidden;
   flex: 1 1;
 }
 
 .post {
-  overflow: hidden;
   flex: 1 1;
 }
 
