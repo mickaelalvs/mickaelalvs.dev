@@ -1,5 +1,6 @@
-import ZodTalk from "../../public/static/images/talks/soon.webp";
+import ZodTalk from "../../public/static/images/talks/zod.webp";
 import TouraineTech from "../../public/static/images/conferenceLogos/touraineTech.svg";
+import SunnyTech from "../../public/static/images/conferenceLogos/sunnyTech.svg";
 import type { Talk } from "@/modules/talks/types/Talk";
 import { l_audart } from "@/data/people";
 
@@ -24,6 +25,12 @@ export const LeMagicienZodEmmenezTypeScriptAuDelaDuBuild: Talk = {
             link: "",
             date: "2026-02-12",
             image: TouraineTech,
+        },
+        {
+            name: "Sunny Tech",
+            link: "",
+            date: "2026-07-03",
+            image: SunnyTech,
         },
     ],
 };
