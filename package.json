@@ -47,7 +47,7 @@
     "last 2 Edge versions"
   ],
   "devDependencies": {
-    "@biomejs/biome": "2.2.0",
+    "@biomejs/biome": "2.4.11",
     "@types/node": "20.0.0",
     "@types/react": "19.0.0",
     "@types/react-dom": "19.0.0",
