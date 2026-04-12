@@ -194,7 +194,7 @@
   display: block;
 }
 
-.postContentInner a {
+.postContentInner a:not([class]) {
   color: var(--color-pink);
   border-bottom-color: var(--color-pink);
 }

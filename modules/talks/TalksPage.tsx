@@ -53,7 +53,12 @@ function TalksContent() {
   };
 
   const renderAllTalks = () => {
-    return talks.map((talk, index) => {
+    const sorted = [...talks].sort((a, b) => {
+      const latestDate = (conferences: typeof a.conferences) =>
+        conferences.map((c) => c.date).filter(Boolean).sort().at(-1) ?? "0";
+      return latestDate(b.conferences).localeCompare(latestDate(a.conferences));
+    });
+    return sorted.map((talk, index) => {
       return <TalkItem key={index} talk={talk} />;
     });
   };
