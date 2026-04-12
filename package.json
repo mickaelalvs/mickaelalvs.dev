@@ -13,7 +13,7 @@
     "format": "biome format --write"
   },
   "dependencies": {
-    "@floating-ui/react": "0.27.16",
+    "@floating-ui/react": "0.27.19",
     "@mdx-js/loader": "3.1.1",
     "@mdx-js/react": "3.1.1",
     "@next/mdx": "16.1.1",
