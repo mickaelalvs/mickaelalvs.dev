@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { ButtonPrimary } from "./ButtonPrimary";
-import styles from "./ShortcutError.module.css";
+import {useState, useEffect} from 'react';
+import {ButtonPrimary} from './ButtonPrimary';
+import styles from './ShortcutError.module.css';
 
 export default function ShortcutError() {
   const [mounted, setMounted] = useState(false);

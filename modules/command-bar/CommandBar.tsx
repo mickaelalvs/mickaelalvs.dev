@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { Box } from "../shared/Box";
-import Toast from "../shared/Toast";
-import { useRef, useState, forwardRef } from "react";
-import React from "react";
-import clsx from "clsx";
-import { useRouter } from "next/navigation";
-import { useTheme } from "@/modules/theme/ThemeProvider";
-import styles from "./CommandBar.module.css";
+import {Box} from '../shared/Box';
+import Toast from '../shared/Toast';
+import {useRef, useState, forwardRef} from 'react';
+import React from 'react';
+import clsx from 'clsx';
+import {useRouter} from 'next/navigation';
+import {useTheme} from '@/modules/theme/ThemeProvider';
+import styles from './CommandBar.module.css';
 import {
   KBarAnimator,
   KBarProvider,
@@ -17,18 +17,18 @@ import {
   KBarPositioner,
   KBarSearch,
   KBarResults,
-} from "kbar";
-import Lottie from "lottie-react";
-import moonIcon from "../../public/static/icons/moon.json";
-import copyLinkIcon from "../../public/static/icons/copy-link.json";
-import emailIcon from "../../public/static/icons/email.json";
-import sourceIcon from "../../public/static/icons/source.json";
-import aboutIcon from "../../public/static/icons/about.json";
-import homeIcon from "../../public/static/icons/home.json";
-import articlesIcon from "../../public/static/icons/articles.json";
-import projectsIcon from "../../public/static/icons/projects.json";
-import talksIcon from "../../public/static/icons/talks.json";
-import podcastsIcon from "../../public/static/icons/podcasts.json";
+} from 'kbar';
+import Lottie from 'lottie-react';
+import moonIcon from '../../public/static/icons/moon.json';
+import copyLinkIcon from '../../public/static/icons/copy-link.json';
+import emailIcon from '../../public/static/icons/email.json';
+import sourceIcon from '../../public/static/icons/source.json';
+import aboutIcon from '../../public/static/icons/about.json';
+import homeIcon from '../../public/static/icons/home.json';
+import articlesIcon from '../../public/static/icons/articles.json';
+import projectsIcon from '../../public/static/icons/projects.json';
+import talksIcon from '../../public/static/icons/talks.json';
+import podcastsIcon from '../../public/static/icons/podcasts.json';
 
 interface CommandBarProps {
   children?: React.ReactNode;
@@ -52,160 +52,96 @@ export default function CommandBar(props: CommandBarProps) {
     setShowToast(true);
   };
 
-  const iconSize = { width: 24, height: 24 };
+  const iconSize = {width: 24, height: 24};
 
   const actions = [
     {
-      id: "copy",
-      name: "Copy Link",
-      shortcut: ["l"],
-      keywords: "copy-link",
-      section: "General",
+      id: 'copy',
+      name: 'Copy Link',
+      shortcut: ['l'],
+      keywords: 'copy-link',
+      section: 'General',
       perform: copyLink,
       icon: (
-        <Lottie
-          lottieRef={copyLinkRef}
-          style={iconSize}
-          animationData={copyLinkIcon}
-          loop={false}
-          autoplay={false}
-        />
+        <Lottie lottieRef={copyLinkRef} style={iconSize} animationData={copyLinkIcon} loop={false} autoplay={false} />
       ),
     },
     {
-      id: "email",
-      name: "Send Email",
-      shortcut: ["e"],
-      keywords: "send-email",
-      section: "General",
-      perform: () => (window.location.href = "mailto:alves.mckl@gmail.com"),
+      id: 'email',
+      name: 'Send Email',
+      shortcut: ['e'],
+      keywords: 'send-email',
+      section: 'General',
+      perform: () => (window.location.href = 'mailto:alves.mckl@gmail.com'),
+      icon: <Lottie lottieRef={emailRef} style={iconSize} animationData={emailIcon} loop={false} autoplay={false} />,
+    },
+    {
+      id: 'source',
+      name: 'GitHub',
+      shortcut: ['s'],
+      keywords: 'github',
+      section: 'General',
+      perform: () => window.open('https://github.com/mickaelalvs', '_blank'),
+      icon: <Lottie lottieRef={sourceRef} style={iconSize} animationData={sourceIcon} loop={false} autoplay={false} />,
+    },
+    {
+      id: 'home',
+      name: 'Home',
+      shortcut: ['g', 'h'],
+      keywords: 'go-home',
+      section: 'Go To',
+      perform: () => router.push('/'),
+      icon: <Lottie lottieRef={homeRef} style={iconSize} animationData={homeIcon} loop={false} autoplay={false} />,
+    },
+    {
+      id: 'about',
+      name: 'About',
+      shortcut: ['g', 'a'],
+      keywords: 'go-about',
+      section: 'Go To',
+      perform: () => router.push('/about'),
+      icon: <Lottie lottieRef={aboutRef} style={iconSize} animationData={aboutIcon} loop={false} autoplay={false} />,
+    },
+    {
+      id: 'talks',
+      name: 'Talks',
+      shortcut: ['g', 't'],
+      keywords: 'go-talks',
+      section: 'Go To',
+      perform: () => router.push('/talks'),
+      icon: <Lottie lottieRef={talksRef} style={iconSize} animationData={talksIcon} loop={false} autoplay={false} />,
+    },
+    {
+      id: 'projects',
+      name: 'Projects',
+      shortcut: ['g', 'p'],
+      keywords: 'go-projects',
+      section: 'Go To',
+      perform: () => router.push('/projects'),
       icon: (
-        <Lottie
-          lottieRef={emailRef}
-          style={iconSize}
-          animationData={emailIcon}
-          loop={false}
-          autoplay={false}
-        />
+        <Lottie lottieRef={projectsRef} style={iconSize} animationData={projectsIcon} loop={false} autoplay={false} />
       ),
     },
     {
-      id: "source",
-      name: "GitHub",
-      shortcut: ["s"],
-      keywords: "github",
-      section: "General",
-      perform: () => window.open("https://github.com/mickaelalvs", "_blank"),
+      id: 'podcasts',
+      name: 'Podcasts',
+      shortcut: ['g', 'c'],
+      keywords: 'go-podcasts',
+      section: 'Go To',
+      perform: () => router.push('/podcasts'),
       icon: (
-        <Lottie
-          lottieRef={sourceRef}
-          style={iconSize}
-          animationData={sourceIcon}
-          loop={false}
-          autoplay={false}
-        />
+        <Lottie lottieRef={podcastsRef} style={iconSize} animationData={podcastsIcon} loop={false} autoplay={false} />
       ),
     },
     {
-      id: "home",
-      name: "Home",
-      shortcut: ["g", "h"],
-      keywords: "go-home",
-      section: "Go To",
-      perform: () => router.push("/"),
+      id: 'articles',
+      name: 'Articles',
+      shortcut: ['g', 'b'],
+      keywords: 'go-articles',
+      section: 'Go To',
+      perform: () => router.push('/articles'),
       icon: (
-        <Lottie
-          lottieRef={homeRef}
-          style={iconSize}
-          animationData={homeIcon}
-          loop={false}
-          autoplay={false}
-        />
-      ),
-    },
-    {
-      id: "about",
-      name: "About",
-      shortcut: ["g", "a"],
-      keywords: "go-about",
-      section: "Go To",
-      perform: () => router.push("/about"),
-      icon: (
-        <Lottie
-          lottieRef={aboutRef}
-          style={iconSize}
-          animationData={aboutIcon}
-          loop={false}
-          autoplay={false}
-        />
-      ),
-    },
-    {
-      id: "talks",
-      name: "Talks",
-      shortcut: ["g", "t"],
-      keywords: "go-talks",
-      section: "Go To",
-      perform: () => router.push("/talks"),
-      icon: (
-        <Lottie
-          lottieRef={talksRef}
-          style={iconSize}
-          animationData={talksIcon}
-          loop={false}
-          autoplay={false}
-        />
-      ),
-    },
-    {
-      id: "projects",
-      name: "Projects",
-      shortcut: ["g", "p"],
-      keywords: "go-projects",
-      section: "Go To",
-      perform: () => router.push("/projects"),
-      icon: (
-        <Lottie
-          lottieRef={projectsRef}
-          style={iconSize}
-          animationData={projectsIcon}
-          loop={false}
-          autoplay={false}
-        />
-      ),
-    },
-    {
-      id: "podcasts",
-      name: "Podcasts",
-      shortcut: ["g", "c"],
-      keywords: "go-podcasts",
-      section: "Go To",
-      perform: () => router.push("/podcasts"),
-      icon: (
-        <Lottie
-          lottieRef={podcastsRef}
-          style={iconSize}
-          animationData={podcastsIcon}
-          loop={false}
-          autoplay={false}
-        />
-      ),
-    },
-    {
-      id: "articles",
-      name: "Articles",
-      shortcut: ["g", "b"],
-      keywords: "go-articles",
-      section: "Go To",
-      perform: () => router.push("/articles"),
-      icon: (
-        <Lottie
-          lottieRef={articlesRef}
-          style={iconSize}
-          animationData={articlesIcon}
-          loop={false}
-          autoplay={false}
-        />
+        <Lottie lottieRef={articlesRef} style={iconSize} animationData={articlesIcon} loop={false} autoplay={false} />
       ),
     },
   ];
@@ -219,10 +155,7 @@ export default function CommandBar(props: CommandBarProps) {
           <KBarPositioner className={styles.positioner}>
             {/* @ts-expect-error - KBar types are not compatible with React 19 */}
             <KBarAnimator className={styles.animator}>
-              <KBarSearch
-                placeholder="Type a command or search…"
-                className={styles.search}
-              />
+              <KBarSearch placeholder="Type a command or search…" className={styles.search} />
               <RenderResults />
             </KBarAnimator>
           </KBarPositioner>
@@ -243,22 +176,22 @@ export default function CommandBar(props: CommandBarProps) {
 }
 
 function ThemeAction() {
-  const { theme, toggleTheme } = useTheme();
+  const {theme, toggleTheme} = useTheme();
   const moonRef = useRef<any>(null);
 
   useRegisterActions(
     [
       {
-        id: "theme",
-        name: theme === "dark" ? "Switch to light mode" : "Switch to dark mode",
-        shortcut: ["t"],
-        keywords: "theme dark light mode",
-        section: "General",
+        id: 'theme',
+        name: theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode',
+        shortcut: ['t'],
+        keywords: 'theme dark light mode',
+        section: 'General',
         perform: toggleTheme,
         icon: (
           <Lottie
             lottieRef={moonRef}
-            style={{ width: 24, height: 24 }}
+            style={{width: 24, height: 24}}
             animationData={moonIcon}
             loop={false}
             autoplay={false}
@@ -273,13 +206,13 @@ function ThemeAction() {
 }
 
 function RenderResults() {
-  const { results } = useDeepMatches();
+  const {results} = useDeepMatches();
 
   return (
     <KBarResults
       items={results}
-      onRender={({ item, active }) =>
-        typeof item === "string" ? (
+      onRender={({item, active}) =>
+        typeof item === 'string' ? (
           <div className={styles.groupName}>{item}</div>
         ) : (
           <ResultItem action={item} active={active} />
@@ -298,47 +231,45 @@ interface ResultItemProps {
   active: boolean;
 }
 
-const ResultItem = forwardRef<HTMLDivElement, ResultItemProps>(
-  ({ action, active }, ref) => {
-    const getLottieRef = (): React.RefObject<any> | undefined => {
-      if (!action.icon || !React.isValidElement(action.icon)) return undefined;
-      const props = action.icon.props as { lottieRef?: React.RefObject<any> };
-      return props.lottieRef;
-    };
+const ResultItem = forwardRef<HTMLDivElement, ResultItemProps>(({action, active}, ref) => {
+  const getLottieRef = (): React.RefObject<any> | undefined => {
+    if (!action.icon || !React.isValidElement(action.icon)) return undefined;
+    const props = action.icon.props as {lottieRef?: React.RefObject<any>};
+    return props.lottieRef;
+  };
 
-    const lottieRef = getLottieRef();
+  const lottieRef = getLottieRef();
 
-    if (active) {
-      lottieRef?.current?.play();
-    } else {
-      lottieRef?.current?.stop();
-    }
+  if (active) {
+    lottieRef?.current?.play();
+  } else {
+    lottieRef?.current?.stop();
+  }
 
-    return (
-      <Box
-        ref={ref}
-        className={clsx(styles.resultItem, active && styles.resultItemActive)}
-        onMouseEnter={() => lottieRef?.current?.play()}
-        onMouseLeave={() => lottieRef?.current?.stop()}
-      >
-        <div className={styles.action}>
-          {action.icon && action.icon}
-          <div className={styles.actionRow}>
-            <span>{action.name}</span>
-          </div>
+  return (
+    <Box
+      ref={ref}
+      className={clsx(styles.resultItem, active && styles.resultItemActive)}
+      onMouseEnter={() => lottieRef?.current?.play()}
+      onMouseLeave={() => lottieRef?.current?.stop()}
+    >
+      <div className={styles.action}>
+        {action.icon && action.icon}
+        <div className={styles.actionRow}>
+          <span>{action.name}</span>
         </div>
-        {action.shortcut?.length ? (
-          <div className={styles.shortcut} aria-hidden="true">
-            {action.shortcut.map((shortcut) => (
-              <kbd key={shortcut} className={styles.kbd} tabIndex={-1}>
-                {shortcut}
-              </kbd>
-            ))}
-          </div>
-        ) : null}
-      </Box>
-    );
-  },
-);
+      </div>
+      {action.shortcut?.length ? (
+        <div className={styles.shortcut} aria-hidden="true">
+          {action.shortcut.map((shortcut) => (
+            <kbd key={shortcut} className={styles.kbd} tabIndex={-1}>
+              {shortcut}
+            </kbd>
+          ))}
+        </div>
+      ) : null}
+    </Box>
+  );
+});
 
-ResultItem.displayName = "ResultItem";
+ResultItem.displayName = 'ResultItem';

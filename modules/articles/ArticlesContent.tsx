@@ -1,32 +1,27 @@
-"use client";
+'use client';
 
-import { useRef, useState } from "react";
-import Lottie from "lottie-react";
-import ListItem from "../shared/ListItem";
-import FeaturedArticle from "./FeaturedArticle";
-import { ListGroup } from "../shared/ListGroup";
-import { LayoutGroup } from "framer-motion";
-import { Box } from "../shared/Box";
-import articlesIcon from "../../public/static/icons/articles.json";
-import styles from "./ArticlesContent.module.css";
+import {useRef, useState} from 'react';
+import Lottie from 'lottie-react';
+import ListItem from '../shared/ListItem';
+import FeaturedArticle from './FeaturedArticle';
+import {ListGroup} from '../shared/ListGroup';
+import {LayoutGroup} from 'framer-motion';
+import {Box} from '../shared/Box';
+import articlesIcon from '../../public/static/icons/articles.json';
+import styles from './ArticlesContent.module.css';
 
-import type { BlogPost } from "@/lib/blog";
+import type {BlogPost} from '@/lib/blog';
 
 interface ArticlesContentProps {
   allPosts: BlogPost[];
   featuredPosts: BlogPost[];
 }
 
-export default function ArticlesContent({
-  allPosts,
-  featuredPosts,
-}: ArticlesContentProps) {
+export default function ArticlesContent({allPosts, featuredPosts}: ArticlesContentProps) {
   const lottieRef = useRef<any>(null);
-  const [hovered, setHovered] = useState<string | number>("");
-  const [hoveredList, setHoveredList] = useState<string | number>("");
-  const filteredPosts = allPosts.filter(
-    (post: BlogPost) => post && post.slug && !post.skip,
-  );
+  const [hovered, setHovered] = useState<string | number>('');
+  const [hoveredList, setHoveredList] = useState<string | number>('');
+  const filteredPosts = allPosts.filter((post: BlogPost) => post && post.slug && !post.skip);
 
   const renderFeatured = () => {
     return featuredPosts
@@ -41,7 +36,9 @@ export default function ArticlesContent({
             description={post.description}
             image={post.thumbnail}
             readingTime={post.readingTime}
-            date={post.date ? new Date(post.date).toLocaleDateString("en-US", { month: "short", year: "numeric" }) : undefined}
+            date={
+              post.date ? new Date(post.date).toLocaleDateString('en-US', {month: 'short', year: 'numeric'}) : undefined
+            }
             hovered={hovered}
             setHovered={setHovered}
           />
@@ -70,18 +67,11 @@ export default function ArticlesContent({
       <Box className={styles.emptyState}>
         <div className={styles.emptyStateIcon}>
           <div className={styles.emptyStateLottie}>
-            <Lottie
-              lottieRef={lottieRef}
-              animationData={articlesIcon}
-              loop={true}
-              autoplay={true}
-            />
+            <Lottie lottieRef={lottieRef} animationData={articlesIcon} loop={true} autoplay={true} />
           </div>
         </div>
         <h1>No articles yet</h1>
-        <p className={styles.emptyStateMessage}>
-          Articles are coming soon. Stay tuned!
-        </p>
+        <p className={styles.emptyStateMessage}>Articles are coming soon. Stay tuned!</p>
       </Box>
     );
   }
@@ -89,22 +79,17 @@ export default function ArticlesContent({
   return (
     <LayoutGroup>
       <p>
-        Here you can find all the{" "}
-        <strong>{filteredPosts.length} articles</strong> I wrote about web
-        development, software engineering, tooling, developer experience, and
-        tech career.
+        Here you can find all the <strong>{filteredPosts.length} articles</strong> I wrote about web development,
+        software engineering, tooling, developer experience, and tech career.
       </p>
 
       <h2>Featured Articles</h2>
-      <div
-        className={styles.featuredArticlesContainer}
-        onMouseLeave={() => setHovered("")}
-      >
+      <div className={styles.featuredArticlesContainer} onMouseLeave={() => setHovered('')}>
         {renderFeatured()}
       </div>
 
       <h2>All Articles</h2>
-      <ListGroup onMouseLeave={() => setHoveredList("")}>{renderAll()}</ListGroup>
+      <ListGroup onMouseLeave={() => setHoveredList('')}>{renderAll()}</ListGroup>
     </LayoutGroup>
   );
 }

@@ -1,10 +1,10 @@
-import styles from "./BlogpostLayout.module.css";
+import styles from './BlogpostLayout.module.css';
 
 interface ArticleTagsProps {
   tags?: string[];
 }
 
-export default function ArticleTags({ tags }: ArticleTagsProps) {
+export default function ArticleTags({tags}: ArticleTagsProps) {
   if (!tags?.length) return null;
 
   return (
@@ -20,4 +20,3 @@ export default function ArticleTags({ tags }: ArticleTagsProps) {
     </div>
   );
 }
-

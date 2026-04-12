@@ -1,20 +1,20 @@
-import type { NextConfig } from "next";
-import createMDX from "@next/mdx";
+import type {NextConfig} from 'next';
+import createMDX from '@next/mdx';
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
-  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   async redirects() {
     return [
       // Redirect old /speaking URLs to /talks
       {
-        source: "/speaking",
-        destination: "/talks",
+        source: '/speaking',
+        destination: '/talks',
         permanent: true,
       },
       {
-        source: "/speaking/:slug",
-        destination: "/talks/:slug",
+        source: '/speaking/:slug',
+        destination: '/talks/:slug',
         permanent: true,
       },
     ];
@@ -22,18 +22,18 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "github.com",
+        protocol: 'https',
+        hostname: 'github.com',
       },
       {
-        protocol: "https",
-        hostname: "avatars.githubusercontent.com",
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
       },
     ],
-    formats: ["image/avif", "image/webp"],
+    formats: ['image/avif', 'image/webp'],
   },
   experimental: {
-    optimizePackageImports: ["lottie-react", "framer-motion", "date-fns"],
+    optimizePackageImports: ['lottie-react', 'framer-motion', 'date-fns'],
   },
   compress: true,
   poweredByHeader: false,

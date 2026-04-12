@@ -22,7 +22,8 @@
   filter: grayscale(0.3);
 }
 
-.content {}
+.content {
+}
 
 .section {
   margin-bottom: 48px;
@@ -106,7 +107,7 @@
   object-fit: contain;
 }
 
-[data-theme="dark"] .conferenceImage {
+[data-theme='dark'] .conferenceImage {
   filter: brightness(0) invert(1);
 }
 

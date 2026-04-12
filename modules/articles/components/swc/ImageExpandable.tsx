@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import styles from "./ImageExpandable.module.css";
+import Image from 'next/image';
+import styles from './ImageExpandable.module.css';
 
 interface ImageExpandableProps {
   src: string;
@@ -17,20 +17,16 @@ export function ImageExpandable({
   alt,
   full = false,
   expandable = true,
-  className = "",
+  className = '',
   style,
 }: ImageExpandableProps) {
   const handleExpand = () => {
-    window.open(src, "_blank");
+    window.open(src, '_blank');
   };
 
-  const wrapperClass = full
-    ? `${styles.wrapper} ${styles.wrapperFull}`
-    : styles.wrapper;
+  const wrapperClass = full ? `${styles.wrapper} ${styles.wrapperFull}` : styles.wrapper;
 
-  const imageClass = full
-    ? `${styles.image} ${styles.imageFull} ${className}`
-    : `${styles.image} ${className}`;
+  const imageClass = full ? `${styles.image} ${styles.imageFull} ${className}` : `${styles.image} ${className}`;
 
   return (
     <figure className={styles.figure}>
@@ -42,15 +38,10 @@ export function ImageExpandable({
           style={style}
           width={1200}
           height={675}
-          sizes={full ? "(min-width: 1024px) 70vw, 100vw" : "100vw"}
+          sizes={full ? '(min-width: 1024px) 70vw, 100vw' : '100vw'}
         />
         {expandable && (
-          <button
-            className={styles.expandBtn}
-            onClick={handleExpand}
-            aria-label="Open image in new tab"
-            type="button"
-          >
+          <button className={styles.expandBtn} onClick={handleExpand} aria-label="Open image in new tab" type="button">
             <i className="ri-external-link-line" />
           </button>
         )}
@@ -58,4 +49,3 @@ export function ImageExpandable({
     </figure>
   );
 }
-

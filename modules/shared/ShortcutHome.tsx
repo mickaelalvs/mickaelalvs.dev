@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { useKBar } from "kbar";
-import { ButtonPrimary } from "./ButtonPrimary";
-import styles from "./ShortcutHome.module.css";
+import {useState, useEffect} from 'react';
+import {useKBar} from 'kbar';
+import {ButtonPrimary} from './ButtonPrimary';
+import styles from './ShortcutHome.module.css';
 
 export default function ShortcutHome() {
-  const { query } = useKBar();
+  const {query} = useKBar();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

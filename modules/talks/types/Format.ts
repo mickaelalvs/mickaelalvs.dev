@@ -1,1 +1,1 @@
-export type Format = "Talk" | "Workshop" | "Quicky" | "Podcast";
+export type Format = 'Talk' | 'Workshop' | 'Quicky' | 'Podcast';

@@ -1,6 +1,6 @@
-import type { StaticImageData } from "next/image";
-import type { Person } from "@/data/people";
-import type { PlatformLink } from "./PlatformLink";
+import type {StaticImageData} from 'next/image';
+import type {Person} from '@/data/people';
+import type {PlatformLink} from './PlatformLink';
 
 export interface Podcast {
   title: string;

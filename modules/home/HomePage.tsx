@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import Navbar from "../layout/Navbar";
-import Footer from "../layout/Footer";
-import ShortcutHome from "../shared/ShortcutHome";
-import { PostMain, PostContent, PostContainer } from "../shared/Post";
-import { Wrapper } from "../layout/Wrapper";
-import { getPersonJsonLd } from "@/lib/json-ld";
-import zenikaLogo from "../../public/static/images/companyLogos/zenika.webp";
-import bedrockLogo from "../../public/static/images/companyLogos/bedrock.webp";
-import styles from "./HomePage.module.css";
+import Image from 'next/image';
+import Navbar from '../layout/Navbar';
+import Footer from '../layout/Footer';
+import ShortcutHome from '../shared/ShortcutHome';
+import {PostMain, PostContent, PostContainer} from '../shared/Post';
+import {Wrapper} from '../layout/Wrapper';
+import {getPersonJsonLd} from '@/lib/json-ld';
+import zenikaLogo from '../../public/static/images/companyLogos/zenika.webp';
+import bedrockLogo from '../../public/static/images/companyLogos/bedrock.webp';
+import styles from './HomePage.module.css';
 
-const title = "Mickaël Alves";
+const title = 'Mickaël Alves';
 
 export default function HomePage() {
   return (
@@ -30,44 +30,36 @@ export default function HomePage() {
           <PostContainer>
             <div>
               <h1>{title}</h1>
-              <p style={{ textWrap: "balance" }}>
+              <p style={{textWrap: 'balance'}}>
                 <strong>
-                  Tech Lead Frontend at{" "}
+                  Tech Lead Frontend at{' '}
                   <a
                     href="https://www.zenika.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.companyLink}
                   >
-                    <span style={{ whiteSpace: "nowrap" }}>Zenika
-                    <span className={styles.companyLogo}>
-                      <Image
-                        src={zenikaLogo}
-                        alt="Zenika"
-                        width={16}
-                        height={16}
-                        unoptimized
-                      />
-                    </span></span>
-                  </a>{" "}
-                  &{" "}
+                    <span style={{whiteSpace: 'nowrap'}}>
+                      Zenika
+                      <span className={styles.companyLogo}>
+                        <Image src={zenikaLogo} alt="Zenika" width={16} height={16} unoptimized />
+                      </span>
+                    </span>
+                  </a>{' '}
+                  &{' '}
                   <a
                     href="https://www.bedrockstreaming.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.companyLink}
                   >
-                    Bedrock{" "}
-                    <span style={{ whiteSpace: "nowrap" }}>Streaming
-                    <span className={styles.companyLogo}>
-                      <Image
-                        src={bedrockLogo}
-                        alt="Bedrock"
-                        width={16}
-                        height={16}
-                        unoptimized
-                      />
-                    </span></span>
+                    Bedrock{' '}
+                    <span style={{whiteSpace: 'nowrap'}}>
+                      Streaming
+                      <span className={styles.companyLogo}>
+                        <Image src={bedrockLogo} alt="Bedrock" width={16} height={16} unoptimized />
+                      </span>
+                    </span>
                   </a>
                 </strong>
                 <br />

@@ -1,18 +1,21 @@
-"use client";
+'use client';
 
-import React, { useEffect, useState } from "react";
-import type { HeadingItem } from "@/lib/extract-headings";
-import styles from "./TableOfContents.module.css";
+import React, {useEffect, useState} from 'react';
+import type {HeadingItem} from '@/lib/extract-headings';
+import styles from './TableOfContents.module.css';
 
 function stripEmojis(str: string): string {
-  return str.replace(/\p{Extended_Pictographic}/gu, "").replace(/\s+/g, " ").trim();
+  return str
+    .replace(/\p{Extended_Pictographic}/gu, '')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 interface TableOfContentsProps {
   headings: HeadingItem[];
 }
 
-export default function TableOfContents({ headings }: TableOfContentsProps) {
+export default function TableOfContents({headings}: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -28,7 +31,7 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
       }
 
       let current: string | null = null;
-      for (const { id } of headings) {
+      for (const {id} of headings) {
         const el = document.getElementById(id);
         if (!el) continue;
         if (el.getBoundingClientRect().top <= OFFSET) {
@@ -41,8 +44,8 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
     };
 
     handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll, {passive: true});
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [headings]);
 
   if (headings.length === 0) return null;
@@ -67,7 +70,7 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
         <h3 className={styles.tocTitle}>On this page</h3>
       </div>
       <div className={styles.tocLinks}>
-        {headings.map(({ id, text }, index) => (
+        {headings.map(({id, text}, index) => (
           <React.Fragment key={id}>
             {index > 0 && (
               <>
@@ -75,16 +78,8 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
                 <span className={styles.separator} aria-hidden />
               </>
             )}
-            <a
-              href={`#${id}`}
-              className={activeId === id ? styles.tocLinkActive : styles.tocLink}
-            >
-              <span
-                className={
-                  activeId === id ? styles.indicatorActive : styles.indicator
-                }
-                aria-hidden
-              />
+            <a href={`#${id}`} className={activeId === id ? styles.tocLinkActive : styles.tocLink}>
+              <span className={activeId === id ? styles.indicatorActive : styles.indicator} aria-hidden />
               <span className={styles.tocLinkText} title={text}>
                 {stripEmojis(text)}
               </span>

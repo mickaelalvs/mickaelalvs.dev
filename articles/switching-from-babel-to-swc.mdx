@@ -1,12 +1,12 @@
 ---
-title: "Switching from Babel to SWC: Balancing performance with modern tools and legacy code"
-description: "From Babel to SWC: our journey of migrating from a 10-year-old transpiler to a next-gen compiler, overcoming challenges and achieving build performance improvements."
+title: 'Switching from Babel to SWC: Balancing performance with modern tools and legacy code'
+description: 'From Babel to SWC: our journey of migrating from a 10-year-old transpiler to a next-gen compiler, overcoming challenges and achieving build performance improvements.'
 slug: switching-from-babel-to-swc
 image: /static/images/articles/switching-from-babel-to-swc/hero.avif
 thumbnail: /static/images/articles/switching-from-babel-to-swc/thumbnail.avif
-date: "2025-12-22"
+date: '2025-12-22'
 featured: true
-readingTime: "20 min read"
+readingTime: '20 min read'
 private: false
 tags: [swc, babel, JavaScript, react, web, frontend, performance, bundler]
 authors: [jf_farge, t_gianella]
@@ -53,9 +53,11 @@ In Babel, all transformations happen through **presets** and **plugins**.
 The architecture of Babel allows us to enable different sets of plugins depending on the environment to achieve optimal bundle size/build time/developer experience. For instance, on top of all the traditional transformations (TypeScript, JSX, preset-env…), here are some plugins we enable only conditionally:
 
 **In development:**
+
 - `react-refresh/babel` to enable Hot Module Replacement and improve the Developer eXperience (DX)
 
 **In production:**
+
 - Code splitting via `@loadable/babel-plugin`
 - Removal of attributes like `data-testid` with `react-remove-properties`
 - Removal of PropTypes with `transform-react-remove-prop-types`
@@ -66,7 +68,7 @@ The architecture of Babel allows us to enable different sets of plugins dependin
   src="/static/images/articles/switching-from-babel-to-swc/babel-process.avif"
   alt="Diagram of the Babel transpilation process: Source files flow through core presets (typescript, react, env), then split into DEV and PROD specific plugins before producing the final bundle"
   full
-  style={{ borderRadius: "16px" }}
+  style={{borderRadius: '16px'}}
 />
 
 <br />
@@ -91,12 +93,14 @@ One limitation we quickly ran into was the lack of support for removing PropType
 
 > ℹ️ `prop-types` is a legacy React library created to help type the props of React components. It has been deprecated since 2017 in favor of using TypeScript.
 > The library allows you to declare the propTypes for a component in this way:
+
 ```jsx
 MyComponent.propTypes = {
-    propA: PropTypes.string,
-    propB: PropTypes.number.isRequired,
-}
+  propA: PropTypes.string,
+  propB: PropTypes.number.isRequired,
+};
 ```
+
 > It is this kind of code (only useful during development) that we want to remove from our production code.
 
 SWC's core is written in Rust and compiled into a native binary executed by Node.js. Plugins are also written in Rust, but they are compiled to WebAssembly (WASM), producing a single portable file that can run anywhere in a sandboxed environment. This architecture makes SWC extremely fast and portable, but it also means that features available in older transpilers (like Babel) may not exist yet.
@@ -174,7 +178,7 @@ What's more, **this hybrid setup is a temporary solution** while we finish migra
   src="/static/images/articles/switching-from-babel-to-swc/final-process.avif"
   alt="Diagram showing the new transpilation process with two modes: In DEVELOPMENT, source files go directly to swc-loader (skipping babel-loader) for fast builds. In PRODUCTION, source files pass through babel-loader (Phase 1: Strip PropTypes only) then swc-loader (Phase 2: TypeScript, JSX, ES6+, Remove data-testid, Code splitting) for optimized bundles"
   full
-  style={{ borderRadius: "16px" }}
+  style={{borderRadius: '16px'}}
 />
 
 ## 📊 Benchmark results
@@ -191,12 +195,12 @@ What's more, **this hybrid setup is a temporary solution** while we finish migra
   <ImageExpandable
     src="/static/images/articles/switching-from-babel-to-swc/build-performance.avif"
     alt="Bar chart titled 'Build Performance Comparison' showing pnpm build mean time in seconds: SWC at 40.4s (fastest), SWC + Babel at 55.0s (36% slower), and Babel at 77.4s (91% slower)"
-    style={{ borderRadius: "16px" }}
+    style={{borderRadius: '16px'}}
   />
   <ImageExpandable
     src="/static/images/articles/switching-from-babel-to-swc/dev-build-performance.avif"
     alt="Bar chart titled 'Dev Build Performance' comparing dev:client (blue) and dev:server (orange) times: SWC at 11.2s/9.6s (fastest), SWC + Babel at 15.0s/14.1s, and Babel at 27.4s/54.5s (slowest)"
-    style={{ borderRadius: "16px" }}
+    style={{borderRadius: '16px'}}
   />
 </SideBySide>
 
@@ -212,12 +216,12 @@ Production builds improved significantly: **77.4s (Babel) → 55s (hybrid SWC + 
   <ImageExpandable
     src="/static/images/articles/switching-from-babel-to-swc/bundle-size.avif"
     alt="Bar chart titled 'Bundle Size Comparison' showing output size in MiB: SWC at 11.05 MiB (+0.5% larger), SWC + Babel at 10.99 MiB (smallest), and Babel at 11.90 MiB (+8.3% larger). Y-axis starts at 10 MiB to highlight differences"
-    style={{ borderRadius: "16px" }}
+    style={{borderRadius: '16px'}}
   />
   <ImageExpandable
     src="/static/images/articles/switching-from-babel-to-swc/bundle-analysis.avif"
     alt="Bar chart titled 'Bundle Analysis Comparison' showing Stat/Parsed/Gzipped sizes in MB: SWC at 21.01/9.65/2.97, SWC + Babel at 20.90/9.60/2.96 (smallest in all categories), and Babel at 21.60/10.48/3.04"
-    style={{ borderRadius: "16px" }}
+    style={{borderRadius: '16px'}}
   />
 </SideBySide>
 
@@ -243,6 +247,9 @@ Throughout this process, our goal was clear: push developer experience as far as
 
 <br />
 
-
-<small>Photo by <a href="https://unsplash.com/@caraventurera?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Cara Fuller</a></small>
-
+<small>
+  Photo by{' '}
+  <a href="https://unsplash.com/@caraventurera?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+    Cara Fuller
+  </a>
+</small>

@@ -1,6 +1,6 @@
-import fs from "fs";
-import { join } from "path";
-import matter from "gray-matter";
+import fs from 'fs';
+import {join} from 'path';
+import matter from 'gray-matter';
 
 export interface BlogPost {
   slug: string;
@@ -16,20 +16,20 @@ export interface BlogPost {
   [key: string]: any;
 }
 
-const postsDirectory = join(process.cwd(), "articles");
+const postsDirectory = join(process.cwd(), 'articles');
 
 export function getPostSlugs(): string[] {
-  return fs.readdirSync(postsDirectory).filter((file) => file.endsWith(".mdx"));
+  return fs.readdirSync(postsDirectory).filter((file) => file.endsWith('.mdx'));
 }
 
 export function getPostBySlug(slug: string, fields: string[] = []): BlogPost {
-  const realSlug = slug.replace(/\.mdx$/, "");
+  const realSlug = slug.replace(/\.mdx$/, '');
   const fullPath = join(postsDirectory, `${realSlug}.mdx`);
 
   let parsed: matter.GrayMatterFile<string>;
 
   if (fs.existsSync(fullPath)) {
-    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
     parsed = matter(fileContents);
   } else {
     const slugs = getPostSlugs();
@@ -37,7 +37,7 @@ export function getPostBySlug(slug: string, fields: string[] = []): BlogPost {
 
     for (const fileSlug of slugs) {
       const filePath = join(postsDirectory, fileSlug);
-      const contents = fs.readFileSync(filePath, "utf8");
+      const contents = fs.readFileSync(filePath, 'utf8');
       parsed = matter(contents);
 
       if (parsed.data.slug === realSlug) {
@@ -51,16 +51,16 @@ export function getPostBySlug(slug: string, fields: string[] = []): BlogPost {
     }
   }
 
-  const { data, content } = parsed!;
+  const {data, content} = parsed!;
 
   const items: BlogPost = {} as BlogPost;
 
   fields.forEach((field) => {
-    if (field === "slug") {
+    if (field === 'slug') {
       items[field] = data.slug || realSlug;
     }
 
-    if (field === "content") {
+    if (field === 'content') {
       items[field] = content;
     }
 
@@ -75,7 +75,7 @@ export function getPostBySlug(slug: string, fields: string[] = []): BlogPost {
 export function getAllPosts(fields: string[] = []): BlogPost[] {
   const slugs = getPostSlugs();
   return slugs
-    .map((slug) => getPostBySlug(slug, [...fields, "private"]))
+    .map((slug) => getPostBySlug(slug, [...fields, 'private']))
     .filter((post) => !post.private)
     .sort((post1, post2) => (post1.date! > post2.date! ? -1 : 1));
 }

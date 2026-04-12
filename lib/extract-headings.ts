@@ -1,4 +1,4 @@
-import GithubSlugger from "github-slugger";
+import GithubSlugger from 'github-slugger';
 
 export interface HeadingItem {
   id: string;
@@ -16,7 +16,7 @@ export function extractHeadingsFromMarkdown(content: string): HeadingItem[] {
   while ((match = regex.exec(content)) !== null) {
     const rawText = match[1].trim();
     const id = slugger.slug(rawText);
-    items.push({ id, text: rawText, level: 2 });
+    items.push({id, text: rawText, level: 2});
   }
 
   return items;

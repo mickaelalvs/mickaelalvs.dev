@@ -34,11 +34,11 @@
   z-index: 2;
 }
 
-.root[data-state="open"] {
+.root[data-state='open'] {
   animation: slideUpAndFade 100ms ease-in forwards;
 }
 
-.root[data-state="closed"] {
+.root[data-state='closed'] {
   animation: slideDownAndFade 100ms ease-in forwards;
 }
 

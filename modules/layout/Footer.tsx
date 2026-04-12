@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Link from "next/link";
+import {useState} from 'react';
+import Link from 'next/link';
 import {
   useFloating,
   autoUpdate,
@@ -14,8 +14,8 @@ import {
   useRole,
   useInteractions,
   FloatingPortal,
-} from "@floating-ui/react";
-import styles from "./Footer.module.css";
+} from '@floating-ui/react';
+import styles from './Footer.module.css';
 
 interface LinkItem {
   title: string;
@@ -23,28 +23,23 @@ interface LinkItem {
   icon: string;
 }
 
-function FooterLink({ link }: { link: LinkItem }) {
+function FooterLink({link}: {link: LinkItem}) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { refs, floatingStyles, context } = useFloating({
+  const {refs, floatingStyles, context} = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
-    placement: "top",
+    placement: 'top',
     middleware: [offset(8), flip(), shift()],
     whileElementsMounted: autoUpdate,
   });
 
-  const hover = useHover(context, { move: false });
+  const hover = useHover(context, {move: false});
   const focus = useFocus(context);
   const dismiss = useDismiss(context);
-  const role = useRole(context, { role: "tooltip" });
+  const role = useRole(context, {role: 'tooltip'});
 
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    hover,
-    focus,
-    dismiss,
-    role,
-  ]);
+  const {getReferenceProps, getFloatingProps} = useInteractions([hover, focus, dismiss, role]);
 
   return (
     <>
@@ -55,22 +50,13 @@ function FooterLink({ link }: { link: LinkItem }) {
         className={styles.navLink}
         aria-label={link.title}
       >
-        <span
-          ref={refs.setReference}
-          className={styles.anchor}
-          {...getReferenceProps()}
-        >
+        <span ref={refs.setReference} className={styles.anchor} {...getReferenceProps()}>
           <i className={`${styles.icon} ${link.icon}`} />
         </span>
       </Link>
       {isOpen && (
         <FloatingPortal>
-          <div
-            ref={refs.setFloating}
-            style={floatingStyles}
-            className={styles.tooltip}
-            {...getFloatingProps()}
-          >
+          <div ref={refs.setFloating} style={floatingStyles} className={styles.tooltip} {...getFloatingProps()}>
             {link.title}
           </div>
         </FloatingPortal>
@@ -82,29 +68,29 @@ function FooterLink({ link }: { link: LinkItem }) {
 export default function Footer() {
   const links: LinkItem[] = [
     {
-      title: "Bluesky",
-      url: "https://bsky.app/profile/mickaelalvs.dev",
-      icon: "ri-bluesky-line",
+      title: 'Bluesky',
+      url: 'https://bsky.app/profile/mickaelalvs.dev',
+      icon: 'ri-bluesky-line',
     },
     {
-      title: "GitHub",
-      url: "https://github.com/mickaelalvs",
-      icon: "ri-github-line",
+      title: 'GitHub',
+      url: 'https://github.com/mickaelalvs',
+      icon: 'ri-github-line',
     },
     {
-      title: "X",
-      url: "https://twitter.com/mickaelalvs",
-      icon: "ri-twitter-x-line",
+      title: 'X',
+      url: 'https://twitter.com/mickaelalvs',
+      icon: 'ri-twitter-x-line',
     },
     {
-      title: "LinkedIn",
-      url: "https://www.linkedin.com/in/mickaelalves",
-      icon: "ri-linkedin-line",
+      title: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/mickaelalves',
+      icon: 'ri-linkedin-line',
     },
     {
-      title: "Email",
-      url: "mailto:alves.mckl@gmail.com",
-      icon: "ri-mail-line",
+      title: 'Email',
+      url: 'mailto:alves.mckl@gmail.com',
+      icon: 'ri-mail-line',
     },
   ];
 

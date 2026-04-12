@@ -58,7 +58,7 @@
   color: #7c5cbf;
   background: #ede9f8;
   border: 1px solid #c9bfea;
-  padding: 0px 8px;
+  padding: 0 8px;
   border-radius: 4px;
   white-space: nowrap;
 }
@@ -107,9 +107,18 @@
   flex-shrink: 0;
 }
 
-.close    { background: #ff5f57; border: 1px solid #e0443e; }
-.minimize { background: #ffbd2e; border: 1px solid #dea123; }
-.maximize { background: #28ca42; border: 1px solid #1aad29; }
+.close {
+  background: #ff5f57;
+  border: 1px solid #e0443e;
+}
+.minimize {
+  background: #ffbd2e;
+  border: 1px solid #dea123;
+}
+.maximize {
+  background: #28ca42;
+  border: 1px solid #1aad29;
+}
 
 .title {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;

@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { useState } from "react";
-import styles from "./HoverAnimation.module.css";
+import {motion} from 'framer-motion';
+import {useState} from 'react';
+import styles from './HoverAnimation.module.css';
 
 interface HoverAnimationProps {
   id: string | number;
@@ -19,8 +19,8 @@ export function HoverAnimation({
   id,
   layoutId,
   children,
-  className = "",
-  backgroundClassName = "",
+  className = '',
+  backgroundClassName = '',
   hovered,
   setHovered,
 }: HoverAnimationProps) {
@@ -48,7 +48,7 @@ export function HoverAnimation({
         <motion.span
           key="hover-background"
           layoutId={layoutId}
-          animate={{ opacity: 1 }}
+          animate={{opacity: 1}}
           className={`${styles.hoverBackground} ${backgroundClassName}`}
         />
       )}

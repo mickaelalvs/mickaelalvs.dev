@@ -21,7 +21,7 @@
 }
 
 .projectsList :global(li)::before {
-  content: "→";
+  content: '→';
   position: absolute;
   left: 0;
   color: var(--color-primary);
@@ -43,7 +43,7 @@
 }
 
 .projectsList :global(a)::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   right: 0;

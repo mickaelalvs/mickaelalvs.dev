@@ -1,7 +1,7 @@
-import type { StaticImageData } from "next/image";
-import type { Person } from "@/data/people";
-import type { Conference } from "./Conference";
-import type { Format } from "./Format";
+import type {StaticImageData} from 'next/image';
+import type {Person} from '@/data/people';
+import type {Conference} from './Conference';
+import type {Format} from './Format';
 
 export type Talk = {
   id: string;

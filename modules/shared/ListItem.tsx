@@ -1,12 +1,12 @@
-import { useRef, useState } from "react";
-import React from "react";
-import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import Lottie from "lottie-react";
-import { useTheme } from "@/modules/theme/ThemeProvider";
-import podcastsIcon from "../../public/static/icons/podcasts.json";
-import BlogDate from "./BlogDate";
-import styles from "./ListItem.module.css";
+import {useRef, useState} from 'react';
+import React from 'react';
+import Link from 'next/link';
+import {motion, AnimatePresence} from 'framer-motion';
+import Lottie from 'lottie-react';
+import {useTheme} from '@/modules/theme/ThemeProvider';
+import podcastsIcon from '../../public/static/icons/podcasts.json';
+import BlogDate from './BlogDate';
+import styles from './ListItem.module.css';
 
 interface ListItemProps {
   href: string;
@@ -20,7 +20,7 @@ interface ListItemProps {
 
 export default function ListItem(props: ListItemProps) {
   const lottieRef = useRef<any>(null);
-  if (props.href.charAt(0) === "/" && !props.href.includes("/podcasts/")) {
+  if (props.href.charAt(0) === '/' && !props.href.includes('/podcasts/')) {
     return (
       <li className={`${styles.item} ${styles.articleItem}`}>
         <Link href={props.href} className={styles.anchor}>
@@ -35,7 +35,7 @@ export default function ListItem(props: ListItemProps) {
     );
   }
 
-  if (props.href.includes("/podcasts/")) {
+  if (props.href.includes('/podcasts/')) {
     return (
       <li className={styles.item}>
         <Link
@@ -53,7 +53,7 @@ export default function ListItem(props: ListItemProps) {
                     animationData={podcastsIcon}
                     loop
                     autoplay={false}
-                    style={{ width: 24, height: 24 }}
+                    style={{width: 24, height: 24}}
                   />
                 </span>
                 <span className={styles.title}>{props.title}</span>
@@ -63,9 +63,7 @@ export default function ListItem(props: ListItemProps) {
                   <BlogDate dateString={props.date} />
                 </span>
               )}
-              {props.description && (
-                <span className={styles.description}>{props.description}</span>
-              )}
+              {props.description && <span className={styles.description}>{props.description}</span>}
             </div>
             <span className={styles.iconContainer}>
               <i className="ri-arrow-right-up-line"></i>
@@ -95,14 +93,12 @@ export default function ListItem(props: ListItemProps) {
                   animationData={podcastsIcon}
                   loop
                   autoplay={false}
-                  style={{ width: 24, height: 24 }}
+                  style={{width: 24, height: 24}}
                 />
               </span>
               <span className={styles.title}>{props.title}</span>
             </div>
-            {props.description && (
-              <span className={styles.description}>{props.description}</span>
-            )}
+            {props.description && <span className={styles.description}>{props.description}</span>}
           </div>
           <span className={styles.iconContainer}>
             <i className="ri-arrow-right-up-line"></i>
@@ -121,21 +117,21 @@ interface AnimationProps {
 }
 
 function Animation(props: AnimationProps) {
-  const [localHovered, setLocalHovered] = useState<string | number>("");
+  const [localHovered, setLocalHovered] = useState<string | number>('');
   const isControlled = props.hovered !== undefined && props.setHovered !== undefined;
   const hovered = isControlled ? props.hovered! : localHovered;
   const setHovered = isControlled ? props.setHovered! : setLocalHovered;
   const isHovered = hovered === props.index;
-  const { theme } = useTheme();
+  const {theme} = useTheme();
 
-  const activeColor = theme === "dark" ? "#FFFFFF" : "#1a1a1a";
-  const inactiveColor = theme === "dark" ? "#ADADAD" : "#525866";
+  const activeColor = theme === 'dark' ? '#FFFFFF' : '#1a1a1a';
+  const inactiveColor = theme === 'dark' ? '#ADADAD' : '#525866';
 
   return (
     <motion.span
       className={styles.animContainer}
       onHoverStart={() => setHovered(props.index)}
-      onHoverEnd={() => !isControlled && setHovered("")}
+      onHoverEnd={() => !isControlled && setHovered('')}
       animate={{
         color: isHovered ? activeColor : inactiveColor,
       }}
@@ -149,9 +145,9 @@ function Animation(props: AnimationProps) {
           <motion.span
             className={styles.animHovered}
             layoutId="listItem"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
             transition={{
               layout: {
                 duration: 0.3,

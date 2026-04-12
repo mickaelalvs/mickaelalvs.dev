@@ -1,0 +1,12 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "singleQuote": true,
+  "bracketSpacing": false,
+  "jsxBracketSameLine": false,
+  "useTabs": false,
+  "tabWidth": 2,
+  "printWidth": 120,
+  "trailingComma": "all",
+  "sortPackageJson": false,
+  "ignorePatterns": ["pnpm-lock.yaml", "pnpm-workspace.yaml", ".next/", "dist/", "build/", "public/static/icons/"]
+}

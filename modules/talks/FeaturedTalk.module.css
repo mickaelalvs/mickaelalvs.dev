@@ -36,7 +36,6 @@
   position: relative;
 }
 
-
 .image {
   filter: grayscale(1);
   object-fit: cover;

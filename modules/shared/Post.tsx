@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import React, { ReactNode, HTMLAttributes } from "react";
-import { motion } from "framer-motion";
-import styles from "./Post.module.css";
+import React, {ReactNode, HTMLAttributes} from 'react';
+import {motion} from 'framer-motion';
+import styles from './Post.module.css';
 
 const itemVariants = {
   hidden: {
@@ -23,7 +23,7 @@ interface PostComponentProps extends HTMLAttributes<HTMLElement> {
   children: ReactNode;
 }
 
-export const PostMain = ({ children, ...props }: PostComponentProps) => {
+export const PostMain = ({children, ...props}: PostComponentProps) => {
   return (
     <main className={styles.postMain} {...props}>
       {children}
@@ -31,7 +31,7 @@ export const PostMain = ({ children, ...props }: PostComponentProps) => {
   );
 };
 
-export const Post = ({ children, ...props }: PostComponentProps) => {
+export const Post = ({children, ...props}: PostComponentProps) => {
   return (
     <main className={styles.post} {...props}>
       {children}
@@ -39,20 +39,11 @@ export const Post = ({ children, ...props }: PostComponentProps) => {
   );
 };
 
-export const PostContainer = ({
-  children,
-  className,
-}: HTMLAttributes<HTMLDivElement>) => {
+export const PostContainer = ({children, className}: HTMLAttributes<HTMLDivElement>) => {
   return (
     <div className={className ?? styles.postContainer}>
       {React.Children.map(children, (child, index) => (
-        <motion.div
-          key={index}
-          variants={itemVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+        <motion.div key={index} variants={itemVariants} initial="hidden" whileInView="visible" viewport={{once: true}}>
           {child}
         </motion.div>
       ))}
@@ -60,10 +51,7 @@ export const PostContainer = ({
   );
 };
 
-export const PostContent = ({
-  children,
-  ...props
-}: HTMLAttributes<HTMLDivElement>) => {
+export const PostContent = ({children, ...props}: HTMLAttributes<HTMLDivElement>) => {
   return (
     <div className={styles.postContent} {...props}>
       {children}

@@ -1,62 +1,58 @@
-import React from "react";
-import CommandBar from "@/modules/command-bar/CommandBar";
-import { ThemeProvider } from "@/modules/theme/ThemeProvider";
-import { Metadata, Viewport } from "next";
-import { NuqsAdapter } from "nuqs/adapters/next/app";
-import { Analytics } from "@vercel/analytics/next"
+import React from 'react';
+import CommandBar from '@/modules/command-bar/CommandBar';
+import {ThemeProvider} from '@/modules/theme/ThemeProvider';
+import {Metadata, Viewport} from 'next';
+import {NuqsAdapter} from 'nuqs/adapters/next/app';
+import {Analytics} from '@vercel/analytics/next';
 
-import "../public/static/css/globals.css";
-import "remixicon/fonts/remixicon.css";
+import '../public/static/css/globals.css';
+import 'remixicon/fonts/remixicon.css';
 
 export const viewport: Viewport = {
-  themeColor: "#f4f4f5",
+  themeColor: '#f4f4f5',
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mickaelalvs.dev"),
+  metadataBase: new URL('https://mickaelalvs.dev'),
   title: {
-    default: "Mickaël Alves",
-    template: "%s | Mickaël Alves",
+    default: 'Mickaël Alves',
+    template: '%s | Mickaël Alves',
   },
   description:
     "👋🏼 Hey, I'm Mickaël Alves, Tech Lead Frontend at Zenika & Bedrock Streaming. I'm passionate about web technologies, tooling and especially Developer Experience. Speaker, co-organizer of LyonJS & DevFest Lyon.",
-  authors: [{ name: "Mickaël Alves" }],
+  authors: [{name: 'Mickaël Alves'}],
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://mickaelalvs.dev",
-    siteName: "Mickaël Alves",
-    title: "Mickaël Alves",
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://mickaelalvs.dev',
+    siteName: 'Mickaël Alves',
+    title: 'Mickaël Alves',
     description:
       "👋🏼 Hey, I'm Mickaël Alves, Tech Lead Frontend at Zenika & Bedrock Streaming. I'm passionate about web technologies, tooling and especially Developer Experience. Speaker, co-organizer of LyonJS & DevFest Lyon.",
     images: [
       {
-        url: "/og-image.png",
+        url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: "Mickaël Alves",
+        alt: 'Mickaël Alves',
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Mickaël Alves",
+    card: 'summary_large_image',
+    title: 'Mickaël Alves',
     description:
       "👋🏼 Hey, I'm Mickaël Alves, Tech Lead Frontend at Zenika & Bedrock Streaming. I'm passionate about web technologies, tooling and especially Developer Experience. Speaker, co-organizer of LyonJS & DevFest Lyon.",
-    images: ["/og-image.png"],
+    images: ['/og-image.png'],
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/avatar.png",
-    apple: "/avatar.png",
+    icon: '/favicon.ico',
+    shortcut: '/avatar.png',
+    apple: '/avatar.png',
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en-US" suppressHydrationWarning>
       <head>
@@ -87,10 +83,7 @@ export default function RootLayout({
             `,
           }}
         />
-        <title>
-          Mickaël Alves - Tech Lead Frontend, Speaker & Developer Experience
-          Enthusiast
-        </title>
+        <title>Mickaël Alves - Tech Lead Frontend, Speaker & Developer Experience Enthusiast</title>
       </head>
       <body suppressHydrationWarning>
         <ThemeProvider>

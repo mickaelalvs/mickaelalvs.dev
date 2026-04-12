@@ -1,51 +1,41 @@
-"use client";
+'use client';
 
-import { useRef, useState, Suspense } from "react";
-import { useQueryState, parseAsStringLiteral } from "nuqs";
-import { LayoutGroup, motion } from "framer-motion";
-import Lottie from "lottie-react";
-import Link from "next/link";
-import clsx from "clsx";
-import BaseLayout from "../layout/BaseLayout";
-import { Box } from "../shared/Box";
-import FeaturedTalk from "./FeaturedTalk";
-import { speaking } from "@/data/speaking";
-import type { Talk } from "./types/Talk";
-import type { Conference } from "./types/Conference";
-import { generateSlug } from "@/utils/slug";
-import type { ConferenceItem } from "./types/ConferenceItem";
-import styles from "./TalksPage.module.css";
-import calendarIcon from "../../public/static/icons/talks.json";
-import presentationIcon from "../../public/static/icons/presentation.json";
+import {useRef, useState, Suspense} from 'react';
+import {useQueryState, parseAsStringLiteral} from 'nuqs';
+import {LayoutGroup, motion} from 'framer-motion';
+import Lottie from 'lottie-react';
+import Link from 'next/link';
+import clsx from 'clsx';
+import BaseLayout from '../layout/BaseLayout';
+import {Box} from '../shared/Box';
+import FeaturedTalk from './FeaturedTalk';
+import {speaking} from '@/data/speaking';
+import type {Talk} from './types/Talk';
+import type {Conference} from './types/Conference';
+import {generateSlug} from '@/utils/slug';
+import type {ConferenceItem} from './types/ConferenceItem';
+import styles from './TalksPage.module.css';
+import calendarIcon from '../../public/static/icons/talks.json';
+import presentationIcon from '../../public/static/icons/presentation.json';
 
 function TalksContent() {
   const [viewMode, setViewMode] = useQueryState(
-    "view",
-    parseAsStringLiteral(["talks", "conferences"] as const).withDefault(
-      "conferences",
-    ),
+    'view',
+    parseAsStringLiteral(['talks', 'conferences'] as const).withDefault('conferences'),
   );
-  const [hoveredTalk, setHoveredTalk] = useState<string | number>("");
+  const [hoveredTalk, setHoveredTalk] = useState<string | number>('');
   const calendarLottieRef = useRef<any>(null);
   const talkLottieRef = useRef<any>(null);
 
   // Filtrer pour exclure les podcasts
-  const talks = speaking.filter(
-    (item) => "format" in item && item.format !== "Podcast",
-  );
+  const talks = speaking.filter((item) => 'format' in item && item.format !== 'Podcast');
 
   const renderFeatured = () => {
     return (
       <>
         {talks.slice(0, 3).map((talk, index) => {
           return (
-            <FeaturedTalk
-              key={index}
-              talk={talk}
-              index={index}
-              hovered={hoveredTalk}
-              setHovered={setHoveredTalk}
-            />
+            <FeaturedTalk key={index} talk={talk} index={index} hovered={hoveredTalk} setHovered={setHoveredTalk} />
           );
         })}
       </>
@@ -55,7 +45,11 @@ function TalksContent() {
   const renderAllTalks = () => {
     const sorted = [...talks].sort((a, b) => {
       const latestDate = (conferences: typeof a.conferences) =>
-        conferences.map((c) => c.date).filter(Boolean).sort().at(-1) ?? "0";
+        conferences
+          .map((c) => c.date)
+          .filter(Boolean)
+          .sort()
+          .at(-1) ?? '0';
       return latestDate(b.conferences).localeCompare(latestDate(a.conferences));
     });
     return sorted.map((talk, index) => {
@@ -64,13 +58,11 @@ function TalksContent() {
   };
 
   const renderByConferences = () => {
-    const conferencesByYear: { [year: string]: ConferenceItem[] } = {};
+    const conferencesByYear: {[year: string]: ConferenceItem[]} = {};
 
     talks.forEach((talk) => {
       talk.conferences.forEach((conf: Conference) => {
-        const year = conf.date
-          ? conf.date.substring(0, 4)
-          : conf.year || new Date().getFullYear().toString();
+        const year = conf.date ? conf.date.substring(0, 4) : conf.year || new Date().getFullYear().toString();
         if (!conferencesByYear[year]) {
           conferencesByYear[year] = [];
         }
@@ -85,12 +77,10 @@ function TalksContent() {
       });
     });
 
-    const sortedYears = Object.keys(conferencesByYear).sort((a, b) =>
-      b.localeCompare(a),
-    );
+    const sortedYears = Object.keys(conferencesByYear).sort((a, b) => b.localeCompare(a));
 
     return sortedYears.map((year) => {
-      const confMap: { [name: string]: ConferenceItem[] } = {};
+      const confMap: {[name: string]: ConferenceItem[]} = {};
       conferencesByYear[year].forEach((item) => {
         if (!confMap[item.conferenceName]) {
           confMap[item.conferenceName] = [];
@@ -98,16 +88,14 @@ function TalksContent() {
         confMap[item.conferenceName].push(item);
       });
 
-      const sortedConfs = Object.entries(confMap).sort(
-        ([nameA, itemsA], [_, itemsB]) => {
-          const dateA = itemsA[0]?.date;
-          const dateB = itemsB[0]?.date;
-          if (!dateA && !dateB) return 0;
-          if (!dateA) return 1; // Sans date à la fin
-          if (!dateB) return -1;
-          return dateB.localeCompare(dateA);
-        },
-      );
+      const sortedConfs = Object.entries(confMap).sort(([nameA, itemsA], [_, itemsB]) => {
+        const dateA = itemsA[0]?.date;
+        const dateB = itemsB[0]?.date;
+        if (!dateA && !dateB) return 0;
+        if (!dateA) return 1; // Sans date à la fin
+        if (!dateB) return -1;
+        return dateB.localeCompare(dateA);
+      });
 
       return (
         <div key={year} id={`year-${year}`} className={styles.yearSection}>
@@ -121,27 +109,23 @@ function TalksContent() {
             });
 
             const confDate = sortedItems[0]?.date
-              ? new Date(sortedItems[0].date).toLocaleDateString("fr-FR", {
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-              })
+              ? new Date(sortedItems[0].date).toLocaleDateString('fr-FR', {
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric',
+                })
               : null;
 
             return (
               <div key={confName} className={styles.conferenceGroup}>
                 <h4 className={styles.conferenceName}>
                   {confName}
-                  {confDate && (
-                    <span className={styles.talkDate}> - {confDate}</span>
-                  )}
+                  {confDate && <span className={styles.talkDate}> - {confDate}</span>}
                 </h4>
                 <ul className={styles.talksList}>
                   {sortedItems.map((item, idx) => (
                     <li key={idx} className={styles.talksListItem}>
-                      <Link href={`/talks/${item.talkSlug}`}>
-                        {item.talkTitle}
-                      </Link>
+                      <Link href={`/talks/${item.talkSlug}`}>{item.talkTitle}</Link>
                     </li>
                   ))}
                 </ul>
@@ -162,18 +146,14 @@ function TalksContent() {
     >
       <LayoutGroup>
         <p>
-          Passionate about <strong>sharing knowledge</strong> as a speaker and
-          teacher, I enjoy speaking at various conferences and meetups about web
-          development, tooling, and new technologies.
+          Passionate about <strong>sharing knowledge</strong> as a speaker and teacher, I enjoy speaking at various
+          conferences and meetups about web development, tooling, and new technologies.
         </p>
 
         <h2>Featured Talks</h2>
         <Box className={styles.featuredTalksBox}>
           <LayoutGroup id="featured-talks">
-            <div
-              className={styles.featuredTalksContainer}
-              onMouseLeave={() => setHoveredTalk("")}
-            >
+            <div className={styles.featuredTalksContainer} onMouseLeave={() => setHoveredTalk('')}>
               {renderFeatured()}
             </div>
           </LayoutGroup>
@@ -184,16 +164,16 @@ function TalksContent() {
           <LayoutGroup id="toggle">
             <div className={styles.toggleContainer}>
               <button
-                className={clsx(styles.toggleButton, viewMode === "conferences" && styles.toggleButtonActive)}
-                onClick={() => setViewMode("conferences")}
+                className={clsx(styles.toggleButton, viewMode === 'conferences' && styles.toggleButtonActive)}
+                onClick={() => setViewMode('conferences')}
                 onMouseEnter={() => calendarLottieRef.current?.play()}
                 onMouseLeave={() => calendarLottieRef.current?.stop()}
               >
-                {viewMode === "conferences" && (
+                {viewMode === 'conferences' && (
                   <motion.div
                     className={styles.toggleBackground}
                     layoutId="toggleBg"
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    transition={{duration: 0.3, ease: 'easeInOut'}}
                   />
                 )}
                 <span className={styles.toggleLabel}>
@@ -203,23 +183,23 @@ function TalksContent() {
                       animationData={calendarIcon}
                       loop={false}
                       autoplay={false}
-                      style={{ width: 18, height: 18 }}
+                      style={{width: 18, height: 18}}
                     />
                   </span>
                   <span className={styles.toggleText}>By Year</span>
                 </span>
               </button>
               <button
-                className={clsx(styles.toggleButton, viewMode === "talks" && styles.toggleButtonActive)}
-                onClick={() => setViewMode("talks")}
+                className={clsx(styles.toggleButton, viewMode === 'talks' && styles.toggleButtonActive)}
+                onClick={() => setViewMode('talks')}
                 onMouseEnter={() => talkLottieRef.current?.play()}
                 onMouseLeave={() => talkLottieRef.current?.stop()}
               >
-                {viewMode === "talks" && (
+                {viewMode === 'talks' && (
                   <motion.div
                     className={styles.toggleBackground}
                     layoutId="toggleBg"
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    transition={{duration: 0.3, ease: 'easeInOut'}}
                   />
                 )}
                 <span className={styles.toggleLabel}>
@@ -229,7 +209,7 @@ function TalksContent() {
                       animationData={presentationIcon}
                       loop={false}
                       autoplay={false}
-                      style={{ width: 18, height: 18 }}
+                      style={{width: 18, height: 18}}
                     />
                   </span>
                   <span className={styles.toggleText}>By Talk</span>
@@ -239,13 +219,13 @@ function TalksContent() {
           </LayoutGroup>
         </div>
 
-        {viewMode === "talks" ? renderAllTalks() : renderByConferences()}
+        {viewMode === 'talks' ? renderAllTalks() : renderByConferences()}
       </LayoutGroup>
     </BaseLayout>
   );
 }
 
-function TalkItem({ talk }: { talk: Talk }) {
+function TalkItem({talk}: {talk: Talk}) {
   const slug = generateSlug(talk.title);
 
   return (
