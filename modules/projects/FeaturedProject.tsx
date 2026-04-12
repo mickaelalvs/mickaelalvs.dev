@@ -19,6 +19,8 @@ const iconMap = {
 interface FeaturedProjectProps {
   project: Project;
   index: string | number;
+  hovered?: string | number;
+  setHovered?: (value: string | number) => void;
 }
 
 export default function FeaturedProject(props: FeaturedProjectProps) {
@@ -36,7 +38,7 @@ export default function FeaturedProject(props: FeaturedProjectProps) {
       onMouseEnter={() => iconRef.current?.play()}
       onMouseLeave={() => iconRef.current?.stop()}
     >
-      <Animation index={props.index}>
+      <Animation index={props.index} hovered={props.hovered} setHovered={props.setHovered}>
         <Lottie
           lottieRef={iconRef}
           style={{ width: 24, height: 24, marginBottom: 10 }}
@@ -57,17 +59,22 @@ export default function FeaturedProject(props: FeaturedProjectProps) {
 interface AnimationProps {
   index: string | number;
   children: React.ReactNode;
+  hovered?: string | number;
+  setHovered?: (value: string | number) => void;
 }
 
 function Animation(props: AnimationProps) {
-  const [hovered, setHovered] = useState<string | number>("");
+  const [localHovered, setLocalHovered] = useState<string | number>("");
+  const isControlled = props.hovered !== undefined && props.setHovered !== undefined;
+  const hovered = isControlled ? props.hovered! : localHovered;
+  const setHovered = isControlled ? props.setHovered! : setLocalHovered;
   const isHovered = hovered === props.index;
 
   return (
     <motion.span
       className={styles.animContainer}
       onHoverStart={() => setHovered(props.index)}
-      onHoverEnd={() => setHovered("")}
+      onHoverEnd={() => !isControlled && setHovered("")}
     >
       {isHovered && (
         <motion.span

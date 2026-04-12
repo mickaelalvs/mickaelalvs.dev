@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { LayoutGroup } from "framer-motion";
 import BaseLayout from "../layout/BaseLayout";
 import FeaturedProject from "./FeaturedProject";
@@ -10,6 +10,8 @@ import items from "@/data/projects";
 import styles from "./ProjectsPage.module.css";
 
 export default function ProjectsPage() {
+  const [hovered, setHovered] = useState<string | number>("");
+
   const renderFeatured = () => {
     const featured = ["Shortvid.io", "Code In The Dark", "Appwrite workshop"];
 
@@ -26,7 +28,7 @@ export default function ProjectsPage() {
       })
       .flat()
       .map((item, index) => {
-        return <FeaturedProject key={index} index={index} project={item} />;
+        return <FeaturedProject key={index} index={index} project={item} hovered={hovered} setHovered={setHovered} />;
       });
   };
 
@@ -68,7 +70,7 @@ export default function ProjectsPage() {
         </p>
 
         <h2>Featured Projects</h2>
-        <FeaturedProjects>{renderFeatured()}</FeaturedProjects>
+        <FeaturedProjects onMouseLeave={() => setHovered("")}>{renderFeatured()}</FeaturedProjects>
 
         <h2>All Projects</h2>
         {renderAll()}

@@ -4,11 +4,11 @@ import ArticlesContent from "./ArticlesContent";
 
 export default function ArticlesPage() {
   const allPosts = getAllPosts([
-    "content",
     "date",
     "description",
     "featured",
     "image",
+    "readingTime",
     "thumbnail",
     "skip",
     "slug",

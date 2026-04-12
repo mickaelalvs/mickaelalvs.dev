@@ -194,6 +194,11 @@
   display: block;
 }
 
+.postContentInner a {
+  color: var(--color-pink);
+  border-bottom-color: var(--color-pink);
+}
+
 .tocSidebar {
   display: none;
 }

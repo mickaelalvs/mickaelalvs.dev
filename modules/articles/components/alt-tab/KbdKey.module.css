@@ -1,0 +1,83 @@
+.key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 9px;
+  min-width: 26px;
+  border-radius: 6px;
+  font-family: var(--font-code);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.6;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  user-select: none;
+  cursor: default;
+  white-space: nowrap;
+
+  /* Dark theme (default) */
+  color: var(--color-primary);
+  background: #28262e;
+  border: 1px solid #3a373f;
+  box-shadow:
+    0 3px 0 0 #0f0e13,
+    0 1px 3px rgba(0, 0, 0, 0.5);
+
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
+}
+
+.key:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 5px 0 0 #0f0e13,
+    0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.key:active {
+  transform: translateY(2px);
+  box-shadow:
+    0 1px 0 0 #0f0e13,
+    0 0px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* Light theme */
+[data-theme="light"] .key {
+  color: #1a1a1a;
+  background: #f0eff4;
+  border: 1px solid #d0cdd8;
+  box-shadow:
+    0 3px 0 0 #b0adb8,
+    0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .key:hover {
+  box-shadow:
+    0 5px 0 0 #b0adb8,
+    0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .key:active {
+  box-shadow:
+    0 1px 0 0 #b0adb8,
+    0 0px 2px rgba(0, 0, 0, 0.08);
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.pressed {
+  transform: translateY(2px);
+  box-shadow:
+    0 1px 0 0 #0f0e13,
+    0 0px 2px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="light"] .pressed {
+  box-shadow:
+    0 1px 0 0 #b0adb8,
+    0 0px 2px rgba(0, 0, 0, 0.08);
+}
