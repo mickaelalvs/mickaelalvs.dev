@@ -35,7 +35,7 @@ export async function generateMetadata({params}: {params: Promise<{slug: string}
         url,
       },
     };
-  } catch (e) {
+  } catch {
     return {
       title: 'Not Found',
     };

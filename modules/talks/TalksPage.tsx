@@ -88,7 +88,7 @@ function TalksContent() {
         confMap[item.conferenceName].push(item);
       });
 
-      const sortedConfs = Object.entries(confMap).sort(([nameA, itemsA], [_, itemsB]) => {
+      const sortedConfs = Object.entries(confMap).sort(([_nameA, itemsA], [_, itemsB]) => {
         const dateA = itemsA[0]?.date;
         const dateB = itemsB[0]?.date;
         if (!dateA && !dateB) return 0;
