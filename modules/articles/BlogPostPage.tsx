@@ -4,14 +4,18 @@ import { createArticleJsonLd } from "@/lib/json-ld";
 import { extractHeadingsFromMarkdown } from "@/lib/extract-headings";
 import { getPeople } from "@/data/people";
 import { MDXRemote, type MDXRemoteProps } from "next-mdx-remote/rsc";
-import { ImageExpandable } from "./components/ImageExpandable";
-import { SideBySide } from "./components/SideBySide";
+import { ImageExpandable } from "./components/swc/ImageExpandable";
+import { SideBySide } from "./components/swc/SideBySide";
+import { KbdKey } from "./components/alt-tab/KbdKey";
+import { LiveCodingDemo } from "./components/alt-tab/LiveCodingDemo";
 import rehypeShiki from "@shikijs/rehype";
 import rehypeSlug from "rehype-slug";
 
 const mdxComponents = {
   ImageExpandable,
   SideBySide,
+  KbdKey,
+  LiveCodingDemo,
 };
 
 const mdxOptions: MDXRemoteProps["options"] = {

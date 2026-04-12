@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, ReactNode } from "react";
+import { ReactNode } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import readingTime from "reading-time";
 import styles from "./FeaturedArticle.module.css";
 
 interface FeaturedArticleProps {
@@ -11,20 +10,23 @@ interface FeaturedArticleProps {
   image?: string;
   title: string;
   description?: string;
-  content?: string;
-  stats?: string;
+  readingTime?: string;
+  date?: string;
   index: string | number;
+  hovered?: string | number;
+  setHovered?: (value: string | number) => void;
 }
 
 export default function FeaturedArticle(props: FeaturedArticleProps) {
-  const stats = props.content
-    ? readingTime(props.content)
-    : { text: "1 min read" };
   const isPriority = typeof props.index === "number" && props.index < 3;
 
   return (
     <a href={props.href} className={styles.article}>
-      <Animation index={props.index}>
+      <Animation
+        index={props.index}
+        hovered={props.hovered}
+        setHovered={props.setHovered}
+      >
         <div className={styles.container}>
           {props.image && (
             <div className={styles.imageContainer}>
@@ -45,7 +47,15 @@ export default function FeaturedArticle(props: FeaturedArticleProps) {
             {props.description && (
               <p className={styles.description}>{props.description}</p>
             )}
-            <p className={styles.stats}>{stats.text}</p>
+            {(props.readingTime || props.date) && (
+              <p className={styles.stats}>
+                {props.readingTime}
+                {props.readingTime && props.date && (
+                  <span className={styles.statsSeparator}>·</span>
+                )}
+                {props.date}
+              </p>
+            )}
           </div>
         </div>
       </Animation>
@@ -56,17 +66,17 @@ export default function FeaturedArticle(props: FeaturedArticleProps) {
 interface AnimationProps {
   index: string | number;
   children: ReactNode;
+  hovered?: string | number;
+  setHovered?: (value: string | number) => void;
 }
 
 function Animation(props: AnimationProps) {
-  const [hovered, setHovered] = useState<string | number>("");
-  const isHovered = hovered === props.index;
+  const isHovered = props.hovered === props.index;
 
   return (
     <motion.div
       className={styles.animContainer}
-      onHoverStart={() => setHovered(props.index)}
-      onHoverEnd={() => setHovered("")}
+      onHoverStart={() => props.setHovered?.(props.index)}
     >
       {isHovered && (
         <motion.div

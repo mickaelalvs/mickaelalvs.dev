@@ -5,10 +5,13 @@ import { podcasts } from "@/data/podcasts";
 import ListItem from "../shared/ListItem";
 import { ListGroup } from "../shared/ListGroup";
 import { LayoutGroup } from "framer-motion";
+import { useState } from "react";
 import { generateSlug } from "@/utils/slug";
 import type { Podcast } from "./types/Podcast";
 
 export default function PodcastsPage() {
+  const [hovered, setHovered] = useState<string | number>("");
+
   const sortedPodcasts = [...podcasts].sort((a, b) =>
     b.date.localeCompare(a.date)
   );
@@ -26,6 +29,8 @@ export default function PodcastsPage() {
           title={`${item.title} ${lang}`}
           date={item.date}
           description={item.description}
+          hovered={hovered}
+          setHovered={setHovered}
         />
       );
     });
@@ -52,7 +57,7 @@ export default function PodcastsPage() {
           French podcasts about development and tech communities, created in
           collaboration with Zenika.
         </p>
-        <ListGroup>{renderPodcasts(sortedPodcasts)}</ListGroup>
+        <ListGroup onMouseLeave={() => setHovered("")}>{renderPodcasts(sortedPodcasts)}</ListGroup>
       </LayoutGroup>
     </BaseLayout>
   );

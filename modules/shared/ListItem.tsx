@@ -14,6 +14,8 @@ interface ListItemProps {
   date?: string;
   description?: string;
   index: string | number;
+  hovered?: string | number;
+  setHovered?: (value: string | number) => void;
 }
 
 export default function ListItem(props: ListItemProps) {
@@ -22,7 +24,7 @@ export default function ListItem(props: ListItemProps) {
     return (
       <li className={`${styles.item} ${styles.articleItem}`}>
         <Link href={props.href} className={styles.anchor}>
-          <Animation index={props.index}>
+          <Animation index={props.index} hovered={props.hovered} setHovered={props.setHovered}>
             <span className={styles.title}>{props.title}</span>
             <span className={styles.date}>
               <BlogDate dateString={props.date} />
@@ -42,7 +44,7 @@ export default function ListItem(props: ListItemProps) {
           onMouseEnter={() => lottieRef.current?.play()}
           onMouseLeave={() => lottieRef.current?.stop()}
         >
-          <Animation index={props.index}>
+          <Animation index={props.index} hovered={props.hovered} setHovered={props.setHovered}>
             <div className={styles.contentLeft}>
               <div className={styles.titleRow}>
                 <span className={styles.podcastIcon}>
@@ -114,10 +116,15 @@ export default function ListItem(props: ListItemProps) {
 interface AnimationProps {
   index: string | number;
   children: React.ReactNode;
+  hovered?: string | number;
+  setHovered?: (value: string | number) => void;
 }
 
 function Animation(props: AnimationProps) {
-  const [hovered, setHovered] = useState<string | number>("");
+  const [localHovered, setLocalHovered] = useState<string | number>("");
+  const isControlled = props.hovered !== undefined && props.setHovered !== undefined;
+  const hovered = isControlled ? props.hovered! : localHovered;
+  const setHovered = isControlled ? props.setHovered! : setLocalHovered;
   const isHovered = hovered === props.index;
   const { theme } = useTheme();
 
@@ -128,7 +135,7 @@ function Animation(props: AnimationProps) {
     <motion.span
       className={styles.animContainer}
       onHoverStart={() => setHovered(props.index)}
-      onHoverEnd={() => setHovered("")}
+      onHoverEnd={() => !isControlled && setHovered("")}
       animate={{
         color: isHovered ? activeColor : inactiveColor,
       }}
