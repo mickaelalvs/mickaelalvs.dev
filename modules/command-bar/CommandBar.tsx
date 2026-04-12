@@ -254,7 +254,7 @@ const ResultItem = forwardRef<HTMLDivElement, ResultItemProps>(({action, active}
       onMouseLeave={() => lottieRef?.current?.stop()}
     >
       <div className={styles.action}>
-        {action.icon && action.icon}
+        {action.icon}
         <div className={styles.actionRow}>
           <span>{action.name}</span>
         </div>
