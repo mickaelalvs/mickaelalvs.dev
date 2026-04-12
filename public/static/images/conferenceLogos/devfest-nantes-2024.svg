@@ -7,7 +7,7 @@
       }
 
       .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6 {
-        stroke-width: 0px;
+        stroke-width: 0;
       }
 
       .cls-2 {

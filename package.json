@@ -2,6 +2,7 @@
   "name": "mickaelalvs",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.9.0",
   "engines": {
     "node": ">=22.x"
   },
@@ -9,8 +10,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "biome check",
-    "format": "biome format --write"
+    "lint": "biome lint",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*": "oxfmt --no-error-on-unmatched-pattern"
   },
   "dependencies": {
     "@floating-ui/react": "0.27.19",
@@ -20,11 +26,11 @@
     "@radix-ui/react-toast": "1.2.15",
     "@shikijs/rehype": "3.20.0",
     "@types/mdx": "2.0.13",
-    "@vercel/analytics": "^1.6.1",
+    "@vercel/analytics": "1.6.1",
     "clsx": "2.1.1",
     "date-fns": "2.21.3",
     "framer-motion": "12.23.24",
-    "github-slugger": "^2.0.0",
+    "github-slugger": "2.0.0",
     "gray-matter": "4.0.3",
     "kbar": "0.1.0-beta.21",
     "lottie-react": "2.4.1",
@@ -35,7 +41,7 @@
     "nuqs": "2.8.9",
     "react": "19.2.1",
     "react-dom": "19.2.1",
-    "rehype-slug": "^6.0.0",
+    "rehype-slug": "6.0.0",
     "remixicon": "4.7.0",
     "shiki": "3.20.0"
   },
@@ -52,6 +58,9 @@
     "@types/react-dom": "19.0.0",
     "babel-plugin-react-compiler": "1.0.0",
     "glob": "13.0.6",
+    "husky": "9.1.7",
+    "lint-staged": "16.4.0",
+    "oxfmt": "0.44.0",
     "sharp": "0.34.5",
     "typescript": "5.9.3"
   }

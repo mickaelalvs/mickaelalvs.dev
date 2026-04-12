@@ -1,4 +1,4 @@
-import type { Project } from "./types/Project";
+import type {Project} from './types/Project';
 
 interface ProjectItemProps {
   project: Project;
@@ -6,7 +6,7 @@ interface ProjectItemProps {
 }
 
 export default function ProjectItem(props: ProjectItemProps) {
-  const { project, listItemClassName } = props;
+  const {project, listItemClassName} = props;
 
   return (
     <li className={listItemClassName}>

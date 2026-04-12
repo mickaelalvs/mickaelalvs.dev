@@ -1,12 +1,12 @@
 ---
-title: "Stop Alt-Tabbing: Embed a full IDE for live coding in your slides"
-description: "Learn how to integrate a real VS Code environment directly into your presentation slides using Code Server and Slidev, enabling seamless live coding demos without context switching."
+title: 'Stop Alt-Tabbing: Embed a full IDE for live coding in your slides'
+description: 'Learn how to integrate a real VS Code environment directly into your presentation slides using Code Server and Slidev, enabling seamless live coding demos without context switching.'
 slug: stop-alt-tabbing-embed-ide-live-coding-slides
 image: /static/images/articles/stop-alt-tabbing-embed-ide-live-coding-slides/hero.avif
 thumbnail: /static/images/articles/stop-alt-tabbing-embed-ide-live-coding-slides/thumbnail.jpg
-date: "2026-04-13"
+date: '2026-04-13'
 featured: true
-readingTime: "10 min read"
+readingTime: '10 min read'
 private: false
 tags: [live-coding, slidev, code-server, speaker, slides, Vs Code, DevEx, coderaft]
 authors: [mickael_alves]
@@ -17,7 +17,7 @@ language: en
 
 I've been giving tech talks for a few years now. And in this world, there are as many ways to build slides as there are speakers. You have the WYSIWYG tools: Google Slides, PowerPoint, Keynote. Intuitive, easy to pick up, and they get the job done. Then there are those who went the other way: coding their presentations with tools like [Slidev](https://sli.dev/), [Reveal.js](https://revealjs.com/), [Slidesk](https://slidesk.link/) or even homemade solutions. What's great about these tools is that they're progressive: you start with a simple Markdown file, and pull in the advanced features (Vue, React...) only when you need them.
 
-Talking with other speakers recently, they made an interesting point: **once you code your slides, there are no more limits**. You embed whatever you want, however you want. Slidev puts it well in their docs: these tools are Web-based, *"which means nothing is impossible"*. That's exactly the mindset I had when I started looking for a better way to do live coding in my talks.
+Talking with other speakers recently, they made an interesting point: **once you code your slides, there are no more limits**. You embed whatever you want, however you want. Slidev puts it well in their docs: these tools are Web-based, _"which means nothing is impossible"_. That's exactly the mindset I had when I started looking for a better way to do live coding in my talks.
 
 ## 🎯 The live coding problem
 
@@ -27,7 +27,13 @@ In my latest conferences with [@slocaly](https://bsky.app/profile/slocaly.bsky.s
 
 In general, you need three things: access to your code, the ability to edit it, and a way to see the result in real time. Simple in theory, but in practice...
 
-<video src="/static/videos/stop-alt-tabbing-embed-ide-live-coding-slides/alt-tab-record.mp4" autoPlay muted loop playsInline />
+<video
+  src="/static/videos/stop-alt-tabbing-embed-ide-live-coding-slides/alt-tab-record.mp4"
+  autoPlay
+  muted
+  loop
+  playsInline
+/>
 
 We used Reveal.js for a long time, but we've since moved to Slidev. The example here is Slidev-specific, but the concept works with any code-based slide tool: we're building on native browser APIs, and it's all just the Web under the hood. No limit to what you can do.
 
@@ -51,7 +57,7 @@ The "classic" move: keep your IDE open on the side. But that means switching win
 
 Simple enough, and it works in practice. But it throws away everything that makes live coding valuable: the interactivity, the spontaneity, the ability to adjust on the fly based on how the audience reacts. And honestly, the result doesn't look great. **As a frontend developer, aesthetics matter 👀**
 
-*That said, it's still a great backup plan to have ready when something goes wrong with your live coding setup. Always have a fallback.*
+_That said, it's still a great backup plan to have ready when something goes wrong with your live coding setup. Always have a fallback._
 
 **Cloud IDEs (StackBlitz, Gitpod…)**
 
@@ -141,4 +147,4 @@ With self-hosted IDEs, I've finally found a code presentation experience that in
 
 The first time we used this at a conference, we got a flood of questions at the end: "what is that IDE inside your slide?", "how did you do that?" That's exactly why I wanted to write this article: for the speakers out there dealing with the same problems we had.
 
-And now that you understand the concept... why stop at an IDE? A live video feed from a camera? A terminal, like [@mouss](https://bsky.app/profile/moussto.bsky.social) did in one of his talks? An interactive demo with the audience? *Nothing is impossible.*
+And now that you understand the concept... why stop at an IDE? A live video feed from a camera? A terminal, like [@mouss](https://bsky.app/profile/moussto.bsky.social) did in one of his talks? An interactive demo with the audience? _Nothing is impossible._

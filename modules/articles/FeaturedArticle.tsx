@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { ReactNode } from "react";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import styles from "./FeaturedArticle.module.css";
+import {ReactNode} from 'react';
+import {motion} from 'framer-motion';
+import Image from 'next/image';
+import styles from './FeaturedArticle.module.css';
 
 interface FeaturedArticleProps {
   href: string;
@@ -18,15 +18,11 @@ interface FeaturedArticleProps {
 }
 
 export default function FeaturedArticle(props: FeaturedArticleProps) {
-  const isPriority = typeof props.index === "number" && props.index < 3;
+  const isPriority = typeof props.index === 'number' && props.index < 3;
 
   return (
     <a href={props.href} className={styles.article}>
-      <Animation
-        index={props.index}
-        hovered={props.hovered}
-        setHovered={props.setHovered}
-      >
+      <Animation index={props.index} hovered={props.hovered} setHovered={props.setHovered}>
         <div className={styles.container}>
           {props.image && (
             <div className={styles.imageContainer}>
@@ -44,15 +40,11 @@ export default function FeaturedArticle(props: FeaturedArticleProps) {
           )}
           <div className={styles.content}>
             <h3 className={styles.title}>{props.title}</h3>
-            {props.description && (
-              <p className={styles.description}>{props.description}</p>
-            )}
+            {props.description && <p className={styles.description}>{props.description}</p>}
             {(props.readingTime || props.date) && (
               <p className={styles.stats}>
                 {props.readingTime}
-                {props.readingTime && props.date && (
-                  <span className={styles.statsSeparator}>·</span>
-                )}
+                {props.readingTime && props.date && <span className={styles.statsSeparator}>·</span>}
                 {props.date}
               </p>
             )}
@@ -74,16 +66,13 @@ function Animation(props: AnimationProps) {
   const isHovered = props.hovered === props.index;
 
   return (
-    <motion.div
-      className={styles.animContainer}
-      onHoverStart={() => props.setHovered?.(props.index)}
-    >
+    <motion.div className={styles.animContainer} onHoverStart={() => props.setHovered?.(props.index)}>
       {isHovered && (
         <motion.div
           className={styles.animHovered}
           layoutId="featuredArticles"
           transition={{
-            layout: { duration: 0.3, ease: "easeInOut" },
+            layout: {duration: 0.3, ease: 'easeInOut'},
           }}
         />
       )}

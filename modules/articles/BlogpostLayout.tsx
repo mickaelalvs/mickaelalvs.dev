@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { ReactNode, useEffect, useRef, useState } from "react";
-import Navbar from "../layout/Navbar";
-import Footer from "../layout/Footer";
-import BlogDate from "../shared/BlogDate";
-import { Post, PostMain, PostContent, PostContainer } from "../shared/Post";
-import { Wrapper } from "../layout/Wrapper";
-import ArticleHeader from "./ArticleHeader";
-import ArticleTags from "./ArticleTags";
-import TableOfContents from "./TableOfContents";
-import styles from "./BlogpostLayout.module.css";
-import type { Person } from "@/data/people";
-import type { HeadingItem } from "@/lib/extract-headings";
+import {ReactNode, useEffect, useRef, useState} from 'react';
+import Navbar from '../layout/Navbar';
+import Footer from '../layout/Footer';
+import BlogDate from '../shared/BlogDate';
+import {Post, PostMain, PostContent, PostContainer} from '../shared/Post';
+import {Wrapper} from '../layout/Wrapper';
+import ArticleHeader from './ArticleHeader';
+import ArticleTags from './ArticleTags';
+import TableOfContents from './TableOfContents';
+import styles from './BlogpostLayout.module.css';
+import type {Person} from '@/data/people';
+import type {HeadingItem} from '@/lib/extract-headings';
 
 interface BlogpostLayoutProps {
   children: ReactNode;
@@ -35,10 +35,10 @@ export default function BlogpostLayout({
   headings = [],
 }: BlogpostLayoutProps) {
   const imageRef = useRef<HTMLDivElement>(null);
-  const [transform, setTransform] = useState("translateY(0)");
+  const [transform, setTransform] = useState('translateY(0)');
 
   useEffect(() => {
-    if (!image || typeof window === "undefined") return;
+    if (!image || typeof window === 'undefined') return;
 
     let ticking = false;
 
@@ -57,7 +57,7 @@ export default function BlogpostLayout({
     const checkDesktop = () => window.innerWidth >= 1024;
 
     if (checkDesktop()) {
-      window.addEventListener("scroll", handleScroll, { passive: true });
+      window.addEventListener('scroll', handleScroll, {passive: true});
       handleScroll();
     }
 
@@ -65,15 +65,15 @@ export default function BlogpostLayout({
       if (checkDesktop()) {
         handleScroll();
       } else {
-        setTransform("translateY(0)");
+        setTransform('translateY(0)');
       }
     };
 
-    window.addEventListener("resize", handleResize, { passive: true });
+    window.addEventListener('resize', handleResize, {passive: true});
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
     };
   }, [image]);
 
@@ -83,9 +83,7 @@ export default function BlogpostLayout({
       <Main image={image}>
         {image && (
           <div className={styles.postHeader}>
-            <h1 className={`${styles.postTitle} ${styles.postHeaderTitle}`}>
-              {title}
-            </h1>
+            <h1 className={`${styles.postTitle} ${styles.postHeaderTitle}`}>{title}</h1>
             <div
               ref={imageRef}
               className={styles.postImage}
@@ -94,15 +92,17 @@ export default function BlogpostLayout({
                 transform,
               }}
             />
-            <h2
-              className={`${styles.postSubtitle} ${styles.postHeaderSubtitle}`}
-            >
+            <h2 className={`${styles.postSubtitle} ${styles.postHeaderSubtitle}`}>
               {date && <BlogDate dateString={date} />}
             </h2>
           </div>
         )}
         <PostContent>
-          <div className={headings.length > 0 ? `${styles.postContentInner} ${styles.postContentWithToc}` : styles.postContentInner}>
+          <div
+            className={
+              headings.length > 0 ? `${styles.postContentInner} ${styles.postContentWithToc}` : styles.postContentInner
+            }
+          >
             {headings.length > 0 && (
               <aside className={styles.tocSidebar}>
                 <TableOfContents headings={headings} />
@@ -111,14 +111,8 @@ export default function BlogpostLayout({
             <PostContainer>
               {!image && (
                 <div>
-                <h1
-                  className={`${styles.postTitle} ${styles.postContentTitle}`}
-                >
-                  {title}
-                </h1>
-                  <h2
-                    className={`${styles.postSubtitle} ${styles.postContentSubtitle}`}
-                  >
+                  <h1 className={`${styles.postTitle} ${styles.postContentTitle}`}>{title}</h1>
+                  <h2 className={`${styles.postSubtitle} ${styles.postContentSubtitle}`}>
                     {date && <BlogDate dateString={date} />}
                   </h2>
                 </div>
@@ -140,10 +134,6 @@ export default function BlogpostLayout({
   );
 }
 
-function Main(props: { children: ReactNode; image?: string }) {
-  return props.image ? (
-    <Post>{props.children}</Post>
-  ) : (
-    <PostMain>{props.children}</PostMain>
-  );
+function Main(props: {children: ReactNode; image?: string}) {
+  return props.image ? <Post>{props.children}</Post> : <PostMain>{props.children}</PostMain>;
 }

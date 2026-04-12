@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import BaseLayout from "../layout/BaseLayout";
-import { podcasts } from "@/data/podcasts";
-import Image from "next/image";
-import { generateSlug } from "@/utils/slug";
-import { notFound } from "next/navigation";
-import styles from "./PodcastDetailPage.module.css";
-import PlatformIcon from "./PlatformIcon";
-import CoSpeakerAvatar from "./CoSpeakerAvatar";
-import BlogDate from "../shared/BlogDate";
+import Link from 'next/link';
+import BaseLayout from '../layout/BaseLayout';
+import {podcasts} from '@/data/podcasts';
+import Image from 'next/image';
+import {generateSlug} from '@/utils/slug';
+import {notFound} from 'next/navigation';
+import styles from './PodcastDetailPage.module.css';
+import PlatformIcon from './PlatformIcon';
+import CoSpeakerAvatar from './CoSpeakerAvatar';
+import BlogDate from '../shared/BlogDate';
 
-export default function PodcastDetailPage({ slug }: { slug: string }) {
+export default function PodcastDetailPage({slug}: {slug: string}) {
   const podcast = podcasts.find((p) => generateSlug(p.title) === slug);
 
   if (!podcast) {
@@ -20,16 +20,16 @@ export default function PodcastDetailPage({ slug }: { slug: string }) {
 
   const getPlatformIcon = (platform: string) => {
     switch (platform) {
-      case "Spotify":
-        return "/static/icons/spotify.svg";
-      case "Apple Podcast":
-        return "/static/icons/apple.svg";
-      case "Deezer":
-        return "/static/icons/deezer.svg";
-      case "YouTube":
-        return "/static/icons/youtube.svg";
+      case 'Spotify':
+        return '/static/icons/spotify.svg';
+      case 'Apple Podcast':
+        return '/static/icons/apple.svg';
+      case 'Deezer':
+        return '/static/icons/deezer.svg';
+      case 'YouTube':
+        return '/static/icons/youtube.svg';
       default:
-        return "/static/icons/spotify.svg";
+        return '/static/icons/spotify.svg';
     }
   };
 
@@ -48,7 +48,7 @@ export default function PodcastDetailPage({ slug }: { slug: string }) {
               alt={podcast.title}
               width={800}
               height={450}
-              style={{ width: "100%", height: "auto" }}
+              style={{width: '100%', height: 'auto'}}
               unoptimized
             />
           </div>
@@ -70,11 +70,7 @@ export default function PodcastDetailPage({ slug }: { slug: string }) {
               {podcast.platformLinks && podcast.platformLinks.length > 0 && (
                 <div className={styles.platformIcons}>
                   {podcast.platformLinks.map((platform, idx) => (
-                    <PlatformIcon
-                      key={idx}
-                      platform={platform}
-                      getPlatformIcon={getPlatformIcon}
-                    />
+                    <PlatformIcon key={idx} platform={platform} getPlatformIcon={getPlatformIcon} />
                   ))}
                 </div>
               )}

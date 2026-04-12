@@ -158,7 +158,7 @@
   filter: brightness(0) saturate(100%) invert(100%);
 }
 
-:global([data-theme="light"]) .platformIcon {
+:global([data-theme='light']) .platformIcon {
   filter: brightness(0) saturate(100%);
 }
 

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import styles from "./KbdKey.module.css";
+import styles from './KbdKey.module.css';
 
 interface KbdKeyProps {
   children: React.ReactNode;
@@ -8,14 +8,10 @@ interface KbdKeyProps {
   pressed?: boolean;
 }
 
-export function KbdKey({ children, onClick, pressed }: KbdKeyProps) {
+export function KbdKey({children, onClick, pressed}: KbdKeyProps) {
   return (
     <kbd
-      className={[
-        styles.key,
-        onClick ? styles.clickable : "",
-        pressed ? styles.pressed : "",
-      ].join(" ")}
+      className={[styles.key, onClick ? styles.clickable : '', pressed ? styles.pressed : ''].join(' ')}
       onClick={onClick}
     >
       {children}

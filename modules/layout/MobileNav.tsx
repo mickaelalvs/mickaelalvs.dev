@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
-import Lottie from "lottie-react";
-import clsx from "clsx";
-import styles from "./Navbar.module.css";
-import homeIcon from "../../public/static/icons/home.json";
-import aboutIcon from "../../public/static/icons/about.json";
-import talksIcon from "../../public/static/icons/talks.json";
-import projectsIcon from "../../public/static/icons/projects.json";
-import podcastsIcon from "../../public/static/icons/podcasts.json";
-import articlesIcon from "../../public/static/icons/articles.json";
+import {useState, useEffect, useRef} from 'react';
+import Link from 'next/link';
+import {usePathname} from 'next/navigation';
+import {motion, AnimatePresence} from 'framer-motion';
+import Lottie from 'lottie-react';
+import clsx from 'clsx';
+import styles from './Navbar.module.css';
+import homeIcon from '../../public/static/icons/home.json';
+import aboutIcon from '../../public/static/icons/about.json';
+import talksIcon from '../../public/static/icons/talks.json';
+import projectsIcon from '../../public/static/icons/projects.json';
+import podcastsIcon from '../../public/static/icons/podcasts.json';
+import articlesIcon from '../../public/static/icons/articles.json';
 
 interface MobileNavProps {
   pages: string[];
@@ -27,7 +27,7 @@ const iconMap: Record<string, any> = {
   Articles: articlesIcon,
 };
 
-export default function MobileNav({ pages }: MobileNavProps) {
+export default function MobileNav({pages}: MobileNavProps) {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const iconRefs = useRef<Record<string, any>>({});
@@ -40,12 +40,12 @@ export default function MobileNav({ pages }: MobileNavProps) {
   // Empêcher le scroll du body quand le menu est ouvert
   useEffect(() => {
     if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
     }
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
     };
   }, [isMenuOpen]);
 
@@ -53,7 +53,7 @@ export default function MobileNav({ pages }: MobileNavProps) {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const iconSize = { width: 24, height: 24 };
+  const iconSize = {width: 24, height: 24};
 
   return (
     <>
@@ -64,33 +64,30 @@ export default function MobileNav({ pages }: MobileNavProps) {
         onClick={toggleMenu}
         className={`${styles.buttonHeader} ${styles.hamburgerButton}`}
       >
-        <motion.div
-          className={styles.hamburger}
-          animate={isMenuOpen ? "open" : "closed"}
-        >
+        <motion.div className={styles.hamburger} animate={isMenuOpen ? 'open' : 'closed'}>
           <motion.span
             className={styles.hamburgerLine}
             variants={{
-              closed: { rotate: 0, y: 0 },
-              open: { rotate: 45, y: 6 },
+              closed: {rotate: 0, y: 0},
+              open: {rotate: 45, y: 6},
             }}
-            transition={{ duration: 0.3 }}
+            transition={{duration: 0.3}}
           />
           <motion.span
             className={styles.hamburgerLine}
             variants={{
-              closed: { opacity: 1 },
-              open: { opacity: 0 },
+              closed: {opacity: 1},
+              open: {opacity: 0},
             }}
-            transition={{ duration: 0.3 }}
+            transition={{duration: 0.3}}
           />
           <motion.span
             className={styles.hamburgerLine}
             variants={{
-              closed: { rotate: 0, y: 0 },
-              open: { rotate: -45, y: -6 },
+              closed: {rotate: 0, y: 0},
+              open: {rotate: -45, y: -6},
             }}
-            transition={{ duration: 0.3 }}
+            transition={{duration: 0.3}}
           />
         </motion.div>
       </button>
@@ -100,56 +97,45 @@ export default function MobileNav({ pages }: MobileNavProps) {
         {isMenuOpen && (
           <motion.nav
             className={styles.mobileMenu}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+            transition={{duration: 0.3, ease: [0.25, 0.1, 0.25, 1]}}
           >
-            <button
-              type="button"
-              aria-label="Fermer le menu"
-              onClick={toggleMenu}
-              className={styles.closeButton}
-            >
+            <button type="button" aria-label="Fermer le menu" onClick={toggleMenu} className={styles.closeButton}>
               <motion.span
-                initial={{ rotate: -90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.3, delay: 0.1 }}
+                initial={{rotate: -90, opacity: 0}}
+                animate={{rotate: 0, opacity: 1}}
+                exit={{rotate: 90, opacity: 0}}
+                transition={{duration: 0.3, delay: 0.1}}
               >
                 <i className={`${styles.closeIcon} ri-close-line`} />
               </motion.span>
             </button>
             <ul className={styles.mobileList}>
               {pages.map((page, index) => {
-                const path = page === "Home" ? "/" : `/${page.toLowerCase()}`;
-                const isActive =
-                  pathname === path ||
-                  (page !== "Home" && pathname.startsWith(path + "/"));
+                const path = page === 'Home' ? '/' : `/${page.toLowerCase()}`;
+                const isActive = pathname === path || (page !== 'Home' && pathname.startsWith(path + '/'));
                 const iconData = iconMap[page];
 
                 if (!iconRefs.current[page]) {
-                  iconRefs.current[page] = { current: null };
+                  iconRefs.current[page] = {current: null};
                 }
 
                 return (
                   <motion.li
                     key={page}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.05 + 0.1, duration: 0.3 }}
+                    initial={{opacity: 0, y: 20}}
+                    animate={{opacity: 1, y: 0}}
+                    transition={{delay: index * 0.05 + 0.1, duration: 0.3}}
                     className={styles.mobileListItem}
                   >
                     <Link
                       href={path}
                       className={clsx(styles.mobileNavLink, isActive && styles.mobileActive)}
                       onClick={toggleMenu}
-                      onMouseEnter={() =>
-                        iconRefs.current[page]?.current?.play()
-                      }
-                      onMouseLeave={() =>
-                        iconRefs.current[page]?.current?.stop()
-                      }
+                      onMouseEnter={() => iconRefs.current[page]?.current?.play()}
+                      onMouseLeave={() => iconRefs.current[page]?.current?.stop()}
                     >
                       {iconData && (
                         <span className={styles.mobileNavIcon}>

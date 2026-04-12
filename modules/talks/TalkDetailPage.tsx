@@ -1,27 +1,24 @@
-"use client";
+'use client';
 
-import { notFound } from "next/navigation";
-import Link from "next/link";
-import BaseLayout from "../layout/BaseLayout";
-import { speaking as talks } from "@/data/speaking";
-import Image from "next/image";
-import { generateSlug } from "@/utils/slug";
-import styles from "./TalkDetailPage.module.css";
-import ResourceIcon from "./ResourceIcon";
-import ConferenceCard from "./ConferenceCard";
-import CoSpeakerAvatar from "./CoSpeakerAvatar";
+import {notFound} from 'next/navigation';
+import Link from 'next/link';
+import BaseLayout from '../layout/BaseLayout';
+import {speaking as talks} from '@/data/speaking';
+import Image from 'next/image';
+import {generateSlug} from '@/utils/slug';
+import styles from './TalkDetailPage.module.css';
+import ResourceIcon from './ResourceIcon';
+import ConferenceCard from './ConferenceCard';
+import CoSpeakerAvatar from './CoSpeakerAvatar';
 
-export default function TalkDetailPage({ slug }: { slug: string }) {
+export default function TalkDetailPage({slug}: {slug: string}) {
   const talk = talks.find((t) => generateSlug(t.title) === slug);
 
   if (!talk) {
     notFound();
   }
 
-  const videoUrl =
-    "videoId" in talk && talk.videoId
-      ? `https://www.youtube.com/watch?v=${talk.videoId}`
-      : null;
+  const videoUrl = 'videoId' in talk && talk.videoId ? `https://www.youtube.com/watch?v=${talk.videoId}` : null;
 
   return (
     <BaseLayout
@@ -49,12 +46,8 @@ export default function TalkDetailPage({ slug }: { slug: string }) {
           {(videoUrl || talk.slidesUrl || talk.workshopUrl) && (
             <div className={styles.resourcesIcons}>
               {videoUrl && <ResourceIcon href={videoUrl} type="video" />}
-              {talk.slidesUrl && (
-                <ResourceIcon href={talk.slidesUrl} type="slides" />
-              )}
-              {talk.workshopUrl && (
-                <ResourceIcon href={talk.workshopUrl} type="workshop" />
-              )}
+              {talk.slidesUrl && <ResourceIcon href={talk.slidesUrl} type="slides" />}
+              {talk.workshopUrl && <ResourceIcon href={talk.workshopUrl} type="workshop" />}
             </div>
           )}
         </div>
@@ -66,19 +59,18 @@ export default function TalkDetailPage({ slug }: { slug: string }) {
           </div>
 
           <div className={styles.section}>
-            {talk.speaker.filter((s) => s.name !== "Mickaël Alves").length >
-              0 && (
-                <div className={styles.coSpeakersContainer}>
-                  <span className={styles.coSpeakersLabel}>Co-speaker:</span>
-                  <div className={styles.coSpeakersList}>
-                    {talk.speaker
-                      .filter((s) => s.name !== "Mickaël Alves")
-                      .map((speaker, idx) => (
-                        <CoSpeakerAvatar key={idx} speaker={speaker} />
-                      ))}
-                  </div>
+            {talk.speaker.filter((s) => s.name !== 'Mickaël Alves').length > 0 && (
+              <div className={styles.coSpeakersContainer}>
+                <span className={styles.coSpeakersLabel}>Co-speaker:</span>
+                <div className={styles.coSpeakersList}>
+                  {talk.speaker
+                    .filter((s) => s.name !== 'Mickaël Alves')
+                    .map((speaker, idx) => (
+                      <CoSpeakerAvatar key={idx} speaker={speaker} />
+                    ))}
                 </div>
-              )}
+              </div>
+            )}
             <h2 className={styles.sectionTitle}>Conferences</h2>
             <div className={styles.conferencesList}>
               {talk.conferences.map((conf, idx) => (

@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { useTheme } from "./ThemeProvider";
-import styles from "./ThemeSwitch.module.css";
+import {useEffect, useState} from 'react';
+import {useTheme} from './ThemeProvider';
+import styles from './ThemeSwitch.module.css';
 
 export function ThemeSwitch() {
-  const { theme, toggleTheme } = useTheme();
+  const {theme, toggleTheme} = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -14,11 +14,7 @@ export function ThemeSwitch() {
 
   if (!mounted) {
     return (
-      <button
-        type="button"
-        aria-label="Changer de thème"
-        className={styles.button}
-      >
+      <button type="button" aria-label="Changer de thème" className={styles.button}>
         <i className={`${styles.icon} ri-sun-line`} />
       </button>
     );
@@ -27,13 +23,11 @@ export function ThemeSwitch() {
   return (
     <button
       type="button"
-      aria-label={theme === "dark" ? "Enable light mode" : "Enable dark mode"}
+      aria-label={theme === 'dark' ? 'Enable light mode' : 'Enable dark mode'}
       onClick={toggleTheme}
       className={styles.button}
     >
-      <i
-        className={`${styles.icon} ${theme === "dark" ? "ri-sun-line" : "ri-moon-line"}`}
-      />
+      <i className={`${styles.icon} ${theme === 'dark' ? 'ri-sun-line' : 'ri-moon-line'}`} />
     </button>
   );
 }

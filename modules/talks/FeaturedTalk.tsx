@@ -1,10 +1,10 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { generateSlug } from "@/utils/slug";
-import type { Talk } from "./types/Talk";
-import { HoverAnimation } from "./HoverAnimation";
-import styles from "./FeaturedTalk.module.css";
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import {generateSlug} from '@/utils/slug';
+import type {Talk} from './types/Talk';
+import {HoverAnimation} from './HoverAnimation';
+import styles from './FeaturedTalk.module.css';
 
 interface FeaturedTalkProps {
   talk: Talk;
@@ -14,12 +14,11 @@ interface FeaturedTalkProps {
 }
 
 export default function FeaturedTalk(props: FeaturedTalkProps) {
-  const { talk, hovered, setHovered } = props;
+  const {talk, hovered, setHovered} = props;
   const slug = generateSlug(talk.title);
   const talkUrl = `/talks/${slug}`;
   const displayImage = talk.featuredImage || talk.image;
-  const isPriority = typeof props.index === "number" && props.index < 3;
-  const where = talk.conferences[0]?.name;
+  const isPriority = typeof props.index === 'number' && props.index < 3;
 
   return (
     <Link href={talkUrl} className={styles.talkLink}>

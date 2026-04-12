@@ -1,31 +1,31 @@
 .sideBySide {
-    display: flex;
-    width: 100%;
-    margin: 40px 0;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    position: relative;
+  display: flex;
+  width: 100%;
+  margin: 40px 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  position: relative;
 }
 
 @media (min-width: 760px) {
-    .sideBySide {
-        width: 100%;
-        flex-direction: row;
-    }
+  .sideBySide {
+    width: 100%;
+    flex-direction: row;
+  }
 }
 
 .sideBySide :global(figure) {
-    flex: 1;
-    margin: 0;
+  flex: 1;
+  margin: 0;
 }
 
 .sideBySide :global(figure > div) {
-    width: 100%;
+  width: 100%;
 }
 
 .sideBySide :global(img) {
-    height: auto;
-    border-radius: 10px;
+  height: auto;
+  border-radius: 10px;
 }

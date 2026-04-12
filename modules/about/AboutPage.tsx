@@ -1,25 +1,25 @@
-"use client";
+'use client';
 
-import React from "react";
-import Image from "next/image";
-import { parseISO, format, intervalToDuration } from "date-fns";
-import BaseLayout from "../layout/BaseLayout";
-import { ButtonPrimary } from "../shared/ButtonPrimary";
-import Toast from "../shared/Toast";
-import type { AboutItem } from "./types/AboutItem";
-import items from "@/data/about";
-import communityItems from "@/data/community";
-import educationItems from "@/data/education";
-import Lottie from "lottie-react";
-import copyBioIcon from "../../public/static/icons/copy-bio.json";
-import downloadIcon from "../../public/static/icons/download.json";
-import styles from "./AboutPage.module.css";
+import React from 'react';
+import Image from 'next/image';
+import {parseISO, format, intervalToDuration} from 'date-fns';
+import BaseLayout from '../layout/BaseLayout';
+import {ButtonPrimary} from '../shared/ButtonPrimary';
+import Toast from '../shared/Toast';
+import type {AboutItem} from './types/AboutItem';
+import items from '@/data/about';
+import communityItems from '@/data/community';
+import educationItems from '@/data/education';
+import Lottie from 'lottie-react';
+import copyBioIcon from '../../public/static/icons/copy-bio.json';
+import downloadIcon from '../../public/static/icons/download.json';
+import styles from './AboutPage.module.css';
 
 const description = `👋🏼 Hey, I'm Mickaël Alves, a Web Maker, application builder, and speaker! I'm passionate about web technologies, tooling and especially Developer Experience, always looking for ways to improve workflows and make developers' lives easier. 👨🏻‍💻 I'm currently Tech Lead Frontend at Zenika 🔴 & BedrockStreaming 📺. I also enjoy sharing my knowledge through teaching and speaking at conferences. I'm very involved in the tech communities. I'm a co-founder of DevFestLyon and a co-organizer of LyonJS 🦁, an Appwrite Hero 🦸🏼‍♂️, and a Remotion Expert 🎬.`;
 
 export default function AboutPage() {
-  const [toastTitle, setToastTitle] = React.useState("");
-  const [toastDescription, setToastDescription] = React.useState("");
+  const [toastTitle, setToastTitle] = React.useState('');
+  const [toastDescription, setToastDescription] = React.useState('');
   const [showToast, setShowToast] = React.useState(false);
   const copyBioRef = React.useRef<any>(null);
   const downloadRef = React.useRef<any>(null);
@@ -37,39 +37,35 @@ export default function AboutPage() {
             blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAP0lEQVQImQE0AMv/AFBQUJKSkqmpqaOjowCurq7v7+/Jycm5ubkA////jIyMn5+fg4ODADAwMD09PWlpaQAAAApRGnEHblMWAAAAAElFTkSuQmCC"
             priority
             style={{
-              maxWidth: "100%",
-              height: "auto",
-              filter: "grayscale(0.8)",
+              maxWidth: '100%',
+              height: 'auto',
+              filter: 'grayscale(0.8)',
             }}
           />
         </div>
         <div className={styles.section}>
           <p className={styles.paragraphWithTopMargin}>
-            👋🏼 Hey, I'm Mickaël Alves, a Web Maker, application builder, and
-            speaker! I'm passionate about web technologies, tooling and
-            especially Developer Experience, always looking for ways to improve
-            workflows and make developers' lives easier. 👨🏻‍💻
+            👋🏼 Hey, I'm Mickaël Alves, a Web Maker, application builder, and speaker! I'm passionate about web
+            technologies, tooling and especially Developer Experience, always looking for ways to improve workflows and
+            make developers' lives easier. 👨🏻‍💻
           </p>
           <p className={styles.paragraph}>
-            I'm currently <strong>Tech Lead Frontend</strong> at{" "}
-            <strong>Zenika</strong> 🔴 & <strong>BedrockStreaming</strong> 📺. I
-            also enjoy sharing my knowledge through teaching and speaking at
+            I'm currently <strong>Tech Lead Frontend</strong> at <strong>Zenika</strong> 🔴 &{' '}
+            <strong>BedrockStreaming</strong> 📺. I also enjoy sharing my knowledge through teaching and speaking at
             conferences.
           </p>
           <p className={styles.paragraph}>
-            I'm very involved in the tech communities. I'm a{" "}
-            <strong>co-founder of DevFestLyon</strong> and a{" "}
-            <strong>co-organizer of LyonJS</strong> 🦁, an{" "}
-            <strong>Appwrite Hero</strong> 🦸🏼‍♂️, and a{" "}
+            I'm very involved in the tech communities. I'm a <strong>co-founder of DevFestLyon</strong> and a{' '}
+            <strong>co-organizer of LyonJS</strong> 🦁, an <strong>Appwrite Hero</strong> 🦸🏼‍♂️, and a{' '}
             <strong>Remotion Expert</strong> 🎬.
           </p>
           <div className={styles.buttonsContainer}>
             <ButtonPrimary
               as="button"
               style={{
-                display: "inline-flex",
-                justifyContent: "center",
-                alignItems: "center",
+                display: 'inline-flex',
+                justifyContent: 'center',
+                alignItems: 'center',
               }}
               onClick={copyBio}
               onMouseEnter={() => copyBioRef.current?.play()}
@@ -77,23 +73,23 @@ export default function AboutPage() {
             >
               <Lottie
                 lottieRef={copyBioRef}
-                style={{ width: 24, height: 24, marginRight: 8 }}
+                style={{width: 24, height: 24, marginRight: 8}}
                 animationData={copyBioIcon}
                 loop={false}
                 autoplay={false}
               />
               Copy Bio
             </ButtonPrimary>
-            <span style={{ margin: "0 20px 0 10px" }}>•</span>
+            <span style={{margin: '0 20px 0 10px'}}>•</span>
             <ButtonPrimary
               as="a"
               download
               role="button"
               href="/static/images/micka.webp"
               style={{
-                display: "inline-flex",
-                justifyContent: "center",
-                alignItems: "center",
+                display: 'inline-flex',
+                justifyContent: 'center',
+                alignItems: 'center',
               }}
               onClick={downloadHeadshot}
               onMouseEnter={() => downloadRef.current?.play()}
@@ -101,7 +97,7 @@ export default function AboutPage() {
             >
               <span
                 style={{
-                  display: "inline-block",
+                  display: 'inline-block',
                   width: 24,
                   height: 24,
                   marginRight: 8,
@@ -109,7 +105,7 @@ export default function AboutPage() {
               >
                 <Lottie
                   lottieRef={downloadRef}
-                  style={{ width: 24, height: 24 }}
+                  style={{width: 24, height: 24}}
                   animationData={downloadIcon}
                   loop={false}
                   autoplay={false}
@@ -134,17 +130,11 @@ export default function AboutPage() {
             </a>
             {item.location && <span> • {item.location}</span>}
           </p>
-          {item.subject && (
-            <p className={styles.listParagraphItalic}>{item.subject}</p>
-          )}
+          {item.subject && <p className={styles.listParagraphItalic}>{item.subject}</p>}
           <p className={styles.listParagraph}>
-            <span>{format(parseISO(item.startDate), "LLL yyyy")}</span>
+            <span>{format(parseISO(item.startDate), 'LLL yyyy')}</span>
             <span> – </span>
-            <span>
-              {item.endDate
-                ? format(parseISO(item.endDate), "LLL yyyy")
-                : "Present"}
-            </span>
+            <span>{item.endDate ? format(parseISO(item.endDate), 'LLL yyyy') : 'Present'}</span>
             <span> • </span>
             <span>{getDuration(item.startDate, item.endDate)}</span>
           </p>
@@ -159,7 +149,7 @@ export default function AboutPage() {
       end: endDate ? parseISO(endDate) : new Date(),
     });
 
-    let durationStr = "";
+    let durationStr = '';
 
     if (durationObj.years && durationObj.years > 1) {
       durationStr = `${durationObj.years} years `;
@@ -173,8 +163,8 @@ export default function AboutPage() {
   };
 
   const downloadHeadshot = () => {
-    setToastTitle("Downloading...");
-    setToastDescription("You can now add this photo to your fancy site.");
+    setToastTitle('Downloading...');
+    setToastDescription('You can now add this photo to your fancy site.');
     setShowToast(true);
   };
 
@@ -182,8 +172,8 @@ export default function AboutPage() {
     e.preventDefault();
     navigator.clipboard.writeText(description);
 
-    setToastTitle("Copied 📝");
-    setToastDescription("You can now paste it anywhere.");
+    setToastTitle('Copied 📝');
+    setToastDescription('You can now paste it anywhere.');
     setShowToast(true);
   };
 

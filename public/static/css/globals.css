@@ -53,9 +53,9 @@
   --color-yellow-40: #ffff8066;
 
   /* Fonts */
-  --font-body: "Biotif", sans-serif;
-  --font-code: "Fira Code", monospace;
-  --font-heading: "Neuzeit Grotesk Bold", sans-serif;
+  --font-body: 'Biotif', sans-serif;
+  --font-code: 'Fira Code', monospace;
+  --font-heading: 'Neuzeit Grotesk Bold', sans-serif;
 
   /* Spacing */
   --space-nav-height-desktop: 60px;
@@ -75,7 +75,7 @@
 }
 
 /* Light theme */
-[data-theme="light"] {
+[data-theme='light'] {
   --color-yellow: #b59f00;
   --color-pink: #d6336c;
   --color-purple: #7c3aed;
@@ -127,7 +127,7 @@
 }
 
 /* Invert Lottie colors in light theme */
-[data-theme="light"] svg {
+[data-theme='light'] svg {
   filter: invert(1);
 }
 
@@ -135,60 +135,60 @@
    Font Face Declarations
    ============================================ */
 @font-face {
-  font-family: "Neuzeit Grotesk Bold";
+  font-family: 'Neuzeit Grotesk Bold';
   src:
-    url("/static/font/NeuzeitGrotesk-Bold.woff2") format("woff2"),
-    url("/static/font/NeuzeitGrotesk-Bold.woff") format("woff");
+    url('/static/font/NeuzeitGrotesk-Bold.woff2') format('woff2'),
+    url('/static/font/NeuzeitGrotesk-Bold.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Fira Code";
+  font-family: 'Fira Code';
   src:
-    url("/static/font/FiraCode-Regular.woff2") format("woff2"),
-    url("/static/font/FiraCode-Regular.woff") format("woff");
+    url('/static/font/FiraCode-Regular.woff2') format('woff2'),
+    url('/static/font/FiraCode-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Biotif";
+  font-family: 'Biotif';
   src:
-    url("/static/font/Biotif-Bold.woff2") format("woff2"),
-    url("/static/font/Biotif-Bold.woff") format("woff");
+    url('/static/font/Biotif-Bold.woff2') format('woff2'),
+    url('/static/font/Biotif-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Biotif";
+  font-family: 'Biotif';
   src:
-    url("/static/font/Biotif-Book.woff2") format("woff2"),
-    url("/static/font/Biotif-Book.woff") format("woff");
+    url('/static/font/Biotif-Book.woff2') format('woff2'),
+    url('/static/font/Biotif-Book.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Biotif";
+  font-family: 'Biotif';
   src:
-    url("/static/font/Biotif-Regular.woff2") format("woff2"),
-    url("/static/font/Biotif-Regular.woff") format("woff");
+    url('/static/font/Biotif-Regular.woff2') format('woff2'),
+    url('/static/font/Biotif-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Biotif";
+  font-family: 'Biotif';
   src:
-    url("/static/font/Biotif-RegularItalic.woff2") format("woff2"),
-    url("/static/font/Biotif-RegularItalic.woff") format("woff");
+    url('/static/font/Biotif-RegularItalic.woff2') format('woff2'),
+    url('/static/font/Biotif-RegularItalic.woff') format('woff');
   font-weight: normal;
   font-style: italic;
   font-display: swap;
@@ -246,7 +246,7 @@ code {
   font-size: 15px;
 }
 
-:not(pre)>code {
+:not(pre) > code {
   padding: 4px;
 }
 
@@ -275,8 +275,8 @@ pre code {
   background-color: var(--shiki-dark-bg);
 }
 
-[data-theme="light"] .shiki,
-[data-theme="light"] .shiki span {
+[data-theme='light'] .shiki,
+[data-theme='light'] .shiki span {
   color: var(--shiki-light);
   background-color: var(--shiki-light-bg);
 }

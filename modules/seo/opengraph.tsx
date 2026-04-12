@@ -1,32 +1,32 @@
-export const Opengraph = ({ text }: { text: string }) => (
+export const Opengraph = ({text}: {text: string}) => (
   <div
     style={{
-      height: "100%",
-      width: "100%",
-      display: "flex",
-      textAlign: "center",
-      alignItems: "center",
-      justifyContent: "center",
-      flexDirection: "column",
-      flexWrap: "nowrap",
-      backgroundColor: "white",
+      height: '100%',
+      width: '100%',
+      display: 'flex',
+      textAlign: 'center',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: 'column',
+      flexWrap: 'nowrap',
+      backgroundColor: 'white',
       backgroundImage:
-        "radial-gradient(circle at 25px 25px, lightgray 2%, transparent 0%), radial-gradient(circle at 75px 75px, lightgray 2%, transparent 0%)",
-      backgroundSize: "100px 100px",
+        'radial-gradient(circle at 25px 25px, lightgray 2%, transparent 0%), radial-gradient(circle at 75px 75px, lightgray 2%, transparent 0%)',
+      backgroundSize: '100px 100px',
     }}
   >
     <div
       style={{
         left: 42,
         top: 42,
-        position: "absolute",
-        display: "flex",
-        alignItems: "center",
+        position: 'absolute',
+        display: 'flex',
+        alignItems: 'center',
       }}
     >
       <span
         style={{
-          fontSize: "2rem",
+          fontSize: '2rem',
         }}
       >
         👋🏼
@@ -35,8 +35,8 @@ export const Opengraph = ({ text }: { text: string }) => (
         style={{
           marginLeft: 8,
           fontSize: 20,
-          fontWeight: "bold",
-          color: "#4eb9a5",
+          fontWeight: 'bold',
+          color: '#4eb9a5',
         }}
       >
         mickaelalvs.dev
@@ -44,16 +44,16 @@ export const Opengraph = ({ text }: { text: string }) => (
     </div>
     <div
       style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}
     >
       <img
         style={{
           borderRadius: 20,
-          border: "3px solid #4eb9a5",
-          marginBottom: "20px",
+          border: '3px solid #4eb9a5',
+          marginBottom: '20px',
         }}
         src="https://github.com/mickaelalvs.png"
         height={150}
@@ -63,15 +63,15 @@ export const Opengraph = ({ text }: { text: string }) => (
     </div>
     <div
       style={{
-        display: "flex",
+        display: 'flex',
         fontSize: 50,
-        fontStyle: "normal",
-        color: "black",
+        fontStyle: 'normal',
+        color: 'black',
         marginTop: 30,
         lineHeight: 1.8,
-        whiteSpace: "pre-wrap",
-        fontWeight: "bold",
-        padding: "0 20px",
+        whiteSpace: 'pre-wrap',
+        fontWeight: 'bold',
+        padding: '0 20px',
       }}
     >
       {text}

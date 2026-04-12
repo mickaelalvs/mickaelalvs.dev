@@ -1,8 +1,8 @@
-import { Metadata } from "next";
-import { use } from "react";
-import PodcastDetailPage from "@/modules/podcasts/PodcastDetailPage";
-import { podcasts } from "@/data/podcasts";
-import { generateSlug } from "@/utils/slug";
+import {Metadata} from 'next';
+import {use} from 'react';
+import PodcastDetailPage from '@/modules/podcasts/PodcastDetailPage';
+import {podcasts} from '@/data/podcasts';
+import {generateSlug} from '@/utils/slug';
 
 export async function generateStaticParams() {
   return podcasts.map((podcast) => ({
@@ -10,17 +10,13 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-  const { slug } = await params;
+export async function generateMetadata({params}: {params: Promise<{slug: string}>}): Promise<Metadata> {
+  const {slug} = await params;
   const podcast = podcasts.find((p) => generateSlug(p.title) === slug);
 
   if (!podcast) {
     return {
-      title: "Podcast Not Found",
+      title: 'Podcast Not Found',
     };
   }
 
@@ -30,11 +26,7 @@ export async function generateMetadata({
   };
 }
 
-export default function PodcastPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = use(params);
+export default function PodcastPage({params}: {params: Promise<{slug: string}>}) {
+  const {slug} = use(params);
   return <PodcastDetailPage slug={slug} />;
 }

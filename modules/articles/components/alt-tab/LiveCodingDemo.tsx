@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import styles from "./LiveCodingDemo.module.css";
-import { KbdKey } from "./KbdKey";
+import {useState, useEffect} from 'react';
+import styles from './LiveCodingDemo.module.css';
+import {KbdKey} from './KbdKey';
 
 // ─── Mac Window shell ───────────────────────────────────────────────────────
 
 function MacWindow({
   title,
   children,
-  className = "",
+  className = '',
 }: {
   title: React.ReactNode;
   children: React.ReactNode;
@@ -65,11 +65,11 @@ export function LiveCodingDemo() {
   useEffect(() => {
     function handleKey(e: KeyboardEvent) {
       const tag = (e.target as HTMLElement).tagName;
-      if (tag === "INPUT" || tag === "TEXTAREA") return;
-      if (e.key === "c" || e.key === "C") triggerWithAnimation();
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+      if (e.key === 'c' || e.key === 'C') triggerWithAnimation();
     }
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
   }, []);
 
   return (
@@ -82,7 +82,13 @@ export function LiveCodingDemo() {
         </div>
 
         <div className={styles.slideArea}>
-          <MacWindow title={<>Code Editor · Code Server <span className={styles.port}>:4000</span></>}>
+          <MacWindow
+            title={
+              <>
+                Code Editor · Code Server <span className={styles.port}>:4000</span>
+              </>
+            }
+          >
             <img
               src="/static/images/articles/stop-alt-tabbing-embed-ide-live-coding-slides/code-server.avif"
               alt="Code Server embedded in a slide"
@@ -91,8 +97,12 @@ export function LiveCodingDemo() {
           </MacWindow>
 
           <MacWindow
-            title={<>Live Preview · Demo App <span className={styles.port}>:1234</span></>}
-            className={`${styles.previewWindow} ${showPreview ? styles.previewShown : ""}`}
+            title={
+              <>
+                Live Preview · Demo App <span className={styles.port}>:1234</span>
+              </>
+            }
+            className={`${styles.previewWindow} ${showPreview ? styles.previewShown : ''}`}
           >
             <PreviewMock />
           </MacWindow>
@@ -100,12 +110,14 @@ export function LiveCodingDemo() {
       </div>
 
       <figcaption className={styles.caption}>
-        We added a keyboard shortcut, the{" "}
+        We added a keyboard shortcut, the{' '}
         <span className={styles.kbdWrapper}>
           <span className={styles.tryItHint}>try it ↓</span>
-          <KbdKey onClick={toggle} pressed={keyPressed}>c</KbdKey>
-        </span>
-        {" "}key, to toggle between the editor and the preview with an animation.
+          <KbdKey onClick={toggle} pressed={keyPressed}>
+            c
+          </KbdKey>
+        </span>{' '}
+        key, to toggle between the editor and the preview with an animation.
       </figcaption>
     </figure>
   );
