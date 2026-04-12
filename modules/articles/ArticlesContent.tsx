@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Lottie from "lottie-react";
 import ListItem from "../shared/ListItem";
 import FeaturedArticle from "./FeaturedArticle";
@@ -22,6 +22,8 @@ export default function ArticlesContent({
   featuredPosts,
 }: ArticlesContentProps) {
   const lottieRef = useRef<any>(null);
+  const [hovered, setHovered] = useState<string | number>("");
+  const [hoveredList, setHoveredList] = useState<string | number>("");
   const filteredPosts = allPosts.filter(
     (post: BlogPost) => post && post.slug && !post.skip,
   );
@@ -38,7 +40,10 @@ export default function ArticlesContent({
             title={post.title}
             description={post.description}
             image={post.thumbnail}
-            content={post.content}
+            readingTime={post.readingTime}
+            date={post.date ? new Date(post.date).toLocaleDateString("en-US", { month: "short", year: "numeric" }) : undefined}
+            hovered={hovered}
+            setHovered={setHovered}
           />
         );
       });
@@ -53,6 +58,8 @@ export default function ArticlesContent({
           href={`/articles/${post.slug}`}
           title={post.title}
           date={post.date}
+          hovered={hoveredList}
+          setHovered={setHoveredList}
         />
       );
     });
@@ -89,10 +96,15 @@ export default function ArticlesContent({
       </p>
 
       <h2>Featured Articles</h2>
-      <div className={styles.featuredArticlesContainer}>{renderFeatured()}</div>
+      <div
+        className={styles.featuredArticlesContainer}
+        onMouseLeave={() => setHovered("")}
+      >
+        {renderFeatured()}
+      </div>
 
       <h2>All Articles</h2>
-      <ListGroup>{renderAll()}</ListGroup>
+      <ListGroup onMouseLeave={() => setHoveredList("")}>{renderAll()}</ListGroup>
     </LayoutGroup>
   );
 }

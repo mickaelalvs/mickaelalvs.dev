@@ -12,6 +12,7 @@ export interface BlogPost {
   content?: string;
   skip?: boolean;
   stats?: string;
+  readingTime?: string;
   [key: string]: any;
 }
 
