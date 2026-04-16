@@ -30,7 +30,7 @@ export const e_idoux: Person = {
   id: 'e_idoux',
   name: 'Etienne Idoux',
   picture: 'https://github.com/PopsIDX.png',
-  social: 'https://twitter.com/eidoux',
+  social: 'https://eidoux.dev',
 };
 
 export const j_lavigne: Person = {
