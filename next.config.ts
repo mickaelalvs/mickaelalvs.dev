@@ -63,9 +63,6 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     optimizePackageImports: ['lottie-react', 'framer-motion', 'date-fns'],
-    sri: {
-      algorithm: 'sha256',
-    },
   },
   compress: true,
   poweredByHeader: false,
