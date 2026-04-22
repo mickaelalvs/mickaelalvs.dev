@@ -1,6 +1,22 @@
 import type {NextConfig} from 'next';
 import createMDX from '@next/mdx';
 
+const isDev = process.env.NODE_ENV === 'development';
+
+const cspHeader = `
+  default-src 'self';
+  script-src 'self'${isDev ? " 'unsafe-eval'" : ''};
+  style-src 'self' 'unsafe-inline';
+  font-src 'self';
+  img-src 'self' data: https://github.com https://avatars.githubusercontent.com;
+  connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com${isDev ? ' ws://localhost:*' : ''};
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'none';
+  upgrade-insecure-requests;
+`;
+
 const nextConfig: NextConfig = {
   reactCompiler: true,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
@@ -19,6 +35,19 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: cspHeader.replace(/\s{2,}/g, ' ').trim(),
+          },
+        ],
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
@@ -34,6 +63,9 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     optimizePackageImports: ['lottie-react', 'framer-motion', 'date-fns'],
+    sri: {
+      algorithm: 'sha256',
+    },
   },
   compress: true,
   poweredByHeader: false,
