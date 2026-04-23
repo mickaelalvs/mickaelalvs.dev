@@ -6,7 +6,7 @@ const isVercelPreview = process.env.VERCEL_ENV === 'preview';
 
 const cspHeader = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''}${isVercelPreview ? ' https://vercel.live' : ''}`,
+  `script-src 'self' 'unsafe-inline' 'unsafe-eval'${isVercelPreview ? ' https://vercel.live' : ''}`,
   "style-src 'self' 'unsafe-inline'",
   "font-src 'self'",
   `img-src 'self' data: https://github.com https://avatars.githubusercontent.com${isVercelPreview ? ' https://vercel.live' : ''}`,
