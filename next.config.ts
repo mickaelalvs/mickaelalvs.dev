@@ -4,6 +4,19 @@ import createMDX from '@next/mdx';
 const nextConfig: NextConfig = {
   reactCompiler: true,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
       // Redirect old /speaking URLs to /talks
