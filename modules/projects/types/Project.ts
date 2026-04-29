@@ -3,6 +3,7 @@ export interface Project {
   description: string;
   url: string;
   active?: boolean;
-  icon: 'remotion' | 'moon' | 'source';
+  icon: 'remotion' | 'moon' | 'source' | 'mergent' | 'fig' | 'langbase' | 'dub';
   stats?: string;
+  stars?: boolean;
 }

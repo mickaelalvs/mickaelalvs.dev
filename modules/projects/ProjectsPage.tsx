@@ -5,44 +5,32 @@ import {LayoutGroup} from 'framer-motion';
 import BaseLayout from '../layout/BaseLayout';
 import FeaturedProject from './FeaturedProject';
 import {FeaturedProjects} from './FeaturedProjects';
-import ProjectItem from './ProjectItem';
 import items from '@/data/projects';
 import styles from './ProjectsPage.module.css';
 
 export default function ProjectsPage() {
   const [hovered, setHovered] = useState<string | number>('');
 
-  const renderFeatured = () => {
-    const featured = ['Shortvid.io', 'Code In The Dark', 'Appwrite workshop'];
+  const featured = ['Shortvid.io', 'slidev-addon-livecode', 'Code In The Dark'];
 
+  const renderFeatured = () => {
     return items
-      .map((item) => {
-        return item.projects.filter((project) => featured.includes(project.title));
-      })
-      .filter((item) => {
-        if (item.length > 0) {
-          return item;
-        }
-      })
-      .flat()
-      .map((item, index) => {
-        return <FeaturedProject key={index} index={index} project={item} hovered={hovered} setHovered={setHovered} />;
-      });
+      .filter((project) => featured.includes(project.title))
+      .map((project, index) => (
+        <FeaturedProject key={index} index={index} project={project} hovered={hovered} setHovered={setHovered} />
+      ));
   };
 
   const renderAll = () => {
-    return items.map((item, index) => {
-      return (
-        <div key={index} className={styles.yearSection}>
-          <h3 className={styles.yearTitle}>{item.year}</h3>
-          <ul className={styles.projectsList}>
-            {item.projects.map((project, pIndex) => {
-              return <ProjectItem key={pIndex} project={project} listItemClassName={styles.projectsListItem} />;
-            })}
-          </ul>
-        </div>
-      );
-    });
+    return items.map((project, index) => (
+      <FeaturedProject
+        key={index}
+        index={`all-${index}`}
+        project={project}
+        className={styles.projectCard}
+        layoutId="allProjects"
+      />
+    ));
   };
 
   return (
@@ -63,7 +51,23 @@ export default function ProjectsPage() {
         <FeaturedProjects onMouseLeave={() => setHovered('')}>{renderFeatured()}</FeaturedProjects>
 
         <h2>All Projects</h2>
-        {renderAll()}
+        <div className={styles.allProjectsGrid}>{renderAll()}</div>
+
+        <p>
+          I also try to contribute to open source projects like{' '}
+          <a href="https://github.com/remotion-dev/remotion" target="_blank" rel="noopener noreferrer">
+            Remotion
+          </a>
+          ,{' '}
+          <a href="https://github.com/pithings/coderaft" target="_blank" rel="noopener noreferrer">
+            Coderaft
+          </a>
+          … To see more, check out my{' '}
+          <a href="https://github.com/mickaelalvs" target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
+          .
+        </p>
       </LayoutGroup>
     </BaseLayout>
   );

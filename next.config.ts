@@ -10,7 +10,7 @@ const cspHeader = [
   "style-src 'self' 'unsafe-inline'",
   "font-src 'self'",
   `img-src 'self' data: https://github.com https://avatars.githubusercontent.com${isVercelPreview ? ' https://vercel.live' : ''}`,
-  `connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com${isDev ? ' ws://localhost:*' : ''}${isVercelPreview ? ' https://vercel.live wss://ws-us3.pusher.com' : ''}`,
+  `connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://api.github.com${isDev ? ' ws://localhost:*' : ''}${isVercelPreview ? ' https://vercel.live wss://ws-us3.pusher.com' : ''}`,
   'worker-src blob:',
   "object-src 'none'",
   "base-uri 'self'",

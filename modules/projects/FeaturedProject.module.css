@@ -1,6 +1,9 @@
 .contentWrapper {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .project {
@@ -19,7 +22,7 @@
 
 @media (min-width: 760px) {
   .project {
-    width: 240px;
+    width: 100%;
     padding: 0;
   }
 }
@@ -38,6 +41,7 @@
   margin: 0;
   color: var(--color-secondary);
   line-height: 24px;
+  padding-top: 0.5rem;
 }
 
 .stats {
@@ -50,10 +54,26 @@
   font-size: 12px;
 }
 
+.iconRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.stars {
+  margin: 0;
+  color: var(--color-primary);
+  font-size: 12px;
+  font-weight: 500;
+}
+
 .animContainer {
   position: relative;
   width: 100%;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .animHovered {
