@@ -1,13 +1,12 @@
 .featuredProjects {
+  display: grid;
+  grid-template-columns: 1fr;
   padding-top: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
 }
 
 @media (min-width: 760px) {
   .featuredProjects {
-    flex-direction: row;
+    grid-template-columns: repeat(3, 1fr);
     margin-left: -20px;
     padding-top: 10px;
   }

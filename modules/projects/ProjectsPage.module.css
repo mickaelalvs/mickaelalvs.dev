@@ -1,64 +1,17 @@
-.yearSection {
-  margin-bottom: 40px;
+.allProjectsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding-top: 20px;
 }
 
-.yearTitle {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  color: var(--color-primary);
+@media (min-width: 760px) {
+  .allProjectsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    padding-top: 10px;
+    margin-left: -20px;
+  }
 }
 
-.projectsList {
-  list-style: none;
-  padding-left: 0;
-  margin: 8px 0;
-}
-
-.projectsList :global(li) {
-  position: relative;
-  padding-left: 32px;
-}
-
-.projectsList :global(li)::before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  color: var(--color-primary);
-  font-weight: bold;
-  transition: transform 0.2s ease;
-}
-
-.projectsList :global(li:hover)::before {
-  transform: translateX(-3px);
-}
-
-.projectsList :global(a) {
-  color: var(--color-primary);
-  text-decoration: none;
-  font-size: 16px;
-  border-bottom: none;
-  position: relative;
-  font-weight: 500;
-}
-
-.projectsList :global(a)::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -4px;
-  height: 1px;
-  background-color: var(--color-secondary);
-  transition: transform 0.2s ease;
-}
-
-.projectsList :global(li:hover) :global(a)::after {
-  transform: translateY(4px);
-}
-
-.projectsListItem {
-  padding: 12px 0;
-  color: var(--color-secondary);
-  line-height: 1.6;
+.projectCard {
+  width: 100%;
 }
