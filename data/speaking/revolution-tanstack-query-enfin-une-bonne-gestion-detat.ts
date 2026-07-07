@@ -8,7 +8,7 @@ import {l_audart} from '@/data/people';
 export const RevolutionTanStackQueryEnfinUneBonneGestionDetat: Talk = {
   id: '11',
   title: "Révolution TanStack Query\u00A0: Enfin une bonne gestion d'état 🗂️",
-  language: '(🇫🇷)',
+  language: 'fr',
   description:
     "Gérer l'état dans une application frontend est un défi quotidien… 🤯 Entre Redux, Zustand, Recoil, les React Context ou encore Pinia côté Vue, les options sont nombreuses, mais parfois trop ! Et quand on y ajoute la gestion des appels réseau, du cache, des états de chargement ou d'erreur, le tout peut vite devenir un vrai casse-tête… 💣\n" +
     '\n' +

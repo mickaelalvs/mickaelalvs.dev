@@ -10,6 +10,7 @@ import styles from './TalkDetailPage.module.css';
 import ResourceIcon from './ResourceIcon';
 import ConferenceCard from './ConferenceCard';
 import CoSpeakerAvatar from './CoSpeakerAvatar';
+import LanguageBadge from '../shared/LanguageBadge';
 
 export default function TalkDetailPage({slug}: {slug: string}) {
   const talk = talks.find((t) => generateSlug(t.title) === slug);
@@ -54,6 +55,12 @@ export default function TalkDetailPage({slug}: {slug: string}) {
 
         <div className={styles.content}>
           <div className={styles.section}>
+            {talk.language && (
+              <div className={styles.languageContainer}>
+                <span className={styles.languageLabel}>Language:</span>
+                <LanguageBadge language={talk.language} />
+              </div>
+            )}
             <h2 className={styles.sectionTitle}>Description</h2>
             <p className={styles.description}>{talk.description}</p>
           </div>

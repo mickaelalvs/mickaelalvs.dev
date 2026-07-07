@@ -1,12 +1,13 @@
 import AgentTeams from '../../public/static/images/talks/agent-teams.webp';
 import TechReady from '../../public/static/images/conferenceLogos/tech-ready.webp';
+import Zenika from '../../public/static/images/conferenceLogos/zenika.svg';
 import type {Talk} from '@/modules/talks/types/Talk';
 import {e_idoux} from '@/data/people';
 
 export const OnAOrchestredDesIaPourAutomatiserCeQuePersonneNeVoulaitFaire: Talk = {
   id: '15',
   title: 'On a orchestré des IA pour automatiser ce que personne ne voulait faire\u00A0🪄',
-  language: '(🇫🇷)',
+  language: 'fr',
   description:
     'Et si les tâches les plus ingrates devenaient… invisibles ? 😶‍🌫️\n' +
     '\n' +
@@ -26,6 +27,12 @@ export const OnAOrchestredDesIaPourAutomatiserCeQuePersonneNeVoulaitFaire: Talk 
       link: '',
       date: '2026-06-05',
       image: TechReady,
+    },
+    {
+      name: 'Conférence interne Zenika',
+      date: null,
+      year: '2026',
+      image: Zenika,
     },
   ],
 };

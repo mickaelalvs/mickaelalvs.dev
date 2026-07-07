@@ -7,7 +7,7 @@ export type Talk = {
   id: string;
   title: string;
   description: string;
-  language?: string;
+  language?: 'fr' | 'en';
   image: StaticImageData;
   featuredImage?: StaticImageData;
   format: Format;

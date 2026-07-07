@@ -14,6 +14,7 @@ import type {Talk} from './types/Talk';
 import type {Conference} from './types/Conference';
 import {generateSlug} from '@/utils/slug';
 import type {ConferenceItem} from './types/ConferenceItem';
+import LanguageBadge from '../shared/LanguageBadge';
 import styles from './TalksPage.module.css';
 import calendarIcon from '../../public/static/icons/talks.json';
 import presentationIcon from '../../public/static/icons/presentation.json';
@@ -73,6 +74,7 @@ function TalksContent() {
           link: conf.link,
           image: conf.image,
           date: conf.date,
+          language: talk.language,
         });
       });
     });
@@ -121,6 +123,7 @@ function TalksContent() {
                 <h4 className={styles.conferenceName}>
                   {confName}
                   {confDate && <span className={styles.talkDate}> - {confDate}</span>}
+                  {sortedItems[0]?.language && <LanguageBadge language={sortedItems[0].language} />}
                 </h4>
                 <ul className={styles.talksList}>
                   {sortedItems.map((item, idx) => (
@@ -233,7 +236,7 @@ function TalkItem({talk}: {talk: Talk}) {
       <div className={styles.talkContent}>
         <h3>{talk.title}</h3>
         <div className={styles.talkMeta}>
-          <span>{talk.language}</span>
+          {talk.language && <LanguageBadge language={talk.language} />}
           <span> • </span>
           <span>{talk.format}</span>
         </div>

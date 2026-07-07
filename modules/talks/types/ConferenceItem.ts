@@ -7,4 +7,5 @@ export interface ConferenceItem {
   link?: string;
   image: StaticImageData;
   date: string | null;
+  language?: 'fr' | 'en';
 }

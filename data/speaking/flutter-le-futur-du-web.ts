@@ -6,7 +6,7 @@ import {l_audart} from '@/data/people';
 export const FlutterLeFuturDuWeb: Talk = {
   id: '8',
   title: 'Flutter, le futur du web ? 🐦',
-  language: '(🇫🇷)',
+  language: 'fr',
   description:
     'Vous avez sûrement déjà entendu parler de Flutter une des dernière technologie de Google ! 🐦 \n' +
     '\n' +

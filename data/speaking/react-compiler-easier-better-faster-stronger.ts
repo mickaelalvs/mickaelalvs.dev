@@ -9,7 +9,7 @@ import {l_audart} from '@/data/people';
 export const ReactCompilerEasierBetterFasterStronger: Talk = {
   id: '1',
   title: 'React Compiler\u00A0: Easier, Better, Faster, Stronger 🤖',
-  language: '(🇫🇷)',
+  language: 'fr',
   description:
     "Imaginez une nouvelle version de React encore plus attendue qu'un album des Daft Punk 💽 Avec les nouveaux hooks, les actions, les React Server Components et bien plus, la version 19 de React s'annonce révolutionnaire ! 🤯 Et c'est sans compter le hit de la version : Le React Compiler !\n" +
     '\n' +

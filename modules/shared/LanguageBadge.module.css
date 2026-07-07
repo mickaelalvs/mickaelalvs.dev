@@ -1,0 +1,21 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--color-hover);
+}
+
+.badge svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+[data-theme='light'] .badge svg {
+  filter: none;
+}
