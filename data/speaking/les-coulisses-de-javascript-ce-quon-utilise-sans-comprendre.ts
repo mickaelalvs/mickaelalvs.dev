@@ -5,13 +5,14 @@ import SunnyTech from '../../public/static/images/conferenceLogos/sunnyTech.svg'
 import BDXIO from '../../public/static/images/conferenceLogos/bdxio.webp';
 import DevfestToulouse from '../../public/static/images/conferenceLogos/defestToulouse.webp';
 import DevfestDijon from '../../public/static/images/conferenceLogos/devfestDijon.webp';
+import LyonJS from '../../public/static/images/conferenceLogos/lyonJs.webp';
 import type {Talk} from '@/modules/talks/types/Talk';
 import {e_idoux} from '@/data/people';
 
 export const LesCoulissesDeJavaScriptCeQuonUtiliseSansComprendre: Talk = {
   id: '10',
   title: "Les coulisses de JavaScript\u00A0: ce qu'on utilise sans comprendre 🎭",
-  language: '(🇫🇷)',
+  language: 'fr',
   description:
     "Bienvenue dans les coulisses d'un des plus grand spectacle du développement web : JavaScript 🪄 Sur scène, tout semble magique : les animations captivent, les promesses sont tenues, et tout s'exécute sans accroc. Mais derrière le rideau, une véritable troupe travaille sans relâche pour donner vie à ce spectacle.\n" +
     '\n' +
@@ -54,6 +55,12 @@ export const LesCoulissesDeJavaScriptCeQuonUtiliseSansComprendre: Talk = {
       link: '',
       date: '2025-12-05',
       image: DevfestDijon,
+    },
+    {
+      name: 'LyonJS',
+      link: '',
+      date: '2026-05-27',
+      image: LyonJS,
     },
   ],
 };

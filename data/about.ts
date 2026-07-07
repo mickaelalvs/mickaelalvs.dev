@@ -2,7 +2,7 @@ import type {AboutItem} from '@/modules/about/types/AboutItem';
 
 const items: AboutItem[] = [
   {
-    jobTitle: 'Tech Lead Platform & DevEx',
+    jobTitle: 'Tech Lead Frontend Foundations & DevEx',
     company: 'Bedrock Streaming',
     companyUrl: 'https://www.bedrockstreaming.com',
     startDate: '2025-08-01',

@@ -7,7 +7,7 @@ import {l_audart} from '@/data/people';
 export const LeMagicienZodEmmenezTypeScriptAuDelaDuBuild: Talk = {
   id: '13',
   title: 'Le Magicien Zod\u00A0: Emmenez TypeScript au-delà du build 🧙',
-  language: '(🇫🇷)',
+  language: 'fr',
   description:
     'Vous a-t-on déjà parlé du merveilleux royaume de TypeScript ? Un monde enchanté où les types règnent en maîtres, apportant sécurité et sérénité aux développeurs ✨\n' +
     '\n' +

@@ -6,7 +6,7 @@ import {e_idoux} from '@/data/people';
 export const DuFrigoALAssietteCeQueMijoteVraimentVotreBundlerJavaScript: Talk = {
   id: '14',
   title: "Du frigo à l'assiette\u00A0: ce que mijote vraiment votre bundler JavaScript 🧑🏼‍🍳",
-  language: '(🇫🇷)',
+  language: 'fr',
   description:
     "Pour faire un site aujourd'hui, il suffit théoriquement de trois ingrédients : de l'HTML, du CSS et du JavaScript. 🍳 La recette semble très simple… jusqu'à ce que l'on ouvre le frigo des technologies. Aujourd'hui, personne ne cuisine avec ces ingrédients \"bruts\", vous avez du TypeScript, du SCSS, des images, des polices, des JSON… et même parfois du code dont vous n'avez pas besoin ! 🥴\n" +
     '\n' +

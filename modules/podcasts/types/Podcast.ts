@@ -5,7 +5,7 @@ import type {PlatformLink} from './PlatformLink';
 export interface Podcast {
   title: string;
   description: string;
-  language?: string;
+  language?: 'fr' | 'en';
   image: StaticImageData;
   date: string;
   videoId?: string;

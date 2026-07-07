@@ -9,7 +9,6 @@ import {FlutterLeFuturDuWeb} from './speaking/flutter-le-futur-du-web';
 import {LesCoulissesDeJavaScriptCeQuonUtiliseSansComprendre} from './speaking/les-coulisses-de-javascript-ce-quon-utilise-sans-comprendre';
 import {RevolutionTanStackQueryEnfinUneBonneGestionDetat} from './speaking/revolution-tanstack-query-enfin-une-bonne-gestion-detat';
 import {LeMagicienZodEmmenezTypeScriptAuDelaDuBuild} from './speaking/le-magicien-zod-emmenez-typescript-au-dela-du-build';
-import {DuFrigoALAssietteCeQueMijoteVraimentVotreBundlerJavaScript} from './speaking/du-frigo-a-lassiette-ce-que-mijote-vraiment-votre-bundler-javascript';
 import {OnAOrchestredDesIaPourAutomatiserCeQuePersonneNeVoulaitFaire} from './speaking/on-a-orchestre-des-ia-pour-automatiser-ce-que-personne-ne-voulait-faire';
 import type {Talk} from '@/modules/talks/types/Talk';
 import type {Workshop} from '@/modules/talks/types/Workshop';
@@ -30,7 +29,6 @@ export const talks: Talk[] = [
   JadoreLesDeveloppeursDans23AnsIlYEnAuraPlus,
   FlutterLeFuturDuWeb,
   LeMagicienZodEmmenezTypeScriptAuDelaDuBuild,
-  DuFrigoALAssietteCeQueMijoteVraimentVotreBundlerJavaScript,
   OnAOrchestredDesIaPourAutomatiserCeQuePersonneNeVoulaitFaire,
 ];
 

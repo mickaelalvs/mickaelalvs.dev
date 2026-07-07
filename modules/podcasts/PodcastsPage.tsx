@@ -4,6 +4,7 @@ import BaseLayout from '../layout/BaseLayout';
 import {podcasts} from '@/data/podcasts';
 import ListItem from '../shared/ListItem';
 import {ListGroup} from '../shared/ListGroup';
+import LanguageBadge from '../shared/LanguageBadge';
 import {LayoutGroup} from 'framer-motion';
 import {useState} from 'react';
 import {generateSlug} from '@/utils/slug';
@@ -17,14 +18,14 @@ export default function PodcastsPage() {
   const renderPodcasts = (items: Podcast[]) => {
     return items.map((item, index) => {
       const slug = generateSlug(item.title);
-      const lang = item.language === 'fr' ? '🇫🇷' : '🇬🇧';
 
       return (
         <ListItem
           key={index}
           index={index}
           href={`/podcasts/${slug}`}
-          title={`${item.title} ${lang}`}
+          title={item.title}
+          badge={item.language && <LanguageBadge language={item.language} />}
           date={item.date}
           description={item.description}
           hovered={hovered}

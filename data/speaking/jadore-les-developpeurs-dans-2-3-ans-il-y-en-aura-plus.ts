@@ -6,7 +6,7 @@ import {l_audart} from '@/data/people';
 export const JadoreLesDeveloppeursDans23AnsIlYEnAuraPlus: Talk = {
   id: '7',
   title: "J'adore les développeurs, dans 2, 3 ans il y en aura plus 👨🏻‍💻",
-  language: '(🇫🇷)',
+  language: 'fr',
   description:
     'Entre nous, avons-nous encore besoin de développeurs ? 🤔\n' +
     '\n' +

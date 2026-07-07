@@ -11,6 +11,7 @@ import styles from './ListItem.module.css';
 interface ListItemProps {
   href: string;
   title: string;
+  badge?: React.ReactNode;
   date?: string;
   description?: string;
   index: string | number;
@@ -57,6 +58,7 @@ export default function ListItem(props: ListItemProps) {
                   />
                 </span>
                 <span className={styles.title}>{props.title}</span>
+                {props.badge}
               </div>
               {props.date && (
                 <span className={styles.date}>
