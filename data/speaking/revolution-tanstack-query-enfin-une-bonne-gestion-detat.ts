@@ -2,6 +2,7 @@ import TanStackQuery from '../../public/static/images/talks/tanstack-query.webp'
 import DevfestNantes2025 from '../../public/static/images/conferenceLogos/devfest-nantes-2025.webp';
 import SnowCamp from '../../public/static/images/conferenceLogos/snowcamp.webp';
 import TouraineTech from '../../public/static/images/conferenceLogos/touraineTech.svg';
+import Bdxio from '../../public/static/images/conferenceLogos/bdxio.webp';
 import type {Talk} from '@/modules/talks/types/Talk';
 import {l_audart} from '@/data/people';
 
@@ -40,6 +41,12 @@ export const RevolutionTanStackQueryEnfinUneBonneGestionDetat: Talk = {
       link: '',
       date: '2026-02-12',
       image: TouraineTech,
+    },
+    {
+      name: 'BDX I/O',
+      link: '',
+      date: '2026-10-29',
+      image: Bdxio,
     },
   ],
 };
