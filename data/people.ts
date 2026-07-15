@@ -75,6 +75,13 @@ export const h_sablonniere: Person = {
   social: 'https://x.com/hsablonniere',
 };
 
+export const m_mure: Person = {
+  id: 'm_mure',
+  name: 'Mathieu Mure',
+  picture: 'https://github.com/mathieumure.png',
+  social: 'https://bsky.app/profile/mathieumure.bsky.social',
+};
+
 const people: Record<string, Person> = {
   jf_farge,
   t_gianella,
@@ -86,6 +93,7 @@ const people: Record<string, Person> = {
   jp_baconnais,
   j_landure,
   h_sablonniere,
+  m_mure,
 };
 
 export function getPerson(id: string): Person | undefined {

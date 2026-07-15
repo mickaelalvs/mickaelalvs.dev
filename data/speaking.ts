@@ -10,6 +10,7 @@ import {LesCoulissesDeJavaScriptCeQuonUtiliseSansComprendre} from './speaking/le
 import {RevolutionTanStackQueryEnfinUneBonneGestionDetat} from './speaking/revolution-tanstack-query-enfin-une-bonne-gestion-detat';
 import {LeMagicienZodEmmenezTypeScriptAuDelaDuBuild} from './speaking/le-magicien-zod-emmenez-typescript-au-dela-du-build';
 import {OnAOrchestredDesIaPourAutomatiserCeQuePersonneNeVoulaitFaire} from './speaking/on-a-orchestre-des-ia-pour-automatiser-ce-que-personne-ne-voulait-faire';
+import {McpUiReactEtLlmCommentCreerSonAppDansClaudeEtChatGpt} from './speaking/mcp-ui-react-et-llm-comment-creer-son-app-dans-claude-et-chatgpt';
 import type {Talk} from '@/modules/talks/types/Talk';
 import type {Workshop} from '@/modules/talks/types/Workshop';
 
@@ -30,6 +31,7 @@ export const talks: Talk[] = [
   FlutterLeFuturDuWeb,
   LeMagicienZodEmmenezTypeScriptAuDelaDuBuild,
   OnAOrchestredDesIaPourAutomatiserCeQuePersonneNeVoulaitFaire,
+  McpUiReactEtLlmCommentCreerSonAppDansClaudeEtChatGpt,
 ];
 
 export const workshops: Workshop[] = [VoyageAuCoeurDappwrite];
