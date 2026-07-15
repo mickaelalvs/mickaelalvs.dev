@@ -227,6 +227,38 @@
   margin: 24px 0;
 }
 
+.articleShare {
+  margin-top: 48px;
+  display: flex;
+  justify-content: center;
+}
+
+.shareLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--color-pink);
+  border-bottom: none;
+}
+
+.shareLinkText {
+  text-decoration: underline;
+  text-decoration-color: var(--color-pink);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: text-underline-offset var(--transition-duration) ease-in-out;
+}
+
+.shareLink:hover .shareLinkText {
+  text-underline-offset: 8px;
+}
+
+.shareLink i {
+  font-size: 18px;
+}
+
 .articleTags {
   margin-top: 48px;
 }

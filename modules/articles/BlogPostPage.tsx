@@ -71,6 +71,7 @@ export default async function BlogPostPage({slug}: {slug: string}) {
   return (
     <BlogpostLayout
       title={post.title}
+      slug={post.slug}
       image={post.image}
       date={post.date}
       tags={post.tags}
