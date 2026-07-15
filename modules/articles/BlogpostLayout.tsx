@@ -7,6 +7,7 @@ import BlogDate from '../shared/BlogDate';
 import {Post, PostMain, PostContent, PostContainer} from '../shared/Post';
 import {Wrapper} from '../layout/Wrapper';
 import ArticleHeader from './ArticleHeader';
+import ArticleShare from './ArticleShare';
 import ArticleTags from './ArticleTags';
 import TableOfContents from './TableOfContents';
 import styles from './BlogpostLayout.module.css';
@@ -16,6 +17,7 @@ import type {HeadingItem} from '@/lib/extract-headings';
 interface BlogpostLayoutProps {
   children: ReactNode;
   title?: string;
+  slug?: string;
   image?: string;
   date?: string;
   tags?: string[];
@@ -27,6 +29,7 @@ interface BlogpostLayoutProps {
 export default function BlogpostLayout({
   children,
   title,
+  slug,
   image,
   date,
   tags,
@@ -123,6 +126,8 @@ export default function BlogpostLayout({
               {title && <div className={styles.contentDivider} />}
 
               {children}
+
+              <ArticleShare title={title} slug={slug} />
 
               <ArticleTags tags={tags} />
             </PostContainer>
