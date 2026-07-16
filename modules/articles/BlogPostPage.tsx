@@ -8,14 +8,18 @@ import {ImageExpandable} from './components/swc/ImageExpandable';
 import {SideBySide} from './components/swc/SideBySide';
 import {KbdKey} from './components/alt-tab/KbdKey';
 import {LiveCodingDemo} from './components/alt-tab/LiveCodingDemo';
+import {CodeBlock} from './components/CodeBlock';
+import {parseCodeBlockMeta} from '@/lib/shiki-title-transformer';
 import rehypeShiki from '@shikijs/rehype';
 import rehypeSlug from 'rehype-slug';
+import {transformerMetaHighlight} from '@shikijs/transformers';
 
 const mdxComponents = {
   ImageExpandable,
   SideBySide,
   KbdKey,
   LiveCodingDemo,
+  pre: CodeBlock,
 };
 
 const mdxOptions: MDXRemoteProps['options'] = {
@@ -30,6 +34,8 @@ const mdxOptions: MDXRemoteProps['options'] = {
             dark: 'github-dark',
           },
           defaultColor: false,
+          parseMetaString: parseCodeBlockMeta,
+          transformers: [transformerMetaHighlight()],
         },
       ],
     ],
