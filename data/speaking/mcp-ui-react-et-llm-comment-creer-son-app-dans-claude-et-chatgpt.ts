@@ -1,5 +1,6 @@
 import McpUiTalk from '../../public/static/images/talks/wip.webp';
 import Volcamp from '../../public/static/images/conferenceLogos/volcamp.png';
+import Bdxio from '../../public/static/images/conferenceLogos/bdxio.webp';
 import type {Talk} from '@/modules/talks/types/Talk';
 import {m_mure} from '@/data/people';
 
@@ -26,6 +27,12 @@ export const McpUiReactEtLlmCommentCreerSonAppDansClaudeEtChatGpt: Talk = {
       link: 'https://www.volcamp.io/talks/d1t2s6',
       date: '2026-10-01',
       image: Volcamp,
+    },
+    {
+      name: 'BDX I/O',
+      link: '',
+      date: '2026-10-29',
+      image: Bdxio,
     },
   ],
 };

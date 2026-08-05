@@ -1,6 +1,7 @@
 import AgentTeams from '../../public/static/images/talks/agent-teams.webp';
 import TechReady from '../../public/static/images/conferenceLogos/tech-ready.webp';
 import Zenika from '../../public/static/images/conferenceLogos/zenika.svg';
+import DevfestParis2026 from '../../public/static/images/conferenceLogos/devfest-paris-2026.png';
 import type {Talk} from '@/modules/talks/types/Talk';
 import {e_idoux} from '@/data/people';
 
@@ -33,6 +34,12 @@ export const OnAOrchestredDesIaPourAutomatiserCeQuePersonneNeVoulaitFaire: Talk 
       date: null,
       year: '2026',
       image: Zenika,
+    },
+    {
+      name: 'DevFest Paris',
+      link: 'https://devfest.gdgparis.fr/',
+      date: '2026-11-27',
+      image: DevfestParis2026,
     },
   ],
 };
