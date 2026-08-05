@@ -1,5 +1,5 @@
 import BundlerTalk from '../../public/static/images/talks/wip.webp';
-import DevQuest from '../../public/static/images/conferenceLogos/devquest.svg';
+import DevfestParis2026 from '../../public/static/images/conferenceLogos/devfest-paris-2026.png';
 import type {Talk} from '@/modules/talks/types/Talk';
 import {e_idoux} from '@/data/people';
 
@@ -18,10 +18,10 @@ export const DuFrigoALAssietteCeQueMijoteVraimentVotreBundlerJavaScript: Talk = 
   speaker: [e_idoux],
   conferences: [
     {
-      name: 'DevQuest',
-      link: '',
-      date: '2026-06-12',
-      image: DevQuest,
+      name: 'DevFest Paris',
+      link: 'https://devfest.gdgparis.fr/',
+      date: '2026-11-27',
+      image: DevfestParis2026,
     },
   ],
 };

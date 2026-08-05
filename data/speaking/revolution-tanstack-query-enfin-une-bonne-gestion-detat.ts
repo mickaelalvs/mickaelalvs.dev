@@ -45,7 +45,7 @@ export const RevolutionTanStackQueryEnfinUneBonneGestionDetat: Talk = {
     {
       name: 'BDX I/O',
       link: '',
-      date: '2026-10-29',
+      date: '2026-10-30',
       image: Bdxio,
     },
   ],
