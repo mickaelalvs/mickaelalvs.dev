@@ -3,6 +3,7 @@ name: 🤖 Renovate breaking-change agent
 on:
   pull_request:
     types: [opened, reopened]
+    branches: [main]
 
 concurrency:
   group: renovate-agent-${{ github.event.pull_request.number }}
@@ -14,10 +15,10 @@ permissions:
 
 jobs:
   agent:
-    if: github.event.pull_request.user.login == 'renovate[bot]'
+    if: github.event.pull_request.user.login == 'renovate[bot]' && github.event.pull_request.head.repo.full_name == github.repository
     name: 🤖 Analyze & fix breaking changes
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 40
     env:
       CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -45,18 +46,45 @@ jobs:
           git config user.name "cursor-agent[bot]"
           git config user.email "cursor-agent[bot]@users.noreply.github.com"
 
+      - name: 📌 Record pre-agent commit
+        run: echo "BASE_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+
       - name: ⬇️ Install Cursor CLI
         run: |
           curl https://cursor.com/install -fsS | bash
-          echo "$HOME/.cursor/bin" >> $GITHUB_PATH
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: 🔎 Verify Cursor CLI installed
+        run: command -v agent
 
       - name: 🤖 Run breaking-change agent
         run: agent -p --force "/renovate-breaking-changes"
 
+      - name: 🔒 Verify push state and flag agent commits
+        run: |
+          git fetch origin "$GITHUB_HEAD_REF"
+          REMOTE_SHA=$(git rev-parse "origin/$GITHUB_HEAD_REF")
+          LOCAL_SHA=$(git rev-parse HEAD)
+          if [ "$LOCAL_SHA" != "$REMOTE_SHA" ]; then
+            echo "::error::Local HEAD ($LOCAL_SHA) does not match the pushed remote ($REMOTE_SHA) — an agent commit was not pushed."
+            exit 1
+          fi
+          if [ "$LOCAL_SHA" != "$BASE_SHA" ]; then
+            echo "AGENT_COMMITTED=true" >> "$GITHUB_ENV"
+          else
+            echo "AGENT_COMMITTED=false" >> "$GITHUB_ENV"
+          fi
+
       - name: ✅ Final validation
         run: pnpm build && pnpm lint && pnpm format:check
 
+      - name: 🚦 Block automerge if the agent modified code
+        if: env.AGENT_COMMITTED == 'true'
+        run: |
+          gh pr comment "$PR_NUMBER" --body "🤖 Un breaking change a été détecté et corrigé automatiquement par l'agent. Auto-merge bloqué : une relecture humaine du commit est nécessaire avant de merger."
+          exit 1
+
       - name: 💬 Comment if the job is failing
-        if: failure()
+        if: (failure() || cancelled()) && env.AGENT_COMMITTED != 'true'
         run: |
           gh pr comment "$PR_NUMBER" --body "⚠️ Le job d'analyse automatique des breaking changes a échoué (voir les logs du workflow). Intervention humaine nécessaire sur cette PR."
