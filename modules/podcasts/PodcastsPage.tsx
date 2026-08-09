@@ -5,7 +5,7 @@ import {podcasts} from '@/data/podcasts';
 import ListItem from '../shared/ListItem';
 import {ListGroup} from '../shared/ListGroup';
 import LanguageBadge from '../shared/LanguageBadge';
-import {LayoutGroup} from 'framer-motion';
+import {LayoutGroup} from 'motion/react';
 import {useState} from 'react';
 import {generateSlug} from '@/utils/slug';
 import type {Podcast} from './types/Podcast';

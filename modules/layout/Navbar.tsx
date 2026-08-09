@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import {LayoutGroup} from 'framer-motion';
+import {LayoutGroup} from 'motion/react';
 import {useKBar} from 'kbar';
 import clsx from 'clsx';
 import styles from './Navbar.module.css';
