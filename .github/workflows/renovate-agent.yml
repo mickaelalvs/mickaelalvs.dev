@@ -55,7 +55,7 @@ jobs:
       - name: 📄 Fetch PR body for screening
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh pr view "$PR_NUMBER" --json body -q .body > /tmp/pr-body.txt
+        run: gh pr view "$PR_NUMBER" --json title,body -q '"\(.title)\n\n\(.body)"' > /tmp/pr-body.txt
 
       - name: 🛡️ Screen changelog for prompt injection
         env:
