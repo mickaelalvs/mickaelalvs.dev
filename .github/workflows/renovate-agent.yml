@@ -98,6 +98,7 @@ jobs:
           fi
 
       - name: ✅ Final validation
+        if: env.AGENT_EDITED == 'true'
         run: pnpm build && pnpm lint && pnpm format:check
 
       - name: 🚦 Commit, push, and block automerge (agent made a fix)
