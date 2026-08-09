@@ -81,7 +81,13 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr comment "$PR_NUMBER" --body "🚨 This PR's changelog contains content that looks like instructions directed at an automated tool (a possible injection attempt). Automated analysis aborted as a precaution — human review required."
+          {
+            echo "> [!CAUTION]"
+            echo "> This PR's changelog contains content that looks like instructions directed at an automated tool (a possible injection attempt)."
+            echo ""
+            echo "Automated analysis aborted as a precaution — human review required."
+          } > /tmp/comment.md
+          gh pr comment "$PR_NUMBER" --body-file /tmp/comment.md
           exit 1
 
       - name: 🤖 Run breaking-change agent (file edits only, no git/gh access)
@@ -110,7 +116,15 @@ jobs:
           git add -A
           git commit -m "fix: adapt to breaking change (agent-authored, human review required)"
           git push
-          gh pr comment "$PR_NUMBER" --body "🤖 A breaking change was detected and automatically fixed by the agent: ${SUMMARY} Automerge blocked: a human review of this commit is required before merging."
+          {
+            echo "> [!IMPORTANT]"
+            echo "> A breaking change was detected and automatically fixed by the agent."
+            echo ""
+            echo "**Summary:** $SUMMARY"
+            echo ""
+            echo "Automerge is blocked — a human review of this commit is required before merging."
+          } > /tmp/comment.md
+          gh pr comment "$PR_NUMBER" --body-file /tmp/comment.md
           echo "COMMIT_STEP_RAN=true" >> "$GITHUB_ENV"
           exit 1
 
@@ -120,16 +134,27 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           SUMMARY=$(tail -n +2 /tmp/agent-result.txt 2>/dev/null || echo "Changelog analyzed, no breaking change affecting this repo was found.")
-          gh pr comment "$PR_NUMBER" --body "🤖 ${SUMMARY}"
+          {
+            echo "> [!NOTE]"
+            echo "> $SUMMARY"
+          } > /tmp/comment.md
+          gh pr comment "$PR_NUMBER" --body-file /tmp/comment.md
 
       - name: 💬 Comment on analysis failure
         if: (failure() || cancelled()) && env.SCREEN_RESULT != 'suspicious' && env.COMMIT_STEP_RAN != 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           if [ -f /tmp/agent-result.txt ]; then
             SUMMARY=$(tail -n +2 /tmp/agent-result.txt)
-            gh pr comment "$PR_NUMBER" --body "⚠️ ${SUMMARY} (see the workflow logs for more details)"
           else
-            gh pr comment "$PR_NUMBER" --body "⚠️ The automated breaking-change analysis job failed (see the workflow logs). Human intervention needed on this PR."
+            SUMMARY="The automated breaking-change analysis job failed before completing its analysis."
           fi
+          {
+            echo "> [!WARNING]"
+            echo "> $SUMMARY"
+            echo ""
+            echo "See the [workflow logs]($RUN_URL) for more details. Human intervention needed on this PR."
+          } > /tmp/comment.md
+          gh pr comment "$PR_NUMBER" --body-file /tmp/comment.md
