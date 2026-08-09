@@ -1,0 +1,62 @@
+name: 🤖 Renovate breaking-change agent
+
+on:
+  pull_request:
+    types: [opened, reopened]
+
+concurrency:
+  group: renovate-agent-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  agent:
+    if: github.event.pull_request.user.login == 'renovate[bot]'
+    name: 🤖 Analyze & fix breaking changes
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+    steps:
+      - name: 📥 Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: 🔧 Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🪪 Configure git identity for agent commits
+        run: |
+          git config user.name "cursor-agent[bot]"
+          git config user.email "cursor-agent[bot]@users.noreply.github.com"
+
+      - name: ⬇️ Install Cursor CLI
+        run: |
+          curl https://cursor.com/install -fsS | bash
+          echo "$HOME/.cursor/bin" >> $GITHUB_PATH
+
+      - name: 🤖 Run breaking-change agent
+        run: agent -p --force "/renovate-breaking-changes"
+
+      - name: ✅ Final validation
+        run: pnpm build && pnpm lint && pnpm format:check
+
+      - name: 💬 Comment if the job is failing
+        if: failure()
+        run: |
+          gh pr comment "$PR_NUMBER" --body "⚠️ Le job d'analyse automatique des breaking changes a échoué (voir les logs du workflow). Intervention humaine nécessaire sur cette PR."
