@@ -2,7 +2,7 @@ name: 🤖 Renovate breaking-change agent
 
 on:
   pull_request:
-    types: [opened, reopened]
+    types: [opened, reopened, synchronize]
     branches: [main]
 
 concurrency:
@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   agent:
-    if: github.event.pull_request.user.login == 'renovate[bot]' && github.event.pull_request.head.repo.full_name == github.repository
+    if: github.event.pull_request.user.login == 'renovate[bot]' && github.event.pull_request.head.repo.full_name == github.repository && (github.event.action != 'synchronize' || github.event.sender.login == 'renovate[bot]')
     name: 🤖 Analyze & fix breaking changes
     runs-on: ubuntu-latest
     timeout-minutes: 40
