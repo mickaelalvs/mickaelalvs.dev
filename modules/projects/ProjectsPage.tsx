@@ -1,7 +1,7 @@
 'use client';
 
 import React, {useState} from 'react';
-import {LayoutGroup} from 'framer-motion';
+import {LayoutGroup} from 'motion/react';
 import BaseLayout from '../layout/BaseLayout';
 import FeaturedProject from './FeaturedProject';
 import {FeaturedProjects} from './FeaturedProjects';
