@@ -47,7 +47,7 @@ conclusion to `/tmp/agent-result.txt` in exactly this format:
 
 ```
 IMPACT=no
-Changelog analysé, aucun breaking change impactant ce repo détecté. Aucune modification nécessaire.
+Changelog analyzed, no breaking change affecting this repo was found. No changes needed.
 ```
 
 Stop here.
@@ -73,12 +73,12 @@ because validation passed, or you exhausted 5 attempts), write your conclusion t
 - If validation ended up passing:
   ```
   IMPACT=yes
-  Breaking change détecté dans <package>@<version> et corrigé. <one-line summary of the fix>
+  Breaking change detected in <package>@<version> and fixed. <one-line summary of the fix>
   ```
 - If validation still fails after the 5th attempt:
   ```
   IMPACT=yes
-  Breaking change détecté dans <package> mais non résolu après 5 tentatives. <concrete summary of what you tried and why it still fails>
+  Breaking change detected in <package> but not resolved after 5 attempts. <concrete summary of what you tried and why it still fails>
   ```
 
 Replace `<package>`, `<version>`, and the summary text with real values — never leave

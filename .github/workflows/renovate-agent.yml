@@ -81,7 +81,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr comment "$PR_NUMBER" --body "🚨 Le changelog de cette PR contient des éléments qui ressemblent à des instructions destinées à un outil automatisé (tentative d'injection potentielle). Analyse automatique interrompue par précaution — intervention humaine nécessaire."
+          gh pr comment "$PR_NUMBER" --body "🚨 This PR's changelog contains content that looks like instructions directed at an automated tool (a possible injection attempt). Automated analysis aborted as a precaution — human review required."
           exit 1
 
       - name: 🤖 Run breaking-change agent (file edits only, no git/gh access)
@@ -105,11 +105,11 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          SUMMARY=$(tail -n +2 /tmp/agent-result.txt 2>/dev/null || echo "Détail indisponible.")
+          SUMMARY=$(tail -n +2 /tmp/agent-result.txt 2>/dev/null || echo "Detail unavailable.")
           git add -A
           git commit -m "fix: adapt to breaking change (agent-authored, human review required)"
           git push
-          gh pr comment "$PR_NUMBER" --body "🤖 Un breaking change a été détecté et corrigé automatiquement par l'agent : ${SUMMARY} Auto-merge bloqué : une relecture humaine du commit est nécessaire avant de merger."
+          gh pr comment "$PR_NUMBER" --body "🤖 A breaking change was detected and automatically fixed by the agent: ${SUMMARY} Automerge blocked: a human review of this commit is required before merging."
           echo "COMMIT_STEP_RAN=true" >> "$GITHUB_ENV"
           exit 1
 
@@ -118,7 +118,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          SUMMARY=$(tail -n +2 /tmp/agent-result.txt 2>/dev/null || echo "Changelog analysé, aucun breaking change impactant ce repo détecté.")
+          SUMMARY=$(tail -n +2 /tmp/agent-result.txt 2>/dev/null || echo "Changelog analyzed, no breaking change affecting this repo was found.")
           gh pr comment "$PR_NUMBER" --body "🤖 ${SUMMARY}"
 
       - name: 💬 Comment on analysis failure
@@ -128,7 +128,7 @@ jobs:
         run: |
           if [ -f /tmp/agent-result.txt ]; then
             SUMMARY=$(tail -n +2 /tmp/agent-result.txt)
-            gh pr comment "$PR_NUMBER" --body "⚠️ ${SUMMARY} (voir les logs du workflow pour plus de détails)"
+            gh pr comment "$PR_NUMBER" --body "⚠️ ${SUMMARY} (see the workflow logs for more details)"
           else
-            gh pr comment "$PR_NUMBER" --body "⚠️ Le job d'analyse automatique des breaking changes a échoué (voir les logs du workflow). Intervention humaine nécessaire sur cette PR."
+            gh pr comment "$PR_NUMBER" --body "⚠️ The automated breaking-change analysis job failed (see the workflow logs). Human intervention needed on this PR."
           fi
