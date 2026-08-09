@@ -5,7 +5,7 @@ import Lottie from 'lottie-react';
 import ListItem from '../shared/ListItem';
 import FeaturedArticle from './FeaturedArticle';
 import {ListGroup} from '../shared/ListGroup';
-import {LayoutGroup} from 'framer-motion';
+import {LayoutGroup} from 'motion/react';
 import {Box} from '../shared/Box';
 import articlesIcon from '../../public/static/icons/articles.json';
 import styles from './ArticlesContent.module.css';

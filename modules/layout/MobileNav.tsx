@@ -3,7 +3,7 @@
 import {useState, useEffect, useRef} from 'react';
 import Link from 'next/link';
 import {usePathname} from 'next/navigation';
-import {motion, AnimatePresence} from 'framer-motion';
+import {motion, AnimatePresence} from 'motion/react';
 import Lottie from 'lottie-react';
 import clsx from 'clsx';
 import styles from './Navbar.module.css';

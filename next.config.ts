@@ -73,7 +73,7 @@ const nextConfig: NextConfig = {
     formats: ['image/avif', 'image/webp'],
   },
   experimental: {
-    optimizePackageImports: ['lottie-react', 'framer-motion', 'date-fns'],
+    optimizePackageImports: ['lottie-react', 'motion/react', 'date-fns'],
   },
   compress: true,
   poweredByHeader: false,

@@ -1,7 +1,7 @@
 'use client';
 
 import React, {ReactNode, HTMLAttributes} from 'react';
-import {motion} from 'framer-motion';
+import {motion} from 'motion/react';
 import styles from './Post.module.css';
 
 const itemVariants = {

@@ -2,7 +2,7 @@
 
 import {useState, useRef, useEffect} from 'react';
 import React from 'react';
-import {motion} from 'framer-motion';
+import {motion} from 'motion/react';
 import Lottie from 'lottie-react';
 import type {Project} from './types/Project';
 import styles from './FeaturedProject.module.css';

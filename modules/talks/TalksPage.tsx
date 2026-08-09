@@ -2,7 +2,7 @@
 
 import {useRef, useState, Suspense} from 'react';
 import {useQueryState, parseAsStringLiteral} from 'nuqs';
-import {LayoutGroup, motion} from 'framer-motion';
+import {LayoutGroup, motion} from 'motion/react';
 import Lottie from 'lottie-react';
 import Link from 'next/link';
 import clsx from 'clsx';

@@ -3,7 +3,7 @@
 import {useState} from 'react';
 import Link from 'next/link';
 import {usePathname} from 'next/navigation';
-import {motion, AnimatePresence} from 'framer-motion';
+import {motion, AnimatePresence} from 'motion/react';
 import clsx from 'clsx';
 import {useTheme} from '@/modules/theme/ThemeProvider';
 import styles from './Navbar.module.css';
