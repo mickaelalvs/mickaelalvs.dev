@@ -68,7 +68,7 @@ jobs:
             cat /tmp/pr-body.txt
             echo "--- END UNTRUSTED CHANGELOG TEXT ---"
           } > /tmp/screen-prompt.txt
-          VERDICT=$(agent -p --output-format text "$(cat /tmp/screen-prompt.txt)")
+          VERDICT=$(agent -p --trust --output-format text "$(cat /tmp/screen-prompt.txt)")
           echo "$VERDICT"
           if echo "$VERDICT" | head -n1 | grep -qi "SUSPICIOUS"; then
             echo "SCREEN_RESULT=suspicious" >> "$GITHUB_ENV"
