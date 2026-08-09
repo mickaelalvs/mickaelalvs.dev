@@ -111,10 +111,12 @@ jobs:
         if: success() && env.AGENT_EDITED == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUSH_TOKEN: ${{ secrets.RENOVATE_AGENT_PUSH_TOKEN }}
         run: |
           SUMMARY=$(tail -n +2 /tmp/agent-result.txt 2>/dev/null || echo "Detail unavailable.")
           git add -A
           git commit -m "fix: adapt to breaking change (agent-authored, human review required)"
+          git config http.https://github.com/.extraheader "AUTHORIZATION: basic $(printf 'x-access-token:%s' "$PUSH_TOKEN" | base64 -w 0)"
           git push
           {
             echo "> [!IMPORTANT]"
