@@ -12,7 +12,7 @@ import {CodeBlock} from './components/CodeBlock';
 import {parseCodeBlockMeta} from '@/lib/shiki-title-transformer';
 import rehypeShiki from '@shikijs/rehype';
 import rehypeSlug from 'rehype-slug';
-import {transformerMetaHighlight} from '@shikijs/transformers';
+import {transformerMetaHighlight, transformerNotationDiff} from '@shikijs/transformers';
 
 const mdxComponents = {
   ImageExpandable,
@@ -34,8 +34,9 @@ const mdxOptions: MDXRemoteProps['options'] = {
             dark: 'github-dark',
           },
           defaultColor: false,
+          addLanguageClass: true,
           parseMetaString: parseCodeBlockMeta,
-          transformers: [transformerMetaHighlight()],
+          transformers: [transformerMetaHighlight(), transformerNotationDiff()],
         },
       ],
     ],
