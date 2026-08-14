@@ -54,7 +54,7 @@
 
   /* Fonts */
   --font-body: 'Biotif', sans-serif;
-  --font-code: 'Fira Code', monospace;
+  --font-code: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   --font-heading: 'Neuzeit Grotesk Bold', sans-serif;
 
   /* Spacing */
@@ -139,16 +139,6 @@
   src:
     url('/static/font/NeuzeitGrotesk-Bold.woff2') format('woff2'),
     url('/static/font/NeuzeitGrotesk-Bold.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Fira Code';
-  src:
-    url('/static/font/FiraCode-Regular.woff2') format('woff2'),
-    url('/static/font/FiraCode-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -252,7 +242,7 @@ code {
 
 pre {
   border-radius: 8px;
-  padding: 20px 30px;
+  padding: 20px 0;
   overflow-x: auto;
   margin: 20px 0;
   border: 1px solid var(--color-hover);
@@ -263,22 +253,88 @@ pre code {
   padding: 0;
   font-size: 16px;
   font-weight: 500;
-  line-height: 1.8;
+  line-height: 1.6;
   tab-size: 4;
   -moz-tab-size: 4;
 }
 
 /* Shiki dual theme support */
 .shiki,
+.shiki code,
+.shiki .line,
+.shiki span {
+  font-family: var(--font-code);
+}
+
+.shiki {
+  background-color: var(--shiki-dark-bg);
+}
+
+.shiki,
 .shiki span {
   color: var(--shiki-dark);
-  background-color: var(--shiki-dark-bg);
+}
+
+[data-theme='light'] .shiki {
+  background-color: var(--shiki-light-bg);
 }
 
 [data-theme='light'] .shiki,
 [data-theme='light'] .shiki span {
   color: var(--shiki-light);
-  background-color: var(--shiki-light-bg);
+}
+
+/* Shiki line gutter (line numbers + highlight/diff) */
+.shiki code {
+  counter-reset: line;
+}
+
+.shiki .line {
+  display: inline-block;
+  box-sizing: border-box;
+  min-width: 100%;
+  padding: 0 30px;
+}
+
+.shiki .line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 2rem;
+  margin-right: 1.5rem;
+  text-align: right;
+  color: var(--color-secondary);
+  opacity: 0.5;
+  user-select: none;
+}
+
+.shiki[data-numbers='false'] .line::before {
+  content: none;
+}
+
+.shiki .line.highlighted {
+  background: var(--color-purple-30);
+  box-shadow: inset 5px 0 0 0 var(--color-purple);
+}
+
+.shiki .line.diff.add {
+  background: var(--color-green-30);
+}
+
+.shiki .line.diff.add::before {
+  content: '+';
+  color: var(--color-green);
+  opacity: 1;
+}
+
+.shiki .line.diff.remove {
+  background: var(--color-red-30);
+}
+
+.shiki .line.diff.remove::before {
+  content: '-';
+  color: var(--color-red);
+  opacity: 1;
 }
 
 h1 {
