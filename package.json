@@ -58,7 +58,7 @@
     "last 2 Edge versions"
   ],
   "devDependencies": {
-    "@types/node": "20.19.43",
+    "@types/node": "24.13.3",
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.4",
     "babel-plugin-react-compiler": "1.0.0",
