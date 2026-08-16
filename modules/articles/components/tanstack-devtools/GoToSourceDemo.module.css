@@ -1,0 +1,406 @@
+.figure {
+  margin: 32px 0;
+}
+
+.hint {
+  font-size: 14px;
+  color: var(--color-secondary);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.hintMobile {
+  display: none;
+}
+
+.kbdWrapper {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.tryItHint {
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  color: var(--color-cyan);
+  font-style: italic;
+  font-weight: bold;
+  user-select: none;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.stage {
+  position: relative;
+  height: 340px;
+  border-radius: 12px;
+  border: 1px solid var(--color-hover);
+  background: var(--color-background);
+  overflow: hidden;
+  transition: border-color 0.15s ease-in-out;
+}
+
+.stageActive {
+  border-color: var(--color-cyan);
+}
+
+/* ─── Crossfade layers: app mock vs editor mock ─────────────────── */
+
+.appLayer,
+.editorLayer {
+  position: absolute;
+  inset: 0;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  transition:
+    opacity 0.35s ease-in-out,
+    transform 0.35s ease-in-out;
+}
+
+.hiddenLayer {
+  opacity: 0;
+  transform: scale(0.97);
+  pointer-events: none;
+}
+
+.shownLayer {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: all;
+}
+
+/* ─── App mock: product page ─────────────────────────────────────── */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navLogo {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: var(--color-cyan-30);
+}
+
+.navLinks {
+  display: flex;
+  gap: 10px;
+}
+
+.navLink {
+  width: 40px;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--color-hover);
+}
+
+.productLayout {
+  display: flex;
+  gap: 24px;
+}
+
+.heroImage {
+  width: 160px;
+  height: 180px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--color-hover);
+}
+
+.productInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.titleLine {
+  height: 18px;
+  width: 320px;
+  border-radius: 4px;
+  background: var(--color-hover);
+}
+
+.priceLine {
+  height: 16px;
+  width: 100px;
+  border-radius: 4px;
+  background: var(--color-green-30);
+}
+
+.descLines {
+  height: 44px;
+  width: 380px;
+  border-radius: 6px;
+  background: var(--color-hover);
+}
+
+.ctaButton {
+  height: 36px;
+  width: 200px;
+  border-radius: 6px;
+  background: var(--color-cyan-30);
+  border: 1px solid var(--color-cyan);
+}
+
+/* ─── Hoverable wrapper ──────────────────────────────────────────── */
+
+.hoverable {
+  position: relative;
+  width: fit-content;
+  align-self: flex-start;
+  border-radius: 6px;
+  outline: 2px solid transparent;
+  outline-offset: 3px;
+  cursor: default;
+  transition: outline-color 0.15s ease-in-out;
+}
+
+.hoverable.inspectable {
+  cursor: pointer;
+}
+
+.hoverable.hovered {
+  outline-color: var(--color-cyan);
+}
+
+.badge {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  font-family: var(--font-code);
+  font-size: 11px;
+  color: var(--color-background);
+  background: var(--color-cyan);
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.badgeVisible {
+  opacity: 1;
+}
+
+/* ─── Editor mock ────────────────────────────────────────────────── */
+
+.editorWindow {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--color-hover);
+  overflow: hidden;
+}
+
+.editorSidebar {
+  width: 170px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 6px;
+  background: var(--color-code-background);
+  border-right: 1px solid var(--color-hover);
+  overflow: hidden;
+}
+
+.fileEntry {
+  font-family: var(--font-code);
+  font-size: 11px;
+  color: var(--color-secondary);
+  padding: 5px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fileEntryActive {
+  color: var(--color-primary);
+  background: var(--color-hover);
+}
+
+.editorMain {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-code-background);
+}
+
+.editorTabBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--color-hover);
+}
+
+.editorTab {
+  font-family: var(--font-code);
+  font-size: 12px;
+  color: var(--color-primary);
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--color-cyan);
+}
+
+.editorClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 4px;
+  background: none;
+  color: var(--color-secondary);
+  font-size: 12px;
+  cursor: pointer;
+  transition:
+    background var(--transition-duration) ease-in-out,
+    color var(--transition-duration) ease-in-out;
+}
+
+.editorClose:hover {
+  background: var(--color-hover);
+  color: var(--color-primary);
+}
+
+.editorCode {
+  padding: 12px 0;
+  overflow: auto;
+}
+
+.codeLine {
+  display: flex;
+  gap: 14px;
+  padding: 2px 14px;
+  border-left: 3px solid transparent;
+}
+
+.codeLineActive {
+  border-left-color: var(--color-cyan);
+  background: var(--color-cyan-30);
+}
+
+.lineNum {
+  font-family: var(--font-code);
+  font-size: 12px;
+  color: var(--color-secondary);
+  opacity: 0.6;
+  min-width: 16px;
+  text-align: right;
+}
+
+.codeText {
+  font-family: var(--font-code);
+  font-size: 12px;
+  color: var(--color-secondary);
+  white-space: pre;
+}
+
+.codeLineActive .codeText,
+.codeLineActive .lineNum {
+  color: var(--color-primary);
+  opacity: 1;
+}
+
+/* ─── Caption ─────────────────────────────────────────────────────── */
+
+.caption {
+  margin-top: 12px;
+  font-size: 15px;
+  text-align: center;
+  color: var(--color-secondary);
+}
+
+.captionHighlight {
+  color: var(--color-cyan);
+  font-weight: 700;
+}
+
+/* ─── Mobile layout override (placed last: always wins the cascade) ─ */
+
+@media (max-width: 640px) {
+  .hintDesktop {
+    display: none;
+  }
+
+  .hintMobile {
+    display: block;
+  }
+
+  .fakeHoverOnMobile {
+    outline-color: var(--color-cyan);
+  }
+
+  .badgeFakeMobile {
+    opacity: 1;
+  }
+
+  .stage {
+    height: 400px;
+  }
+
+  .appLayer,
+  .editorLayer {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .productLayout {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 16px;
+  }
+
+  .heroImage {
+    width: 130px;
+    height: 120px;
+  }
+
+  .productInfo {
+    width: 100%;
+    align-items: center;
+  }
+
+  .productLayout .hoverable {
+    align-self: center;
+  }
+
+  .titleLine {
+    width: 200px;
+  }
+
+  .priceLine {
+    width: 90px;
+  }
+
+  .descLines {
+    width: 220px;
+  }
+
+  .ctaButton {
+    width: 160px;
+  }
+
+  .editorSidebar {
+    width: 110px;
+  }
+}

@@ -1,0 +1,124 @@
+.figure {
+  margin: 32px 0;
+}
+
+.diagram {
+  border-radius: 12px;
+  border: 1px solid var(--color-hover);
+  background: var(--color-background);
+  padding: 24px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stepLabel {
+  display: flex;
+  align-self: center;
+  align-items: baseline;
+  gap: 6px;
+  white-space: nowrap;
+  font-family: var(--font-code);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-cyan);
+}
+
+.stepLabelSub {
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: none;
+  color: var(--color-secondary);
+  opacity: 1;
+}
+
+.flow {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 10px;
+}
+
+.box {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-family: var(--font-code);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-primary);
+  background: var(--color-code-background);
+  border: 1px solid var(--color-hover);
+  border-radius: 8px;
+  padding: 8px 12px;
+  white-space: nowrap;
+}
+
+.boxAccent {
+  border-color: var(--color-cyan);
+  color: var(--color-cyan);
+}
+
+.boxSubtitle {
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-secondary);
+  font-size: 22px;
+  line-height: 1;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.connector {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.caption {
+  margin-top: 12px;
+  font-size: 15px;
+  text-align: center;
+  color: var(--color-secondary);
+}
+
+@media (max-width: 640px) {
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .stepLabel {
+    width: auto;
+  }
+
+  .flow {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .flow .arrow {
+    align-self: center;
+    transform: rotate(90deg);
+  }
+
+  .box {
+    flex: none;
+    white-space: normal;
+  }
+}

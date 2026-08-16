@@ -1,0 +1,257 @@
+---
+title: 'Vos équipes méritent des devtools : et si vous essayiez ceux de TanStack ?'
+description: 'TanStack Devtools transforme la construction de devtools custom, longtemps réservée au bricolage individuel, en infrastructure partagée pour toute une équipe.'
+slug: tanstack-devtools-dx
+image: /static/images/articles/tanstack-devtools-dx/hero.avif
+thumbnail: /static/images/articles/tanstack-devtools-dx/thumbnail.avif
+date: '2026-08-13'
+featured: false
+readingTime: '15 min read'
+tags: [tanstack, devtools, developer-experience, react, frontend]
+authors: [mickael_alves]
+language: fr
+---
+
+<br />
+
+Construire ses propres devtools, ce n'est pas une idée exotique. [Kent C. Dodds en parlait déjà il y a quelques années](https://kentcdodds.com/blog/make-your-own-dev-tools) : feature toggles, autofill de formulaire, changement d'environnement backend à la volée. À l'époque déjà, on bricolait tout à la main : imports dynamiques, tabs customs dans les devtools du navigateur, fichiers locaux gitignorés pour ne jamais les committer par erreur. Bref, tout à la main.
+
+On sait depuis longtemps que ses propres devtools sont un multiplicateur de DX, mais les construire a toujours été fastidieux, du positionnement du panel jusqu'à la persistance des réglages. Et de plus en plus d'outils viennent directement avec les leurs : ceux de TanStack (Query, Router, Form...), React Hook Form, ou les devtools Vue et Nuxt. Le souci, c'est que chacun vit dans son coin : une extension de navigateur par-ci (React DevTools, Redux DevTools), un panel embarqué dans l'app par-là, sans aucune coordination entre eux. Impossible d'ajouter un panel pour vos besoins spécifiques. Impossible de les faire discuter entre eux.
+
+Et pendant ce temps, sur nos projets, on accumulait les devtools sans vraiment s'en rendre compte. Notre console maison pour piloter les feature flags. Le panel Redux DevTools. React DevTools. Et tous ceux qui viennent avec les libs qu'on utilise.
+
+Chacun de ces outils, pris séparément, améliore la DX. Empilés les uns sur les autres sans coordination, ils produisent l'effet inverse. **On ne voit plus son écran**, et on passe plus de temps à fermer des panels qu'à déboguer.
+
+<PanelChaosDemo />
+
+## 🔄 Le pivot : TanStack Devtools
+
+<br />
+
+C'est exactement ce problème que [TanStack Devtools](https://tanstack.com/devtools/latest) attaque. Sa doc résume l'intention en une phrase : _"Build the inspector, not another debugging shell."_
+
+Ce n'est pas un pack qui embarque juste les devtools des outils de TanStack dans un seul bundle. C'est l'inverse : un shell framework-agnostique et extensible. N'importe quelle lib, ou n'importe quelle équipe, peut y brancher son propre panel. Query, Router, Form, l'accessibilité : ce ne sont que les premiers plugins installés dans ce shell commun.
+
+L'architecture se découpe en trois couches :
+
+- **Les adapters par framework** (`@tanstack/react-devtools`, `@tanstack/vue-devtools`, `@tanstack/solid-devtools`...) : de fines couches qui exposent l'API dans votre framework.
+- **Le core shell** (`@tanstack/devtools`) : écrit en Solid.js, peu importe le framework de votre app. Il gère le registre des plugins, les onglets, les réglages, les raccourcis clavier.
+- **Le système d'events** (`@tanstack/devtools-event-client`) : un pub/sub typé qui relie votre app au serveur Vite via WebSocket ou SSE.
+
+Et le shell ne reste pas coincé à 2-3 onglets côte à côte. Le _plugin workspace_ organise plusieurs plugins simultanément en panneaux redimensionnables, empilables ou regroupés en onglets, façon mini-IDE.
+
+> 🖼️ _(placeholder : screenshot du plugin workspace en mode tiling, à ajouter)_
+
+À l'échelle d'une codebase avec plusieurs équipes qui branchent chacune leurs devtools, ça change tout : pas besoin de choisir entre Query, Router et vos panels custom, ils coexistent.
+
+Et le [support multi-framework](https://tanstack.com/devtools/latest/docs/framework) n'est pas qu'une case cochée dans la doc. React, Vue, Solid, Svelte, Angular, Preact, ou même du vanilla JS sans framework du tout : peu importe la stack. **Un plugin devtools n'est rien d'autre qu'un composant** : le vôtre, dans votre framework, avec vos propres conventions. Une équipe React branche un composant React, une équipe Vue un composant Vue, chacune dans son langage, dans le même shell partagé.
+
+Par exemple, en pratique, installer les devtools officiels de Query ressemble à ça :
+
+```tsx
+import {TanStackDevtools} from '@tanstack/react-devtools';
+import {ReactQueryDevtoolsPanel} from '@tanstack/react-query-devtools';
+
+<TanStackDevtools
+  plugins={[
+    {
+      name: 'TanStack Query',
+      render: <ReactQueryDevtoolsPanel />,
+    },
+  ]}
+/>;
+```
+
+<Callout type="info">
+  **Zero-cost en prod par défaut.** `removeDevtoolsOnBuild` vaut `true` par défaut : les devtools ne font même pas
+  partie du bundle de prod. Rien à activer, rien à faire.
+</Callout>
+
+Une précision honnête : le package est encore **en alpha**, l'API peut bouger. Rien qui empêche de l'essayer, mais gardez ça en tête avant de tout miser dessus en prod.
+
+Mais même pour un package en alpha, en creusant la [page qui détaille cette architecture](https://tanstack.com/devtools/latest/docs/architecture), un truc m'a frappé : chaque choix sert les trois mêmes objectifs. **Performance** : zero-cost en prod, un shell qui ne réimplémente rien deux fois. Côté **agnosticisme**, un Solid.js neutre reste au centre pendant que vos plugins vivent dans votre framework. Et pour la **personnalisation**, il y a l'event system, le plugin workspace, la marketplace. Rien n'est là par hasard. Il y aurait largement de quoi écrire plusieurs articles rien que sur cette architecture. Une autre fois, peut-être.
+
+## 🧰 Construire les devtools de son équipe
+
+<br />
+
+Je travaille dans une équipe Platform Frontend dont une partie du rôle est justement de s'occuper de la DX. Mon objectif, au fond, tient en une phrase : que les équipes soient le mieux équipées possible, avec une expérience de développement fluide et le moins de friction possible au quotidien. Sur une grosse codebase, avec plusieurs apps, des packages partagés, un design system, et des migrations qui reviennent régulièrement, mettre les bons outils entre les mains des devs n'est pas un confort. C'est une nécessité : chaque friction évitée se multiplie par le nombre d'apps et de développeurs qui la rencontrent.
+
+On a commencé comme tout le monde, avec les devtools officiels : Query, Redux, et des plugins custom. Puis on a voulu des panels pour nos propres besoins :
+
+- un log des events analytics envoyés
+- des shortcuts pour piloter le feature flipping
+- l'affichage du layout courant
+- l'inspection de notre state
+
+Jusqu'à maintenant, on construisait toute la mécanique à la main pour nos trucs custom. Et pour le reste, officiel ou pas, c'était soit dans une extension, soit dans la console du navigateur. Sur une codebase avec plusieurs apps et équipes, ce coût ne se paie pas une fois : il se paie à chaque nouveau besoin, dans chaque app.
+
+Avec TanStack Devtools, ce travail est résolu une fois, pour tout le monde. Un plugin custom, dans sa forme la plus simple, c'est juste un composant qu'on enregistre via la prop `plugins` :
+
+```tsx
+<TanStackDevtools
+  plugins={[
+    {
+      name: 'Feature Flipping',
+      render: <FeatureFlippingPanel />,
+    },
+  ]}
+/>
+```
+
+Pas de classe à étendre, pas d'API imposée par TanStack Devtools. `FeatureFlippingPanel` est un composant React ordinaire. La seule vraie question qui reste : comment échanger de la donnée entre ce composant et votre application ?
+
+### Avec un provider ou un store existant
+
+Pas besoin de plomberie : si un state manager tourne déjà dans votre app (Redux, Zustand, Jotai...), un panel peut s'y abonner comme un consommateur de plus. Si `<TanStackDevtools>` est monté à l'intérieur d'un de vos `<Provider>`, le panel peut échanger avec lui exactement comme le fait déjà votre application. Autre option tout aussi directe, sans store du tout : piloter un flag depuis un query param d'URL, pratique pour du feature flipping partageable par lien.
+
+Ça marche, et c'est même la voie la plus simple : la donnée existe déjà pour l'app elle-même, le panel ne fait que s'y abonner comme un consommateur de plus, rien à faire échouer. Mais ça a une limite nette. Un store partagé ne fonctionne que dans le même onglet, le même process. Impossible de communiquer entre deux onglets ouverts en simultané, ou entre le navigateur et le terminal. Pour un besoin de suivi cross-onglet, un log d'analytics ou le débogage d'un Backend For Frontend (BFF) par exemple, c'est exactement là qu'on bute.
+
+### Avec un système d'events
+
+L'event bus casse des frontières qu'un store ne peut pas franchir : entre onglets, et même entre le navigateur et le serveur de dev. On verra plus loin un exemple concret où ça change tout.
+
+C'est aussi le seul contrat stable pour du code publié. Une lib tierce, ou un plugin publié pour d'autres, ne peut pas savoir à l'avance quelle forme aura le store d'une app qui l'installe. Elle ne peut promettre que des events nommés et typés. Un package npm externe ne peut pas connaître la forme exacte du store d'une app qui l'installe.
+
+<Callout type="note">
+  Contrairement au store, qui expose une donnée déjà là pour l'app elle-même, l'event bus demande un geste actif :
+  ajouter un `emit()` à chaque endroit du code applicatif où vous voulez de la visibilité. Le coût reste faible, une
+  ligne par point d'intérêt, mais ce n'est pas gratuit comme piocher dans un store existant.
+</Callout>
+
+Le guide officiel [_Building Custom Plugins_](https://tanstack.com/devtools/latest/docs/building-custom-plugins) résume cette plomberie en cinq étapes :
+
+- définir une event map
+- étendre `EventClient`
+- `emit()` depuis le code de l'app
+- écouter avec `on()` dans le panel
+- enregistrer le tout
+
+En simplifié, ça donne à peu près ça :
+
+```ts
+import {EventClient} from '@tanstack/devtools-event-client';
+
+type MyEvents = {
+  'feature-flag-toggle': {flag: string; enabled: boolean};
+};
+
+class TeamEventClient extends EventClient<MyEvents> {
+  constructor() {
+    super({pluginId: 'team-devtools'});
+  }
+}
+
+export const teamEventClient = new TeamEventClient();
+```
+
+Pour du feature flipping, c'est le panel qui pilote : on toggle dans le devtool, il `emit()`.
+
+```tsx
+function FeatureFlippingPanel() {
+  const [flags, setFlags] = useState<Record<string, boolean>>({
+    'new-checkout': false,
+  });
+
+  const toggle = (flag: string) => {
+    const enabled = !flags[flag];
+    setFlags((prev) => ({...prev, [flag]: enabled}));
+    teamEventClient.emit('feature-flag-toggle', {flag, enabled});
+  };
+
+  return (
+    <ul>
+      {Object.entries(flags).map(([flag, enabled]) => (
+        <li key={flag}>
+          <button onClick={() => toggle(flag)}>
+            {flag} : {enabled ? '✅' : '❌'}
+          </button>
+        </li>
+      ))}
+    </ul>
+  );
+}
+```
+
+Et côté app, en local, un petit module écoute avec `on()` pour surcharger les vraies valeurs avec celles du devtool :
+
+```ts
+const overrides = {};
+
+teamEventClient.on('feature-flag-toggle', (e) => {
+  overrides[e.payload.flag] = e.payload.enabled;
+});
+
+function isEnabled(flag) {
+  return overrides[flag] ?? realValue(flag);
+}
+```
+
+<FeatureFlagPanelDemo />
+
+La question à se poser : same-tab, avec un store déjà là ? Piochez dedans directement. Cross-tab, ou hors du navigateur ? C'est le travail de l'event bus.
+
+Dans les deux cas, le panel reste ce composant ordinaire vu plus haut. Ce qui change, c'est juste d'où vient la donnée.
+
+**Le vrai gain DX n'est pas dans un panel en particulier.** Il est dans le fait que chaque feature team n'a plus qu'à définir ses events et son composant. Le problème du panel, du positionnement, des raccourcis, de la persistance : réglé une bonne fois pour toutes, en amont.
+
+Un point de vigilance, ceci dit : ce code reste du code de dev. Sans discipline, il peut polluer vos composants ou finir dans le bundle de prod pour rien. `@tanstack/devtools-utils` propose justement des factories (`createReactPlugin`, `createVuePlugin`...) qui retournent une paire `[Plugin, NoOpPlugin]`, pour garder un panel tree-shakable sans y penser à chaque fois :
+
+```tsx
+const [FeatureFlippingPlugin, NoOpPlugin] = createReactPlugin({
+  name: 'Feature Flipping',
+  Component: FeatureFlippingPanel,
+});
+
+const ActivePlugin = process.env.NODE_ENV === 'development' ? FeatureFlippingPlugin : NoOpPlugin;
+```
+
+## 🎯 Go to source : le clic qui change tout
+
+<br />
+
+Si vous passez par le plugin Vite, il ne se limite pas à une seule feature, il vient avec [toute une liste de fonctionnalités intégrées](https://tanstack.com/devtools/latest/docs/vite-plugin#features) : console piping, marketplace de plugins, stripping automatique en prod... Mais s'il y en a une qui résume la philosophie DX de l'outil, c'est le go to source.
+
+Au build, le plugin Vite (`@tanstack/devtools-vite`) parse votre JSX/TSX avec `oxc-parser` et injecte un attribut `data-tsd-source="fichier:ligne:colonne"` sur chaque élément. En dev, on maintient un simple raccourci configurable pour survoler n'importe quel élément de la page. Pas seulement dans le panel devtools : toute la page devient inspectable. Un clic, et l'éditeur s'ouvre directement au bon fichier, à la bonne ligne, via [`launch-editor`](https://github.com/vitejs/launch-editor) : la même lib que Vite utilise en interne. Elle détecte toute seule l'éditeur en cours d'exécution et fonctionne avec de nombreux éditeurs (VS Code, la suite JetBrains, Sublime Text, Vim...) sans configuration.
+
+<Callout type="note">
+  Ça ne marche qu'avec Vite pour l'instant : pas de support Webpack, Turbopack ou Rspack mentionné dans la doc.
+</Callout>
+
+Ça recoupe directement l'architecture décrite plus haut, avec une pièce en plus. Le plugin Vite ajoute une couche _build-time_, en amont des trois couches runtime : c'est lui qui injecte `data-tsd-source` avant même que l'app ne tourne. Le hotkey et le highlight au survol viennent du core shell. Et la couche 3, le système d'events, c'est le tuyau qui fait voyager l'info du clic jusqu'au bon endroit. Le navigateur émet, via ce même mécanisme d'`EventClient`/event bus, une requête vers le serveur Vite. Celui-ci la reçoit et appelle `launch-editor` pour ouvrir le fichier à la bonne ligne. Exactement le point développé plus haut : c'est un cas concret où la donnée doit franchir la frontière navigateur → process Node, ce qu'un store partagé ne peut pas faire.
+
+<GoToSourceDiagram />
+
+<Callout type="info">
+  React DevTools propose une fonctionnalité proche, mais elle reste liée à React et à l'extension navigateur. Le go to
+  source de TanStack fonctionne pour n'importe quel plugin, parce qu'il repose sur une injection au build, pas sur
+  l'introspection runtime d'un framework en particulier.
+</Callout>
+
+<GoToSourceDemo />
+
+C'est une feature que j'ai adorée dès que je l'ai essayée. Sur de grosses applications, sur un design system complexe, retrouver à la main le fichier responsable d'un bout d'UI peut vite tourner à la chasse au trésor. Là, un clic suffit.
+
+On sous-estime facilement ce genre de détail. Mais sur une grosse codebase, pour l'onboarding de nouveaux devs, c'est énorme : plus besoin de grep un nom de classe CSS ou un bout de texte pour retrouver le composant responsable d'un bug visuel. On clique, on est dans le fichier.
+
+Le même principe s'applique aux logs. Avec le plugin Vite, chaque `console.log` du navigateur affiche son `fichier:ligne` cliquable, et les logs circulent dans les deux sens : ce qui s'affiche dans la console du navigateur remonte dans votre terminal, et inversement pour les logs serveur/SSR. Fini le réflexe de chercher dans quel terminal ou quel onglet un log a atterri.
+
+## 🧩 Aller plus loin : d'autres devtools custom à construire
+
+<br />
+
+Maintenant que vous savez comment ça marche, les idées viendront d'elles-mêmes, au fil de votre quotidien. [La marketplace de plugins](https://tanstack.com/devtools/latest/docs/third-party-plugins) n'est même pas qu'une idée en l'air : elle existe déjà.
+
+- **Accessibility overlay** : `@tanstack/devtools-a11y` en est un bon exemple, basé sur `axe-core`, avec un overlay visuel, une navigation click-to-source vers l'élément fautif, et un export du rapport en JSON ou CSV.
+
+Rien n'empêche une équipe plateforme de publier son propre plugin interne sur le même principe. Et pour le reste, je suis sûr que vous ne manquerez pas d'idées : feature flags toggle, network override / mock switcher, time-travel debugging... La liste des plugins officiels grandit vite, aussi : Query, Router et Form ont chacun le leur, tout comme Pacer (animations/transitions), et même un plugin dédié à TanStack AI pour inspecter messages, tokens et appels d'outils en streaming. Le shell n'est pas resté cantonné au data-fetching.
+
+## 🚀 Ce qui change vraiment
+
+<br />
+
+Avant, cette brique de DX, on la construisait à la main, ou pire, on ne la construisait pas du tout : on vivait avec la friction, les allers-retours inutiles, un onboarding plus long, en se disant que c'était le prix à payer. TanStack Devtools rend ça trivial : installer un shell, définir un event client, brancher un panel.
+
+La vraie promesse DX n'est pas d'avoir un joli panel pour inspecter le cache de Query. Elle est de donner à chaque équipe l'infrastructure pour construire ses propres devtools, sans réinventer la roue à chaque fois, et sans finir, un jour, avec cinq panels flottants qui cachent son propre écran.
+
+Prenez soin de vos outils : le manque de DX ne se voit jamais, jusqu'au jour où on le corrige. Vos équipes méritent mieux, essayez les devtools.

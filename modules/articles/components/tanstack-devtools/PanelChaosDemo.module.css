@@ -1,0 +1,456 @@
+.figure {
+  margin: 32px 0;
+}
+
+.browserWindow {
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--color-hover);
+  background: var(--color-background);
+}
+
+/* ─── Browser chrome ─────────────────────────────────────────────── */
+
+.browserChrome {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--color-hover);
+  background: var(--color-code-background);
+}
+
+.addressBar {
+  flex: 1;
+  font-family: var(--font-code);
+  font-size: 12px;
+  color: var(--color-secondary);
+  background: var(--color-background);
+  border: 1px solid var(--color-hover);
+  border-radius: 6px;
+  padding: 4px 10px;
+}
+
+.extensionIcons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.extIcon {
+  line-height: 1;
+  color: var(--color-secondary);
+}
+
+/* ─── Shared window chrome ──────────────────────────────────────── */
+
+.dots {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: block;
+}
+
+.dotRed {
+  background: #ff5f57;
+}
+.dotYellow {
+  background: #ffbd2e;
+}
+.dotGreen {
+  background: #28ca42;
+}
+
+.panelLabel {
+  font-family: var(--font-code);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.dockHeader {
+  font-family: var(--font-code);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-primary);
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--color-hover);
+}
+
+.dockContent {
+  padding: 10px;
+}
+
+.skeletonLine {
+  display: block;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--color-hover);
+  margin-bottom: 8px;
+}
+
+.skeletonLineShort {
+  display: block;
+  height: 8px;
+  width: 50%;
+  border-radius: 4px;
+  background: var(--color-hover);
+}
+
+.skeletonLineInline {
+  display: inline-block;
+  height: 8px;
+  width: 120px;
+  border-radius: 4px;
+  background: var(--color-hover);
+}
+
+.consoleLine {
+  display: block;
+  font-family: var(--font-code);
+  font-size: 12px;
+  color: var(--color-secondary);
+}
+
+/* ─── Body: left dock / page / right dock ───────────────────────── */
+
+.body {
+  position: relative;
+  display: flex;
+}
+
+.dockLeft,
+.dockRight {
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: var(--color-code-background);
+  transition:
+    width 0.4s ease-in-out,
+    opacity 0.3s ease-in-out;
+}
+
+.dockLeft {
+  border-right: 1px solid var(--color-hover);
+}
+
+.dockRight {
+  border-left: 1px solid var(--color-hover);
+  display: flex;
+  flex-direction: column;
+}
+
+.dockLeft.dockHidden,
+.dockRight.dockHidden {
+  opacity: 0;
+  border-color: transparent;
+  pointer-events: none;
+}
+
+.devtoolsTabs {
+  display: flex;
+  gap: 4px;
+  padding: 8px 8px 0;
+  border-bottom: 1px solid var(--color-hover);
+}
+
+.devtoolsTab {
+  font-family: var(--font-code);
+  font-size: 11px;
+  color: var(--color-secondary);
+  padding: 6px 8px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+
+.devtoolsTabActive {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-cyan);
+}
+
+/* ─── Resize handles ─────────────────────────────────────────────── */
+
+.resizeHandle {
+  position: absolute;
+  z-index: 5;
+  background: transparent;
+  transition: background 0.15s ease-in-out;
+}
+
+.resizeHandle:hover {
+  background: var(--color-cyan-30);
+}
+
+.resizeHandleX {
+  top: 0;
+  bottom: 0;
+  right: -3px;
+  width: 6px;
+  cursor: col-resize;
+}
+
+.dockRight .resizeHandleX {
+  right: auto;
+  left: -3px;
+}
+
+.resizeHandleY {
+  top: -3px;
+  left: 0;
+  right: 0;
+  height: 6px;
+  cursor: row-resize;
+}
+
+/* ─── Center: the actual page ────────────────────────────────────── */
+
+.pageContent {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  padding: 20px;
+}
+
+.pageNav {
+  height: 14px;
+  width: 40%;
+  border-radius: 4px;
+  background: var(--color-hover);
+  margin-bottom: 16px;
+}
+
+.pageBlock {
+  height: 90px;
+  border-radius: 8px;
+  background: var(--color-hover);
+  margin-bottom: 12px;
+}
+
+.pageBlockSmall {
+  height: 40px;
+  width: 60%;
+  border-radius: 8px;
+  background: var(--color-hover);
+}
+
+/* ─── Bottom stage: chaos bar vs unified shell ──────────────────── */
+
+.bottomStage {
+  position: relative;
+  border-top: 1px solid var(--color-hover);
+}
+
+.bottomChaos,
+.bottomClean {
+  position: absolute;
+  inset: 0;
+  transition:
+    opacity 0.4s ease-in-out,
+    transform 0.4s ease-in-out;
+}
+
+.bottomChaos {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  background: var(--color-code-background);
+  opacity: 1;
+}
+
+.bottomClean {
+  display: flex;
+  flex-direction: row;
+  background: var(--color-code-background);
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+}
+
+.hiddenLayer {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.shownLayer {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.shellTabsColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-shrink: 0;
+  width: 90px;
+  padding: 8px 6px;
+  border-right: 1px solid var(--color-hover);
+}
+
+.shellTab {
+  font-family: var(--font-code);
+  font-size: 12px;
+  color: var(--color-secondary);
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: color var(--transition-duration) ease-in-out;
+}
+
+.shellTab:hover {
+  color: var(--color-primary);
+}
+
+.shellTabActive {
+  color: var(--color-primary);
+  background: var(--color-hover);
+}
+
+.shellBody {
+  padding: 12px 16px;
+  flex: 1;
+  overflow: auto;
+}
+
+.consoleList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.consoleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.badge {
+  font-family: var(--font-code);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+/* ─── Team tab: feature flipping + event log ────────────────────── */
+
+.teamPanels {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.teamSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sectionLabel {
+  font-family: var(--font-code);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+
+.toggleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.toggleSwitch {
+  position: relative;
+  width: 28px;
+  height: 15px;
+  border-radius: 999px;
+  background: var(--color-hover);
+  flex-shrink: 0;
+}
+
+.toggleSwitchOn {
+  background: var(--color-cyan);
+}
+
+.toggleThumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  transition: transform var(--transition-duration) ease-in-out;
+}
+
+.toggleSwitchOn .toggleThumb {
+  transform: translateX(13px);
+}
+
+.badgeFresh {
+  color: var(--color-green);
+  background: var(--color-green-30);
+}
+
+.badgeStale {
+  color: var(--color-orange);
+  background: var(--color-orange-30);
+}
+
+.badgeFetching {
+  color: var(--color-cyan);
+  background: var(--color-cyan-30);
+}
+
+/* ─── Toggle button & caption ────────────────────────────────────── */
+
+.toggleWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  margin: 16px auto 0;
+}
+
+.toggleWrapper kbd {
+  width: 230px;
+}
+
+.tryItHint {
+  font-size: 14px;
+  color: var(--color-cyan);
+  font-style: italic;
+  font-weight: bold;
+  user-select: none;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.caption {
+  margin-top: 12px;
+  font-size: 15px;
+  text-align: center;
+  color: var(--color-secondary);
+}
