@@ -251,7 +251,7 @@ pre {
 pre code {
   background: transparent;
   padding: 0;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 1.6;
   tab-size: 4;
@@ -310,6 +310,17 @@ pre code {
 
 .shiki[data-numbers='false'] .line::before {
   content: none;
+}
+
+@media (max-width: 600px) {
+  .shiki .line {
+    padding: 0 12px;
+  }
+
+  .shiki .line::before {
+    width: 1.4rem;
+    margin-right: 0.75rem;
+  }
 }
 
 .shiki .line.highlighted {
