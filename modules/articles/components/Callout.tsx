@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import styles from './Callout.module.css';
 
 type CalloutType = 'info' | 'note' | 'warn';
@@ -15,8 +16,8 @@ interface CalloutProps {
 
 export function Callout({type = 'info', children}: CalloutProps) {
   return (
-    <div className={`${styles.callout} ${styles[type]}`}>
-      <span className={`${styles.iconChip} ${styles[type]}`}>
+    <div className={clsx(styles.callout, styles[type])}>
+      <span className={clsx(styles.iconChip, styles[type])}>
         <i className={ICONS[type]} aria-hidden="true" />
       </span>
       <div className={styles.content}>{children}</div>

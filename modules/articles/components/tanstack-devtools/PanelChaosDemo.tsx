@@ -1,6 +1,7 @@
 'use client';
 
 import {useRef, useState} from 'react';
+import clsx from 'clsx';
 import {KbdKey} from '../alt-tab/KbdKey';
 import styles from './PanelChaosDemo.module.css';
 
@@ -58,7 +59,7 @@ function ToggleRow({label, on}: {label: string; on: boolean}) {
   return (
     <div className={styles.toggleRow}>
       <span className={styles.consoleLine}>{label}</span>
-      <span className={`${styles.toggleSwitch} ${on ? styles.toggleSwitchOn : ''}`}>
+      <span className={clsx(styles.toggleSwitch, on && styles.toggleSwitchOn)}>
         <span className={styles.toggleThumb} />
       </span>
     </div>
@@ -147,7 +148,7 @@ function useResizable(initial: number, min: number, max: number, axis: 'x' | 'y'
 function ResizeHandle({onPointerDown, axis}: {onPointerDown: (e: React.PointerEvent) => void; axis: 'x' | 'y'}) {
   return (
     <div
-      className={`${styles.resizeHandle} ${axis === 'x' ? styles.resizeHandleX : styles.resizeHandleY}`}
+      className={clsx(styles.resizeHandle, axis === 'x' ? styles.resizeHandleX : styles.resizeHandleY)}
       onPointerDown={onPointerDown}
     />
   );
@@ -180,7 +181,7 @@ export function PanelChaosDemo() {
           style={{height: STAGE_HEIGHT - bottomHeight, transition: bottomDragging ? 'none' : undefined}}
         >
           <div
-            className={`${styles.dockLeft} ${tidy ? styles.dockHidden : ''}`}
+            className={clsx(styles.dockLeft, tidy && styles.dockHidden)}
             style={{width: tidy ? 0 : leftWidth, transition: leftDragging ? 'none' : undefined}}
           >
             <div className={styles.dockHeader}>Team DevTools</div>
@@ -199,7 +200,7 @@ export function PanelChaosDemo() {
           </div>
 
           <div
-            className={`${styles.dockRight} ${tidy ? styles.dockHidden : ''}`}
+            className={clsx(styles.dockRight, tidy && styles.dockHidden)}
             style={{width: tidy ? 0 : rightWidth, transition: rightDragging ? 'none' : undefined}}
           >
             {!tidy && <ResizeHandle axis="x" onPointerDown={resizeRight} />}
@@ -215,18 +216,18 @@ export function PanelChaosDemo() {
         <div className={styles.bottomStage} style={{height: bottomHeight}}>
           <ResizeHandle axis="y" onPointerDown={resizeBottom} />
 
-          <div className={`${styles.bottomChaos} ${tidy ? styles.hiddenLayer : ''}`}>
+          <div className={clsx(styles.bottomChaos, tidy && styles.hiddenLayer)}>
             <span className={styles.panelLabel}>TanStack Query</span>
             <span className={styles.skeletonLineInline} />
           </div>
 
-          <div className={`${styles.bottomClean} ${tidy ? styles.shownLayer : ''}`}>
+          <div className={clsx(styles.bottomClean, tidy && styles.shownLayer)}>
             <div className={styles.shellTabsColumn}>
               {TABS.map((tab) => (
                 <button
                   key={tab.id}
                   type="button"
-                  className={`${styles.shellTab} ${activeTab === tab.id ? styles.shellTabActive : ''}`}
+                  className={clsx(styles.shellTab, activeTab === tab.id && styles.shellTabActive)}
                   onClick={() => setActiveTab(tab.id)}
                 >
                   {tab.label}
@@ -241,9 +242,7 @@ export function PanelChaosDemo() {
       </div>
 
       <div className={styles.toggleWrapper}>
-        <KbdKey onClick={() => setTidy((t) => !t)}>
-          {tidy ? '🔥 Retour en enfer' : '🪄 Ranger dans un seul shell'}
-        </KbdKey>
+        <KbdKey onClick={() => setTidy((t) => !t)}>{tidy ? '🔥 Back to hell' : '🪄 Tidy into one shell'}</KbdKey>
         <span className={styles.tryItHint}>try it ↑</span>
       </div>
     </figure>

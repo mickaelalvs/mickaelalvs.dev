@@ -38,10 +38,6 @@
   background: color-mix(in srgb, var(--color-cyan) 6%, var(--color-code-background));
 }
 
-.callout.note {
-  background: var(--color-code-background);
-}
-
 .callout.warn {
   background: color-mix(in srgb, var(--color-orange) 6%, var(--color-code-background));
 }

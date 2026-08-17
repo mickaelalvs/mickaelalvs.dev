@@ -1,18 +1,18 @@
 'use client';
 
 import {useState} from 'react';
+import clsx from 'clsx';
 import styles from './FeatureFlagPanelDemo.module.css';
 
 interface FlagSpec {
   id: string;
   label: string;
-  description: string;
 }
 
 const FLAGS: FlagSpec[] = [
-  {id: 'new-checkout', label: 'new-checkout', description: 'Bandeau promo dans le mock'},
-  {id: 'dark-mode-beta', label: 'dark-mode-beta', description: 'Fond sombre dans le mock'},
-  {id: 'ai-search', label: 'ai-search', description: 'Barre de recherche IA'},
+  {id: 'new-checkout', label: 'new-checkout'},
+  {id: 'dark-mode-beta', label: 'dark-mode-beta'},
+  {id: 'ai-search', label: 'ai-search'},
 ];
 
 export function FeatureFlagPanelDemo() {
@@ -37,7 +37,7 @@ export function FeatureFlagPanelDemo() {
               onClick={() => toggle(flag.id)}
               aria-pressed={flags[flag.id]}
             >
-              <span className={`${styles.switch} ${flags[flag.id] ? styles.switchOn : ''}`}>
+              <span className={clsx(styles.switch, flags[flag.id] && styles.switchOn)}>
                 <span className={styles.switchThumb} />
               </span>
               <span className={styles.flagLabel}>{flag.label}</span>
@@ -45,14 +45,14 @@ export function FeatureFlagPanelDemo() {
           ))}
         </div>
 
-        <div className={`${styles.mockApp} ${flags['dark-mode-beta'] ? styles.mockAppDark : ''}`}>
+        <div className={clsx(styles.mockApp, flags['dark-mode-beta'] && styles.mockAppDark)}>
           {flags['new-checkout'] ? (
-            <div className={styles.checkoutBanner}>🎉 Nouveau checkout activé</div>
+            <div className={styles.checkoutBanner}>🎉 New checkout enabled</div>
           ) : (
             <div className={styles.checkoutPlaceholder} />
           )}
-          <div className={`${styles.searchBar} ${flags['ai-search'] ? styles.searchBarAi : ''}`}>
-            {flags['ai-search'] ? '✨ Recherche IA' : 'Rechercher…'}
+          <div className={clsx(styles.searchBar, flags['ai-search'] && styles.searchBarAi)}>
+            {flags['ai-search'] ? '✨ AI search' : 'Search…'}
           </div>
           <div className={styles.mockBlock} />
           <div className={styles.mockBlockSmall} />
@@ -60,8 +60,8 @@ export function FeatureFlagPanelDemo() {
       </div>
 
       <figcaption className={styles.caption}>
-        Le panel à gauche <code>emit()</code>, le mock d&apos;app à droite <code>on()</code> — le pattern vu plus haut,
-        en direct.
+        The panel on the left <code>emit()</code>s, the app mock on the right <code>on()</code>s — the pattern from
+        earlier, live.
       </figcaption>
     </figure>
   );
