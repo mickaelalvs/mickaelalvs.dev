@@ -423,7 +423,7 @@
   background: var(--color-cyan-30);
 }
 
-/* ─── Toggle button & caption ────────────────────────────────────── */
+/* ─── Toggle button ──────────────────────────────────────────────── */
 
 .toggleWrapper {
   display: flex;
@@ -446,11 +446,4 @@
   user-select: none;
   white-space: nowrap;
   line-height: 1;
-}
-
-.caption {
-  margin-top: 12px;
-  font-size: 15px;
-  text-align: center;
-  color: var(--color-secondary);
 }

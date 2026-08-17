@@ -1,8 +1,9 @@
+import clsx from 'clsx';
 import styles from './GoToSourceDiagram.module.css';
 
 function Box({children, subtitle, accent}: {children: React.ReactNode; subtitle?: string; accent?: boolean}) {
   return (
-    <span className={`${styles.box} ${accent ? styles.boxAccent : ''}`}>
+    <span className={clsx(styles.box, accent && styles.boxAccent)}>
       {children}
       {subtitle && <span className={styles.boxSubtitle}>{subtitle}</span>}
     </span>
@@ -27,7 +28,7 @@ export function GoToSourceDiagram() {
     <figure className={styles.figure}>
       <div className={styles.diagram}>
         <div className={styles.row}>
-          <StepLabel>Au build</StepLabel>
+          <StepLabel>At build</StepLabel>
           <div className={styles.flow}>
             <Box>JSX / TSX</Box>
             <Arrow />
@@ -44,13 +45,13 @@ export function GoToSourceDiagram() {
         </div>
 
         <div className={styles.row}>
-          <StepLabel sub="(côté utilisateur)">En dev</StepLabel>
+          <StepLabel sub="(user side)">In dev</StepLabel>
           <div className={styles.flow}>
-            <Box>⇧⌥⌃ + clic</Box>
+            <Box>⇧⌥⌃ + click</Box>
             <Arrow />
-            <Box subtitle="(devtools-vite)">Lit l&apos;attribut</Box>
+            <Box subtitle="(devtools-vite)">Reads the attribute</Box>
             <Arrow />
-            <Box>Requête HTTP</Box>
+            <Box>HTTP request</Box>
           </div>
         </div>
 
@@ -59,20 +60,20 @@ export function GoToSourceDiagram() {
         </div>
 
         <div className={styles.row}>
-          <StepLabel sub="(côté serveur Vite)">En dev</StepLabel>
+          <StepLabel sub="(Vite server side)">In dev</StepLabel>
           <div className={styles.flow}>
-            <Box accent>Serveur Vite</Box>
+            <Box accent>Vite server</Box>
             <Arrow />
             <Box>launch-editor</Box>
             <Arrow />
-            <Box>Éditeur ouvert</Box>
+            <Box>Editor open</Box>
           </div>
         </div>
       </div>
 
       <figcaption className={styles.caption}>
-        L&apos;injection se fait une fois, au build. Le hover et le clic ne font que lire ce qui a déjà été écrit dans
-        le DOM.
+        The injection happens once, at build time. Hovering and clicking only read what's already been written to the
+        DOM.
       </figcaption>
     </figure>
   );
