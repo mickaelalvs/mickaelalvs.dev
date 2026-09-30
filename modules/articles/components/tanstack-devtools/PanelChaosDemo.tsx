@@ -5,14 +5,15 @@ import clsx from 'clsx';
 import {KbdKey} from '../alt-tab/KbdKey';
 import styles from './PanelChaosDemo.module.css';
 
-type TabId = 'query' | 'team' | 'redux' | 'router' | 'more';
+type TabId = 'query' | 'team' | 'redux' | 'router' | 'oxc' | 'next';
 
 const TABS: {id: TabId; label: string}[] = [
   {id: 'query', label: 'Query'},
   {id: 'team', label: 'Team'},
   {id: 'redux', label: 'Redux'},
   {id: 'router', label: 'Router'},
-  {id: 'more', label: '···'},
+  {id: 'oxc', label: 'Oxc'},
+  {id: 'next', label: 'Next'},
 ];
 
 const QUERY_ROWS = [
@@ -32,6 +33,14 @@ const FEATURE_FLAGS = [
 ];
 
 const REDUX_ROWS = ['@@redux/INIT', 'cart/addItem', 'user/loginSuccess'];
+
+const OXC_ROWS = ['oxlint · 0 errors · 3 warnings', 'no-unused-vars · App.tsx:12', '124 files linted · 18ms'];
+
+const NEXT_ROWS = ['route: /products/[id]', 'rendering: dynamic', '1 issue · hydration mismatch'];
+
+function OxcMark() {
+  return <span className={styles.oxcMark}>oxc</span>;
+}
 
 function TrafficLights() {
   return (
@@ -93,7 +102,9 @@ function TabContent({tab}: {tab: TabId}) {
   }
 
   if (tab === 'redux') return <LineList items={REDUX_ROWS} />;
-  if (tab === 'router' || tab === 'more') return <PlaceholderPanel />;
+  if (tab === 'oxc') return <LineList items={OXC_ROWS} />;
+  if (tab === 'next') return <LineList items={NEXT_ROWS} />;
+  if (tab === 'router') return <PlaceholderPanel />;
   return (
     <div className={styles.teamPanels}>
       <div className={styles.teamSection}>
@@ -163,7 +174,7 @@ export function PanelChaosDemo() {
 
   const [leftWidth, resizeLeft, leftDragging] = useResizable(150, 100, 280, 'x', 1);
   const [rightWidth, resizeRight, rightDragging] = useResizable(230, 120, 360, 'x', -1);
-  const [bottomHeight, resizeBottom, bottomDragging] = useResizable(150, 90, STAGE_HEIGHT - MIN_BODY_HEIGHT, 'y', -1);
+  const [bottomHeight, resizeBottom, bottomDragging] = useResizable(190, 90, STAGE_HEIGHT - MIN_BODY_HEIGHT, 'y', -1);
 
   return (
     <figure className={styles.figure}>
@@ -197,6 +208,16 @@ export function PanelChaosDemo() {
             <div className={styles.pageNav} />
             <div className={styles.pageBlock} />
             <div className={styles.pageBlockSmall} />
+
+            <div className={clsx(styles.oxcPill, tidy && styles.floatHidden)}>
+              <OxcMark />
+              <span className={styles.pillDivider} />
+              <span className={styles.pillIcon} />
+              <span className={styles.pillIcon} />
+              <span className={styles.pillIcon} />
+            </div>
+
+            <div className={clsx(styles.nextIndicator, tidy && styles.floatHidden)}>N</div>
           </div>
 
           <div

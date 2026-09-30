@@ -1,5 +1,5 @@
 .figure {
-  margin: 32px 0;
+  margin: 56px 0 32px;
 }
 
 .hint {
@@ -11,6 +11,7 @@
 
 .hintMobile {
   display: none;
+  line-height: 2.2;
 }
 
 .kbdWrapper {
@@ -323,10 +324,15 @@
 /* ─── Caption ─────────────────────────────────────────────────────── */
 
 .caption {
+  min-height: 3em;
   margin-top: 12px;
   font-size: 15px;
   text-align: center;
   color: var(--color-secondary);
+}
+
+.captionHidden {
+  visibility: hidden;
 }
 
 .captionHighlight {

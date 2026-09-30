@@ -60,7 +60,7 @@ export function FeatureFlagPanelDemo() {
       </div>
 
       <figcaption className={styles.caption}>
-        The panel on the left <code>emit()</code>s, the app mock on the right <code>on()</code>s — the pattern from
+        The panel on the left <code>emit()</code>s, the app mock on the right <code>on()</code>s. The pattern from
         earlier, live.
       </figcaption>
     </figure>

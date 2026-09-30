@@ -66,6 +66,12 @@
   color: var(--color-cyan);
 }
 
+.keys {
+  display: inline-flex;
+  gap: 4px;
+  padding-bottom: 4px;
+}
+
 .boxSubtitle {
   font-size: 12px;
   font-weight: 500;

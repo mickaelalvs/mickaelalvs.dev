@@ -16,21 +16,23 @@
   flex-shrink: 0;
   width: 26px;
   height: 26px;
-  margin-top: 2px;
   border-radius: 6px;
   font-size: 14px;
 }
 
 .content {
+  display: flex;
+  align-items: center;
+  min-height: 26px;
   color: var(--color-primary);
   line-height: 1.6;
 }
 
-.content > :first-child {
+.content > div > :first-child {
   margin-top: 0;
 }
 
-.content > :last-child {
+.content > div > :last-child {
   margin-bottom: 0;
 }
 

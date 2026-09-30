@@ -58,7 +58,8 @@ export function GoToSourceDemo() {
         , then hover and click an element.
       </div>
       <div className={clsx(styles.hint, styles.hintMobile)}>
-        Preview: on desktop, hold ⇧⌥⌃ then click an element to open it in the editor.
+        Preview: on desktop, hold <KbdKey>⇧</KbdKey> <KbdKey>⌥</KbdKey> <KbdKey>⌃</KbdKey> then click an element to open
+        it in the editor.
       </div>
 
       <div className={clsx(styles.stage, comboActive && styles.stageActive)}>
@@ -135,18 +136,19 @@ export function GoToSourceDemo() {
         </div>
       </div>
 
-      {!opened && (
-        <figcaption className={clsx(styles.caption, styles.hintDesktop)}>
-          {comboActive ? (
-            <>
-              <strong className={styles.captionHighlight}>Inspection active</strong>: hover the logo, the image, the
-              title, the price, the description, or the button, then click.
-            </>
-          ) : (
-            'Without the combo, these are just elements like any other.'
-          )}
-        </figcaption>
-      )}
+      <figcaption
+        className={clsx(styles.caption, styles.hintDesktop, opened && styles.captionHidden)}
+        aria-hidden={!!opened}
+      >
+        {comboActive ? (
+          <>
+            <strong className={styles.captionHighlight}>Inspection active</strong>: hover the logo, the image, the
+            title, the price, the description, or the button, then click.
+          </>
+        ) : (
+          'Without the combo, these are just elements like any other.'
+        )}
+      </figcaption>
     </figure>
   );
 }
@@ -181,8 +183,15 @@ function Hoverable({
       onMouseEnter={() => setHoveredId(el.id)}
       onMouseLeave={() => setHoveredId((current) => (current === el.id ? null : current))}
       onClick={() => comboActive && setOpenedId(el.id)}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          setOpenedId(el.id);
+        }
+      }}
       role="button"
       tabIndex={0}
+      aria-label={`Open ${el.file}:${el.line}`}
     >
       {children}
       <span

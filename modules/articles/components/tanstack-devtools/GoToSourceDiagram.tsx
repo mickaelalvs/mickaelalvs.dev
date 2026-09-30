@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import {KbdKey} from '../alt-tab/KbdKey';
 import styles from './GoToSourceDiagram.module.css';
 
 function Box({children, subtitle, accent}: {children: React.ReactNode; subtitle?: string; accent?: boolean}) {
@@ -47,7 +48,13 @@ export function GoToSourceDiagram() {
         <div className={styles.row}>
           <StepLabel sub="(user side)">In dev</StepLabel>
           <div className={styles.flow}>
-            <Box>⇧⌥⌃ + click</Box>
+            <Box subtitle="+ click">
+              <span className={styles.keys}>
+                <KbdKey>⇧</KbdKey>
+                <KbdKey>⌥</KbdKey>
+                <KbdKey>⌃</KbdKey>
+              </span>
+            </Box>
             <Arrow />
             <Box subtitle="(devtools-vite)">Reads the attribute</Box>
             <Arrow />

@@ -20,7 +20,9 @@ export function Callout({type = 'info', children}: CalloutProps) {
       <span className={clsx(styles.iconChip, styles[type])}>
         <i className={ICONS[type]} aria-hidden="true" />
       </span>
-      <div className={styles.content}>{children}</div>
+      <div className={styles.content}>
+        <div>{children}</div>
+      </div>
     </div>
   );
 }
