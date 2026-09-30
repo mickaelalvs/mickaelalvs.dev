@@ -30,6 +30,23 @@
   width: 100%;
 }
 
+.imageAccentBorder {
+  border-radius: 16px;
+  border: 1px solid var(--color-cyan);
+}
+
+.imageBorder {
+  border-radius: 16px;
+  border: 1px solid var(--color-hover);
+}
+
+.caption {
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+  color: var(--color-secondary);
+}
+
 .expandBtn {
   position: absolute;
   top: 12px;
