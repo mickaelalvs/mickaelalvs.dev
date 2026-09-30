@@ -13,7 +13,16 @@ export async function generateStaticParams() {
 export async function generateMetadata({params}: {params: Promise<{slug: string}>}): Promise<Metadata> {
   try {
     const {slug} = await params;
-    const post = getPostBySlug(slug, ['title', 'description', 'canonical_url', 'slug', 'private']);
+    const post = getPostBySlug(slug, [
+      'title',
+      'seoTitle',
+      'description',
+      'canonical_url',
+      'slug',
+      'private',
+      'date',
+      'tags',
+    ]);
 
     if (post.private) {
       return {title: 'Not Found'};
@@ -21,18 +30,28 @@ export async function generateMetadata({params}: {params: Promise<{slug: string}
 
     const description = post.description || '';
     const url = `https://mickaelalvs.dev/articles/${post.slug}`;
-    const ogTitle = `${post.title} | Mickaël Alves`;
+    const seoTitle = post.seoTitle || post.title;
+    const ogTitle = `${seoTitle} | Mickaël Alves`;
 
     return {
-      title: post.title,
+      title: seoTitle,
       description,
       alternates: {
         canonical: post.canonical_url || url,
       },
       openGraph: {
+        type: 'article',
         title: ogTitle,
         description,
         url,
+        publishedTime: post.date,
+        tags: post.tags,
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: ogTitle,
+        description,
+        images: [`/articles/${post.slug}/opengraph-image`],
       },
     };
   } catch {
