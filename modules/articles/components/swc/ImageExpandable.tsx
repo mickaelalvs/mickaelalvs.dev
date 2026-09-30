@@ -8,6 +8,11 @@ interface ImageExpandableProps {
   alt: string;
   full?: boolean;
   expandable?: boolean;
+  accentBorder?: boolean;
+  border?: boolean;
+  caption?: string;
+  width?: number;
+  height?: number;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -17,6 +22,11 @@ export function ImageExpandable({
   alt,
   full = false,
   expandable = true,
+  accentBorder = false,
+  border = false,
+  caption,
+  width = 1200,
+  height = 675,
   className = '',
   style,
 }: ImageExpandableProps) {
@@ -26,7 +36,15 @@ export function ImageExpandable({
 
   const wrapperClass = full ? `${styles.wrapper} ${styles.wrapperFull}` : styles.wrapper;
 
-  const imageClass = full ? `${styles.image} ${styles.imageFull} ${className}` : `${styles.image} ${className}`;
+  const imageClass = [
+    styles.image,
+    full && styles.imageFull,
+    accentBorder && styles.imageAccentBorder,
+    border && styles.imageBorder,
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
     <figure className={styles.figure}>
@@ -36,8 +54,8 @@ export function ImageExpandable({
           alt={alt}
           className={imageClass}
           style={style}
-          width={1200}
-          height={675}
+          width={width}
+          height={height}
           sizes={full ? '(min-width: 1024px) 70vw, 100vw' : '100vw'}
         />
         {expandable && (
@@ -46,6 +64,7 @@ export function ImageExpandable({
           </button>
         )}
       </div>
+      {caption && <figcaption className={styles.caption}>{caption}</figcaption>}
     </figure>
   );
 }
