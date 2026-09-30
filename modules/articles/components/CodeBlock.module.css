@@ -46,6 +46,20 @@
   pointer-events: none;
 }
 
+.languageIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.languageIcon svg {
+  width: 14px;
+  height: 14px;
+}
+
 .copyButton {
   position: absolute;
   top: 12px;
