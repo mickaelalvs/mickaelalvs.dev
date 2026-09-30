@@ -83,7 +83,6 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
             `,
           }}
         />
-        <title>Mickaël Alves - Tech Lead Frontend, Speaker & Developer Experience Enthusiast</title>
       </head>
       <body suppressHydrationWarning>
         <ThemeProvider>

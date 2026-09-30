@@ -55,9 +55,10 @@ export default async function BlogPostPage({slug}: {slug: string}) {
     'slug',
     'tags',
     'title',
+    'seoTitle',
   ]);
 
-  const title = `${post.title} | Mickaël Alves`;
+  const title = `${post.seoTitle || post.title} | Mickaël Alves`;
   const description = post.description || '';
   const url = `https://mickaelalvs.dev/articles/${post.slug}`;
   const date = post.date ? new Date(post.date).toISOString() : new Date().toISOString();
