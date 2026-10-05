@@ -51,8 +51,8 @@ importers:
         specifier: 0.1.0-beta.21
         version: 0.1.0-beta.21(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       lottie-react:
-        specifier: 2.4.1
-        version: 2.4.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        specifier: 2.4.2
+        version: 2.4.2(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       motion:
         specifier: 12.43.0
         version: 12.43.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -1220,8 +1220,8 @@ packages:
   longest-streak@3.1.0:
     resolution: {integrity: sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g==}
 
-  lottie-react@2.4.1:
-    resolution: {integrity: sha512-LQrH7jlkigIIv++wIyrOYFLHSKQpEY4zehPicL9bQsrt1rnoKRYCYgpCUe5maqylNtacy58/sQDZTkwMcTRxZw==}
+  lottie-react@2.4.2:
+    resolution: {integrity: sha512-YkEEKN4E2Y2cFpPEwcvAXTAiRGy/P+0mJKYp9aDP1+r42xZgeXTZCf6No1csWRGmh4YQc3kbYtTq/b4c3IRCYg==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -2649,7 +2649,7 @@ snapshots:
 
   longest-streak@3.1.0: {}
 
-  lottie-react@2.4.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
+  lottie-react@2.4.2(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
     dependencies:
       lottie-web: 5.13.0
       react: 19.2.8
