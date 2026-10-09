@@ -32,7 +32,7 @@ export default function HomePage() {
               <h1>{title}</h1>
               <p style={{textWrap: 'balance'}}>
                 <strong>
-                  Tech Lead Frontend at{' '}
+                  Lead Frontend at{' '}
                   <a
                     href="https://www.zenika.com"
                     target="_blank"
@@ -63,7 +63,7 @@ export default function HomePage() {
                   </a>
                 </strong>
                 <br />
-                Speaker • Passionate about Web, Tooling & Developer Experience
+                Speaker • Passionate about Web, Frontend, Tooling & Developer Experience
               </p>
               <ShortcutHome />
             </div>

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: '%s | Mickaël Alves',
   },
   description:
-    "👋🏼 Hey, I'm Mickaël Alves, Tech Lead Frontend at Zenika & Bedrock Streaming. I'm passionate about web technologies, tooling and especially Developer Experience. Speaker, co-organizer of LyonJS & DevFest Lyon.",
+    'Lead Frontend at Zenika & Bedrock Streaming. Passionate about web, frontend, tooling and DevEx. Speaker, co-organizer of LyonJS & DevFest Lyon.',
   authors: [{name: 'Mickaël Alves'}],
   openGraph: {
     type: 'website',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     siteName: 'Mickaël Alves',
     title: 'Mickaël Alves',
     description:
-      "👋🏼 Hey, I'm Mickaël Alves, Tech Lead Frontend at Zenika & Bedrock Streaming. I'm passionate about web technologies, tooling and especially Developer Experience. Speaker, co-organizer of LyonJS & DevFest Lyon.",
+      'Lead Frontend at Zenika & Bedrock Streaming. Passionate about web, frontend, tooling and DevEx. Speaker, co-organizer of LyonJS & DevFest Lyon.',
     images: [
       {
         url: '/og-image.png',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Mickaël Alves',
     description:
-      "👋🏼 Hey, I'm Mickaël Alves, Tech Lead Frontend at Zenika & Bedrock Streaming. I'm passionate about web technologies, tooling and especially Developer Experience. Speaker, co-organizer of LyonJS & DevFest Lyon.",
+      'Lead Frontend at Zenika & Bedrock Streaming. Passionate about web, frontend, tooling and DevEx. Speaker, co-organizer of LyonJS & DevFest Lyon.',
     images: ['/og-image.png'],
   },
   icons: {

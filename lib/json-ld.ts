@@ -38,12 +38,19 @@ export const getPersonJsonLd = () => ({
   familyName: 'Alves',
   url: 'https://mickaelalvs.dev',
   image: 'https://mickaelalvs.dev/avatar.png',
-  jobTitle: 'Tech Lead Frontend & DevEx',
-  worksFor: {
-    '@type': 'Organization',
-    name: 'Zenika',
-    url: 'https://www.zenika.com',
-  },
+  jobTitle: 'Tech Lead Frontend at Zenika, acting as Staff Engineer at Bedrock Streaming',
+  worksFor: [
+    {
+      '@type': 'Organization',
+      name: 'Zenika',
+      url: 'https://www.zenika.com',
+    },
+    {
+      '@type': 'Organization',
+      name: 'Bedrock Streaming',
+      url: 'https://www.bedrockstreaming.com',
+    },
+  ],
   sameAs: [
     'https://github.com/mickaelalvs',
     'https://twitter.com/mickaelalvs',
@@ -52,10 +59,14 @@ export const getPersonJsonLd = () => ({
   ],
   knowsAbout: [
     {'@type': 'Thing', name: 'Software Engineering'},
+    {'@type': 'Thing', name: 'Technical Leadership'},
+    {'@type': 'Thing', name: 'Frontend Architecture'},
+    {'@type': 'Thing', name: 'Staff Engineering'},
     {'@type': 'Thing', name: 'React'},
     {'@type': 'Thing', name: 'TypeScript'},
     {'@type': 'Thing', name: 'Developer Experience'},
     {'@type': 'Thing', name: 'Web Development'},
+    {'@type': 'Thing', name: 'Software Architecture'},
   ],
   knowsLanguage: [
     {'@type': 'Language', name: 'French'},
