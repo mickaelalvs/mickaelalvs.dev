@@ -24,7 +24,7 @@ export function ThemeSwitch() {
     <button
       type="button"
       aria-label={theme === 'dark' ? 'Enable light mode' : 'Enable dark mode'}
-      onClick={toggleTheme}
+      onClick={(event) => toggleTheme(event)}
       className={styles.button}
     >
       <i className={`${styles.icon} ${theme === 'dark' ? 'ri-sun-line' : 'ri-moon-line'}`} />

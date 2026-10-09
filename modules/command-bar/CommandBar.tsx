@@ -188,7 +188,7 @@ function ThemeAction() {
         shortcut: ['t'],
         keywords: 'theme dark light mode',
         section: 'General',
-        perform: toggleTheme,
+        perform: () => toggleTheme(),
         icon: (
           <Lottie
             lottieRef={moonRef}

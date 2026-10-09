@@ -419,6 +419,61 @@ a:focus {
   }
 }
 
+/* Theme switch: circular reveal (see modules/theme/ThemeProvider.tsx)
+   --theme-x/y/r are set on <html> by the toggle. Light: the new view expands over the old one.
+   Dark: the old view (on top) shrinks to reveal the new one. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+[data-theme='dark']::view-transition-old(root) {
+  z-index: 9999;
+}
+
+[data-theme='dark']::view-transition-new(root) {
+  z-index: 1;
+}
+
+[data-theme-switching]::view-transition-new(root) {
+  animation: theme-reveal 400ms ease-out both;
+}
+
+[data-theme-switching][data-theme='dark']::view-transition-new(root) {
+  animation: none;
+}
+
+[data-theme-switching][data-theme='dark']::view-transition-old(root) {
+  animation: theme-hide 400ms ease-out both;
+}
+
+@keyframes theme-reveal {
+  from {
+    clip-path: circle(0px at var(--theme-x) var(--theme-y));
+  }
+  to {
+    clip-path: circle(var(--theme-r) at var(--theme-x) var(--theme-y));
+  }
+}
+
+@keyframes theme-hide {
+  from {
+    clip-path: circle(var(--theme-r) at var(--theme-x) var(--theme-y));
+  }
+  to {
+    clip-path: circle(0px at var(--theme-x) var(--theme-y));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   [role='tooltip'] {
     animation-name: tooltip-fade;
