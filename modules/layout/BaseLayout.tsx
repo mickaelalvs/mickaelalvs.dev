@@ -1,6 +1,5 @@
 'use client';
 
-import Navbar from './Navbar';
 import Footer from './Footer';
 import {PostMain, PostContent, PostContainer} from '../shared/Post';
 import {Wrapper} from './Wrapper';
@@ -36,7 +35,6 @@ export default function BaseLayout({
 
   return (
     <Wrapper>
-      <Navbar />
       <PostMain
         style={{
           ['--selection-bg' as string]: `var(--color-${primaryColor})`,

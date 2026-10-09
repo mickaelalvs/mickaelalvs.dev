@@ -5,30 +5,25 @@ import Link from 'next/link';
 import {usePathname} from 'next/navigation';
 import {motion, AnimatePresence} from 'motion/react';
 import clsx from 'clsx';
-import {useTheme} from '@/modules/theme/ThemeProvider';
 import styles from './Navbar.module.css';
+import type {NavPage} from './Navbar';
 
 interface DesktopNavProps {
-  pages: string[];
-  forceDark?: boolean;
+  pages: NavPage[];
 }
 
-export default function DesktopNav({pages, forceDark = false}: DesktopNavProps) {
+const easing = [0.25, 0.1, 0.25, 1] as const;
+
+export default function DesktopNav({pages}: DesktopNavProps) {
   const pathname = usePathname();
   const [hovered, setHovered] = useState<string>('');
-  const {theme} = useTheme();
-
-  const isDark = forceDark || theme === 'dark';
-  const activeColor = isDark ? '#FFFFFF' : '#1a1a1a';
-  const inactiveColor = isDark ? '#ADADAD' : '#525866';
 
   return (
     <nav className={styles.desktopNav}>
       <ul className={styles.list}>
-        {pages.map((page) => {
-          const path = page === 'Home' ? '/' : `/${page.toLowerCase()}`;
+        {pages.map(({label: page, path}) => {
           const isHovered = hovered === page;
-          const isActive = pathname === path || (page !== 'Home' && pathname.startsWith(path + '/'));
+          const isActive = pathname === path || (path !== '/' && pathname.startsWith(path + '/'));
 
           return (
             <li key={page}>
@@ -51,30 +46,20 @@ export default function DesktopNav({pages, forceDark = false}: DesktopNavProps) 
                         animate={{opacity: 1}}
                         exit={{opacity: 0}}
                         transition={{
-                          layout: {
-                            duration: 0.4,
-                            ease: [0.25, 0.1, 0.25, 1],
-                          },
-                          opacity: {
-                            duration: 0.4,
-                            ease: [0.25, 0.1, 0.25, 1],
-                          },
+                          layout: {duration: 0.4, ease: easing},
+                          opacity: {duration: 0.4, ease: easing},
                         }}
                       />
                     )}
                   </AnimatePresence>
-                  <motion.span
-                    className={clsx(styles.navContainer, isActive && styles.active)}
-                    animate={{
-                      color: pathname === path || isHovered ? activeColor : inactiveColor,
-                    }}
-                    transition={{
-                      duration: 0.4,
-                      ease: 'easeInOut',
-                    }}
-                  >
-                    {page}
-                  </motion.span>
+                  <span className={clsx(styles.navContainer, isActive && styles.active)}>{page}</span>
+                  {isActive && (
+                    <motion.span
+                      className={styles.activeIndicator}
+                      layoutId="nav-active"
+                      transition={{layout: {duration: 0.4, ease: easing}}}
+                    />
+                  )}
                 </motion.div>
               </Link>
             </li>

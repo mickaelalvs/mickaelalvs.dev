@@ -1,7 +1,6 @@
 'use client';
 
 import {ReactNode, useEffect, useRef, useState} from 'react';
-import Navbar from '../layout/Navbar';
 import Footer from '../layout/Footer';
 import BlogDate from '../shared/BlogDate';
 import {Post, PostMain, PostContent, PostContainer} from '../shared/Post';
@@ -81,8 +80,8 @@ export default function BlogpostLayout({
   }, [image]);
 
   return (
-    <Wrapper>
-      <Navbar forceDark={!!image} />
+    // `data-navbar-dark` switches the global Navbar to light-on-dark over the hero image (see Navbar.module.css)
+    <Wrapper data-navbar-dark={image ? '' : undefined}>
       <Main image={image}>
         {image && (
           <div className={styles.postHeader}>

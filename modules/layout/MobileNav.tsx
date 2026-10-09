@@ -13,18 +13,19 @@ import talksIcon from '../../public/static/icons/talks.json';
 import projectsIcon from '../../public/static/icons/projects.json';
 import podcastsIcon from '../../public/static/icons/podcasts.json';
 import articlesIcon from '../../public/static/icons/articles.json';
+import type {NavPage} from './Navbar';
 
 interface MobileNavProps {
-  pages: string[];
+  pages: NavPage[];
 }
 
 const iconMap: Record<string, any> = {
-  Home: homeIcon,
-  About: aboutIcon,
-  Talks: talksIcon,
-  Projects: projectsIcon,
-  Podcasts: podcastsIcon,
-  Articles: articlesIcon,
+  '/': homeIcon,
+  '/about': aboutIcon,
+  '/talks': talksIcon,
+  '/projects': projectsIcon,
+  '/podcasts': podcastsIcon,
+  '/articles': articlesIcon,
 };
 
 export default function MobileNav({pages}: MobileNavProps) {
@@ -113,10 +114,9 @@ export default function MobileNav({pages}: MobileNavProps) {
               </motion.span>
             </button>
             <ul className={styles.mobileList}>
-              {pages.map((page, index) => {
-                const path = page === 'Home' ? '/' : `/${page.toLowerCase()}`;
-                const isActive = pathname === path || (page !== 'Home' && pathname.startsWith(path + '/'));
-                const iconData = iconMap[page];
+              {pages.map(({label: page, path}, index) => {
+                const isActive = pathname === path || (path !== '/' && pathname.startsWith(path + '/'));
+                const iconData = iconMap[path];
 
                 if (!iconRefs.current[page]) {
                   iconRefs.current[page] = {current: null};
