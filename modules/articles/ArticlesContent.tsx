@@ -34,7 +34,7 @@ export default function ArticlesContent({allPosts, featuredPosts}: ArticlesConte
             href={`/articles/${post.slug}`}
             title={post.title}
             description={post.description}
-            image={post.thumbnail}
+            image={post.image}
             readingTime={post.readingTime}
             date={
               post.date ? new Date(post.date).toLocaleDateString('en-US', {month: 'short', year: 'numeric'}) : undefined
@@ -55,6 +55,7 @@ export default function ArticlesContent({allPosts, featuredPosts}: ArticlesConte
           href={`/articles/${post.slug}`}
           title={post.title}
           date={post.date}
+          readingTime={post.readingTime}
           hovered={hoveredList}
           setHovered={setHoveredList}
         />

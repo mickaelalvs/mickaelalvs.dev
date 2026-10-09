@@ -13,6 +13,7 @@ interface ListItemProps {
   title: string;
   badge?: React.ReactNode;
   date?: string;
+  readingTime?: string;
   description?: string;
   index: string | number;
   hovered?: string | number;
@@ -28,7 +29,7 @@ export default function ListItem(props: ListItemProps) {
           <Animation index={props.index} hovered={props.hovered} setHovered={props.setHovered}>
             <span className={styles.title}>{props.title}</span>
             <span className={styles.date}>
-              <BlogDate dateString={props.date} />
+              <BlogDate dateString={props.date} readingTime={props.readingTime} />
             </span>
           </Animation>
         </Link>
