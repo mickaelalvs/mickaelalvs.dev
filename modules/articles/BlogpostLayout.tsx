@@ -8,6 +8,7 @@ import {Wrapper} from '../layout/Wrapper';
 import ArticleHeader from './ArticleHeader';
 import ArticleShare from './ArticleShare';
 import ArticleTags from './ArticleTags';
+import ReadingProgress from './ReadingProgress';
 import TableOfContents from './TableOfContents';
 import styles from './BlogpostLayout.module.css';
 import type {Person} from '@/data/people';
@@ -82,6 +83,7 @@ export default function BlogpostLayout({
   return (
     // `data-navbar-dark` switches the global Navbar to light-on-dark over the hero image (see Navbar.module.css)
     <Wrapper data-navbar-dark={image ? '' : undefined}>
+      <ReadingProgress />
       <Main image={image}>
         {image && (
           <div className={styles.postHeader}>
