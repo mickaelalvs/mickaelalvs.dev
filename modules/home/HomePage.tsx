@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import Navbar from '../layout/Navbar';
 import Footer from '../layout/Footer';
 import ShortcutHome from '../shared/ShortcutHome';
 import {PostMain, PostContent, PostContainer} from '../shared/Post';
@@ -24,7 +23,6 @@ export default function HomePage() {
         key="person-jsonld"
       />
 
-      <Navbar />
       <PostMain className={styles.home}>
         <PostContent>
           <PostContainer>

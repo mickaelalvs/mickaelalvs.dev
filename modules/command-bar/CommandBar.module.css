@@ -8,6 +8,8 @@
   padding: 14vh 16px 16px;
   background: var(--color-overlay, rgba(0, 0, 0, 0.8));
   box-sizing: border-box;
+  /* Must sit above the global Navbar (z-index: 3, mounted in the root layout) */
+  z-index: 100;
 }
 
 .search {

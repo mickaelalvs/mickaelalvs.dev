@@ -1,5 +1,6 @@
 import React from 'react';
 import CommandBar from '@/modules/command-bar/CommandBar';
+import Navbar from '@/modules/layout/Navbar';
 import {ThemeProvider} from '@/modules/theme/ThemeProvider';
 import {Metadata, Viewport} from 'next';
 import {NuqsAdapter} from 'nuqs/adapters/next/app';
@@ -87,7 +88,11 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       <body suppressHydrationWarning>
         <ThemeProvider>
           <NuqsAdapter>
-            <CommandBar>{children}</CommandBar>
+            <CommandBar>
+              {/* Mounted once so it persists across navigations (enables the active indicator animation) */}
+              <Navbar />
+              {children}
+            </CommandBar>
             <Analytics />
           </NuqsAdapter>
         </ThemeProvider>

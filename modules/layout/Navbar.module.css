@@ -10,11 +10,21 @@
   top: 0;
   z-index: 3;
   margin-top: 13px;
+  --color-nav-active: #ffffff;
+  --color-nav-inactive: #adadad;
 }
 
-.forceDark {
+:global([data-theme='light']) .header {
+  --color-nav-active: #1a1a1a;
+  --color-nav-inactive: #525866;
+}
+
+/* Light-on-dark nav over article hero images (set via `data-navbar-dark` in BlogpostLayout) */
+:global(body:has([data-navbar-dark])) .header {
   --color-nav-text: white;
   --color-nav-hover: rgba(255, 255, 255, 0.1);
+  --color-nav-active: #ffffff;
+  --color-nav-inactive: #adadad;
 }
 
 @media (min-width: 760px) {
@@ -121,24 +131,25 @@
   position: relative;
   z-index: 2;
   border-radius: var(--radius-border-radius);
+  color: var(--color-nav-inactive);
+  transition: color 0.4s ease-in-out;
 }
 
-.navContainer::after {
-  content: '';
+.navWrapper:hover .navContainer,
+.navContainer.active {
+  color: var(--color-nav-active);
+}
+
+/* Shared via layoutId so it slides between items. No CSS transform here: motion owns it. */
+.activeIndicator {
   position: absolute;
   bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: calc(50% - 10px);
   width: 20px;
   height: 2px;
   background: var(--color-nav-text);
   border-radius: 1px;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.navContainer.active::after {
-  opacity: 1;
+  z-index: 2;
 }
 
 .navHovered {
