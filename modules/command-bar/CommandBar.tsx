@@ -148,8 +148,9 @@ export default function CommandBar(props: CommandBarProps) {
 
   return (
     <>
+      {/* Scrollbar space is reserved globally via `scrollbar-gutter: stable` */}
       {/* @ts-expect-error - KBar types are not compatible with React 19 */}
-      <KBarProvider actions={actions}>
+      <KBarProvider actions={actions} options={{disableScrollbarManagement: true}}>
         <ThemeAction />
         <KBarPortal>
           <KBarPositioner className={styles.positioner}>
