@@ -45,7 +45,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const posts = getAllPosts(['slug', 'date']);
+  // Only list canonical URLs: skip posts whose canonical points to another site (e.g. originally published elsewhere)
+  const posts = getAllPosts(['slug', 'date', 'canonical_url']).filter(
+    (post) => !post.canonical_url || post.canonical_url.startsWith(baseUrl),
+  );
   const blogPosts = posts.map((post) => ({
     url: `${baseUrl}/articles/${post.slug}`,
     lastModified: post.date ? new Date(post.date) : new Date(),
