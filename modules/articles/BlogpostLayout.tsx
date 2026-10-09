@@ -1,8 +1,10 @@
 'use client';
 
 import {ReactNode, useEffect, useRef, useState} from 'react';
+import {motion} from 'motion/react';
 import Footer from '../layout/Footer';
 import BlogDate from '../shared/BlogDate';
+import {riseIn} from '../shared/riseIn';
 import {Post, PostMain, PostContent, PostContainer} from '../shared/Post';
 import {Wrapper} from '../layout/Wrapper';
 import ArticleHeader from './ArticleHeader';
@@ -89,7 +91,9 @@ export default function BlogpostLayout({
       <Main image={image}>
         {image && (
           <div className={styles.postHeader}>
-            <h1 className={`${styles.postTitle} ${styles.postHeaderTitle}`}>{title}</h1>
+            <motion.h1 className={`${styles.postTitle} ${styles.postHeaderTitle}`} {...riseIn}>
+              {title}
+            </motion.h1>
             <div
               ref={imageRef}
               className={styles.postImage}
