@@ -1,7 +1,8 @@
 'use client';
 
-import Link from 'next/link';
 import BaseLayout from '../layout/BaseLayout';
+import BackLink from '../shared/BackLink';
+import podcastsIcon from '../../public/static/icons/podcasts.json';
 import {podcasts} from '@/data/podcasts';
 import Image from 'next/image';
 import {generateSlug} from '@/utils/slug';
@@ -85,9 +86,7 @@ export default function PodcastDetailPage({slug}: {slug: string}) {
           </div>
         </div>
 
-        <Link href="/podcasts" className={styles.backLink}>
-          ← Back to podcasts
-        </Link>
+        <BackLink href="/podcasts" label="Back to podcasts" icon={podcastsIcon} />
       </div>
     </BaseLayout>
   );

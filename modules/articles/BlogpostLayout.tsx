@@ -3,10 +3,13 @@
 import {ReactNode, useEffect, useRef, useState} from 'react';
 import {motion} from 'motion/react';
 import Footer from '../layout/Footer';
+import BackLink from '../shared/BackLink';
 import BlogDate from '../shared/BlogDate';
+import articlesIcon from '../../public/static/icons/articles.json';
 import {riseIn} from '../shared/riseIn';
 import {Post, PostMain, PostContent, PostContainer} from '../shared/Post';
 import {Wrapper} from '../layout/Wrapper';
+import PageTransition from '../layout/PageTransition';
 import ArticleHeader from './ArticleHeader';
 import ArticleShare from './ArticleShare';
 import ArticleTags from './ArticleTags';
@@ -86,63 +89,69 @@ export default function BlogpostLayout({
 
   return (
     // `data-navbar-dark` switches the global Navbar to light-on-dark over the hero image (see Navbar.module.css)
-    <Wrapper data-navbar-dark={image ? '' : undefined}>
-      <ReadingProgress />
-      <Main image={image}>
-        {image && (
-          <div className={styles.postHeader}>
-            <motion.h1 className={`${styles.postTitle} ${styles.postHeaderTitle}`} {...riseIn}>
-              {title}
-            </motion.h1>
+    <PageTransition>
+      <Wrapper data-navbar-dark={image ? '' : undefined}>
+        <ReadingProgress />
+        <Main image={image}>
+          {image && (
+            <div className={styles.postHeader}>
+              <motion.h1 className={`${styles.postTitle} ${styles.postHeaderTitle}`} {...riseIn}>
+                {title}
+              </motion.h1>
+              <div
+                ref={imageRef}
+                className={styles.postImage}
+                style={{
+                  backgroundImage: image ? `url(${image})` : undefined,
+                  transform,
+                }}
+              />
+              <h2 className={`${styles.postSubtitle} ${styles.postHeaderSubtitle}`}>
+                {date && <BlogDate dateString={date} readingTime={readingTime} />}
+              </h2>
+            </div>
+          )}
+          <PostContent>
             <div
-              ref={imageRef}
-              className={styles.postImage}
-              style={{
-                backgroundImage: image ? `url(${image})` : undefined,
-                transform,
-              }}
-            />
-            <h2 className={`${styles.postSubtitle} ${styles.postHeaderSubtitle}`}>
-              {date && <BlogDate dateString={date} readingTime={readingTime} />}
-            </h2>
-          </div>
-        )}
-        <PostContent>
-          <div
-            className={
-              headings.length > 0 ? `${styles.postContentInner} ${styles.postContentWithToc}` : styles.postContentInner
-            }
-          >
-            {headings.length > 0 && (
-              <aside className={styles.tocSidebar}>
-                <TableOfContents headings={headings} />
-              </aside>
-            )}
-            <PostContainer>
-              {!image && (
-                <div>
-                  <h1 className={`${styles.postTitle} ${styles.postContentTitle}`}>{title}</h1>
-                  <h2 className={`${styles.postSubtitle} ${styles.postContentSubtitle}`}>
-                    {date && <BlogDate dateString={date} readingTime={readingTime} />}
-                  </h2>
-                </div>
+              className={
+                headings.length > 0
+                  ? `${styles.postContentInner} ${styles.postContentWithToc}`
+                  : styles.postContentInner
+              }
+            >
+              {headings.length > 0 && (
+                <aside className={styles.tocSidebar}>
+                  <TableOfContents headings={headings} />
+                </aside>
               )}
+              <PostContainer>
+                {!image && (
+                  <div>
+                    <h1 className={`${styles.postTitle} ${styles.postContentTitle}`}>{title}</h1>
+                    <h2 className={`${styles.postSubtitle} ${styles.postContentSubtitle}`}>
+                      {date && <BlogDate dateString={date} readingTime={readingTime} />}
+                    </h2>
+                  </div>
+                )}
 
-              <ArticleHeader authors={authors} language={language} />
+                <ArticleHeader authors={authors} language={language} />
 
-              {title && <div className={styles.contentDivider} />}
+                {title && <div className={styles.contentDivider} />}
 
-              {children}
+                {children}
 
-              <ArticleShare title={title} slug={slug} />
+                <ArticleShare title={title} slug={slug} />
 
-              <ArticleTags tags={tags} />
-            </PostContainer>
-          </div>
-        </PostContent>
-      </Main>
-      <Footer />
-    </Wrapper>
+                <ArticleTags tags={tags} />
+
+                {slug && <BackLink href="/articles" label="Read other articles" icon={articlesIcon} />}
+              </PostContainer>
+            </div>
+          </PostContent>
+        </Main>
+        <Footer />
+      </Wrapper>
+    </PageTransition>
   );
 }
 

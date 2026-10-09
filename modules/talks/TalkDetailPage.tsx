@@ -1,8 +1,9 @@
 'use client';
 
 import {notFound} from 'next/navigation';
-import Link from 'next/link';
 import BaseLayout from '../layout/BaseLayout';
+import BackLink from '../shared/BackLink';
+import talksIcon from '../../public/static/icons/talks.json';
 import {speaking as talks} from '@/data/speaking';
 import Image from 'next/image';
 import {generateSlug} from '@/utils/slug';
@@ -87,9 +88,7 @@ export default function TalkDetailPage({slug}: {slug: string}) {
           </div>
         </div>
 
-        <Link href="/talks" className={styles.backLink}>
-          ← Back to talks
-        </Link>
+        <BackLink href="/talks" label="Back to talks" icon={talksIcon} />
       </div>
     </BaseLayout>
   );

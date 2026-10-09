@@ -474,6 +474,73 @@ a:focus {
   }
 }
 
+/* ============================================
+   Page transitions
+   ============================================ */
+:root {
+  --vt-exit: 150ms;
+  --vt-enter: 210ms;
+}
+
+@keyframes vt-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes vt-slide {
+  from {
+    translate: var(--slide-offset);
+  }
+}
+
+::view-transition-old(.nav-back) {
+  --slide-offset: 40px;
+  animation:
+    var(--vt-exit) ease-in both vt-fade reverse,
+    350ms ease-in-out both vt-slide reverse;
+}
+
+::view-transition-new(.nav-back) {
+  --slide-offset: -40px;
+  animation:
+    var(--vt-enter) ease-out var(--vt-exit) both vt-fade,
+    350ms ease-in-out both vt-slide;
+}
+
+/* The navbar stays fixed and above the sliding pages.
+   The name lives here because CSS modules would rename it in Navbar.module.css.
+   The theme toggle removes it, since its circular reveal needs the header in the `root` snapshot. */
+body > header {
+  view-transition-name: site-header;
+}
+
+[data-theme-switching] body > header {
+  view-transition-name: none;
+}
+
+::view-transition-group(site-header) {
+  animation: none;
+  z-index: 100;
+}
+
+::view-transition-old(site-header) {
+  display: none;
+}
+
+::view-transition-new(site-header) {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   [role='tooltip'] {
     animation-name: tooltip-fade;

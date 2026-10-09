@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 12px;
+  background-color: var(--color-hover);
+  color: var(--color-primary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.link:hover {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* The background flips on hover, so the icon colors flip too. globals.css already inverts SVGs in the light theme. */
+:global([data-theme='light']) .link:hover svg {
+  filter: none;
+}
+
+:global([data-theme='dark']) .link:hover svg {
+  filter: invert(1);
+}
