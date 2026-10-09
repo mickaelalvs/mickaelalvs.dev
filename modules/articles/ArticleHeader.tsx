@@ -8,14 +8,14 @@ interface ArticleHeaderProps {
 }
 
 export default function ArticleHeader({authors, language}: ArticleHeaderProps) {
-  if (!authors?.length && !language) return null;
+  const shownLanguage = language === 'en' ? undefined : language;
+
+  if (!authors?.length && !shownLanguage) return null;
 
   return (
     <div className={styles.articleHeader}>
-      {language && (
-        <span className={styles.headerItem}>
-          {language === 'en' ? '🇬🇧 English' : language === 'fr' ? '🇫🇷 Français' : language}
-        </span>
+      {shownLanguage && (
+        <span className={styles.headerItem}>{shownLanguage === 'fr' ? '🇫🇷 Français' : shownLanguage}</span>
       )}
       {authors && authors.length > 0 && (
         <div className={styles.coAuthorsSection}>
