@@ -100,10 +100,10 @@
 
 .animHovered {
   position: absolute;
-  top: -1px;
+  top: 10px;
   left: -20px;
   right: -20px;
-  bottom: -1px;
+  bottom: 10px;
   background: var(--color-hover);
   border-radius: var(--radius-border-radius);
   z-index: -1;
@@ -111,4 +111,19 @@
 }
 
 .articleItem {
+}
+
+/* Below 840px (800px container + 2 × 20px padding) the hover background can only
+   overflow by 10px. Content is inset by 10px so the spacing stays at 20px like on desktop. */
+@media (max-width: 840px) {
+  .animContainer {
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+  }
+
+  .animHovered {
+    left: -10px;
+    right: -10px;
+  }
 }
