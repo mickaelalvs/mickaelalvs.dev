@@ -401,6 +401,36 @@ a:focus {
   opacity: 0.8;
 }
 
+/* Rise-in for every Floating UI tooltip (they all get role="tooltip" via useRole).
+   Only `translate` + opacity: Floating UI positions with `transform`, and `translate` just adds an offset to it.
+   Don't use `scale` here: it is applied after `transform`, so it would scale the position too. */
+[role='tooltip'] {
+  animation: tooltip-pop 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes tooltip-pop {
+  from {
+    opacity: 0;
+    translate: 0 6px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [role='tooltip'] {
+    animation-name: tooltip-fade;
+  }
+
+  @keyframes tooltip-fade {
+    from {
+      opacity: 0;
+    }
+  }
+}
+
 /* ============================================
    Media Query Mixins (for reference)
    Use these in your CSS Modules:
