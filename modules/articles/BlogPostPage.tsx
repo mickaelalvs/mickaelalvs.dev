@@ -52,6 +52,7 @@ export default async function BlogPostPage({slug}: {slug: string}) {
     'description',
     'image',
     'language',
+    'readingTime',
     'slug',
     'tags',
     'title',
@@ -82,6 +83,7 @@ export default async function BlogPostPage({slug}: {slug: string}) {
       slug={post.slug}
       image={post.image}
       date={post.date}
+      readingTime={post.readingTime}
       tags={post.tags}
       authors={authors}
       language={post.language}

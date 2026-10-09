@@ -127,3 +127,12 @@
     right: -10px;
   }
 }
+
+.articleItem .date {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.articleItem .contentWrapper {
+  gap: 24px;
+}

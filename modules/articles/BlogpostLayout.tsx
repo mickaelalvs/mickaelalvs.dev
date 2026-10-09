@@ -20,6 +20,7 @@ interface BlogpostLayoutProps {
   slug?: string;
   image?: string;
   date?: string;
+  readingTime?: string;
   tags?: string[];
   authors?: Person[];
   language?: string;
@@ -32,6 +33,7 @@ export default function BlogpostLayout({
   slug,
   image,
   date,
+  readingTime,
   tags,
   authors,
   language,
@@ -97,7 +99,7 @@ export default function BlogpostLayout({
               }}
             />
             <h2 className={`${styles.postSubtitle} ${styles.postHeaderSubtitle}`}>
-              {date && <BlogDate dateString={date} />}
+              {date && <BlogDate dateString={date} readingTime={readingTime} />}
             </h2>
           </div>
         )}
@@ -117,7 +119,7 @@ export default function BlogpostLayout({
                 <div>
                   <h1 className={`${styles.postTitle} ${styles.postContentTitle}`}>{title}</h1>
                   <h2 className={`${styles.postSubtitle} ${styles.postContentSubtitle}`}>
-                    {date && <BlogDate dateString={date} />}
+                    {date && <BlogDate dateString={date} readingTime={readingTime} />}
                   </h2>
                 </div>
               )}
