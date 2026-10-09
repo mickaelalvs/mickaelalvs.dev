@@ -3,6 +3,7 @@
 import Footer from './Footer';
 import {PostMain, PostContent, PostContainer} from '../shared/Post';
 import {Wrapper} from './Wrapper';
+import PageTransition from './PageTransition';
 import {ReactNode} from 'react';
 import styles from './BaseLayout.module.css';
 
@@ -34,34 +35,36 @@ export default function BaseLayout({
   const lastChar = segments.slice(-1)[0]?.segment || '';
 
   return (
-    <Wrapper>
-      <PostMain
-        style={{
-          ['--selection-bg' as string]: `var(--color-${primaryColor})`,
-        }}
-      >
-        <PostContent>
-          <PostContainer>
-            <h1 className={styles.title}>
-              <span
-                className={styles.gradientTitle}
-                style={{
-                  backgroundImage: `linear-gradient(
+    <PageTransition>
+      <Wrapper>
+        <PostMain
+          style={{
+            ['--selection-bg' as string]: `var(--color-${primaryColor})`,
+          }}
+        >
+          <PostContent>
+            <PostContainer>
+              <h1 className={styles.title}>
+                <span
+                  className={styles.gradientTitle}
+                  style={{
+                    backgroundImage: `linear-gradient(
                     135deg,
                     var(--color-${primaryColor}) 0%,
                     var(--color-${secondaryColor}) 100%
                   )`,
-                }}
-              >
-                {highlightLastChar ? textWithoutLastGrapheme : displayText}
-              </span>
-              {highlightLastChar && lastChar && <span className={styles.lastChar}>{lastChar}</span>}
-            </h1>
-            {children}
-          </PostContainer>
-        </PostContent>
-      </PostMain>
-      <Footer />
-    </Wrapper>
+                  }}
+                >
+                  {highlightLastChar ? textWithoutLastGrapheme : displayText}
+                </span>
+                {highlightLastChar && lastChar && <span className={styles.lastChar}>{lastChar}</span>}
+              </h1>
+              {children}
+            </PostContainer>
+          </PostContent>
+        </PostMain>
+        <Footer />
+      </Wrapper>
+    </PageTransition>
   );
 }

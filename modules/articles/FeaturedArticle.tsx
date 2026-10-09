@@ -3,6 +3,7 @@
 import {ReactNode} from 'react';
 import {motion} from 'motion/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from './FeaturedArticle.module.css';
 
 interface FeaturedArticleProps {
@@ -21,7 +22,7 @@ export default function FeaturedArticle(props: FeaturedArticleProps) {
   const isPriority = typeof props.index === 'number' && props.index < 3;
 
   return (
-    <a href={props.href} className={styles.article}>
+    <Link href={props.href} className={styles.article}>
       <Animation index={props.index} hovered={props.hovered} setHovered={props.setHovered}>
         <div className={styles.container}>
           {props.image && (
@@ -51,7 +52,7 @@ export default function FeaturedArticle(props: FeaturedArticleProps) {
           </div>
         </div>
       </Animation>
-    </a>
+    </Link>
   );
 }
 

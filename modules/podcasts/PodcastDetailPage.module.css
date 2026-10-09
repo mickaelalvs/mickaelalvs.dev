@@ -162,29 +162,6 @@
   filter: brightness(0) saturate(100%);
 }
 
-.backLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 40px;
-  padding: 6px 16px;
-  border-radius: 12px;
-  background-color: var(--color-hover);
-  color: var(--color-primary);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  border: none;
-  transition: all 0.3s ease;
-}
-
-.backLink:hover {
-  background-color: var(--color-primary);
-  color: var(--color-background);
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
 .tooltip {
   background-color: var(--color-command);
   color: var(--color-primary);
