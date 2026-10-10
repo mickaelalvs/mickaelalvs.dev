@@ -59,12 +59,16 @@ export default function ListItem(props: ListItemProps) {
                   />
                 </span>
                 <span className={styles.title}>{props.title}</span>
-                {props.badge}
               </div>
-              {props.date && (
-                <span className={styles.date}>
-                  <BlogDate dateString={props.date} />
-                </span>
+              {(props.date || props.badge) && (
+                <div className={styles.metaRow}>
+                  {props.date && (
+                    <span className={styles.date}>
+                      <BlogDate dateString={props.date} />
+                    </span>
+                  )}
+                  {props.badge}
+                </div>
               )}
               {props.description && <span className={styles.description}>{props.description}</span>}
             </div>
