@@ -150,7 +150,7 @@ export default function CommandBar(props: CommandBarProps) {
           <KBarPositioner className={styles.positioner}>
             <KBarAnimator className={styles.animator}>
               <KBarSearch
-                defaultPlaceholder="Try “React”, “SWC”, “DevEx”… or run a command"
+                defaultPlaceholder={'Try "React", "SWC", "DevEx" or run a command'}
                 className={styles.search}
               />
               <RenderResults />
@@ -203,14 +203,15 @@ const subscribeToResize = (callback: () => void) => {
 const getViewportHeight = () => window.innerHeight;
 const getServerViewportHeight = () => 800;
 
-// Space taken by the positioner (14vh top, 16px bottom padding) and the search input (~45px), plus a small margin.
+// Space around the results. The positioner takes 14vh on top and 16px at the bottom, the search input about 45px.
+// This constant covers the 16px, the input and a 16px margin.
 const NON_RESULTS_SPACE = 16 + 45 + 16;
 const MIN_RESULTS_HEIGHT = 240;
 
 function RenderResults() {
   const {results} = useDeepMatches();
   const viewportHeight = useSyncExternalStore(subscribeToResize, getViewportHeight, getServerViewportHeight);
-  // The list grows with its content, up to what fits on screen, instead of kbar's 400px default cap.
+  // The list grows with its content up to the screen height. kbar caps it at 400px by default.
   const maxHeight = Math.max(MIN_RESULTS_HEIGHT, Math.floor(viewportHeight * 0.86 - NON_RESULTS_SPACE));
 
   return (
