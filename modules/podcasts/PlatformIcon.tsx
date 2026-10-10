@@ -26,7 +26,11 @@ interface PlatformIconProps {
 export default function PlatformIcon({platform, getPlatformIcon}: PlatformIconProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const {refs, floatingStyles, context} = useFloating({
+  const {
+    refs: {setReference, setFloating},
+    floatingStyles,
+    context,
+  } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
     placement: 'bottom',
@@ -44,7 +48,7 @@ export default function PlatformIcon({platform, getPlatformIcon}: PlatformIconPr
   return (
     <>
       <a
-        ref={refs.setReference}
+        ref={setReference}
         href={platform.link}
         target="_blank"
         rel="noopener noreferrer"
@@ -61,7 +65,7 @@ export default function PlatformIcon({platform, getPlatformIcon}: PlatformIconPr
       </a>
       {isOpen && (
         <FloatingPortal>
-          <div ref={refs.setFloating} style={floatingStyles} className={styles.tooltip} {...getFloatingProps()}>
+          <div ref={setFloating} style={floatingStyles} className={styles.tooltip} {...getFloatingProps()}>
             {platform.platform}
           </div>
         </FloatingPortal>

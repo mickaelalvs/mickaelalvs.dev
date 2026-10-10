@@ -26,7 +26,11 @@ export default function ResourceIcon({href, type}: {href: string; type: 'video' 
   const [isOpen, setIsOpen] = useState(false);
   const label = type === 'video' ? 'Record' : type === 'slides' ? 'Slides' : 'Workshop';
 
-  const {refs, floatingStyles, context} = useFloating({
+  const {
+    refs: {setReference, setFloating},
+    floatingStyles,
+    context,
+  } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
     middleware: [offset(8), flip(), shift()],
@@ -43,7 +47,7 @@ export default function ResourceIcon({href, type}: {href: string; type: 'video' 
   return (
     <>
       <a
-        ref={refs.setReference}
+        ref={setReference}
         href={href}
         target="_blank"
         rel="noopener noreferrer"
@@ -67,7 +71,7 @@ export default function ResourceIcon({href, type}: {href: string; type: 'video' 
       </a>
       {isOpen && (
         <FloatingPortal>
-          <div ref={refs.setFloating} style={floatingStyles} className={styles.tooltip} {...getFloatingProps()}>
+          <div ref={setFloating} style={floatingStyles} className={styles.tooltip} {...getFloatingProps()}>
             {label}
           </div>
         </FloatingPortal>

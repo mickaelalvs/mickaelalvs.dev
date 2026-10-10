@@ -24,7 +24,11 @@ interface CoSpeakerAvatarProps {
 export default function CoSpeakerAvatar({speaker}: CoSpeakerAvatarProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const {refs, floatingStyles, context} = useFloating({
+  const {
+    refs: {setReference, setFloating},
+    floatingStyles,
+    context,
+  } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
     placement: 'bottom',
@@ -42,7 +46,7 @@ export default function CoSpeakerAvatar({speaker}: CoSpeakerAvatarProps) {
   return (
     <>
       <a
-        ref={refs.setReference}
+        ref={setReference}
         href={speaker.social}
         target="_blank"
         rel="noopener noreferrer"
@@ -60,12 +64,7 @@ export default function CoSpeakerAvatar({speaker}: CoSpeakerAvatarProps) {
       </a>
       {isOpen && (
         <FloatingPortal>
-          <div
-            ref={refs.setFloating}
-            style={floatingStyles}
-            className={styles.coSpeakerTooltip}
-            {...getFloatingProps()}
-          >
+          <div ref={setFloating} style={floatingStyles} className={styles.coSpeakerTooltip} {...getFloatingProps()}>
             {speaker.name}
           </div>
         </FloatingPortal>

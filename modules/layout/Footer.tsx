@@ -26,7 +26,11 @@ interface LinkItem {
 function FooterLink({link}: {link: LinkItem}) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const {refs, floatingStyles, context} = useFloating({
+  const {
+    refs: {setReference, setFloating},
+    floatingStyles,
+    context,
+  } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
     placement: 'top',
@@ -50,13 +54,13 @@ function FooterLink({link}: {link: LinkItem}) {
         className={styles.navLink}
         aria-label={link.title}
       >
-        <span ref={refs.setReference} className={styles.anchor} {...getReferenceProps()}>
+        <span ref={setReference} className={styles.anchor} {...getReferenceProps()}>
           <i className={`${styles.icon} ${link.icon}`} />
         </span>
       </Link>
       {isOpen && (
         <FloatingPortal>
-          <div ref={refs.setFloating} style={floatingStyles} className={styles.tooltip} {...getFloatingProps()}>
+          <div ref={setFloating} style={floatingStyles} className={styles.tooltip} {...getFloatingProps()}>
             {link.title}
           </div>
         </FloatingPortal>

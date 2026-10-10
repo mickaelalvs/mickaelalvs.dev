@@ -43,6 +43,8 @@ const mdxOptions: MDXRemoteProps['options'] = {
   },
 };
 
+const toISODate = (date?: string) => (date ? new Date(date) : new Date()).toISOString();
+
 export default async function BlogPostPage({slug}: {slug: string}) {
   const post = getPostBySlug(slug, [
     'authors',
@@ -62,7 +64,7 @@ export default async function BlogPostPage({slug}: {slug: string}) {
   const title = `${post.seoTitle || post.title} | Mickaël Alves`;
   const description = post.description || '';
   const url = `https://mickaelalvs.dev/articles/${post.slug}`;
-  const date = post.date ? new Date(post.date).toISOString() : new Date().toISOString();
+  const date = toISODate(post.date);
   const image = post.image ? `https://mickaelalvs.dev${post.image}` : 'https://mickaelalvs.dev/og-image.png';
 
   const jsonLd = createArticleJsonLd({

@@ -1,11 +1,8 @@
 'use client';
 
-import {useState, useEffect, useRef} from 'react';
-import Link from 'next/link';
+import {useState, useEffect} from 'react';
 import {usePathname} from 'next/navigation';
 import {motion, AnimatePresence} from 'motion/react';
-import Lottie from 'lottie-react';
-import clsx from 'clsx';
 import styles from './Navbar.module.css';
 import homeIcon from '../../public/static/icons/home.json';
 import aboutIcon from '../../public/static/icons/about.json';
@@ -13,6 +10,7 @@ import talksIcon from '../../public/static/icons/talks.json';
 import projectsIcon from '../../public/static/icons/projects.json';
 import podcastsIcon from '../../public/static/icons/podcasts.json';
 import articlesIcon from '../../public/static/icons/articles.json';
+import MobileNavItem from './MobileNavItem';
 import type {NavPage} from './Navbar';
 
 interface MobileNavProps {
@@ -31,12 +29,13 @@ const iconMap: Record<string, any> = {
 export default function MobileNav({pages}: MobileNavProps) {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const iconRefs = useRef<Record<string, any>>({});
+  const [prevPathname, setPrevPathname] = useState(pathname);
 
   // Fermer le menu quand on change de page
-  useEffect(() => {
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
     setIsMenuOpen(false);
-  }, [pathname]);
+  }
 
   // Empêcher le scroll du body quand le menu est ouvert
   useEffect(() => {
@@ -118,39 +117,17 @@ export default function MobileNav({pages}: MobileNavProps) {
                 const isActive = pathname === path || (path !== '/' && pathname.startsWith(path + '/'));
                 const iconData = iconMap[path];
 
-                if (!iconRefs.current[page]) {
-                  iconRefs.current[page] = {current: null};
-                }
-
                 return (
-                  <motion.li
+                  <MobileNavItem
                     key={page}
-                    initial={{opacity: 0, y: 20}}
-                    animate={{opacity: 1, y: 0}}
-                    transition={{delay: index * 0.05 + 0.1, duration: 0.3}}
-                    className={styles.mobileListItem}
-                  >
-                    <Link
-                      href={path}
-                      className={clsx(styles.mobileNavLink, isActive && styles.mobileActive)}
-                      onClick={toggleMenu}
-                      onMouseEnter={() => iconRefs.current[page]?.current?.play()}
-                      onMouseLeave={() => iconRefs.current[page]?.current?.stop()}
-                    >
-                      {iconData && (
-                        <span className={styles.mobileNavIcon}>
-                          <Lottie
-                            lottieRef={iconRefs.current[page]}
-                            animationData={iconData}
-                            loop={false}
-                            autoplay={false}
-                            style={iconSize}
-                          />
-                        </span>
-                      )}
-                      <span>{page}</span>
-                    </Link>
-                  </motion.li>
+                    page={page}
+                    path={path}
+                    index={index}
+                    isActive={isActive}
+                    iconData={iconData}
+                    iconSize={iconSize}
+                    onClick={toggleMenu}
+                  />
                 );
               })}
             </ul>
