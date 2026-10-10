@@ -1,7 +1,7 @@
 'use client';
 
 import {useRef, useState} from 'react';
-import Lottie from 'lottie-react';
+import {Lottie, type LottieHandle} from 'lottie-react';
 import {
   useFloating,
   autoUpdate,
@@ -21,7 +21,7 @@ import sourceIcon from '../../public/static/icons/source.json';
 import styles from './TalkDetailPage.module.css';
 
 export default function ResourceIcon({href, type}: {href: string; type: 'video' | 'slides' | 'workshop'}) {
-  const iconRef = useRef<any>(null);
+  const iconRef = useRef<LottieHandle>(null);
   const iconData = type === 'video' ? captaIcon : type === 'slides' ? presentationIcon : sourceIcon;
   const [isOpen, setIsOpen] = useState(false);
   const label = type === 'video' ? 'Record' : type === 'slides' ? 'Slides' : 'Workshop';
@@ -54,20 +54,14 @@ export default function ResourceIcon({href, type}: {href: string; type: 'video' 
         className={styles.resourceIconLink}
         onMouseEnter={() => {
           if (iconRef.current) {
-            iconRef.current.goToAndStop(0, true);
+            iconRef.current.seek(0);
             iconRef.current.play();
           }
         }}
         onMouseLeave={() => iconRef.current?.stop()}
         {...getReferenceProps()}
       >
-        <Lottie
-          lottieRef={iconRef}
-          animationData={iconData}
-          loop={false}
-          autoplay={false}
-          style={{width: 24, height: 24}}
-        />
+        <Lottie lottieRef={iconRef} src={iconData} loop={false} autoplay={false} style={{width: 24, height: 24}} />
       </a>
       {isOpen && (
         <FloatingPortal>

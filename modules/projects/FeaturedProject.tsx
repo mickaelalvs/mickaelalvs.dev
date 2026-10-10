@@ -3,7 +3,7 @@
 import {useState, useRef, useEffect} from 'react';
 import React from 'react';
 import {motion} from 'motion/react';
-import Lottie from 'lottie-react';
+import {Lottie, type LottieHandle} from 'lottie-react';
 import type {Project} from './types/Project';
 import styles from './FeaturedProject.module.css';
 import remotionIcon from '../../public/static/icons/remotion.json';
@@ -54,7 +54,7 @@ export default function FeaturedProject(props: FeaturedProjectProps) {
   const {project} = props;
 
   const icon = iconMap[project.icon] || sourceIcon;
-  const iconRef = useRef<any>(null);
+  const iconRef = useRef<LottieHandle>(null);
   const starCount = useGithubStars(project.stars ? project.url : null);
 
   return (
@@ -68,13 +68,7 @@ export default function FeaturedProject(props: FeaturedProjectProps) {
     >
       <Animation index={props.index} hovered={props.hovered} setHovered={props.setHovered} layoutId={props.layoutId}>
         <div className={styles.iconRow}>
-          <Lottie
-            lottieRef={iconRef}
-            style={{width: 24, height: 24}}
-            animationData={icon}
-            loop={false}
-            autoplay={false}
-          />
+          <Lottie lottieRef={iconRef} style={{width: 24, height: 24}} src={icon} loop={false} autoplay={false} />
           {starCount !== null && <p className={styles.stars}>★ {starCount}</p>}
         </div>
         <div className={styles.body}>

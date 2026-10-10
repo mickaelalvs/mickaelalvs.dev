@@ -2,7 +2,7 @@
 
 import {useRef} from 'react';
 import Link from 'next/link';
-import Lottie from 'lottie-react';
+import {Lottie, type LottieHandle} from 'lottie-react';
 import styles from './BackLink.module.css';
 
 interface BackLinkProps {
@@ -12,7 +12,7 @@ interface BackLinkProps {
 }
 
 export default function BackLink({href, label, icon}: BackLinkProps) {
-  const lottieRef = useRef<any>(null);
+  const lottieRef = useRef<LottieHandle>(null);
 
   return (
     <div className={styles.wrapper}>
@@ -23,13 +23,7 @@ export default function BackLink({href, label, icon}: BackLinkProps) {
         onMouseEnter={() => lottieRef.current?.play()}
         onMouseLeave={() => lottieRef.current?.stop()}
       >
-        <Lottie
-          lottieRef={lottieRef}
-          animationData={icon}
-          loop={false}
-          autoplay={false}
-          style={{width: 24, height: 24}}
-        />
+        <Lottie lottieRef={lottieRef} src={icon} loop={false} autoplay={false} style={{width: 24, height: 24}} />
         {label}
       </Link>
     </div>

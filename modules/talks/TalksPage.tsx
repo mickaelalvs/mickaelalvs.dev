@@ -3,7 +3,7 @@
 import {useRef, useState, Suspense} from 'react';
 import {useQueryState, parseAsStringLiteral} from 'nuqs';
 import {LayoutGroup, motion} from 'motion/react';
-import Lottie from 'lottie-react';
+import {Lottie, type LottieHandle} from 'lottie-react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import BaseLayout from '../layout/BaseLayout';
@@ -25,8 +25,8 @@ function TalksContent() {
     parseAsStringLiteral(['talks', 'conferences'] as const).withDefault('conferences'),
   );
   const [hoveredTalk, setHoveredTalk] = useState<string | number>('');
-  const calendarLottieRef = useRef<any>(null);
-  const talkLottieRef = useRef<any>(null);
+  const calendarLottieRef = useRef<LottieHandle>(null);
+  const talkLottieRef = useRef<LottieHandle>(null);
 
   // Filtrer pour exclure les podcasts
   const talks = speaking.filter((item) => 'format' in item && item.format !== 'Podcast');
@@ -183,7 +183,7 @@ function TalksContent() {
                   <span className={styles.toggleIcon}>
                     <Lottie
                       lottieRef={calendarLottieRef}
-                      animationData={calendarIcon}
+                      src={calendarIcon}
                       loop={false}
                       autoplay={false}
                       style={{width: 18, height: 18}}
@@ -209,7 +209,7 @@ function TalksContent() {
                   <span className={styles.toggleIcon}>
                     <Lottie
                       lottieRef={talkLottieRef}
-                      animationData={presentationIcon}
+                      src={presentationIcon}
                       loop={false}
                       autoplay={false}
                       style={{width: 18, height: 18}}

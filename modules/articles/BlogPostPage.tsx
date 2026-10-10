@@ -27,7 +27,7 @@ const mdxOptions: MDXRemoteProps['options'] = {
     rehypePlugins: [
       rehypeSlug,
       [
-        rehypeShiki as any,
+        rehypeShiki,
         {
           themes: {
             light: 'github-light',
