@@ -203,15 +203,14 @@ const subscribeToResize = (callback: () => void) => {
 const getViewportHeight = () => window.innerHeight;
 const getServerViewportHeight = () => 800;
 
-// Space around the results. The positioner takes 14vh on top and 16px at the bottom, the search input about 45px.
-// This constant covers the 16px, the input and a 16px margin.
+// Room kept around the list. 16px of positioner padding, 45px of search input and a 16px margin.
+// The 14vh of top padding is the 0.86 below.
 const NON_RESULTS_SPACE = 16 + 45 + 16;
 const MIN_RESULTS_HEIGHT = 240;
 
 function RenderResults() {
   const {results} = useDeepMatches();
   const viewportHeight = useSyncExternalStore(subscribeToResize, getViewportHeight, getServerViewportHeight);
-  // The list grows with its content up to the screen height. kbar caps it at 400px by default.
   const maxHeight = Math.max(MIN_RESULTS_HEIGHT, Math.floor(viewportHeight * 0.86 - NON_RESULTS_SPACE));
 
   return (

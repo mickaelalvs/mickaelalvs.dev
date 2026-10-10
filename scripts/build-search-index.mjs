@@ -16,7 +16,6 @@ const SERVER_DIR = '.next/server';
 // With an adapter, Vercel copies `public/` here during `next build`, before this script runs.
 const ADAPTER_STATIC_DIR = '.next/output/static';
 
-/** Directories that hold prerendered HTML, whose layout mirrors the site's URLs. */
 function findHtmlRoots() {
   const roots = [join(SERVER_DIR, 'app')];
   const routeCache = join(SERVER_DIR, 'route-cache');
@@ -49,7 +48,6 @@ async function main() {
   for (const root of findHtmlRoots()) {
     for (const file of walkHtmlFiles(root)) {
       const sourcePath = relative(root, file);
-      // The same page can exist in several roots. Index it once.
       if (seen.has(sourcePath)) continue;
       seen.add(sourcePath);
 

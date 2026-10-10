@@ -57,10 +57,6 @@ function loadPagefind(): Promise<PagefindApi | null> {
   return pagefindPromise;
 }
 
-/**
- * Registers full-text search results (talks, articles, podcasts) as kbar actions.
- * Results come from the Pagefind index and follow the current kbar search query.
- */
 export default function PagefindActions() {
   const router = useRouter();
   const {searchQuery} = useKBar((state) => ({searchQuery: state.searchQuery}));
@@ -87,12 +83,11 @@ export default function PagefindActions() {
           const url = fragment.url.replace(/\.html$/, '');
           const type = fragment.filters.type?.[0] ?? '';
           const icon = ICON_BY_TYPE[type];
-          // ResultItem reads `lottieRef` from the icon element to play the animation on hover and when active.
+          // ResultItem finds this ref in the icon's props to play the animation.
           const lottieRef = createRef<LottieHandle>();
           return {
             id: `search:${url}`,
             name: fragment.meta.title ?? url,
-            // Keeps Pagefind's <mark> tags, rendered by <Excerpt /> in ResultItem.
             subtitle: fragment.excerpt,
             // kbar filters actions with its own fuzzy matcher on name/keywords/subtitle.
             // Pagefind matched on the page body, which kbar never sees, so keywords carries the query to keep the row.
