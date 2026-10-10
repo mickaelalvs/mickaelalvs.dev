@@ -31,7 +31,7 @@ This portfolio is built with modern web technologies:
 
 ### Prerequisites
 
-- Node.js >= 22.x
+- Node.js >= 24.x
 - pnpm >= 8.x
 
 ### Installation

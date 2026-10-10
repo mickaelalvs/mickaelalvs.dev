@@ -4,6 +4,11 @@
   "schedule": ["before 6am"],
   "packageRules": [
     {
+      "description": "Keep @types/node aligned with the Node.js runtime major (24)",
+      "matchPackageNames": ["@types/node"],
+      "allowedVersions": "<25"
+    },
+    {
       "matchUpdateTypes": ["patch", "minor"],
       "minimumReleaseAge": "7 days",
       "automerge": true
