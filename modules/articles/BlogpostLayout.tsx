@@ -155,7 +155,8 @@ export default function BlogpostLayout({
   );
 }
 
-// Articles are indexed by Pagefind (see PagefindActions); the table of contents is excluded below to avoid duplicate hits.
+// Pagefind indexes articles for the command bar search. The table of contents has data-pagefind-ignore,
+// otherwise its headings would show up as duplicate hits.
 const pagefindProps = {'data-pagefind-body': '', 'data-pagefind-filter': 'type:article'};
 
 function Main(props: {children: ReactNode; image?: string}) {

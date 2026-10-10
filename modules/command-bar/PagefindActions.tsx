@@ -8,8 +8,8 @@ import articlesIcon from '../../public/static/icons/articles.json';
 import talksIcon from '../../public/static/icons/talks.json';
 import podcastsIcon from '../../public/static/icons/podcasts.json';
 
-// Pagefind is generated at build time (`postbuild` script) into `public/pagefind`.
-// It is loaded lazily at runtime, so the bundler must not try to resolve it.
+// The `postbuild` script writes the Pagefind index to `public/pagefind`.
+// The browser loads it on the first query, so the bundler must leave this import alone.
 const PAGEFIND_URL = '/pagefind/pagefind.js';
 const MIN_QUERY_LENGTH = 2;
 const MAX_RESULTS = 6;
@@ -87,7 +87,7 @@ export default function PagefindActions() {
           const url = fragment.url.replace(/\.html$/, '');
           const type = fragment.filters.type?.[0] ?? '';
           const icon = ICON_BY_TYPE[type];
-          // ResultItem reads `lottieRef` from the icon element to play the animation on hover/active.
+          // ResultItem reads `lottieRef` from the icon element to play the animation on hover and when active.
           const lottieRef = createRef<LottieHandle>();
           return {
             id: `search:${url}`,
@@ -95,7 +95,7 @@ export default function PagefindActions() {
             // Keeps Pagefind's <mark> tags, rendered by <Excerpt /> in ResultItem.
             subtitle: fragment.excerpt,
             // kbar filters actions with its own fuzzy matcher on name/keywords/subtitle.
-            // Pagefind already matched on the page body, so we force the match with the current query.
+            // Pagefind matched on the page body, which kbar never sees, so keywords carries the query to keep the row.
             keywords: query,
             section: SECTION_BY_TYPE[type] ?? 'Search results',
             icon: icon ? (
