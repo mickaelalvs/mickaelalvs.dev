@@ -24,7 +24,11 @@ interface CoAuthorAvatarProps {
 export default function CoAuthorAvatar({author}: CoAuthorAvatarProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const {refs, floatingStyles, context} = useFloating({
+  const {
+    refs: {setReference, setFloating},
+    floatingStyles,
+    context,
+  } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
     placement: 'bottom',
@@ -42,7 +46,7 @@ export default function CoAuthorAvatar({author}: CoAuthorAvatarProps) {
   return (
     <>
       <a
-        ref={refs.setReference}
+        ref={setReference}
         href={author.social}
         target="_blank"
         rel="noopener noreferrer"
@@ -60,7 +64,7 @@ export default function CoAuthorAvatar({author}: CoAuthorAvatarProps) {
       </a>
       {isOpen && (
         <FloatingPortal>
-          <div ref={refs.setFloating} style={floatingStyles} className={styles.coAuthorTooltip} {...getFloatingProps()}>
+          <div ref={setFloating} style={floatingStyles} className={styles.coAuthorTooltip} {...getFloatingProps()}>
             {author.name}
           </div>
         </FloatingPortal>

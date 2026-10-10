@@ -17,6 +17,25 @@ import styles from './AboutPage.module.css';
 
 const description = `👋🏼 Hey, I'm Mickaël Alves, a Web Maker, application builder, and speaker! I'm passionate about web technologies, tooling and especially Developer Experience, always looking for ways to improve workflows and make developers' lives easier. 👨🏻‍💻 I'm currently Tech Lead Frontend at Zenika 🔴 & BedrockStreaming 📺. I also enjoy sharing my knowledge through teaching and speaking at conferences. I'm very involved in the tech communities. I'm a co-founder of DevFestLyon and a co-organizer of LyonJS 🦁, an Appwrite Hero 🦸🏼‍♂️, and a Remotion Expert 🎬.`;
 
+const getDuration = (startDate: string, endDate?: string) => {
+  const durationObj = intervalToDuration({
+    start: parseISO(startDate),
+    end: endDate ? parseISO(endDate) : new Date(),
+  });
+
+  let durationStr = '';
+
+  if (durationObj.years && durationObj.years > 1) {
+    durationStr = `${durationObj.years} years `;
+  } else if (durationObj.years === 1) {
+    durationStr = `${durationObj.years} yr `;
+  }
+
+  durationStr += `${durationObj.months} months`;
+
+  return durationStr;
+};
+
 export default function AboutPage() {
   const [toastTitle, setToastTitle] = React.useState('');
   const [toastDescription, setToastDescription] = React.useState('');
@@ -141,25 +160,6 @@ export default function AboutPage() {
         </div>
       );
     });
-  };
-
-  const getDuration = (startDate: string, endDate?: string) => {
-    const durationObj = intervalToDuration({
-      start: parseISO(startDate),
-      end: endDate ? parseISO(endDate) : new Date(),
-    });
-
-    let durationStr = '';
-
-    if (durationObj.years && durationObj.years > 1) {
-      durationStr = `${durationObj.years} years `;
-    } else if (durationObj.years === 1) {
-      durationStr = `${durationObj.years} yr `;
-    }
-
-    durationStr += `${durationObj.months} months`;
-
-    return durationStr;
   };
 
   const downloadHeadshot = () => {

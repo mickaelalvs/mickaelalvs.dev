@@ -1,17 +1,13 @@
 'use client';
 
-import {useState, useEffect} from 'react';
 import {ButtonPrimary} from './ButtonPrimary';
+import {usePlatform} from './usePlatform';
 import styles from './ShortcutError.module.css';
 
 export default function ShortcutError() {
-  const [mounted, setMounted] = useState(false);
+  const platform = usePlatform();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
+  if (platform === null) {
     return (
       <div className={styles.container} aria-hidden="true">
         <ButtonPrimary as="a" href="/" tabIndex={-1}>
@@ -21,9 +17,7 @@ export default function ShortcutError() {
     );
   }
 
-  const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
-
-  if (isMobile) {
+  if (platform === 'mobile') {
     return (
       <div className={`${styles.container} ${styles.mounted}`}>
         <ButtonPrimary as="a" href="/">

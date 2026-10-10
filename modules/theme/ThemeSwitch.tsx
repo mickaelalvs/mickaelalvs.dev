@@ -1,33 +1,17 @@
 'use client';
 
-import {useEffect, useState} from 'react';
 import {useTheme} from './ThemeProvider';
 import styles from './ThemeSwitch.module.css';
 
+// Both icons are rendered and the visible one is picked in CSS from the `data-theme`
+// attribute set by next-themes before hydration, so no "mounted" state is needed.
 export function ThemeSwitch() {
-  const {theme, toggleTheme} = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return (
-      <button type="button" aria-label="Changer de thème" className={styles.button}>
-        <i className={`${styles.icon} ri-sun-line`} />
-      </button>
-    );
-  }
+  const {toggleTheme} = useTheme();
 
   return (
-    <button
-      type="button"
-      aria-label={theme === 'dark' ? 'Enable light mode' : 'Enable dark mode'}
-      onClick={(event) => toggleTheme(event)}
-      className={styles.button}
-    >
-      <i className={`${styles.icon} ${theme === 'dark' ? 'ri-sun-line' : 'ri-moon-line'}`} />
+    <button type="button" aria-label="Toggle theme" onClick={(event) => toggleTheme(event)} className={styles.button}>
+      <i className={`${styles.icon} ${styles.sunIcon} ri-sun-line`} />
+      <i className={`${styles.icon} ${styles.moonIcon} ri-moon-line`} />
     </button>
   );
 }

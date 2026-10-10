@@ -26,3 +26,15 @@
 .button:hover .icon {
   transform: rotate(15deg);
 }
+
+.moonIcon {
+  display: none;
+}
+
+:global([data-theme='light']) .sunIcon {
+  display: none;
+}
+
+:global([data-theme='light']) .moonIcon {
+  display: block;
+}

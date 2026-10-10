@@ -2,7 +2,7 @@
 
 import {Box} from '../shared/Box';
 import Toast from '../shared/Toast';
-import {useRef, useState, forwardRef} from 'react';
+import {useEffect, useRef, useState, forwardRef} from 'react';
 import React from 'react';
 import clsx from 'clsx';
 import {useRouter} from 'next/navigation';
@@ -241,11 +241,13 @@ const ResultItem = forwardRef<HTMLDivElement, ResultItemProps>(({action, active}
 
   const lottieRef = getLottieRef();
 
-  if (active) {
-    lottieRef?.current?.play();
-  } else {
-    lottieRef?.current?.stop();
-  }
+  useEffect(() => {
+    if (active) {
+      lottieRef?.current?.play();
+    } else {
+      lottieRef?.current?.stop();
+    }
+  }, [active, lottieRef]);
 
   return (
     <Box

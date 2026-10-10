@@ -1,19 +1,15 @@
 'use client';
 
-import {useState, useEffect} from 'react';
 import {useKBar} from 'kbar';
 import {ButtonPrimary} from './ButtonPrimary';
+import {usePlatform} from './usePlatform';
 import styles from './ShortcutHome.module.css';
 
 export default function ShortcutHome() {
   const {query} = useKBar();
-  const [mounted, setMounted] = useState(false);
+  const platform = usePlatform();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
+  if (platform === null) {
     return (
       <div className={styles.container} aria-hidden="true">
         <ButtonPrimary as="button" disabled>
@@ -23,10 +19,7 @@ export default function ShortcutHome() {
     );
   }
 
-  const isMac = /(Mac)/i.test(navigator.userAgent);
-  const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
-
-  if (isMobile) {
+  if (platform === 'mobile') {
     return (
       <div className={`${styles.container} ${styles.mounted}`}>
         <ButtonPrimary as="button" onClick={query.toggle}>
@@ -34,7 +27,7 @@ export default function ShortcutHome() {
         </ButtonPrimary>
       </div>
     );
-  } else if (isMac) {
+  } else if (platform === 'mac') {
     return (
       <div className={`${styles.container} ${styles.mounted}`}>
         <ButtonPrimary as="button" onClick={query.toggle}>
