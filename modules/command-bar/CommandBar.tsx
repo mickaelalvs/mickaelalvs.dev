@@ -2,12 +2,14 @@
 
 import {Box} from '../shared/Box';
 import Toast from '../shared/Toast';
-import {useEffect, useRef, useState} from 'react';
+import {useEffect, useRef, useState, useSyncExternalStore} from 'react';
 import React from 'react';
 import clsx from 'clsx';
 import {useRouter} from 'next/navigation';
 import {useTheme} from '@/modules/theme/ThemeProvider';
 import styles from './CommandBar.module.css';
+import PagefindActions from './PagefindActions';
+import Excerpt from './Excerpt';
 import {
   KBarAnimator,
   KBarProvider,
@@ -143,10 +145,14 @@ export default function CommandBar(props: CommandBarProps) {
       {/* Scrollbar space is reserved globally via `scrollbar-gutter: stable` */}
       <KBarProvider actions={actions} options={{disableScrollbarManagement: true}}>
         <ThemeAction />
+        <PagefindActions />
         <KBarPortal>
           <KBarPositioner className={styles.positioner}>
             <KBarAnimator className={styles.animator}>
-              <KBarSearch placeholder="Type a command or search…" className={styles.search} />
+              <KBarSearch
+                defaultPlaceholder="Try “React”, “SWC”, “DevEx”… or run a command"
+                className={styles.search}
+              />
               <RenderResults />
             </KBarAnimator>
           </KBarPositioner>
@@ -190,12 +196,27 @@ function ThemeAction() {
   return null;
 }
 
+const subscribeToResize = (callback: () => void) => {
+  window.addEventListener('resize', callback);
+  return () => window.removeEventListener('resize', callback);
+};
+const getViewportHeight = () => window.innerHeight;
+const getServerViewportHeight = () => 800;
+
+// Space taken by the positioner (14vh top, 16px bottom padding) and the search input (~45px), plus a small margin.
+const NON_RESULTS_SPACE = 16 + 45 + 16;
+const MIN_RESULTS_HEIGHT = 240;
+
 function RenderResults() {
   const {results} = useDeepMatches();
+  const viewportHeight = useSyncExternalStore(subscribeToResize, getViewportHeight, getServerViewportHeight);
+  // The list grows with its content, up to what fits on screen, instead of kbar's 400px default cap.
+  const maxHeight = Math.max(MIN_RESULTS_HEIGHT, Math.floor(viewportHeight * 0.86 - NON_RESULTS_SPACE));
 
   return (
     <KBarResults
       items={results}
+      maxHeight={maxHeight}
       onRender={({item, active}) =>
         typeof item === 'string' ? (
           <div className={styles.groupName}>{item}</div>
@@ -211,6 +232,7 @@ interface ResultItemProps {
   action: {
     icon?: React.ReactNode;
     name: string;
+    subtitle?: string;
     shortcut?: string[];
   };
   active: boolean;
@@ -240,9 +262,10 @@ function ResultItem({action, active}: ResultItemProps) {
       onMouseLeave={() => lottieRef?.current?.stop()}
     >
       <div className={styles.action}>
-        {action.icon}
+        {action.icon && <span className={styles.icon}>{action.icon}</span>}
         <div className={styles.actionRow}>
-          <span>{action.name}</span>
+          <span className={styles.name}>{action.name}</span>
+          {action.subtitle && <Excerpt text={action.subtitle} />}
         </div>
       </div>
       {action.shortcut?.length ? (

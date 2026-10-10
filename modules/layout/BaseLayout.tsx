@@ -14,6 +14,8 @@ interface BaseLayoutProps {
   primaryColor?: string;
   secondaryColor?: string;
   highlightLastChar?: boolean;
+  /** When set, the page is indexed by Pagefind under this content type (see PagefindActions). */
+  searchType?: string;
 }
 
 export default function BaseLayout({
@@ -23,6 +25,7 @@ export default function BaseLayout({
   primaryColor = 'pink',
   secondaryColor = 'purple',
   highlightLastChar = false,
+  searchType,
 }: BaseLayoutProps) {
   const displayText = tagline || title || '';
 
@@ -38,6 +41,8 @@ export default function BaseLayout({
     <PageTransition>
       <Wrapper>
         <PostMain
+          data-pagefind-body={searchType ? '' : undefined}
+          data-pagefind-filter={searchType ? `type:${searchType}` : undefined}
           style={{
             ['--selection-bg' as string]: `var(--color-${primaryColor})`,
           }}

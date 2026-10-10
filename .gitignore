@@ -37,3 +37,6 @@ next-env.d.ts
 
 .vscode
 .idea
+
+# pagefind (generated at build time)
+/public/pagefind

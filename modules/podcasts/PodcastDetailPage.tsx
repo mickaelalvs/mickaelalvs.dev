@@ -40,6 +40,7 @@ export default function PodcastDetailPage({slug}: {slug: string}) {
       tagline={podcast.title}
       primaryColor="pink"
       secondaryColor="purple"
+      searchType="podcast"
     >
       <div className={styles.container}>
         <div className={styles.header}>
@@ -81,7 +82,9 @@ export default function PodcastDetailPage({slug}: {slug: string}) {
 
         <div className={styles.content}>
           <div className={styles.section}>
-            <h2 className={styles.sectionTitle}>Description</h2>
+            <h2 className={styles.sectionTitle} data-pagefind-ignore>
+              Description
+            </h2>
             <p className={styles.description}>{podcast.description}</p>
           </div>
         </div>

@@ -120,7 +120,7 @@ export default function BlogpostLayout({
               }
             >
               {headings.length > 0 && (
-                <aside className={styles.tocSidebar}>
+                <aside className={styles.tocSidebar} data-pagefind-ignore>
                   <TableOfContents headings={headings} />
                 </aside>
               )}
@@ -155,6 +155,13 @@ export default function BlogpostLayout({
   );
 }
 
+// Articles are indexed by Pagefind (see PagefindActions); the table of contents is excluded below to avoid duplicate hits.
+const pagefindProps = {'data-pagefind-body': '', 'data-pagefind-filter': 'type:article'};
+
 function Main(props: {children: ReactNode; image?: string}) {
-  return props.image ? <Post>{props.children}</Post> : <PostMain>{props.children}</PostMain>;
+  return props.image ? (
+    <Post {...pagefindProps}>{props.children}</Post>
+  ) : (
+    <PostMain {...pagefindProps}>{props.children}</PostMain>
+  );
 }

@@ -29,6 +29,7 @@ export default function TalkDetailPage({slug}: {slug: string}) {
       primaryColor="purple"
       secondaryColor="cyan"
       highlightLastChar
+      searchType="talk"
     >
       <div className={styles.container}>
         <div className={styles.header}>
@@ -57,12 +58,14 @@ export default function TalkDetailPage({slug}: {slug: string}) {
         <div className={styles.content}>
           <div className={styles.section}>
             {talk.language && (
-              <div className={styles.languageContainer}>
+              <div className={styles.languageContainer} data-pagefind-ignore>
                 <span className={styles.languageLabel}>Language:</span>
                 <LanguageBadge language={talk.language} />
               </div>
             )}
-            <h2 className={styles.sectionTitle}>Description</h2>
+            <h2 className={styles.sectionTitle} data-pagefind-ignore>
+              Description
+            </h2>
             <p className={styles.description}>{talk.description}</p>
           </div>
 
