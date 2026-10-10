@@ -15,10 +15,6 @@ const MARKED = /(<mark>.*?<\/mark>)/g;
 const OPEN_TAG = '<mark>';
 const CLOSE_TAG = '</mark>';
 
-/**
- * Renders a Pagefind excerpt, where matches are wrapped in <mark> tags.
- * The string is split and rebuilt as React nodes so no HTML is ever injected.
- */
 export default function Excerpt({text}: {text: string}) {
   return (
     <span className={styles.excerpt}>

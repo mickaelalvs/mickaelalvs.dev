@@ -14,7 +14,6 @@ interface BaseLayoutProps {
   primaryColor?: string;
   secondaryColor?: string;
   highlightLastChar?: boolean;
-  /** Makes Pagefind index the page under this content type. PagefindActions groups results by it. */
   searchType?: string;
 }
 
