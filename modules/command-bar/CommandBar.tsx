@@ -2,7 +2,7 @@
 
 import {Box} from '../shared/Box';
 import Toast from '../shared/Toast';
-import {useEffect, useRef, useState, forwardRef} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import React from 'react';
 import clsx from 'clsx';
 import {useRouter} from 'next/navigation';
@@ -18,7 +18,7 @@ import {
   KBarSearch,
   KBarResults,
 } from 'kbar';
-import Lottie from 'lottie-react';
+import {Lottie, type LottieHandle} from 'lottie-react';
 import moonIcon from '../../public/static/icons/moon.json';
 import copyLinkIcon from '../../public/static/icons/copy-link.json';
 import emailIcon from '../../public/static/icons/email.json';
@@ -35,15 +35,15 @@ interface CommandBarProps {
 }
 
 export default function CommandBar(props: CommandBarProps) {
-  const copyLinkRef = useRef<any>(null);
-  const emailRef = useRef<any>(null);
-  const sourceRef = useRef<any>(null);
-  const homeRef = useRef<any>(null);
-  const aboutRef = useRef<any>(null);
-  const articlesRef = useRef<any>(null);
-  const projectsRef = useRef<any>(null);
-  const talksRef = useRef<any>(null);
-  const podcastsRef = useRef<any>(null);
+  const copyLinkRef = useRef<LottieHandle>(null);
+  const emailRef = useRef<LottieHandle>(null);
+  const sourceRef = useRef<LottieHandle>(null);
+  const homeRef = useRef<LottieHandle>(null);
+  const aboutRef = useRef<LottieHandle>(null);
+  const articlesRef = useRef<LottieHandle>(null);
+  const projectsRef = useRef<LottieHandle>(null);
+  const talksRef = useRef<LottieHandle>(null);
+  const podcastsRef = useRef<LottieHandle>(null);
   const router = useRouter();
   const [showToast, setShowToast] = useState<boolean>(false);
 
@@ -62,9 +62,7 @@ export default function CommandBar(props: CommandBarProps) {
       keywords: 'copy-link',
       section: 'General',
       perform: copyLink,
-      icon: (
-        <Lottie lottieRef={copyLinkRef} style={iconSize} animationData={copyLinkIcon} loop={false} autoplay={false} />
-      ),
+      icon: <Lottie lottieRef={copyLinkRef} style={iconSize} src={copyLinkIcon} loop={false} autoplay={false} />,
     },
     {
       id: 'email',
@@ -73,7 +71,7 @@ export default function CommandBar(props: CommandBarProps) {
       keywords: 'send-email',
       section: 'General',
       perform: () => (window.location.href = 'mailto:alves.mckl@gmail.com'),
-      icon: <Lottie lottieRef={emailRef} style={iconSize} animationData={emailIcon} loop={false} autoplay={false} />,
+      icon: <Lottie lottieRef={emailRef} style={iconSize} src={emailIcon} loop={false} autoplay={false} />,
     },
     {
       id: 'source',
@@ -82,7 +80,7 @@ export default function CommandBar(props: CommandBarProps) {
       keywords: 'github',
       section: 'General',
       perform: () => window.open('https://github.com/mickaelalvs', '_blank'),
-      icon: <Lottie lottieRef={sourceRef} style={iconSize} animationData={sourceIcon} loop={false} autoplay={false} />,
+      icon: <Lottie lottieRef={sourceRef} style={iconSize} src={sourceIcon} loop={false} autoplay={false} />,
     },
     {
       id: 'home',
@@ -91,7 +89,7 @@ export default function CommandBar(props: CommandBarProps) {
       keywords: 'go-home',
       section: 'Go To',
       perform: () => router.push('/'),
-      icon: <Lottie lottieRef={homeRef} style={iconSize} animationData={homeIcon} loop={false} autoplay={false} />,
+      icon: <Lottie lottieRef={homeRef} style={iconSize} src={homeIcon} loop={false} autoplay={false} />,
     },
     {
       id: 'about',
@@ -100,7 +98,7 @@ export default function CommandBar(props: CommandBarProps) {
       keywords: 'go-about',
       section: 'Go To',
       perform: () => router.push('/about'),
-      icon: <Lottie lottieRef={aboutRef} style={iconSize} animationData={aboutIcon} loop={false} autoplay={false} />,
+      icon: <Lottie lottieRef={aboutRef} style={iconSize} src={aboutIcon} loop={false} autoplay={false} />,
     },
     {
       id: 'talks',
@@ -109,7 +107,7 @@ export default function CommandBar(props: CommandBarProps) {
       keywords: 'go-talks',
       section: 'Go To',
       perform: () => router.push('/talks'),
-      icon: <Lottie lottieRef={talksRef} style={iconSize} animationData={talksIcon} loop={false} autoplay={false} />,
+      icon: <Lottie lottieRef={talksRef} style={iconSize} src={talksIcon} loop={false} autoplay={false} />,
     },
     {
       id: 'projects',
@@ -118,9 +116,7 @@ export default function CommandBar(props: CommandBarProps) {
       keywords: 'go-projects',
       section: 'Go To',
       perform: () => router.push('/projects'),
-      icon: (
-        <Lottie lottieRef={projectsRef} style={iconSize} animationData={projectsIcon} loop={false} autoplay={false} />
-      ),
+      icon: <Lottie lottieRef={projectsRef} style={iconSize} src={projectsIcon} loop={false} autoplay={false} />,
     },
     {
       id: 'podcasts',
@@ -129,9 +125,7 @@ export default function CommandBar(props: CommandBarProps) {
       keywords: 'go-podcasts',
       section: 'Go To',
       perform: () => router.push('/podcasts'),
-      icon: (
-        <Lottie lottieRef={podcastsRef} style={iconSize} animationData={podcastsIcon} loop={false} autoplay={false} />
-      ),
+      icon: <Lottie lottieRef={podcastsRef} style={iconSize} src={podcastsIcon} loop={false} autoplay={false} />,
     },
     {
       id: 'articles',
@@ -140,21 +134,17 @@ export default function CommandBar(props: CommandBarProps) {
       keywords: 'go-articles',
       section: 'Go To',
       perform: () => router.push('/articles'),
-      icon: (
-        <Lottie lottieRef={articlesRef} style={iconSize} animationData={articlesIcon} loop={false} autoplay={false} />
-      ),
+      icon: <Lottie lottieRef={articlesRef} style={iconSize} src={articlesIcon} loop={false} autoplay={false} />,
     },
   ];
 
   return (
     <>
       {/* Scrollbar space is reserved globally via `scrollbar-gutter: stable` */}
-      {/* @ts-expect-error - KBar types are not compatible with React 19 */}
       <KBarProvider actions={actions} options={{disableScrollbarManagement: true}}>
         <ThemeAction />
         <KBarPortal>
           <KBarPositioner className={styles.positioner}>
-            {/* @ts-expect-error - KBar types are not compatible with React 19 */}
             <KBarAnimator className={styles.animator}>
               <KBarSearch placeholder="Type a command or search…" className={styles.search} />
               <RenderResults />
@@ -178,7 +168,7 @@ export default function CommandBar(props: CommandBarProps) {
 
 function ThemeAction() {
   const {theme, toggleTheme} = useTheme();
-  const moonRef = useRef<any>(null);
+  const moonRef = useRef<LottieHandle>(null);
 
   useRegisterActions(
     [
@@ -190,13 +180,7 @@ function ThemeAction() {
         section: 'General',
         perform: () => toggleTheme(),
         icon: (
-          <Lottie
-            lottieRef={moonRef}
-            style={{width: 24, height: 24}}
-            animationData={moonIcon}
-            loop={false}
-            autoplay={false}
-          />
+          <Lottie lottieRef={moonRef} style={{width: 24, height: 24}} src={moonIcon} loop={false} autoplay={false} />
         ),
       },
     ],
@@ -232,10 +216,10 @@ interface ResultItemProps {
   active: boolean;
 }
 
-const ResultItem = forwardRef<HTMLDivElement, ResultItemProps>(({action, active}, ref) => {
-  const getLottieRef = (): React.RefObject<any> | undefined => {
+function ResultItem({action, active}: ResultItemProps) {
+  const getLottieRef = (): React.RefObject<LottieHandle | null> | undefined => {
     if (!action.icon || !React.isValidElement(action.icon)) return undefined;
-    const props = action.icon.props as {lottieRef?: React.RefObject<any>};
+    const props = action.icon.props as {lottieRef?: React.RefObject<LottieHandle | null>};
     return props.lottieRef;
   };
 
@@ -251,7 +235,6 @@ const ResultItem = forwardRef<HTMLDivElement, ResultItemProps>(({action, active}
 
   return (
     <Box
-      ref={ref}
       className={clsx(styles.resultItem, active && styles.resultItemActive)}
       onMouseEnter={() => lottieRef?.current?.play()}
       onMouseLeave={() => lottieRef?.current?.stop()}
@@ -273,6 +256,4 @@ const ResultItem = forwardRef<HTMLDivElement, ResultItemProps>(({action, active}
       ) : null}
     </Box>
   );
-});
-
-ResultItem.displayName = 'ResultItem';
+}

@@ -1,7 +1,7 @@
 'use client';
 
 import {useRef, useState} from 'react';
-import Lottie from 'lottie-react';
+import {Lottie, type LottieHandle} from 'lottie-react';
 import ListItem from '../shared/ListItem';
 import FeaturedArticle from './FeaturedArticle';
 import {ListGroup} from '../shared/ListGroup';
@@ -18,7 +18,7 @@ interface ArticlesContentProps {
 }
 
 export default function ArticlesContent({allPosts, featuredPosts}: ArticlesContentProps) {
-  const lottieRef = useRef<any>(null);
+  const lottieRef = useRef<LottieHandle>(null);
   const [hovered, setHovered] = useState<string | number>('');
   const [hoveredList, setHoveredList] = useState<string | number>('');
   const filteredPosts = allPosts.filter((post: BlogPost) => post && post.slug && !post.skip);
@@ -68,7 +68,7 @@ export default function ArticlesContent({allPosts, featuredPosts}: ArticlesConte
       <Box className={styles.emptyState}>
         <div className={styles.emptyStateIcon}>
           <div className={styles.emptyStateLottie}>
-            <Lottie lottieRef={lottieRef} animationData={articlesIcon} loop={true} autoplay={true} />
+            <Lottie lottieRef={lottieRef} src={articlesIcon} loop={true} autoplay={true} />
           </div>
         </div>
         <h1>No articles yet</h1>

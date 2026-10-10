@@ -10,7 +10,7 @@ import type {AboutItem} from './types/AboutItem';
 import items from '@/data/about';
 import communityItems from '@/data/community';
 import educationItems from '@/data/education';
-import Lottie from 'lottie-react';
+import {Lottie, type LottieHandle} from 'lottie-react';
 import copyBioIcon from '../../public/static/icons/copy-bio.json';
 import downloadIcon from '../../public/static/icons/download.json';
 import styles from './AboutPage.module.css';
@@ -40,8 +40,8 @@ export default function AboutPage() {
   const [toastTitle, setToastTitle] = React.useState('');
   const [toastDescription, setToastDescription] = React.useState('');
   const [showToast, setShowToast] = React.useState(false);
-  const copyBioRef = React.useRef<any>(null);
-  const downloadRef = React.useRef<any>(null);
+  const copyBioRef = React.useRef<LottieHandle>(null);
+  const downloadRef = React.useRef<LottieHandle>(null);
 
   const renderIntro = () => {
     return (
@@ -93,7 +93,7 @@ export default function AboutPage() {
               <Lottie
                 lottieRef={copyBioRef}
                 style={{width: 24, height: 24, marginRight: 8}}
-                animationData={copyBioIcon}
+                src={copyBioIcon}
                 loop={false}
                 autoplay={false}
               />
@@ -125,7 +125,7 @@ export default function AboutPage() {
                 <Lottie
                   lottieRef={downloadRef}
                   style={{width: 24, height: 24}}
-                  animationData={downloadIcon}
+                  src={downloadIcon}
                   loop={false}
                   autoplay={false}
                 />

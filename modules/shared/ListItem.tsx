@@ -2,7 +2,7 @@ import {useRef, useState} from 'react';
 import React from 'react';
 import Link from 'next/link';
 import {motion, AnimatePresence} from 'motion/react';
-import Lottie from 'lottie-react';
+import {Lottie, type LottieHandle} from 'lottie-react';
 import {useTheme} from '@/modules/theme/ThemeProvider';
 import podcastsIcon from '../../public/static/icons/podcasts.json';
 import BlogDate from './BlogDate';
@@ -21,7 +21,7 @@ interface ListItemProps {
 }
 
 export default function ListItem(props: ListItemProps) {
-  const lottieRef = useRef<any>(null);
+  const lottieRef = useRef<LottieHandle>(null);
   if (props.href.charAt(0) === '/' && !props.href.includes('/podcasts/')) {
     return (
       <li className={`${styles.item} ${styles.articleItem}`}>
@@ -52,7 +52,7 @@ export default function ListItem(props: ListItemProps) {
                 <span className={styles.podcastIcon}>
                   <Lottie
                     lottieRef={lottieRef}
-                    animationData={podcastsIcon}
+                    src={podcastsIcon}
                     loop
                     autoplay={false}
                     style={{width: 24, height: 24}}
@@ -97,7 +97,7 @@ export default function ListItem(props: ListItemProps) {
               <span className={styles.podcastIcon}>
                 <Lottie
                   lottieRef={lottieRef}
-                  animationData={podcastsIcon}
+                  src={podcastsIcon}
                   loop
                   autoplay={false}
                   style={{width: 24, height: 24}}

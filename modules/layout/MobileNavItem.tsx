@@ -3,7 +3,7 @@
 import {useRef} from 'react';
 import Link from 'next/link';
 import {motion} from 'motion/react';
-import Lottie, {type LottieRefCurrentProps} from 'lottie-react';
+import {Lottie, type LottieHandle} from 'lottie-react';
 import clsx from 'clsx';
 import styles from './Navbar.module.css';
 
@@ -18,7 +18,7 @@ interface MobileNavItemProps {
 }
 
 export default function MobileNavItem({page, path, index, isActive, iconData, iconSize, onClick}: MobileNavItemProps) {
-  const iconRef = useRef<LottieRefCurrentProps>(null);
+  const iconRef = useRef<LottieHandle>(null);
 
   return (
     <motion.li
@@ -36,7 +36,7 @@ export default function MobileNavItem({page, path, index, isActive, iconData, ic
       >
         {iconData && (
           <span className={styles.mobileNavIcon}>
-            <Lottie lottieRef={iconRef} animationData={iconData} loop={false} autoplay={false} style={iconSize} />
+            <Lottie lottieRef={iconRef} src={iconData} loop={false} autoplay={false} style={iconSize} />
           </span>
         )}
         <span>{page}</span>
