@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "pagefind --site .next/server/app --output-path public/pagefind",
     "start": "next start",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
@@ -66,6 +67,7 @@
     "lint-staged": "17.6.0",
     "oxfmt": "0.72.0",
     "oxlint": "1.87.0",
+    "pagefind": "1.5.2",
     "sharp": "0.35.5",
     "typescript": "7.0.2"
   }

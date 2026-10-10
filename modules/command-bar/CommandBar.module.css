@@ -48,17 +48,48 @@
 .action {
   display: flex;
   gap: 8px;
-  align-items: center;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.icon {
+  display: flex;
+  flex-shrink: 0;
+  margin-right: 4px;
 }
 
 .actionRow {
   display: flex;
   flex-direction: column;
+  min-width: 0;
+}
+
+/* Same height as the icon, so the title stays level with it now that the icon is top-aligned */
+.name {
+  line-height: 24px;
+}
+
+.excerpt {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.4;
+  /* Fades the text only. Opacity on the parent would also dim the highlighted matches. */
+  color: color-mix(in srgb, var(--color-secondary) 70%, transparent);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.mark {
+  background: transparent;
+  color: var(--color-pink);
 }
 
 .animator {
   background-color: var(--color-modal-bg);
-  max-width: 600px;
+  max-width: 760px;
   width: 100%;
   color: var(--color-primary);
   border-radius: 8px;
