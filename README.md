@@ -8,12 +8,12 @@ This portfolio is built with modern web technologies:
 
 - ⚡ **[Next.js 16](https://nextjs.org)** - React framework with App Router
 - ⚛️ **[React 19](https://react.dev)** - Latest React with compiler
-- 🎨 **[Framer Motion](https://www.framer.com/motion/)** - Smooth animations
+- 🎨 **[Motion](https://motion.dev/)** - Smooth animations
 - 🔍 **[nuqs](https://nuqs.47ng.com/)** - Type-safe URL search params
-- 📝 **[Remark](https://remark.js.org/)** - Markdown processing for blog posts
+- 📝 **[MDX](https://mdxjs.com/)** - Blog posts with `next-mdx-remote`, Shiki syntax highlighting and `rehype-slug`
 - 🎭 **[Lottie](https://airbnb.io/lottie/)** - Interactive animations
 - 🎯 **[Radix UI](https://www.radix-ui.com/)** - Accessible UI components
-- 🧹 **[Biome](https://biomejs.dev/)** - Fast linting & formatting
+- 🧹 **[Oxlint](https://oxc.rs/docs/guide/usage/linter)** & **[Oxfmt](https://oxc.rs/docs/guide/usage/formatter)** - Fast linting & formatting
 - 📦 **[pnpm](https://pnpm.io/)** - Efficient package manager
 
 ## ✨ Features
@@ -23,7 +23,7 @@ This portfolio is built with modern web technologies:
 - 🎙️ **Podcasts** - Tech podcast appearances
 - 💼 **Projects** - Showcase of open-source and personal projects
 - ℹ️ **About** - Career, community involvement, and education
-- 🔎 **Command Bar** - Quick navigation with `Cmd+K`
+- 🔎 **Command Bar** - Quick navigation and full-text search of talks, articles and podcasts with `Cmd+K` (`kbar` + [Pagefind](https://pagefind.app/))
 - 🌐 **SEO Optimized** - OpenGraph, JSON-LD, and sitemap
 - ⚡ **Performance** - Optimized images, fonts, and code splitting
 
@@ -32,7 +32,7 @@ This portfolio is built with modern web technologies:
 ### Prerequisites
 
 - Node.js >= 24.x
-- pnpm >= 8.x
+- pnpm >= 12.x
 
 ### Installation
 
@@ -43,7 +43,7 @@ pnpm install
 # Run development server
 pnpm dev
 
-# Build for production
+# Build for production (generates icons, then the search index)
 pnpm build
 
 # Start production server
@@ -60,7 +60,8 @@ mickaelalvs.dev/
 ├── modules/          # React components organized by feature
 ├── data/             # Content data (talks, projects, etc.)
 ├── articles/         # Markdown blog posts
-├── lib/              # Utility functions
+├── lib/              # Blog, JSON-LD and Shiki helpers
+├── scripts/          # Icon generation and search index build
 ├── public/           # Static assets
 └── utils/            # Helper utilities
 ```
@@ -71,8 +72,14 @@ mickaelalvs.dev/
 # Lint code
 pnpm lint
 
+# Lint and auto-fix
+pnpm lint:fix
+
 # Format code
 pnpm format
+
+# Check formatting (used in CI)
+pnpm format:check
 ```
 
 ## Credits
