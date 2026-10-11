@@ -2,7 +2,7 @@
   "name": "mickaelalvs",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@10.34.5",
+  "packageManager": "pnpm@12.11.2",
   "engines": {
     "node": ">=24.x"
   },
