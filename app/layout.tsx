@@ -7,7 +7,7 @@ import {NuqsAdapter} from 'nuqs/adapters/next/app';
 import {Analytics} from '@vercel/analytics/next';
 
 import '../public/static/css/globals.css';
-import 'remixicon/fonts/remixicon.css';
+import './icons.css';
 
 export const viewport: Viewport = {
   themeColor: '#f4f4f5',
@@ -30,26 +30,12 @@ export const metadata: Metadata = {
     title: 'Mickaël Alves',
     description:
       'Lead Frontend at Zenika & Bedrock Streaming. Passionate about web, frontend, tooling and DevEx. Speaker, co-organizer of LyonJS & DevFest Lyon.',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Mickaël Alves',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Mickaël Alves',
     description:
       'Lead Frontend at Zenika & Bedrock Streaming. Passionate about web, frontend, tooling and DevEx. Speaker, co-organizer of LyonJS & DevFest Lyon.',
-    images: ['/og-image.png'],
-  },
-  icons: {
-    icon: '/favicon.ico',
-    shortcut: '/avatar.png',
-    apple: '/avatar.png',
   },
 };
 

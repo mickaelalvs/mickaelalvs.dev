@@ -2,38 +2,39 @@
 
 import {isValidElement, useRef, useState} from 'react';
 import type {ComponentPropsWithoutRef} from 'react';
-import {TypeScriptIcon} from './TypeScriptIcon';
 import styles from './CodeBlock.module.css';
+import './code-icons.css';
 
 type CodeBlockProps = ComponentPropsWithoutRef<'pre'> & {icon?: string};
 
 const LANGUAGE_ICONS: Record<string, string> = {
-  bash: 'ri-terminal-line',
-  sh: 'ri-terminal-line',
-  shell: 'ri-terminal-line',
-  html: 'ri-html5-line',
-  css: 'ri-css3-line',
-  js: 'ri-javascript-line',
-  javascript: 'ri-javascript-line',
-  mjs: 'ri-javascript-line',
-  jsx: 'ri-reactjs-line',
-  tsx: 'ri-reactjs-line',
-  vue: 'ri-vuejs-line',
-  svelte: 'ri-svelte-line',
-  json: 'ri-braces-line',
-  md: 'ri-markdown-line',
-  mdx: 'ri-markdown-line',
+  bash: 'si-gnubash',
+  sh: 'si-gnubash',
+  shell: 'si-gnubash',
+  html: 'si-html5',
+  css: 'si-css3',
+  js: 'si-javascript',
+  javascript: 'si-javascript',
+  mjs: 'si-javascript',
+  jsx: 'si-react',
+  tsx: 'si-react',
+  ts: 'si-typescript',
+  typescript: 'si-typescript',
+  vue: 'si-vuedotjs',
+  svelte: 'si-svelte',
+  json: 'si-json',
+  md: 'si-markdown',
+  mdx: 'si-markdown',
 };
 
 function LanguageBadge({language}: {language: string}) {
   const iconClass = LANGUAGE_ICONS[language];
-  const isTypeScript = language === 'ts' || language === 'typescript';
 
-  if (!iconClass && !isTypeScript) return <span className={styles.language}>{language}</span>;
+  if (!iconClass) return <span className={styles.language}>{language}</span>;
 
   return (
     <span className={`${styles.language} ${styles.languageIcon}`} role="img" aria-label={language} title={language}>
-      {isTypeScript ? <TypeScriptIcon /> : <i className={iconClass} aria-hidden="true" />}
+      <i className={iconClass} aria-hidden="true" />
     </span>
   );
 }

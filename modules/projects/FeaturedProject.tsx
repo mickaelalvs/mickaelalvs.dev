@@ -1,6 +1,6 @@
 'use client';
 
-import {useState, useRef, useEffect} from 'react';
+import {useState, useRef} from 'react';
 import React from 'react';
 import {motion} from 'motion/react';
 import {Lottie, type LottieHandle} from 'lottie-react';
@@ -14,23 +14,6 @@ import figIcon from '../../public/static/icons/fig.json';
 import langbaseIcon from '../../public/static/icons/langbase.json';
 import dubIcon from '../../public/static/icons/dub.json';
 
-function useGithubStars(url: string | null): number | null {
-  const [count, setCount] = useState<number | null>(null);
-
-  useEffect(() => {
-    if (!url) return;
-    const match = url.match(/github\.com\/([^/]+\/[^/]+)/);
-    if (!match) return;
-
-    fetch(`https://api.github.com/repos/${match[1]}`)
-      .then((res) => res.json())
-      .then((data) => setCount(data.stargazers_count ?? null))
-      .catch(() => {});
-  }, [url]);
-
-  return count;
-}
-
 const iconMap = {
   remotion: remotionIcon,
   moon: moonIcon,
@@ -43,6 +26,7 @@ const iconMap = {
 
 interface FeaturedProjectProps {
   project: Project;
+  stars?: number;
   index: string | number;
   hovered?: string | number;
   setHovered?: (value: string | number) => void;
@@ -55,7 +39,6 @@ export default function FeaturedProject(props: FeaturedProjectProps) {
 
   const icon = iconMap[project.icon] || sourceIcon;
   const iconRef = useRef<LottieHandle>(null);
-  const starCount = useGithubStars(project.stars ? project.url : null);
 
   return (
     <a
@@ -69,7 +52,7 @@ export default function FeaturedProject(props: FeaturedProjectProps) {
       <Animation index={props.index} hovered={props.hovered} setHovered={props.setHovered} layoutId={props.layoutId}>
         <div className={styles.iconRow}>
           <Lottie lottieRef={iconRef} style={{width: 24, height: 24}} src={icon} loop={false} autoplay={false} />
-          {starCount !== null && <p className={styles.stars}>★ {starCount}</p>}
+          {props.stars !== undefined && <p className={styles.stars}>★ {props.stars}</p>}
         </div>
         <div className={styles.body}>
           <p className={styles.title}>{project.title}</p>

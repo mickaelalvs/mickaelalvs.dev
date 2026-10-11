@@ -36,8 +36,8 @@ export const talks: Talk[] = [
   McpAppsReactEtLlmCommentCreerSonAppDansClaudeEtChatGpt,
 ];
 
-export const workshops: Workshop[] = [VoyageAuCoeurDappwrite];
+const workshops: Workshop[] = [VoyageAuCoeurDappwrite];
 
-export type Speaking = Talk | Workshop;
+type Speaking = Talk | Workshop;
 
 export const speaking: Speaking[] = [...talks, ...workshops];

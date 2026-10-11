@@ -8,7 +8,7 @@ import {FeaturedProjects} from './FeaturedProjects';
 import items from '@/data/projects';
 import styles from './ProjectsPage.module.css';
 
-export default function ProjectsPage() {
+export default function ProjectsPage({stars = {}}: {stars?: Record<string, number>}) {
   const [hovered, setHovered] = useState<string | number>('');
 
   const featured = ['Shortvid.io', 'slidev-addon-livecode', 'Code In The Dark'];
@@ -17,7 +17,14 @@ export default function ProjectsPage() {
     return items
       .filter((project) => featured.includes(project.title))
       .map((project, index) => (
-        <FeaturedProject key={index} index={index} project={project} hovered={hovered} setHovered={setHovered} />
+        <FeaturedProject
+          key={index}
+          index={index}
+          project={project}
+          stars={stars[project.url]}
+          hovered={hovered}
+          setHovered={setHovered}
+        />
       ));
   };
 
@@ -27,6 +34,7 @@ export default function ProjectsPage() {
         key={index}
         index={`all-${index}`}
         project={project}
+        stars={stars[project.url]}
         className={styles.projectCard}
         layoutId="allProjects"
       />

@@ -65,7 +65,7 @@ export default async function BlogPostPage({slug}: {slug: string}) {
   const description = post.description || '';
   const url = `https://mickaelalvs.dev/articles/${post.slug}`;
   const date = toISODate(post.date);
-  const image = post.image ? `https://mickaelalvs.dev${post.image}` : 'https://mickaelalvs.dev/og-image.png';
+  const image = post.image ? `https://mickaelalvs.dev${post.image}` : `${url}/opengraph-image`;
 
   const jsonLd = createArticleJsonLd({
     title,

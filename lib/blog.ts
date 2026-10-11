@@ -18,7 +18,7 @@ export interface BlogPost {
 
 const postsDirectory = join(process.cwd(), 'articles');
 
-export function getPostSlugs(): string[] {
+function getPostSlugs(): string[] {
   return fs.readdirSync(postsDirectory).filter((file) => file.endsWith('.mdx'));
 }
 

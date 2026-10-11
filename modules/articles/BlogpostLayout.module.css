@@ -78,9 +78,6 @@
 
 .postImage {
   background-color: #141618;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   position: fixed;
   opacity: 0.4;
   width: 100%;
@@ -89,6 +86,11 @@
   left: 0;
   z-index: 1;
   will-change: transform;
+}
+
+.postImageImg {
+  object-fit: cover;
+  object-position: center;
 }
 
 .postImage::after {
