@@ -50,6 +50,12 @@
 .imageContainer .image {
   object-fit: cover;
   filter: grayscale(1);
+  transition: filter 0.3s ease-in-out;
+}
+
+.article:hover .imageContainer .image,
+.article:focus-visible .imageContainer .image {
+  filter: grayscale(0);
 }
 
 .content {
