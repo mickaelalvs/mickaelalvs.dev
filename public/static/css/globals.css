@@ -136,9 +136,7 @@
    ============================================ */
 @font-face {
   font-family: 'Neuzeit Grotesk Bold';
-  src:
-    url('/static/font/NeuzeitGrotesk-Bold.woff2') format('woff2'),
-    url('/static/font/NeuzeitGrotesk-Bold.woff') format('woff');
+  src: url('/static/font/NeuzeitGrotesk-Bold.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -146,9 +144,7 @@
 
 @font-face {
   font-family: 'Biotif';
-  src:
-    url('/static/font/Biotif-Bold.woff2') format('woff2'),
-    url('/static/font/Biotif-Bold.woff') format('woff');
+  src: url('/static/font/Biotif-Bold.woff2') format('woff2');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -156,9 +152,7 @@
 
 @font-face {
   font-family: 'Biotif';
-  src:
-    url('/static/font/Biotif-Book.woff2') format('woff2'),
-    url('/static/font/Biotif-Book.woff') format('woff');
+  src: url('/static/font/Biotif-Book.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -166,11 +160,17 @@
 
 @font-face {
   font-family: 'Biotif';
-  src:
-    url('/static/font/Biotif-Regular.woff2') format('woff2'),
-    url('/static/font/Biotif-Regular.woff') format('woff');
+  src: url('/static/font/Biotif-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Biotif';
+  src: url('/static/font/Biotif-RegularItalic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
   font-display: swap;
 }
 
