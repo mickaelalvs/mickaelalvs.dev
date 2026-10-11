@@ -62,10 +62,3 @@
   top: 0;
   width: 100%;
 }
-
-.postContent :global(.post-image-caption) {
-  color: var(--color-secondary);
-  text-align: center;
-  font-style: italic;
-  font-size: 14px;
-}

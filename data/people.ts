@@ -5,7 +5,7 @@ export interface Person {
   social?: string;
 }
 
-export const jf_farge: Person = {
+const jf_farge: Person = {
   id: 'jf_farge',
   name: 'Jean-François Farge',
   picture: 'https://github.com/slumbering.png',
@@ -95,10 +95,6 @@ const people: Record<string, Person> = {
   h_sablonniere,
   m_mure,
 };
-
-export function getPerson(id: string): Person | undefined {
-  return people[id];
-}
 
 export function getPeople(ids: string[]): Person[] {
   return ids.map((id) => people[id]).filter(Boolean);
