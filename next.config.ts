@@ -74,6 +74,7 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     optimizePackageImports: ['lottie-react', 'motion/react', 'date-fns'],
+    cssChunking: 'graph',
   },
   compress: true,
   poweredByHeader: false,

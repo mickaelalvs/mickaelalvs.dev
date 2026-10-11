@@ -15,6 +15,7 @@ import ArticleTags from './ArticleTags';
 import ReadingProgress from './ReadingProgress';
 import TableOfContents from './TableOfContents';
 import styles from './BlogpostLayout.module.css';
+import './article-code.css';
 import type {Person} from '@/data/people';
 import type {HeadingItem} from '@/lib/extract-headings';
 
