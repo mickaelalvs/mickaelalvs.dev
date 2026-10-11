@@ -55,11 +55,6 @@
   line-height: 1;
 }
 
-.languageIcon svg {
-  width: 14px;
-  height: 14px;
-}
-
 .copyButton {
   position: absolute;
   top: 12px;

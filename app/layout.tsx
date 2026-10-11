@@ -7,7 +7,7 @@ import {NuqsAdapter} from 'nuqs/adapters/next/app';
 import {Analytics} from '@vercel/analytics/next';
 
 import '../public/static/css/globals.css';
-import 'remixicon/fonts/remixicon.css';
+import './icons.css';
 
 export const viewport: Viewport = {
   themeColor: '#f4f4f5',
