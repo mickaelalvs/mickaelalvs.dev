@@ -136,9 +136,7 @@
    ============================================ */
 @font-face {
   font-family: 'Neuzeit Grotesk Bold';
-  src:
-    url('/static/font/NeuzeitGrotesk-Bold.woff2') format('woff2'),
-    url('/static/font/NeuzeitGrotesk-Bold.woff') format('woff');
+  src: url('/static/font/NeuzeitGrotesk-Bold.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -146,9 +144,7 @@
 
 @font-face {
   font-family: 'Biotif';
-  src:
-    url('/static/font/Biotif-Bold.woff2') format('woff2'),
-    url('/static/font/Biotif-Bold.woff') format('woff');
+  src: url('/static/font/Biotif-Bold.woff2') format('woff2');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -156,9 +152,7 @@
 
 @font-face {
   font-family: 'Biotif';
-  src:
-    url('/static/font/Biotif-Book.woff2') format('woff2'),
-    url('/static/font/Biotif-Book.woff') format('woff');
+  src: url('/static/font/Biotif-Book.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -166,9 +160,7 @@
 
 @font-face {
   font-family: 'Biotif';
-  src:
-    url('/static/font/Biotif-Regular.woff2') format('woff2'),
-    url('/static/font/Biotif-Regular.woff') format('woff');
+  src: url('/static/font/Biotif-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -176,12 +168,35 @@
 
 @font-face {
   font-family: 'Biotif';
-  src:
-    url('/static/font/Biotif-RegularItalic.woff2') format('woff2'),
-    url('/static/font/Biotif-RegularItalic.woff') format('woff');
+  src: url('/static/font/Biotif-RegularItalic.woff2') format('woff2');
   font-weight: normal;
   font-style: italic;
   font-display: swap;
+}
+
+/* ============================================
+   Entrance animation
+   CSS-only so content never waits for hydration to become visible (LCP).
+   ============================================ */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise-in {
+  animation: rise-in 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise-in {
+    animation: none;
+  }
 }
 
 /* ============================================
@@ -227,115 +242,6 @@ figure {
 
 twitterwidget {
   margin: 0 auto;
-}
-
-code {
-  background: var(--color-code-background);
-  border-radius: var(--radius-border-radius);
-  color: var(--color-primary);
-  font-family: var(--font-code);
-  font-size: 15px;
-}
-
-:not(pre) > code {
-  padding: 4px;
-}
-
-pre {
-  border-radius: 8px;
-  padding: 20px 0;
-  overflow-x: auto;
-  margin: 20px 0;
-  border: 1px solid var(--color-hover);
-}
-
-pre code {
-  background: transparent;
-  padding: 0;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.6;
-  tab-size: 4;
-  -moz-tab-size: 4;
-}
-
-/* Shiki dual theme support */
-.shiki,
-.shiki code,
-.shiki .line,
-.shiki span {
-  font-family: var(--font-code);
-}
-
-.shiki {
-  background-color: var(--shiki-dark-bg);
-}
-
-.shiki,
-.shiki span {
-  color: var(--shiki-dark);
-}
-
-[data-theme='light'] .shiki {
-  background-color: var(--shiki-light-bg);
-}
-
-[data-theme='light'] .shiki,
-[data-theme='light'] .shiki span {
-  color: var(--shiki-light);
-}
-
-/* Shiki line gutter (line numbers + highlight/diff) */
-.shiki code {
-  counter-reset: line;
-}
-
-.shiki .line {
-  display: inline-block;
-  box-sizing: border-box;
-  min-width: 100%;
-  padding: 0 30px;
-}
-
-.shiki .line::before {
-  counter-increment: line;
-  content: counter(line);
-  display: inline-block;
-  width: 2rem;
-  margin-right: 1.5rem;
-  text-align: right;
-  color: var(--color-secondary);
-  opacity: 0.5;
-  user-select: none;
-}
-
-.shiki[data-numbers='false'] .line::before {
-  content: none;
-}
-
-.shiki .line.highlighted {
-  background: var(--color-purple-30);
-  box-shadow: inset 5px 0 0 0 var(--color-purple);
-}
-
-.shiki .line.diff.add {
-  background: var(--color-green-30);
-}
-
-.shiki .line.diff.add::before {
-  content: '+';
-  color: var(--color-green);
-  opacity: 1;
-}
-
-.shiki .line.diff.remove {
-  background: var(--color-red-30);
-}
-
-.shiki .line.diff.remove::before {
-  content: '-';
-  color: var(--color-red);
-  opacity: 1;
 }
 
 h1 {

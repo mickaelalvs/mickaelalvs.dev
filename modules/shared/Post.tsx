@@ -1,23 +1,5 @@
-'use client';
-
 import React, {ReactNode, HTMLAttributes} from 'react';
-import {motion} from 'motion/react';
 import styles from './Post.module.css';
-
-const itemVariants = {
-  hidden: {
-    opacity: 0,
-    y: 12,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: [0.25, 0.1, 0.25, 1] as const,
-    },
-  },
-};
 
 interface PostComponentProps extends HTMLAttributes<HTMLElement> {
   children: ReactNode;
@@ -43,9 +25,9 @@ export const PostContainer = ({children, className}: HTMLAttributes<HTMLDivEleme
   return (
     <div className={className ?? styles.postContainer}>
       {React.Children.map(children, (child, index) => (
-        <motion.div key={index} variants={itemVariants} initial="hidden" whileInView="visible" viewport={{once: true}}>
+        <div key={index} className="rise-in">
           {child}
-        </motion.div>
+        </div>
       ))}
     </div>
   );

@@ -1,12 +1,11 @@
 'use client';
 
 import {ReactNode, useEffect, useRef, useState} from 'react';
-import {motion} from 'motion/react';
+import Image from 'next/image';
 import Footer from '../layout/Footer';
 import BackLink from '../shared/BackLink';
 import BlogDate from '../shared/BlogDate';
 import articlesIcon from '../../public/static/icons/articles.json';
-import {riseIn} from '../shared/riseIn';
 import {Post, PostMain, PostContent, PostContainer} from '../shared/Post';
 import {Wrapper} from '../layout/Wrapper';
 import PageTransition from '../layout/PageTransition';
@@ -16,6 +15,7 @@ import ArticleTags from './ArticleTags';
 import ReadingProgress from './ReadingProgress';
 import TableOfContents from './TableOfContents';
 import styles from './BlogpostLayout.module.css';
+import './article-code.css';
 import type {Person} from '@/data/people';
 import type {HeadingItem} from '@/lib/extract-headings';
 
@@ -95,17 +95,10 @@ export default function BlogpostLayout({
         <Main image={image}>
           {image && (
             <div className={styles.postHeader}>
-              <motion.h1 className={`${styles.postTitle} ${styles.postHeaderTitle}`} {...riseIn}>
-                {title}
-              </motion.h1>
-              <div
-                ref={imageRef}
-                className={styles.postImage}
-                style={{
-                  backgroundImage: image ? `url(${image})` : undefined,
-                  transform,
-                }}
-              />
+              <h1 className={`${styles.postTitle} ${styles.postHeaderTitle} rise-in`}>{title}</h1>
+              <div ref={imageRef} className={styles.postImage} style={{transform}}>
+                <Image src={image} alt="" fill priority sizes="100vw" quality={60} className={styles.postImageImg} />
+              </div>
               <h2 className={`${styles.postSubtitle} ${styles.postHeaderSubtitle}`}>
                 {date && <BlogDate dateString={date} readingTime={readingTime} />}
               </h2>

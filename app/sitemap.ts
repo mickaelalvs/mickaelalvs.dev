@@ -1,6 +1,7 @@
 import {MetadataRoute} from 'next';
 import {getAllPosts} from '@/lib/blog';
 import {speaking as talks} from '../data/speaking';
+import {podcasts} from '../data/podcasts';
 import {generateSlug} from '@/utils/slug';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -63,7 +64,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  const podcasts = talks.filter((t) => t.format === 'Podcast');
   const podcastPages = podcasts.map((podcast) => ({
     url: `${baseUrl}/podcasts/${generateSlug(podcast.title)}`,
     lastModified: new Date(),
