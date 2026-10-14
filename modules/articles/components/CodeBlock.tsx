@@ -72,7 +72,7 @@ export function CodeBlock({children, className, title, icon, ...props}: CodeBloc
         <pre ref={preRef} className={`${className ?? ''} ${styles.pre}`} {...props}>
           {children}
         </pre>
-        {language && <LanguageBadge language={language} />}
+        {language && !(title && titleIcon) && <LanguageBadge language={language} />}
       </div>
     </div>
   );

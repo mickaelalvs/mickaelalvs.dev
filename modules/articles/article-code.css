@@ -12,6 +12,18 @@ code {
   padding: 4px;
 }
 
+a:has(> code) {
+  border-bottom: none;
+}
+
+a > code {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 0.5px;
+  text-decoration-color: currentColor;
+  text-underline-offset: 4px;
+}
+
 pre {
   border-radius: 8px;
   padding: 20px 0;

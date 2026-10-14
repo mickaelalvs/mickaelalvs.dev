@@ -10,6 +10,8 @@ interface ImageExpandableProps {
   expandable?: boolean;
   accentBorder?: boolean;
   border?: boolean;
+  center?: boolean;
+  displayWidth?: string;
   caption?: string;
   width?: number;
   height?: number;
@@ -24,6 +26,8 @@ export function ImageExpandable({
   expandable = true,
   accentBorder = false,
   border = false,
+  center = false,
+  displayWidth,
   caption,
   width = 1200,
   height = 675,
@@ -47,13 +51,13 @@ export function ImageExpandable({
     .join(' ');
 
   return (
-    <figure className={styles.figure}>
+    <figure className={center ? `${styles.figure} ${styles.figureCenter}` : styles.figure}>
       <div className={wrapperClass}>
         <Image
           src={src}
           alt={alt}
           className={imageClass}
-          style={style}
+          style={displayWidth ? {...style, width: displayWidth, minWidth: 0, maxWidth: '100%'} : style}
           width={width}
           height={height}
           sizes={full ? '(min-width: 1024px) 70vw, 100vw' : '100vw'}

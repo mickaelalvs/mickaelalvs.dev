@@ -3,6 +3,10 @@
   margin: 0;
 }
 
+.figureCenter {
+  text-align: center;
+}
+
 .wrapper {
   position: relative;
   display: inline-block;
