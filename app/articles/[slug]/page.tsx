@@ -41,6 +41,8 @@ export async function generateMetadata({params}: {params: Promise<{slug: string}
       },
       openGraph: {
         type: 'article',
+        siteName: 'Mickaël Alves',
+        locale: 'en_US',
         title: ogTitle,
         description,
         url,
