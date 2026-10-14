@@ -1,7 +1,7 @@
 ---
-title: 'Your teams deserve devtools'
-seoTitle: 'Your teams deserve devtools: TanStack Devtools and Devframe'
-description: 'Five floating panels, zero coordination. TanStack Devtools gives them one home, Devframe lets you build them anywhere, for humans and for agents.'
+title: 'Your teams deserve DevTools'
+seoTitle: 'Your teams deserve DevTools: TanStack and Devframe'
+description: 'Five floating panels, zero coordination. TanStack Devtools gives them one home, Devframe lets you build them anywhere.'
 slug: your-teams-deserve-devtools
 image: /static/images/articles/your-teams-deserve-devtools/hero.avif
 thumbnail: /static/images/articles/your-teams-deserve-devtools/thumbnail.avif
@@ -15,17 +15,17 @@ language: en
 
 <br />
 
-A devtool makes implicit state visible. Why is this query stale? Which config applies to this file? How did the bundler transform this module? You stop guessing and look.
+A DevTool makes implicit state visible. Why is this query stale? Which config applies to this file? How did the bundler transform this module? You stop guessing and look.
 
 Modern tools rarely ship without one anymore. TanStack Query and Router, Redux, React Hook Form, Vue and Nuxt DevTools, Vite DevTools, ESLint Config Inspector, the Oxc Inspector... And those are only the ones someone else wrote. Building your own isn't an exotic idea either. [Kent C. Dodds was already writing about it years ago](https://kentcdodds.com/blog/make-your-own-dev-tools), with feature toggles, form autofill and backend switching, all hand-rolled.
 
-So you end up with two families. The devtools your libraries ship, and the ones your team builds for its own product. Neither knows the other exists. A browser extension here, a floating button injected into your app there, a URL logged in the terminal, a homemade console command for the rest.
+So you end up with two families. The DevTools your libraries ship, and the ones your team builds for its own product. Neither knows the other exists. A browser extension here, a floating button injected into your app there, a URL logged in the terminal, a homemade console command for the rest.
 
 Taken one by one, each of these tools improves DevEx. Stacked with no coordination, they do the opposite. You can't see your screen anymore, and you spend more time closing panels than debugging.
 
 <PanelChaosDemo />
 
-This article is about putting all of them in one place, the devtools you install and the ones you build.
+This article is about putting all of them in one place, the DevTools you install and the ones you build.
 
 ## 🧰 What a team actually needs
 
@@ -33,15 +33,15 @@ This article is about putting all of them in one place, the devtools you install
 
 I work on a Platform Frontend team. We look after a large monorepo with several apps, shared packages, a design system, and **dozens of developers** working in it every day.
 
-That monorepo keeps gaining tools. Every migration brings one in, and each new data-fetching library, router or bundler ships its own devtools. Good news, until you count them.
+That monorepo keeps gaining tools. Every migration brings one in, and each new data-fetching library, router or bundler ships its own DevTools. Good news, until you count them.
 
 When we bring in a tool or a feature, we want it to land with the best DevEx we can give it, not with a README page explaining which snippet to paste in the console. At this scale, every bit of friction gets multiplied by dozens of developers and several apps.
 
-Official devtools cover the libraries. They don't cover your product. We also wanted panels for an analytics event log, feature flipping shortcuts, the current page layout, and our own state. Until now, we built that plumbing by hand, for every new need, in every app.
+Official DevTools cover the libraries. They don't cover your product. We also wanted panels for an analytics event log, feature flipping shortcuts, the current page layout, and our own state. Until now, we built that plumbing by hand, for every new need, in every app.
 
 So the requirements were short:
 
-- one shared shell for the devtools we install and the ones we build, instead of five floating panels
+- one shared shell for the DevTools we install and the ones we build, instead of five floating panels
 - custom panels written as regular components, in each team's framework
 - a way to move data across tabs and out to the dev server
 - zero cost in production
@@ -52,7 +52,7 @@ So the requirements were short:
 
 [TanStack Devtools](https://tanstack.com/devtools/latest) goes after exactly this. Its docs sum it up in one line: _"Build the inspector, not another debugging shell."_
 
-It's a framework-agnostic shell that any library or team can plug a panel into. Official devtools like Query, Router or Form are plugins, and so are yours. Under the hood, there are three layers:
+It's a framework-agnostic shell that any library or team can plug a panel into. Official DevTools like Query, Router or Form are plugins, and so are yours. Under the hood, there are three layers:
 
 - **framework adapters** (`@tanstack/react-devtools`, `@tanstack/vue-devtools`...) that expose the API in your framework
 - **the core shell** (`@tanstack/devtools`), written in Solid.js, whatever your app uses, which handles plugins, tabs, settings and shortcuts
@@ -73,7 +73,7 @@ The _plugin workspace_ tiles several plugins into resizable panels, mini-IDE sty
 It supports React, Vue, Solid, Svelte, Angular, Preact and vanilla JS. A plugin is a component in your framework, so a React team ships a React component and a Vue team a Vue one, in the same shell.
 
 <Callout type="info">
-  **Zero-cost in production by default.** `removeDevtoolsOnBuild` defaults to `true`, so devtools never reach the
+  **Zero-cost in production by default.** `removeDevtoolsOnBuild` defaults to `true`, so DevTools never reach the
   production bundle. For your own panels, `@tanstack/devtools-utils` has `createReactPlugin`-style factories that return
   a no-op twin.
 </Callout>
@@ -99,7 +99,7 @@ No class to extend. In our case, `FeatureFlippingPanel` is a plain React compone
 
 ### Reading from an existing store
 
-If a store already runs in your app (Redux, Zustand, Jotai...) and the devtools sit inside its `<Provider>`, the panel subscribes like any other consumer. That's the easy path. It stops at the tab, though. Anything that has to cross tabs or reach the dev server needs something else.
+If a store already runs in your app (Redux, Zustand, Jotai...) and the DevTools sit inside its `<Provider>`, the panel subscribes like any other consumer. That's the easy path. It stops at the tab, though. Anything that has to cross tabs or reach the dev server needs something else.
 
 ### Going through the event bus
 
@@ -168,9 +168,9 @@ Browser `console.log` calls get the same treatment, with a clickable `file:line`
 
 <br />
 
-TanStack Devtools fixes the problem inside your app's page. The same fragmentation exists one level down, in the tools themselves. Every devtool rebuilds its own RPC, state sync and web UI, wired to one framework's dev server, and the next framework rebuilds it slightly differently.
+TanStack Devtools fixes the problem inside your app's page. The same fragmentation exists one level down, in the tools themselves. Every DevTool rebuilds its own RPC, state sync and web UI, wired to one framework's dev server, and the next framework rebuilds it slightly differently.
 
-[Devframe](https://devfra.me/) tackles that. The idea started with Nuxt DevTools, took shape in Vite DevTools at Vercel, and Devframe hit **v1.0** in September 2026. It's a framework for building devtools, the way Nuxt or Next.js is a framework for building web apps. In [the announcement post](https://devfra.me/posts/pluggable-extensible-playful-devtools), [Anthony Fu](https://github.com/antfu) compares its adapter layer to [unplugin](https://unplugin.unjs.io/): bundler plugins get one common interface there, devframes get one common definition across host frameworks.
+[Devframe](https://devfra.me/) tackles that. The idea started with Nuxt DevTools, took shape in Vite DevTools at Vercel, and Devframe hit **v1.0** in September 2026. It's a framework for building DevTools, the way Nuxt or Next.js is a framework for building web apps. In [the announcement post](https://devfra.me/posts/pluggable-extensible-playful-devtools), [Anthony Fu](https://github.com/antfu) compares its adapter layer to [unplugin](https://unplugin.unjs.io/): bundler plugins get one common interface there, devframes get one common definition across host frameworks.
 
 How can one definition run almost anywhere? Through a boundary every host already speaks. `defineDevframe()` describes the tool once, with its RPC functions, its state and its UI. `initDevframe()` turns that into a Web Standard `Request` to `Response` handler.
 
@@ -202,7 +202,7 @@ Then there's the part TanStack Devtools doesn't touch. Devframe is built for hum
 
 ### Already in use
 
-The post splits devtools into layers, and each one has real examples:
+The post splits DevTools into layers, and each one has real examples:
 
 - **General capabilities**, built once for every host. Accessibility, terminals, a data inspector, MCP.
 - **Build tools.** Vitest, Rolldown and Oxc, all in the new Vite DevTools dock.
@@ -216,7 +216,7 @@ The post splits devtools into layers, and each one has real examples:
   displayWidth="480px"
   center
   alt="Vite DevTools dock at the bottom of the page, with its Vite+ menu open listing Vitest, Vite, Rolldown and Oxc Devtools"
-  caption="Vite DevTools, built on Devframe: Vitest, Vite, Rolldown and Oxc devtools behind a single dock."
+  caption="Vite DevTools, built on Devframe: Vitest, Vite, Rolldown and Oxc DevTools behind a single dock."
 />
 
 <br />
@@ -252,4 +252,4 @@ This piece of DevEx used to be built by hand, or not at all. We lived with the f
 
 The Devframe post says a good tool should be built once, travel further, and get better as more people contribute. That holds for the ecosystem, and it holds for a monorepo with dozens of developers. Build it once, give it to every team, and close those five floating panels for good.
 
-A lack of DevEx never shows, until the day you fix it. Your teams deserve devtools.
+A lack of DevEx never shows, until the day you fix it. Your teams deserve DevTools.
