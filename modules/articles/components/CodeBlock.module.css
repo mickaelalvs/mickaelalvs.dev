@@ -14,13 +14,13 @@
 .title {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   margin-bottom: 8px;
-  padding: 3px 10px;
+  padding: 4px 14px 4px 12px;
   font-family: var(--font-code);
   font-size: 1rem;
   background: var(--color-code-background);
-  border: 1px solid var(--color-hover);
+  border: 1px solid var(--color-purple-40);
   border-radius: var(--radius-border-radius);
 }
 
