@@ -2,6 +2,7 @@
 
 import {useEffect, useState} from 'react';
 import clsx from 'clsx';
+import {usePlatform} from '@/modules/shared/usePlatform';
 import {KbdKey} from '../alt-tab/KbdKey';
 import {ELEMENTS, FILE_TREE, type ElementSpec} from './GoToSourceDemo.data';
 import styles from './GoToSourceDemo.module.css';
@@ -16,14 +17,12 @@ interface Modifiers {
 const NO_MODIFIERS: Modifiers = {shift: false, alt: false, ctrl: false, meta: false};
 
 export function GoToSourceDemo() {
-  const [isMac, setIsMac] = useState(false);
+  const isMac = usePlatform() === 'mac';
   const [modifiers, setModifiers] = useState<Modifiers>(NO_MODIFIERS);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [openedId, setOpenedId] = useState<string | null>(null);
 
   useEffect(() => {
-    setIsMac(/Mac|iPhone|iPad/.test(navigator.userAgent));
-
     const updateModifiers = (e: KeyboardEvent | MouseEvent) => {
       setModifiers({shift: e.shiftKey, alt: e.altKey, ctrl: e.ctrlKey, meta: e.metaKey});
     };
