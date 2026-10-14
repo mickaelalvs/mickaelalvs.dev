@@ -1,13 +1,13 @@
 ---
 title: 'Your teams deserve devtools'
 seoTitle: 'Your teams deserve devtools: TanStack Devtools and Devframe'
-description: 'Custom devtools used to be one-off hacks. TanStack Devtools makes them shared team infrastructure, and Devframe lets you build one once and run it anywhere.'
+description: 'Five floating panels, zero coordination. TanStack Devtools gives them one home, Devframe lets you build them anywhere.'
 slug: your-teams-deserve-devtools
 image: /static/images/articles/your-teams-deserve-devtools/hero.avif
 thumbnail: /static/images/articles/your-teams-deserve-devtools/thumbnail.avif
 date: '2026-09-30'
 featured: true
-readingTime: '10 min read'
+readingTime: '10 min'
 tags: [devtools, developer-experience, tanstack, devframe, react, frontend]
 authors: [mickael_alves]
 language: en
@@ -21,7 +21,7 @@ Modern tools rarely ship without one anymore. TanStack Query and Router, Redux, 
 
 So you end up with two families. The devtools your libraries ship, and the ones your team builds for its own product. Neither knows the other exists. A browser extension here, a floating button injected into your app there, a URL logged in the terminal, a homemade console command for the rest.
 
-Taken one by one, each of these tools improves DX. Stacked with no coordination, they do the opposite. You can't see your screen anymore, and you spend more time closing panels than debugging.
+Taken one by one, each of these tools improves DevEx. Stacked with no coordination, they do the opposite. You can't see your screen anymore, and you spend more time closing panels than debugging.
 
 <PanelChaosDemo />
 
@@ -31,13 +31,13 @@ This article is about putting all of them in one place, the devtools you install
 
 <br />
 
-I work on a Platform Frontend team. We look after a large monorepo with several apps, shared packages, a design system, and **dozens of developers** shipping in it every day.
+I work on a Platform Frontend team. We look after a large monorepo with several apps, shared packages, a design system, and **dozens of developers** working in it every day.
 
 That monorepo keeps gaining tools. Every migration brings one in, and each new data-fetching library, router or bundler ships its own devtools. Good news, until you count them.
 
-When we bring in a tool or a feature, we want it to land with the best DX we can give it, not with a README page explaining which snippet to paste in the console. At this scale, every bit of friction gets multiplied by dozens of developers and several apps.
+When we bring in a tool or a feature, we want it to land with the best DevEx we can give it, not with a README page explaining which snippet to paste in the console. At this scale, every bit of friction gets multiplied by dozens of developers and several apps.
 
-Official devtools cover the libraries. They don't cover your product. We also wanted panels for an analytics event log, feature flipping shortcuts, the current layout, and our own state. Until now, we built that plumbing by hand, for every new need, in every app.
+Official devtools cover the libraries. They don't cover your product. We also wanted panels for an analytics event log, feature flipping shortcuts, the current page layout, and our own state. Until now, we built that plumbing by hand, for every new need, in every app.
 
 So the requirements were short:
 
@@ -74,7 +74,8 @@ It supports React, Vue, Solid, Svelte, Angular, Preact and vanilla JS. A plugin 
 
 <Callout type="info">
   **Zero-cost in production by default.** `removeDevtoolsOnBuild` defaults to `true`, so devtools never reach the
-  production bundle.
+  production bundle. For your own panels, `@tanstack/devtools-utils` has `createReactPlugin`-style factories that return
+  a no-op twin.
 </Callout>
 
 <Callout type="warn">**Still in alpha.** The API can shift, so keep that in mind before betting on it.</Callout>
@@ -94,17 +95,17 @@ A custom plugin is a component you pass to the `plugins` prop:
 />
 ```
 
-No class to extend. `FeatureFlippingPanel` is a plain React component, so the only question left is how it talks to your app. There are two ways.
+No class to extend. In our case, `FeatureFlippingPanel` is a plain React component, but any supported framework works the same way. The only question left is how it talks to your app. There are two ways.
 
 ### Reading from an existing store
 
-If a store already runs in your app (Redux, Zustand, Jotai...) and the devtools sit inside its `<Provider>`, the panel subscribes like any other consumer. That's the easy path. It stops at the tab, though. An analytics log across two tabs, or debugging a Backend for Frontend (BFF), needs something else.
+If a store already runs in your app (Redux, Zustand, Jotai...) and the devtools sit inside its `<Provider>`, the panel subscribes like any other consumer. That's the easy path. It stops at the tab, though. Anything that has to cross tabs or reach the dev server needs something else.
 
 ### Going through the event bus
 
 The event bus crosses tabs and reaches the dev server. It's also the only contract a published plugin can rely on, since the plugin can't know the shape of your store. The cost is an `emit()` at every point you want to see.
 
-```ts
+```ts title="team-event-client.ts"
 import {EventClient} from '@tanstack/devtools-event-client';
 
 type MyEvents = {
@@ -120,13 +121,18 @@ class TeamEventClient extends EventClient<MyEvents> {
 export const teamEventClient = new TeamEventClient();
 ```
 
-The panel emits when you toggle a flag, and a small module on the app side listens and overrides the real value:
+The panel emits when you toggle a flag. A small module on the app side listens and overrides the real value:
 
-```ts
-// in the panel
-teamEventClient.emit('feature-flag-toggle', {flag: 'new-checkout', enabled: true});
+```ts title="FeatureFlippingPanel.tsx"
+teamEventClient.emit('feature-flag-toggle', {
+  flag: 'new-checkout',
+  enabled: true,
+});
+```
 
-// in the app
+And the app side:
+
+```ts title="feature-flags.ts"
 const overrides = {};
 
 teamEventClient.on('feature-flag-toggle', (e) => {
@@ -140,11 +146,11 @@ function isEnabled(flag) {
 
 <FeatureFlagPanelDemo />
 
-Each feature team now defines its events and its component, and that's it. The shell handles positioning, shortcuts and persistence for everyone. To keep panels out of the production bundle, `@tanstack/devtools-utils` has `createReactPlugin`-style factories that return a no-op twin.
+Each developer now defines their events and their component, and that's it. The shell handles positioning, shortcuts and persistence for everyone.
 
 ### One of my favorite features: go to source
 
-The Vite plugin (`@tanstack/devtools-vite`) ships [a list of built-in features](https://tanstack.com/devtools/latest/docs/vite-plugin#features). This is the one I'd miss most.
+This one is a Vite-only feature for now. It comes from the Vite plugin (`@tanstack/devtools-vite`), which ships [a list of built-in features](https://tanstack.com/devtools/latest/docs/vite-plugin#features). Of all of them, it's the one I'd miss most.
 
 At build time, it parses your JSX/TSX with `oxc-parser` and adds a `data-tsd-source="file:line:column"` attribute to every element. In dev, you hold a shortcut, hover anything on the page, and click. Your editor opens at the right line through [`launch-editor`](https://github.com/vitejs/launch-editor), the library Vite itself uses, with no configuration.
 
@@ -152,11 +158,9 @@ The click travels over the event bus to the Vite server, which calls `launch-edi
 
 <GoToSourceDiagram />
 
-<Callout type="note">Vite only for now. The docs don't mention Webpack, Turbopack, or Rspack.</Callout>
-
 <GoToSourceDemo />
 
-I loved it the moment I tried it. On a big design system, finding the file behind a piece of UI turns into a treasure hunt. For someone new to the codebase, no more grepping a class name to find the component behind a visual bug. You click, you're in the file.
+I loved it the moment I tried it. And for example, on a big design system, finding the file behind a piece of UI turns into a treasure hunt. For someone new to the codebase, no more grepping a class name to find the component behind a visual bug. You click, you're in the file.
 
 Browser `console.log` calls get the same treatment, with a clickable `file:line`, and logs flow both ways between browser and terminal. There's also a [plugin marketplace](https://tanstack.com/devtools/latest/docs/third-party-plugins), with an `axe-core` accessibility overlay and a TanStack AI plugin, and nothing stops a platform team from publishing its own internal plugins.
 
@@ -166,35 +170,66 @@ Browser `console.log` calls get the same treatment, with a clickable `file:line`
 
 TanStack Devtools fixes the problem inside your app's page. The same fragmentation exists one level down, in the tools themselves. Every devtool rebuilds its own RPC, state sync and web UI, wired to one framework's dev server, and the next framework rebuilds it slightly differently.
 
-[Devframe](https://devfra.me/) tackles that. Led by [Anthony Fu](https://github.com/antfu) and born out of the work on Vite DevTools at Vercel, it hit **v1.0** in September 2026. It's a framework for building devtools, the way Nuxt or Next.js is a framework for building web apps. The docs also call it _"`unplugin` for devtools"_. You define a tool once, and the same definition runs almost anywhere.
+[Devframe](https://devfra.me/) tackles that. The idea started with Nuxt DevTools, took shape in Vite DevTools at Vercel, and Devframe hit **v1.0** in September 2026. It's a framework for building devtools, the way Nuxt or Next.js is a framework for building web apps. In [the announcement post](https://devfra.me/posts/pluggable-extensible-playful-devtools), [Anthony Fu](https://github.com/antfu) compares its adapter layer to [unplugin](https://unplugin.unjs.io/): bundler plugins get one common interface there, devframes get one common definition across host frameworks.
 
-- **One definition, many targets.** A dock in Vite or Nuxt DevTools, a route in Next.js, SvelteKit or Hono, a standalone CLI, or a static report in your CI.
-- **Any UI framework.** The tool's UI is a regular SPA, in Vue, React, Svelte or Solid.
-- **Typed RPC and shared state** between Node and the browser, over WebSocket or SSE.
-- **Agents built in.** Flag an RPC function and it becomes an MCP tool your coding agent can call.
-- **A hub** that gathers every devframe behind one entry point, instead of a terminal full of URLs.
+How can one definition run almost anywhere? Through a boundary every host already speaks. `defineDevframe()` describes the tool once, with its RPC functions, its state and its UI. `initDevframe()` turns that into a Web Standard `Request` to `Response` handler.
+
+```ts
+import {defineDevframe} from 'devframe';
+import {initDevframe} from 'devframe/initiate';
+
+const myDevframe = defineDevframe({
+  id: 'my-tool',
+  name: 'My Tool',
+  rpc: [getModules],
+  view: {type: 'spa', distDir: './dist/client'},
+});
+
+const {handler} = initDevframe(myDevframe, {base: '/__my-tool/'});
+```
+
+Hono and Nitro take that handler as is. Next.js and SvelteKit expose route handlers it fits into. Vite and Rsbuild accept the connect-style middleware the same instance provides. The post calls this _"almost the entire portability trick"_. Any of them can mount it. In practice, Vite DevTools is the first host built on it, Nuxt and Vue follow, and the Next.js integration is still an internal prototype.
+
+Beyond the handler, every other entry point is an adapter that repackages the same definition: a standalone CLI, a static report in your CI, an MCP server, a dock in Vite or Nuxt DevTools.
+
+The tool's UI is a regular SPA, in Vue, React, Svelte or Solid. Devframe adds typed RPC and shared state between Node and the browser, over WebSocket or SSE.
 
 Reading the docs felt like reading our requirements list, pushed further. One place for the tools you install and the ones you build, panels in each team's framework, data crossing the browser boundary. It's what TanStack Devtools pushes for, one level lower and without being tied to your app's page.
 
-Then there's the part TanStack Devtools doesn't touch. Devframe is built for humans and for agents. The same function sits behind the button in your panel and behind an MCP tool, so our feature flag toggle becomes something Claude Code can flip itself while it works on the new checkout. The announcement even pictures asking an agent for a throwaway devframe, built to answer one question and then dropped.
+### Built for humans and agents
 
-And it's already in use. The post splits devtools into layers, and each one has real examples:
+Then there's the part TanStack Devtools doesn't touch. Devframe is built for humans and for agents. The same function sits behind the button in your panel and behind an MCP tool, so our feature flag toggle becomes something Claude Code can flip itself while it works on the new checkout. Functions stay private unless you expose them, so the agent only gets what you chose to hand over. The announcement even pictures asking an agent for a throwaway devframe, built to answer one question and then dropped.
+
+### Already in use
+
+The post splits devtools into layers, and each one has real examples:
 
 - **General capabilities**, built once for every host. Accessibility, terminals, a data inspector, MCP.
 - **Build tools.** Vitest, Rolldown and Oxc, all in the new Vite DevTools dock.
-- **Framework-specific panels.** Nuxt DevTools v4 builds on Devframe, and Vue DevTools is migrating to it.
+- **Framework-specific panels.** Nuxt DevTools v4 builds on Devframe and Vite DevTools, and ships with Nuxt 5. Vue DevTools is moving to Vite DevTools, so it ends up on Devframe too.
 - **Ecosystem tools.** ESLint Config Inspector, UnoCSS Inspector, Node Modules Inspector.
 
 <ImageExpandable
   src="/static/images/articles/your-teams-deserve-devtools/vite-devtools-dock.avif"
-  width={1640}
-  height={904}
+  width={1083}
+  height={801}
+  displayWidth="480px"
+  center
   alt="Vite DevTools dock at the bottom of the page, with its Vite+ menu open listing Vitest, Vite, Rolldown and Oxc Devtools"
-  border
   caption="Vite DevTools, built on Devframe: Vitest, Vite, Rolldown and Oxc devtools behind a single dock."
 />
 
-So the two don't compete. TanStack Devtools is a product, a shell that lives in your app's page. Devframe is the framework you'd build that kind of product with. They overlap on the plumbing: gathering several tools in one place, and talking to the server. That's the part TanStack could hand over to Devframe while keeping its plugin API. The day Devframe v1.0 came out, [Alem Tuzlak](https://x.com/AlemTuzlak/status/2100125951254225309), who maintains TanStack Devtools, said as much:
+<br />
+
+### How it fits with TanStack Devtools
+
+Three words keep coming up in the docs, so here's how they fit together:
+
+- **A devframe.** One tool, like the terminal or the accessibility checker.
+- **A hub.** `@devframes/hub` mounts several devframes behind one handler and gives them docks, commands and shared state. It has no UI of its own.
+- **A host.** The product built on a hub, with its own UI and its own knowledge of a framework. Vite DevTools is the first one, Nuxt DevTools v4 is next.
+
+So the two don't compete. In those terms, TanStack Devtools is a host, a shell that lives in your app's page. Devframe is the framework you'd build that kind of host with. They overlap on the plumbing: gathering several tools in one place, and talking to the server. That's the part TanStack could hand over to Devframe while keeping its plugin API. The day Devframe v1.0 came out, [Alem Tuzlak](https://x.com/AlemTuzlak/status/2100125951254225309), who maintains TanStack Devtools, said as much:
 
 <ImageExpandable
   src="/static/images/articles/your-teams-deserve-devtools/alem-tuzlak-devframe.avif"
@@ -213,8 +248,8 @@ I won't paraphrase the rest. Nothing explains Devframe better than [its announce
 
 <br />
 
-This piece of DX used to be built by hand, or not at all. We lived with the friction and the longer onboarding and called it the price to pay. TanStack Devtools makes it cheap inside your app. Devframe takes the same idea across every host, and hands your tools to your agent too.
+This piece of DevEx used to be built by hand, or not at all. We lived with the friction and the longer onboarding and called it the price to pay. TanStack Devtools makes it cheap inside your app. Devframe takes the same idea across every host, and hands your tools to your agent too.
 
 The Devframe post says a good tool should be built once, travel further, and get better as more people contribute. That holds for the ecosystem, and it holds for a monorepo with dozens of developers. Build it once, give it to every team, and close those five floating panels for good.
 
-A lack of DX never shows, until the day you fix it. Your teams deserve devtools.
+A lack of DevEx never shows, until the day you fix it. Your teams deserve devtools.
