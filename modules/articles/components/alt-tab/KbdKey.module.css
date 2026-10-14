@@ -21,8 +21,8 @@
   background: #28262e;
   border: 1px solid #3a373f;
   box-shadow:
-    0 3px 0 0 #0f0e13,
-    0 1px 3px rgba(0, 0, 0, 0.5);
+    0 3px 0 0 var(--color-hover),
+    0 5px 8px rgba(0, 0, 0, 0.6);
 
   transition:
     transform 0.1s ease,
@@ -32,15 +32,15 @@
 .key:hover {
   transform: translateY(-2px);
   box-shadow:
-    0 5px 0 0 #0f0e13,
-    0 4px 10px rgba(0, 0, 0, 0.5);
+    0 7px 0 0 var(--color-hover),
+    0 8px 14px rgba(0, 0, 0, 0.65);
 }
 
 .key:active {
   transform: translateY(2px);
   box-shadow:
-    0 1px 0 0 #0f0e13,
-    0 0 2px rgba(0, 0, 0, 0.4);
+    0 1px 0 0 var(--color-hover),
+    0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* Light theme */
@@ -72,8 +72,8 @@
 .pressed {
   transform: translateY(2px);
   box-shadow:
-    0 1px 0 0 #0f0e13,
-    0 0 2px rgba(0, 0, 0, 0.4);
+    0 1px 0 0 var(--color-hover),
+    0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 [data-theme='light'] .pressed {

@@ -8,17 +8,42 @@ import {ImageExpandable} from './components/swc/ImageExpandable';
 import {SideBySide} from './components/swc/SideBySide';
 import {KbdKey} from './components/alt-tab/KbdKey';
 import {LiveCodingDemo} from './components/alt-tab/LiveCodingDemo';
+import {PanelChaosDemo} from './components/tanstack-devtools/PanelChaosDemo';
+import {GoToSourceDemo} from './components/tanstack-devtools/GoToSourceDemo';
+import {GoToSourceDiagram} from './components/tanstack-devtools/GoToSourceDiagram';
+import {FeatureFlagPanelDemo} from './components/tanstack-devtools/FeatureFlagPanelDemo';
 import {CodeBlock} from './components/CodeBlock';
+import {Callout} from './components/Callout';
 import {parseCodeBlockMeta} from '@/lib/shiki-title-transformer';
 import rehypeShiki from '@shikijs/rehype';
 import rehypeSlug from 'rehype-slug';
 import {transformerMetaHighlight, transformerNotationDiff} from '@shikijs/transformers';
+
+function ExternalLink({href, children, ...props}: React.ComponentPropsWithoutRef<'a'>) {
+  const isExternal = href?.startsWith('http');
+  return (
+    <a
+      href={href}
+      target={isExternal ? '_blank' : undefined}
+      rel={isExternal ? 'noopener noreferrer' : undefined}
+      {...props}
+    >
+      {children}
+    </a>
+  );
+}
 
 const mdxComponents = {
   ImageExpandable,
   SideBySide,
   KbdKey,
   LiveCodingDemo,
+  PanelChaosDemo,
+  GoToSourceDemo,
+  GoToSourceDiagram,
+  FeatureFlagPanelDemo,
+  Callout,
+  a: ExternalLink,
   pre: CodeBlock,
 };
 

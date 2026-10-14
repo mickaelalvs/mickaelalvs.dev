@@ -1,0 +1,174 @@
+.figure {
+  margin: 32px 0;
+}
+
+.stage {
+  display: flex;
+  gap: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--color-hover);
+  background: var(--color-background);
+  padding: 16px;
+}
+
+/* ─── Left: mini devtools panel ─────────────────────────────────── */
+
+.panel {
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: var(--color-code-background);
+  border: 1px solid var(--color-hover);
+  padding: 4px;
+}
+
+.panelHeader {
+  font-family: var(--font-code);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-secondary);
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--color-hover);
+  margin-bottom: 4px;
+}
+
+.flagRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 10px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background var(--transition-duration) ease-in-out;
+}
+
+.flagRow:hover {
+  background: var(--color-hover);
+}
+
+.switch {
+  position: relative;
+  width: 30px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--color-hover);
+  flex-shrink: 0;
+  transition: background var(--transition-duration) ease-in-out;
+}
+
+.switchOn {
+  background: var(--color-cyan);
+}
+
+.switchThumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  transition: transform var(--transition-duration) ease-in-out;
+}
+
+.switchOn .switchThumb {
+  transform: translateX(14px);
+}
+
+.flagLabel {
+  font-family: var(--font-code);
+  font-size: 12px;
+  color: var(--color-primary);
+}
+
+/* ─── Right: mock app that reacts ───────────────────────────────── */
+
+.mockApp {
+  flex: 1;
+  min-width: 0;
+  border-radius: 8px;
+  background: var(--color-code-background);
+  border: 1px solid var(--color-hover);
+  padding: 16px;
+  transition: background var(--transition-duration) ease-in-out;
+}
+
+.mockAppDark {
+  background: #000000;
+}
+
+.checkoutBanner {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  font-family: var(--font-code);
+  font-size: 12px;
+  color: var(--color-background);
+  background: var(--color-green);
+  border-radius: 6px;
+  padding: 0 10px;
+  margin-bottom: 12px;
+}
+
+.checkoutPlaceholder {
+  height: 32px;
+  border-radius: 6px;
+  background: var(--color-hover);
+  margin-bottom: 12px;
+}
+
+.searchBar {
+  font-family: var(--font-code);
+  font-size: 12px;
+  color: var(--color-secondary);
+  background: var(--color-hover);
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin-bottom: 16px;
+  transition:
+    background var(--transition-duration) ease-in-out,
+    color var(--transition-duration) ease-in-out;
+}
+
+.searchBarAi {
+  color: var(--color-background);
+  background: var(--color-purple);
+}
+
+.mockBlock {
+  height: 60px;
+  border-radius: 8px;
+  background: var(--color-hover);
+  margin-bottom: 12px;
+}
+
+.mockBlockSmall {
+  height: 30px;
+  width: 60%;
+  border-radius: 8px;
+  background: var(--color-hover);
+}
+
+.caption {
+  margin-top: 12px;
+  font-size: 15px;
+  text-align: center;
+  color: var(--color-secondary);
+}
+
+.caption code {
+  font-family: var(--font-code);
+  font-size: 0.9em;
+}
+
+@media (max-width: 640px) {
+  .stage {
+    flex-direction: column;
+  }
+
+  .panel {
+    width: 100%;
+  }
+}
