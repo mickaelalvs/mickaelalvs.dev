@@ -25,17 +25,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://mickaelalvs.dev',
     siteName: 'Mickaël Alves',
-    title: 'Mickaël Alves',
-    description:
-      'Lead Frontend at Zenika & Bedrock Streaming. Passionate about web, frontend, tooling and DevEx. Speaker, co-organizer of LyonJS & DevFest Lyon.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mickaël Alves',
-    description:
-      'Lead Frontend at Zenika & Bedrock Streaming. Passionate about web, frontend, tooling and DevEx. Speaker, co-organizer of LyonJS & DevFest Lyon.',
   },
 };
 
