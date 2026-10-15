@@ -1,6 +1,6 @@
 'use client';
 
-import {ReactNode, useEffect, useRef, useState} from 'react';
+import {ReactNode} from 'react';
 import Image from 'next/image';
 import Footer from '../layout/Footer';
 import BackLink from '../shared/BackLink';
@@ -44,49 +44,6 @@ export default function BlogpostLayout({
   language,
   headings = [],
 }: BlogpostLayoutProps) {
-  const imageRef = useRef<HTMLDivElement>(null);
-  const [transform, setTransform] = useState('translateY(0)');
-
-  useEffect(() => {
-    if (!image || typeof window === 'undefined') return;
-
-    let ticking = false;
-
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const scrollY = window.scrollY;
-          const parallaxY = scrollY * 0.5;
-          setTransform(`translateY(${parallaxY}px)`);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    const checkDesktop = () => window.innerWidth >= 1024;
-
-    if (checkDesktop()) {
-      window.addEventListener('scroll', handleScroll, {passive: true});
-      handleScroll();
-    }
-
-    const handleResize = () => {
-      if (checkDesktop()) {
-        handleScroll();
-      } else {
-        setTransform('translateY(0)');
-      }
-    };
-
-    window.addEventListener('resize', handleResize, {passive: true});
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [image]);
-
   return (
     // `data-navbar-dark` switches the global Navbar to light-on-dark over the hero image (see Navbar.module.css)
     <PageTransition>
@@ -96,7 +53,7 @@ export default function BlogpostLayout({
           {image && (
             <div className={styles.postHeader}>
               <h1 className={`${styles.postTitle} ${styles.postHeaderTitle} rise-in`}>{title}</h1>
-              <div ref={imageRef} className={styles.postImage} style={{transform}}>
+              <div className={styles.postImage}>
                 <Image src={image} alt="" fill priority sizes="100vw" quality={60} className={styles.postImageImg} />
               </div>
               <h2 className={`${styles.postSubtitle} ${styles.postHeaderSubtitle}`}>

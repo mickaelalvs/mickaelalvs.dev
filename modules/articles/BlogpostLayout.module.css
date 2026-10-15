@@ -85,7 +85,6 @@
   top: 0;
   left: 0;
   z-index: 1;
-  will-change: transform;
 }
 
 .postImageImg {
@@ -110,12 +109,6 @@
   left: 0;
   z-index: 2;
   will-change: transform;
-}
-
-@media (min-width: 1024px) {
-  .postImage {
-    position: absolute;
-  }
 }
 
 .articleHeader {
