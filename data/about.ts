@@ -5,15 +5,7 @@ const items: AboutItem[] = [
     jobTitle: 'Leading Frontend, Foundations & DevEx',
     company: 'Bedrock Streaming',
     companyUrl: 'https://www.bedrockstreaming.com',
-    startDate: '2025-08-01',
-    location: 'Lyon, France',
-  },
-  {
-    jobTitle: 'DevEx Engineer',
-    company: 'Bedrock Streaming',
-    companyUrl: 'https://www.bedrockstreaming.com',
     startDate: '2024-12-01',
-    endDate: '2025-08-01',
     location: 'Lyon, France',
   },
   {

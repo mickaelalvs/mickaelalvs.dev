@@ -2,25 +2,25 @@ import type {AboutItem} from '@/modules/about/types/AboutItem';
 
 const items: AboutItem[] = [
   {
-    jobTitle: 'Enseignant / Intervenant',
+    jobTitle: 'Teacher',
     company: 'ESGI',
     companyUrl: 'https://www.esgi.fr',
-    subject: 'Conception Application Flutter',
+    subject: 'Flutter App Design',
     startDate: '2024-07-01',
     endDate: '2024-08-31',
     location: 'Lyon, France',
   },
   {
-    jobTitle: 'Enseignant / Intervenant',
+    jobTitle: 'Teacher',
     company: 'Université Lyon 1',
     companyUrl: 'https://www.univ-lyon1.fr',
-    subject: 'Conception & Programmation Web',
+    subject: 'Web Architecture & Web Programming',
     startDate: '2024-02-01',
     endDate: '2024-07-31',
     location: 'Lyon, France',
   },
   {
-    jobTitle: 'Intervenant',
+    jobTitle: 'Teacher',
     company: 'Epitech Digital',
     companyUrl: 'https://www.epitech.eu',
     subject: 'React.js / Node.js',
