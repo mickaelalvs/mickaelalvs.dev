@@ -11,7 +11,7 @@ import styles from './ProjectsPage.module.css';
 export default function ProjectsPage({stars = {}}: {stars?: Record<string, number>}) {
   const [hovered, setHovered] = useState<string | number>('');
 
-  const featured = ['Shortvid.io', 'slidev-addon-livecode', 'Code In The Dark'];
+  const featured = ['Octopack', 'Shortvid.io', 'slidev-addon-livecode'];
 
   const renderFeatured = () => {
     return items
@@ -65,6 +65,10 @@ export default function ProjectsPage({stars = {}}: {stars?: Record<string, numbe
           I also try to contribute to open source projects like{' '}
           <a href="https://github.com/remotion-dev/remotion" target="_blank" rel="noopener noreferrer">
             Remotion
+          </a>
+          ,{' '}
+          <a href="https://github.com/slidevjs/slidev" target="_blank" rel="noopener noreferrer">
+            Slidev
           </a>
           ,{' '}
           <a href="https://github.com/pithings/coderaft" target="_blank" rel="noopener noreferrer">

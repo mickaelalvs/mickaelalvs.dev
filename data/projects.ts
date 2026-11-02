@@ -2,6 +2,13 @@ import type {Project} from '@/modules/projects/types/Project';
 
 const items: Project[] = [
   {
+    title: 'Octopack',
+    description: 'Collect the projects and people that keep tech alive, as trading cards',
+    url: 'https://octopack.tech',
+    active: true,
+    icon: 'fig',
+  },
+  {
     title: 'Shortvid.io',
     description: 'Generate short videos for your social media',
     url: 'https://github.com/lyonjs/shortvid.io',
