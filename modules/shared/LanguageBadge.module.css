@@ -15,3 +15,17 @@
   text-transform: uppercase;
   user-select: none;
 }
+
+.tooltip {
+  background-color: var(--color-background);
+  color: var(--color-primary);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid var(--color-hover);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  pointer-events: none;
+  white-space: nowrap;
+}

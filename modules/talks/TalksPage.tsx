@@ -123,7 +123,7 @@ function TalksContent() {
                 <h4 className={styles.conferenceName}>
                   {confName}
                   {confDate && <span className={styles.talkDate}> - {confDate}</span>}
-                  {sortedItems[0]?.language && <LanguageBadge language={sortedItems[0].language} />}
+                  {sortedItems[0]?.language && <LanguageBadge language={sortedItems[0].language} kind="talk" />}
                 </h4>
                 <ul className={styles.talksList}>
                   {sortedItems.map((item, idx) => (
@@ -236,7 +236,7 @@ function TalkItem({talk}: {talk: Talk}) {
       <div className={styles.talkContent}>
         <h3>{talk.title}</h3>
         <div className={styles.talkMeta}>
-          {talk.language && <LanguageBadge language={talk.language} />}
+          {talk.language && <LanguageBadge language={talk.language} kind="talk" />}
           <span> • </span>
           <span>{talk.format}</span>
         </div>

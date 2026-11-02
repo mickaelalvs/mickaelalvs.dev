@@ -25,7 +25,7 @@ export default function PodcastsPage() {
           index={index}
           href={`/podcasts/${slug}`}
           title={item.title}
-          badge={item.language && <LanguageBadge language={item.language} />}
+          badge={item.language && <LanguageBadge language={item.language} kind="podcast" />}
           date={item.date}
           description={item.description}
           hovered={hovered}

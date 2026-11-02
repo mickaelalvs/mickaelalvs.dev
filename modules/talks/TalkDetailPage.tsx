@@ -60,7 +60,7 @@ export default function TalkDetailPage({slug}: {slug: string}) {
             {talk.language && (
               <div className={styles.languageContainer} data-pagefind-ignore>
                 <span className={styles.languageLabel}>Language:</span>
-                <LanguageBadge language={talk.language} />
+                <LanguageBadge language={talk.language} kind="talk" />
               </div>
             )}
             <h2 className={styles.sectionTitle} data-pagefind-ignore>
