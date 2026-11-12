@@ -2,6 +2,7 @@ import McpAppsTalk from '../../public/static/images/talks/mcp-apps.webp';
 import Volcamp from '../../public/static/images/conferenceLogos/volcamp.png';
 import Bdxio from '../../public/static/images/conferenceLogos/bdxio.webp';
 import LyonJS from '../../public/static/images/conferenceLogos/lyonJs.webp';
+import TouraineTech from '../../public/static/images/conferenceLogos/touraineTech.svg';
 import type {Talk} from '@/modules/talks/types/Talk';
 import {m_mure} from '@/data/people';
 
@@ -40,6 +41,12 @@ export const McpAppsReactEtLlmCommentCreerSonAppDansClaudeEtChatGpt: Talk = {
       link: '',
       date: '2026-10-29',
       image: Bdxio,
+    },
+    {
+      name: 'Touraine Tech',
+      link: '',
+      date: '2027-02-18',
+      image: TouraineTech,
     },
   ],
 };

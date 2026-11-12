@@ -1,5 +1,6 @@
 import BundlerTalk from '../../public/static/images/talks/wip.webp';
 import DevfestParis2026 from '../../public/static/images/conferenceLogos/devfest-paris-2026.png';
+import SnowCamp from '../../public/static/images/conferenceLogos/snowcamp.webp';
 import type {Talk} from '@/modules/talks/types/Talk';
 import {e_idoux} from '@/data/people';
 
@@ -22,6 +23,12 @@ export const DuFrigoALAssietteCeQueMijoteVraimentVotreBundlerJavaScript: Talk = 
       link: 'https://devfest.gdgparis.fr/',
       date: '2026-11-27',
       image: DevfestParis2026,
+    },
+    {
+      name: 'SnowCamp',
+      link: '',
+      date: '2027-01-14',
+      image: SnowCamp,
     },
   ],
 };
